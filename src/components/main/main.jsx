@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Main = (props) => {
-  
-  const arrowTag = '<use xlink:href="#icon-arrow-select" />';
-  const ibookmarkTag = '<use xlink:href="#icon-bookmark"></use>';
+
   const {rentCount} = props;
 
   return (
@@ -78,12 +76,9 @@ const Main = (props) => {
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
                   Popular
-                  <svg 
-	                  className="places__sorting-arrow" 
-	                  width="7" 
-	                  height="4" 
-	                  dangerouslySetInnerHTML={{__html: arrowTag }} 
-                  />
+                  <svg className="places__sorting-arrow" width="7" height="4">
+                    <use xlinkHref="#icon-arrow-select"></use>
+                  </svg>
                 </span>
                 <ul className="places__options places__options--custom places__options--opened">
                   <li className="places__option places__option--active" tabIndex="0">Popular</li>
@@ -115,11 +110,8 @@ const Main = (props) => {
                         <span className="place-card__price-text">&#47;&nbsp;night</span>
                       </div>
                       <button className="place-card__bookmark-button button" type="button">
-                        <svg 
-	                        className="place-card__bookmark-icon" width="18" 
-	                        height="19"
-	                        dangerouslySetInnerHTML={{__html: ibookmarkTag }}
-                        >
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
                         </svg>
                         <span className="visually-hidden">To bookmarks</span>
                       </button>
@@ -150,11 +142,8 @@ const Main = (props) => {
                         <span className="place-card__price-text">&#47;&nbsp;night</span>
                       </div>
                       <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-                        <svg 
-	                        className="place-card__bookmark-icon" width="18" 
-	                        height="19"
-	                        dangerouslySetInnerHTML={{__html: ibookmarkTag }}
-                        >
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
                         </svg>
                         <span className="visually-hidden">In bookmarks</span>
                       </button>
@@ -185,11 +174,8 @@ const Main = (props) => {
                         <span className="place-card__price-text">&#47;&nbsp;night</span>
                       </div>
                       <button className="place-card__bookmark-button button" type="button">
-                        <svg 
-	                        className="place-card__bookmark-icon" width="18" 
-	                        height="19"
-	                        dangerouslySetInnerHTML={{__html: ibookmarkTag }}
-                        >
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
                         </svg>
                         <span className="visually-hidden">To bookmarks</span>
                       </button>
@@ -223,11 +209,8 @@ const Main = (props) => {
                         <span className="place-card__price-text">&#47;&nbsp;night</span>
                       </div>
                       <button className="place-card__bookmark-button button" type="button">
-                        <svg 
-	                        className="place-card__bookmark-icon" width="18" 
-	                        height="19"
-	                        dangerouslySetInnerHTML={{__html: ibookmarkTag }}
-                        >
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
                         </svg>
                         <span className="visually-hidden">To bookmarks</span>
                       </button>
@@ -258,11 +241,8 @@ const Main = (props) => {
                         <span className="place-card__price-text">&#47;&nbsp;night</span>
                       </div>
                       <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-                        <svg 
-	                        className="place-card__bookmark-icon" width="18" 
-	                        height="19"
-	                        dangerouslySetInnerHTML={{__html: ibookmarkTag }}
-                        >
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
                         </svg>
                         <span className="visually-hidden">In bookmarks</span>
                       </button>
