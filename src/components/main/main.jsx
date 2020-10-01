@@ -76,7 +76,7 @@ const Main = (props) => {
               <b className="places__found"> { rentCount } places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabindex="0">
+                <span className="places__sorting-type" tabIndex="0">
                   Popular
                   <svg 
 	                  className="places__sorting-arrow" 
@@ -86,13 +86,13 @@ const Main = (props) => {
                   />
                 </span>
                 <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabindex="0">Popular</li>
-                  <li className="places__option" tabindex="0">Price: low to high</li>
-                  <li className="places__option" tabindex="0">Price: high to low</li>
-                  <li className="places__option" tabindex="0">Top rated first</li>
+                  <li className="places__option places__option--active" tabIndex="0">Popular</li>
+                  <li className="places__option" tabIndex="0">Price: low to high</li>
+                  <li className="places__option" tabIndex="0">Price: high to low</li>
+                  <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
-                <select className="places__sorting-type" id="places-sorting">
-                  <option className="places__option" value="popular" selected="">Popular</option>
+                <select defaultValue={'Popular'} className="places__sorting-type" id="places-sorting">
+                  <option className="places__option" value="popular">Popular</option>
                   <option className="places__option" value="to-high">Price: low to high</option>
                   <option className="places__option" value="to-low">Price: high to low</option>
                   <option className="places__option" value="top-rated">Top rated first</option>
