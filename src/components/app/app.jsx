@@ -15,6 +15,15 @@ import {
 const App = (props) => {
   const {rentCount} = props;
 
+  const styles = {
+    w80:{
+      width: '80%'
+    },
+    w100:{
+      width: '100%'
+    }
+  };
+
   return (
     <Router>
       <Switch>
@@ -22,9 +31,10 @@ const App = (props) => {
             <SignIn />
           </Route>
           <Route exact path="/favorites">
-            <Favorites />
+            <Favorites styles={styles}/>
           </Route>
-          <Route exact path='/offer/:id' component={Room}>
+          <Route exact path='/offer/:id'>
+              <Room styles={styles} />
           </Route>
           <Route exact path="/">
             <Main rentCount={rentCount} />
