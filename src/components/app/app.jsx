@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 
 const App = (props) => {
-  const {rentCount} = props;
+  const {rentCount, offers, reviews} = props;
 
   const styles = {
     w80:{
@@ -24,21 +24,68 @@ const App = (props) => {
     }
   };
 
+  const CalcRating = (percent) =>{
+    return {
+      width: percent * 10 * 2 + '%'
+    };
+  }
+
+  const PremiumTemplate = (className) =>{
+    return (
+      <div className={className}>
+        <span>Premium</span>
+      </div>
+    )
+  }
+
+  const RenderMap = (frame) =>{
+    return {__html: frame};
+  }
+
   return (
     <Router>
       <Switch>
-          <Route exact path="/login">
-            <SignIn />
-          </Route>
-          <Route exact path="/favorites">
-            <Favorites styles={styles}/>
-          </Route>
-          <Route exact path='/offer/:id'>
-              <Room styles={styles} />
-          </Route>
-          <Route exact path="/">
-            <Main rentCount={rentCount} />
-          </Route>
+          <Route
+                exact
+                path="/login"
+                render={(props)=>{
+                  return <SignIn />
+                }}
+          />
+          <Route exact
+                 path="/favorites"
+                 render={(props)=>{
+                  return <Favorites styles={styles}/>
+                }}
+          />
+          <Route
+            exact
+            path='/offer/:id'
+            render={(props)=>{
+              return <Room
+                        offers={offers}
+                        rentCount={rentCount}
+                        reviews={reviews}
+                        history={props.history}
+                        match={props.match}
+                        CalcRating={CalcRating}
+                        PremiumTemplate={PremiumTemplate}
+                        RenderMap={RenderMap}
+                      />
+            }}
+          />
+          <Route
+            exact
+            path="/"
+            render={(props)=>{
+              return <Main
+                        offers={offers}
+                        rentCount={rentCount}
+                        CalcRating={CalcRating}
+                        PremiumTemplate={PremiumTemplate}
+                      />
+            }}
+          />
         </Switch>
     </Router>
   );
