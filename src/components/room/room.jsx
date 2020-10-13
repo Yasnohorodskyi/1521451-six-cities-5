@@ -21,14 +21,12 @@ class Room extends PureComponent {
       }
     }
     for(let review in this.props.reviews){
-      console.log(review);
       if(this.props.reviews[review].offers == this.props.match.params.id){
         this.state.reviews.push(
           this.props.reviews[review]
         );
       }
     }
-    console.log(this.props);
   }
   render() {
     return (
@@ -125,8 +123,8 @@ class Room extends PureComponent {
                    </span>
                  </div>
                  <div className="property__description">
-                  {this.state.room.meeter.description.map((text) => (
-                    <p className="property__text">
+                  {this.state.room.meeter.description.map((text , i) => (
+                    <p key={i} className="property__text">
                       {text}
                     </p>
                   ))}
@@ -135,9 +133,8 @@ class Room extends PureComponent {
                <section className="property__reviews reviews">
                   <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{this.state.reviews.length}</span></h2>
                  <ul className="reviews__list">
-                   {console.log(this.state.reviews)}
                   {this.state.reviews.map((review) => (
-                    <li className="reviews__item">
+                    <li key={review.id} className="reviews__item">
                      <div className="reviews__user user">
                        <div className="reviews__avatar-wrapper user__avatar-wrapper">
                          <img className="reviews__avatar user__avatar" src={review.user.ava} width="54" height="54" alt="Reviews avatar"/>
@@ -176,7 +173,7 @@ class Room extends PureComponent {
              <h2 className="near-places__title">Other places in the neighbourhood</h2>
              <div className="near-places__list places__list">
              { this.props.offers.map((offer) => (
-                <article className="near-places__card place-card">
+                <article key={offer.id} className="near-places__card place-card">
                 {
                   (offer.premium) ? this.props.PremiumTemplate('place-card__mark') : ''
                 }
@@ -222,6 +219,8 @@ class Room extends PureComponent {
 
 Room.propTypes = {
   rentCount: PropTypes.number.isRequired,
+  PremiumTemplate: PropTypes.func.isRequired,
+  CalcRating: PropTypes.func.isRequired
 };
 
 export default Room;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {commmentsComponent} from '../../shapes/comments-component';
 
 const Comments = (props) => {
   const formRef = React.createRef();
@@ -83,13 +84,11 @@ const Comments = (props) => {
 };
 
 Comments.propTypes = {
-    component: PropTypes.shape({
-      props: PropTypes.shape({
-        offers: PropTypes.array.isRequired,
-        rentCount: PropTypes.number.isRequired ,
-        reviews: PropTypes.array.isRequired
-      })
-    })
+    component: PropTypes.shape(
+      PropTypes.shape(
+        commmentsComponent
+      ).isRequired
+    ).isRequired
 };
 
 export default Comments;
