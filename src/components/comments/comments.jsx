@@ -17,13 +17,17 @@ const Comments = (props) => {
       text: formRef.current['review'].value,
       rating: ''
     };
-
+    // Новый вариант получения рейтинга
+    data.rating = new FormData(formRef.current).get('rating');
+    /*
+    Старый вариант получения рейтинга
     let listInputs = formRef.current.querySelectorAll('input[type=radio]');
     Object.keys(listInputs).forEach(function(index){
       if(listInputs[index].checked == true){
         data.rating = 5-index;
       }
     })
+    */
 
     props.component.state.reviews.push(data);
 
