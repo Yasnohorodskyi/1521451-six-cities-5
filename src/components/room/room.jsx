@@ -2,6 +2,9 @@ import React , {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Comments from '../comments/comments';
 
+import {calcRating} from '../../helpers/calc-rating';
+import {premiumTemplate} from '../../helpers/premium-template';
+
 class Room extends PureComponent {
   constructor(props) {
     super(props);
@@ -11,6 +14,9 @@ class Room extends PureComponent {
       reviews: [],
       refrash: ''
     };
+  }
+  addComment(text, rating){
+    
   }
   componentWillMount(){
 
@@ -67,7 +73,7 @@ class Room extends PureComponent {
            <div className="property__container container">
              <div className="property__wrapper">
                {
-                  (this.state.room.premium) ? this.props.PremiumTemplate('property__mark') : ''
+                  (this.state.room.premium) ? premiumTemplate('property__mark') : ''
                }
                <div className="property__name-wrapper">
                  <h1 className="property__name">
@@ -82,7 +88,7 @@ class Room extends PureComponent {
                </div>
                <div className="property__rating rating">
                  <div className="property__stars rating__stars">
-                   <span className="rating__stars__value" style={this.props.CalcRating(this.state.room.rating)}></span>
+                   <span className="rating__stars__value" style={calcRating(this.state.room.rating)}></span>
                    <span className="visually-hidden">Rating</span>
                  </div>
                  <span className="property__rating-value rating__value">{this.state.room.rating}</span>
@@ -116,14 +122,14 @@ class Room extends PureComponent {
                  <h2 className="property__host-title">Meet the host</h2>
                  <div className="property__host-user user">
                    <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                     <img className="property__avatar user__avatar" src={this.state.room.meeter.ava} width="74" height="74" alt="Host avatar"/>
+                     <img className="property__avatar user__avatar" src={this.state.room.host.ava} width="74" height="74" alt="Host avatar"/>
                    </div>
                    <span className="property__user-name">
-                      {this.state.room.meeter.name}
+                      {this.state.room.host.name}
                    </span>
                  </div>
                  <div className="property__description">
-                  {this.state.room.meeter.description.map((text , i) => (
+                  {this.state.room.host.description.map((text , i) => (
                     <p key={i} className="property__text">
                       {text}
                     </p>
@@ -146,7 +152,7 @@ class Room extends PureComponent {
                      <div className="reviews__info">
                        <div className="reviews__rating rating">
                          <div className="reviews__stars rating__stars">
-                           <span className="rating__stars__value" style={this.props.CalcRating(review.rating)}></span>
+                           <span className="rating__stars__value" style={calcRating(review.rating)}></span>
                            <span className="visually-hidden">Rating</span>
                          </div>
                        </div>
@@ -158,15 +164,11 @@ class Room extends PureComponent {
                    </li>
                   ))}
                  </ul>
-                 <Comments component={this}/>
+                 <Comments addComment={this.addComment}/>
                </section>
              </div>
            </div>
-           <section
-              style={{width: '80%', margin: 'auto'}}
-              dangerouslySetInnerHTML={ this.props.RenderMap(this.state.room.map) }
-           >
-           </section>
+           <section className="property__map map"></section>
           </section>
          <div className="container">
            <section className="near-places places">
@@ -175,7 +177,7 @@ class Room extends PureComponent {
              { this.props.offers.map((offer) => (
                 <article key={offer.id} className="near-places__card place-card">
                 {
-                  (offer.premium) ? this.props.PremiumTemplate('place-card__mark') : ''
+                  (offer.premium) ? premiumTemplate('place-card__mark') : ''
                 }
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href={'/offer/'+offer.id}>
@@ -197,7 +199,7 @@ class Room extends PureComponent {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span className="rating__stars__value" style={this.props.CalcRating(offer.rating)}></span>
+                      <span className="rating__stars__value" style={calcRating(offer.rating)}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -219,8 +221,6 @@ class Room extends PureComponent {
 
 Room.propTypes = {
   rentCount: PropTypes.number.isRequired,
-  PremiumTemplate: PropTypes.func.isRequired,
-  CalcRating: PropTypes.func.isRequired
 };
 
 export default Room;

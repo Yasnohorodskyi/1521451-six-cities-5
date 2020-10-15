@@ -14,48 +14,21 @@ import {
 
 const App = (props) => {
   const {rentCount, offers, reviews} = props;
-
-  const styles = {
-    w80:{
-      width: '80%'
-    },
-    w100:{
-      width: '100%'
-    }
-  };
-
-  const CalcRating = (percent) =>{
-    return {
-      width: percent * 10 * 2 + '%'
-    };
-  }
-
-  const PremiumTemplate = (className) =>{
-    return (
-      <div className={className}>
-        <span>Premium</span>
-      </div>
-    )
-  }
-
-  const RenderMap = (frame) =>{
-    return {__html: frame};
-  }
-
+  
   return (
     <Router>
       <Switch>
           <Route
                 exact
                 path="/login"
-                render={(props)=>{
+                render={()=>{
                   return <SignIn />
                 }}
           />
           <Route exact
                  path="/favorites"
-                 render={(props)=>{
-                  return <Favorites styles={styles}/>
+                 render={()=>{
+                  return <Favorites />
                 }}
           />
           <Route
@@ -68,21 +41,16 @@ const App = (props) => {
                         reviews={reviews}
                         history={props.history}
                         match={props.match}
-                        CalcRating={CalcRating}
-                        PremiumTemplate={PremiumTemplate}
-                        RenderMap={RenderMap}
                       />
             }}
           />
           <Route
             exact
             path="/"
-            render={(props)=>{
+            render={()=>{
               return <Main
                         offers={offers}
                         rentCount={rentCount}
-                        CalcRating={CalcRating}
-                        PremiumTemplate={PremiumTemplate}
                       />
             }}
           />

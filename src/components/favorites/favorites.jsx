@@ -62,7 +62,7 @@ const Favorites = (props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={props.styles.w100}></span>
+                          <span className='rating__w100'></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -93,7 +93,7 @@ const Favorites = (props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={props.styles.w80}></span>
+                          <span className='rating__w80'></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -135,7 +135,7 @@ const Favorites = (props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={props.styles.w100}></span>
+                          <span className='rating__w100'></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>

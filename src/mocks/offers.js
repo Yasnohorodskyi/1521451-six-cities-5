@@ -51,7 +51,7 @@ export default [
         value: `Max 1 adults`
       }
     ],
-    prices: [`€380`, `night`],
+    prices: `€380`,
     insides: {
       1: `Wi-Fi`,
       2: `Heating`,
@@ -64,7 +64,7 @@ export default [
       9: `Baby seat`,
       10: `Cabel TV`
     },
-    meeter: {
+    host: {
       ava: `/img/avatar-angelina.jpg`,
       name: `Angelina`,
       description: [
@@ -75,8 +75,7 @@ export default [
       Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.`
       ]
-    },
-    map: `<iframe class="property__map map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71844.96645242712!2d37.54726058773501!3d55.75580608664706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1602578493907!5m2!1sen!2sru" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`
+    }
   },
   {
     id: 2,
@@ -130,7 +129,7 @@ export default [
         value: `Max 1 adults`
       }
     ],
-    prices: [`€80`, `night`],
+    prices: `€80`,
     insides: {
       1: `Wi-Fi`,
       2: `Heating`,
@@ -143,7 +142,7 @@ export default [
       9: `Baby seat`,
       10: `Cabel TV`
     },
-    meeter: {
+    host: {
       ava: `/img/avatar-angelina.jpg`,
       name: `Angelina`,
       description: [
@@ -154,8 +153,7 @@ export default [
   Rembrand Square and National Opera, but where the
   bustle of the city comes to rest in this alley flowery and colorful.`
       ]
-    },
-    map: `<iframe class="property__map map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71844.96645242712!2d37.54726058773501!3d55.75580608664706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1602578493907!5m2!1sen!2sru" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`
+    }
   },
   {
     id: 3,
@@ -209,7 +207,7 @@ export default [
         value: `Max 4 adults`
       }
     ],
-    prices: [`€180`, `night`],
+    prices: `€180`,
     insides: {
       1: `Wi-Fi`,
       2: `Heating`,
@@ -222,7 +220,7 @@ export default [
       9: `Baby seat`,
       10: `Cabel TV`
     },
-    meeter: {
+    host: {
       ava: `/img/avatar-angelina.jpg`,
       name: `Angelina`,
       description: [
@@ -233,8 +231,7 @@ export default [
   Rembrand Square and National Opera, but where the
   bustle of the city comes to rest in this alley flowery and colorful.`
       ]
-    },
-    map: `<iframe class="property__map map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71844.96645242712!2d37.54726058773501!3d55.75580608664706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1602578493907!5m2!1sen!2sru" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`
+    }
   },
   {
     id: 4,
@@ -288,7 +285,7 @@ export default [
         value: `Max 4 adults`
       }
     ],
-    prices: [`€180`, `night`],
+    prices: `€180`, 
     insides: {
       1: `Wi-Fi`,
       2: `Heating`,
@@ -301,7 +298,7 @@ export default [
       9: `Baby seat`,
       10: `Cabel TV`
     },
-    meeter: {
+    host: {
       ava: `/img/avatar-angelina.jpg`,
       name: `Angelina`,
       description: [
@@ -313,7 +310,6 @@ export default [
   bustle of the city comes to rest in this alley flowery and colorful.`
       ]
     },
-    map: `<iframe class="property__map map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71844.96645242712!2d37.54726058773501!3d55.75580608664706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1602578493907!5m2!1sen!2sru" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`
   },
   {
     id: 5,
@@ -367,7 +363,7 @@ export default [
         value: `Max 4 adults`
       }
     ],
-    prices: [`€180`, `night`],
+    prices: `€180`,
     insides: {
       1: `Wi-Fi`,
       2: `Heating`,
@@ -380,7 +376,7 @@ export default [
       9: `Baby seat`,
       10: `Cabel TV`
     },
-    meeter: {
+    host: {
       ava: `/img/avatar-angelina.jpg`,
       name: `Angelina`,
       description: [
@@ -391,7 +387,6 @@ export default [
   Rembrand Square and National Opera, but where the
   bustle of the city comes to rest in this alley flowery and colorful.`
       ]
-    },
-    map: `<iframe class="property__map map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71844.96645242712!2d37.54726058773501!3d55.75580608664706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1602578493907!5m2!1sen!2sru" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`
+    }
   }
 ];
