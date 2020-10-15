@@ -285,7 +285,7 @@ export default [
         value: `Max 4 adults`
       }
     ],
-    prices: `€180`, 
+    prices: `€180`,
     insides: {
       1: `Wi-Fi`,
       2: `Heating`,
