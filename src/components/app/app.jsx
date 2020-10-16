@@ -13,22 +13,47 @@ import {
 } from "react-router-dom";
 
 const App = (props) => {
-  const {rentCount} = props;
-
+  const {rentCount, offers, reviews} = props;
+  
   return (
     <Router>
       <Switch>
-          <Route exact path="/login">
-            <SignIn />
-          </Route>
-          <Route exact path="/favorites">
-            <Favorites />
-          </Route>
-          <Route exact path='/offer/:id' component={Room}>
-          </Route>
-          <Route exact path="/">
-            <Main rentCount={rentCount} />
-          </Route>
+          <Route
+                exact
+                path="/login"
+                render={()=>{
+                  return <SignIn />
+                }}
+          />
+          <Route exact
+                 path="/favorites"
+                 render={()=>{
+                  return <Favorites />
+                }}
+          />
+          <Route
+            exact
+            path='/offer/:id'
+            render={(props)=>{
+              return <Room
+                        offers={offers}
+                        rentCount={rentCount}
+                        reviews={reviews}
+                        history={props.history}
+                        match={props.match}
+                      />
+            }}
+          />
+          <Route
+            exact
+            path="/"
+            render={()=>{
+              return <Main
+                        offers={offers}
+                        rentCount={rentCount}
+                      />
+            }}
+          />
         </Switch>
     </Router>
   );

@@ -2,16 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Favorites = (props) => {
-
-  let styles = {
-    eighty:{
-      width: '80%'
-    },
-    oneHundred:{
-      width: '100%'
-    }
-  };
-
+  
   return (
     <div className="page">
       <header className="header">
@@ -71,7 +62,7 @@ const Favorites = (props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={styles.oneHundred}></span>
+                          <span className='rating__w100'></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -102,7 +93,7 @@ const Favorites = (props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={styles.eighty}></span>
+                          <span className='rating__w80'></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -144,7 +135,7 @@ const Favorites = (props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={styles.oneHundred}></span>
+                          <span className='rating__w100'></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
