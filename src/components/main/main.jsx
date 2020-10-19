@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {calcRating} from '../../helpers/calc-rating';
 import {premiumTemplate} from '../../helpers/premium-template';
+import MapCity from '../map/map';
 
 const Main = ({offers, rentCount}) => {
 
@@ -132,7 +133,7 @@ const Main = ({offers, rentCount}) => {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+                <MapCity offers={offers}/>
             </div>
           </div>
         </div>

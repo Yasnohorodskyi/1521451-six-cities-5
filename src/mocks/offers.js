@@ -75,6 +75,10 @@ export default [
       Rembrand Square and National Opera, but where the
       bustle of the city comes to rest in this alley flowery and colorful.`
       ]
+    },
+    map:{
+      lat: 52.3909553943508,
+      lon: 4.85309666406198
     }
   },
   {
@@ -153,6 +157,10 @@ export default [
   Rembrand Square and National Opera, but where the
   bustle of the city comes to rest in this alley flowery and colorful.`
       ]
+    },
+    map:{
+      lat: 52.369553943508,
+      lon: 4.85309666406198
     }
   },
   {
@@ -231,6 +239,10 @@ export default [
   Rembrand Square and National Opera, but where the
   bustle of the city comes to rest in this alley flowery and colorful.`
       ]
+    },
+    map:{
+      lat: 52.3909553943508,
+      lon: 4.929309666406198
     }
   },
   {
@@ -310,6 +322,10 @@ export default [
   bustle of the city comes to rest in this alley flowery and colorful.`
       ]
     },
+    map:{
+      lat: 52.3809553943508,
+      lon: 4.939309666406198
+    }
   },
   {
     id: 5,
@@ -387,6 +403,10 @@ export default [
   Rembrand Square and National Opera, but where the
   bustle of the city comes to rest in this alley flowery and colorful.`
       ]
+    },
+    map:{
+      lat: 52.3809553943508,
+      lon: 4.739309666406198
     }
   }
 ];
