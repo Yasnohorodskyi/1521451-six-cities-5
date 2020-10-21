@@ -1,9 +1,13 @@
 import React , {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import Comments from '../comments/comments';
+import ReviewsList from '../reviews-list/reviews-list';
 
 import {calcRating} from '../../helpers/calc-rating';
 import {premiumTemplate} from '../../helpers/premium-template';
+
+import OfferList from '../offer-list/offer-list';
+
+import MapCity from '../map/map';
 
 class Room extends PureComponent {
   constructor(props) {
@@ -16,7 +20,7 @@ class Room extends PureComponent {
     };
   }
   addComment(text, rating){
-    
+
   }
   componentWillMount(){
 
@@ -137,83 +141,26 @@ class Room extends PureComponent {
                  </div>
                </div>
                <section className="property__reviews reviews">
-                  <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{this.state.reviews.length}</span></h2>
-                 <ul className="reviews__list">
-                  {this.state.reviews.map((review) => (
-                    <li key={review.id} className="reviews__item">
-                     <div className="reviews__user user">
-                       <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                         <img className="reviews__avatar user__avatar" src={review.user.ava} width="54" height="54" alt="Reviews avatar"/>
-                       </div>
-                       <span className="reviews__user-name">
-                        {review.user.name}
-                       </span>
-                     </div>
-                     <div className="reviews__info">
-                       <div className="reviews__rating rating">
-                         <div className="reviews__stars rating__stars">
-                           <span className="rating__stars__value" style={calcRating(review.rating)}></span>
-                           <span className="visually-hidden">Rating</span>
-                         </div>
-                       </div>
-                       <p className="reviews__text">
-                         {review.text}
-                       </p>
-                       <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
-                     </div>
-                   </li>
-                  ))}
-                 </ul>
-                 <Comments addComment={this.addComment}/>
+                  <ReviewsList
+                    countComments={this.state.reviews.length}
+                    addComment={this.addComment}
+                    reviews={this.state.reviews}
+                  />
                </section>
              </div>
            </div>
-           <section className="property__map map"></section>
+           <section className="property__map map">
+              <MapCity offers={this.props.offers}/>
+           </section>
           </section>
          <div className="container">
            <section className="near-places places">
              <h2 className="near-places__title">Other places in the neighbourhood</h2>
-             <div className="near-places__list places__list">
-             { this.props.offers.map((offer) => (
-                <article key={offer.id} className="near-places__card place-card">
-                {
-                  (offer.premium) ? premiumTemplate('place-card__mark') : ''
-                }
-                <div className="near-places__image-wrapper place-card__image-wrapper">
-                  <a href={'/offer/'+offer.id}>
-                    <img className="place-card__image" src={offer.gallary[0].src} width="260" height="200" alt="Place image"/>
-                  </a>
-                </div>
-                <div className="place-card__info">
-                  <div className="place-card__price-wrapper">
-                    <div className="place-card__price">
-                      <b className="place-card__price-value">{offer.prices[0]}</b>
-                      <span className="place-card__price-text">/{offer.prices[1]}</span>
-                    </div>
-                    <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-                      <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinhref="#icon-bookmark"></use>
-                      </svg>
-                      <span className="visually-hidden">In bookmarks</span>
-                    </button>
-                  </div>
-                  <div className="place-card__rating rating">
-                    <div className="place-card__stars rating__stars">
-                      <span className="rating__stars__value" style={calcRating(offer.rating)}></span>
-                      <span className="visually-hidden">Rating</span>
-                    </div>
-                  </div>
-                  <h2 className="place-card__name">
-                    <a href="#">{offer.title}</a>
-                  </h2>
-                  <p className="place-card__type">{offer.houseLevel}</p>
-                </div>
-              </article>
-             ))}
-             </div>
+             <OfferList offers={this.props.offers}/>
            </section>
          </div>
        </main>
+
      </div>
    );
   }

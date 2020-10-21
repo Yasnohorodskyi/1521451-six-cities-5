@@ -3,6 +3,7 @@ export default [
     id: `001`,
     offers: 1,
     user: {
+      id: `1`,
       name: `Max`,
       ava: `/img/avatar-max.jpg`
     },
@@ -14,6 +15,7 @@ export default [
     id: `002`,
     offers: 1,
     user: {
+      id: `2`,
       name: `Иван`,
       ava: `/img/avatar-max.jpg`
     },

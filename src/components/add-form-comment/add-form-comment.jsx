@@ -1,7 +1,7 @@
 import React ,{PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-class Comments extends PureComponent {
+class AddFormComment extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -60,8 +60,8 @@ class Comments extends PureComponent {
   }
 };
 
-Comments.propTypes = {
+AddFormComment.propTypes = {
     addComment: PropTypes.func.isRequired
 };
 
-export default Comments;
+export default AddFormComment;

@@ -10,7 +10,7 @@ class MapCity extends PureComponent {
   componentDidMount(){
 
     const icon = L.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `/img/pin.svg`,
       iconSize: [30, 30]
     });
 
@@ -28,8 +28,14 @@ class MapCity extends PureComponent {
   })
   .addTo(map);
 
-  const offerCords = [52.3709553943508, 4.89309666406198];
+  const offerCords = [52.3749653943508, 4.89309666406198];
   L.marker(offerCords, {icon}).addTo(map);
+
+  const offerCords2 = [52.3709553943005, 4.88300666406192];
+  L.marker(offerCords2, {icon}).addTo(map);
+
+  const offerCords3 = [52.3701523943501, 4.89301661606192];
+  L.marker(offerCords3, {icon}).addTo(map);
 
   }
   render() {
