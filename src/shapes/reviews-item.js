@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {reviewUser} from './review-user';
 
-const reviewsProps = {
+const reviewsItem = {
   review: PropTypes.shape({
     id: PropTypes.string.isRequired,
     offers: PropTypes.number.isRequired,
@@ -11,4 +11,4 @@ const reviewsProps = {
   }),
 };
 
-export {reviewsProps};
+export {reviewsItem};

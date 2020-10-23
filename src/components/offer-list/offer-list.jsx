@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import OfferItem from '../offer-item/offer-item';
-
+import offerItem from '../../shapes/offer-item';
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -11,17 +11,21 @@ class OfferList extends PureComponent {
     const {offers} = this.props;
 
     return (
-        <div className="near-places__list places__list">
-             { offers.map((offer) => (
-                <OfferItem key={offer.id} offer={offer}/>
-             ))}
-        </div>
-    )
+      <div className="near-places__list places__list">
+        { offers.map((offer) => (
+          <OfferItem key={offer.id} offer={offer} />
+        ))}
+      </div>
+    );
   }
-};
+}
 
-OfferItem.propTypes = {
-  offers: PropTypes.array
+OfferList.propTypes = {
+  offers: PropTypes.arrayOf(
+      PropTypes.shape({
+        offerItem
+      })
+  )
 };
 
 export default OfferList;

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import ReviewsItem from '../reviews-item/reviews-item';
 import AddFormComment from '../add-form-comment/add-form-comment';
@@ -8,7 +8,7 @@ class ReviewsList extends PureComponent {
     super(props);
   }
   render() {
-    const { reviews, addComment, countComments } = this.props;
+    const {reviews, addComment, countComments} = this.props;
     return (
       <React.Fragment>
         <h2 className="reviews__title">
@@ -24,9 +24,9 @@ class ReviewsList extends PureComponent {
           ))}
         </ul>
       </React.Fragment>
-    )
+    );
   }
-};
+}
 
 ReviewsList.propTypes = {
   reviews: PropTypes.array.isRequired,

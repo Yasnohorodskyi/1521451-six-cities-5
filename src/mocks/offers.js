@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     title: `Beautiful & luxurious studio at great location`,
-    gallary: [
+    gallery: [
       {
         id: 11,
         src: `/img/room.jpg`,
@@ -84,7 +84,7 @@ export default [
   {
     id: 2,
     title: `Wood and stone place`,
-    gallary: [
+    gallery: [
       {
         id: 21,
         src: `/img/apartment-01.jpg`,
@@ -166,7 +166,7 @@ export default [
   {
     id: 3,
     title: `Nice, cozy, warm big bed apartment`,
-    gallary: [
+    gallery: [
       {
         id: 31,
         src: `/img/apartment-02.jpg`,
@@ -248,7 +248,7 @@ export default [
   {
     id: 4,
     title: `Canal View Prinsengracht`,
-    gallary: [
+    gallery: [
       {
         id: 41,
         src: `/img/apartment-02.jpg`,
@@ -330,7 +330,7 @@ export default [
   {
     id: 5,
     title: `Nice, cozy, warm big bed apartment`,
-    gallary: [
+    gallery: [
       {
         id: 51,
         src: `/img/apartment-02.jpg`,

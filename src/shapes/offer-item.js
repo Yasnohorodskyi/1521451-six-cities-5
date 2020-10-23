@@ -6,7 +6,7 @@ import offerHost from "./offer-host";
 const offerItem = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  gallary: PropTypes.string.isRequired,
+  gallery: PropTypes.string.isRequired,
   premium: PropTypes.bool.isRequired,
   houseLevel: PropTypes.string.isRequired,
   insides: PropTypes.object.isRequired,
