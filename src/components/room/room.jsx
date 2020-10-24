@@ -9,6 +9,8 @@ import OfferList from '../offer-list/offer-list';
 import {offerItem} from '../../shapes/offer-item';
 import {reviewsItem} from '../../shapes/reviews-item';
 
+import {MAX_OTHER_REVIEWS} from '../../const/OfferList';
+
 import MapCity from '../map/map';
 
 
@@ -34,7 +36,6 @@ class Room extends PureComponent {
         );
       }
     }
-
   }
   addComment() {
 
@@ -157,7 +158,7 @@ class Room extends PureComponent {
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <OfferList offers={this.props.offers} />
+              <OfferList max={MAX_OTHER_REVIEWS} offers={this.props.offers} />
             </section>
           </div>
         </main>
@@ -169,13 +170,17 @@ class Room extends PureComponent {
 
 Room.propTypes = {
   rentCount: PropTypes.number.isRequired,
-  offers: PropTypes.shape({
-    offerItem
-  }),
+  offers: PropTypes.arrayOf(
+    PropTypes.shape({
+      offerItem
+    })
+  ),
   match: PropTypes.object,
-  reviews: PropTypes.shape({
-    reviewsItem
-  })
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      reviewsItem
+    })
+  )
 };
 
 export default Room;

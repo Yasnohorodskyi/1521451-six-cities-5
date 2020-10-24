@@ -1,26 +1,26 @@
 import PropTypes from 'prop-types';
-import offerMap from "./offer-map";
-import offerFeatures from "./offer-features";
-import offerHost from "./offer-host";
+import {offerMap} from "./offer-map";
+import {offerFeatures} from "./offer-features";
+import {offerHost} from "./offer-host";
+import {offerGallery} from "./offer-gallery";
 
-const offerItem = {
+
+const offerItem = PropTypes.shape({
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  gallery: PropTypes.string.isRequired,
+  gallery: PropTypes.arrayOf(
+    offerGallery
+  ),
   premium: PropTypes.bool.isRequired,
   houseLevel: PropTypes.string.isRequired,
-  insides: PropTypes.object.isRequired,
-  map: PropTypes.shape(
-      offerMap
+  insides: PropTypes.shape(
+    PropTypes.string.isRequired
   ),
-  host: PropTypes.shape(
-      offerHost
-  ),
+  map: offerMap,
+  host: offerHost,
   prices: PropTypes.string.isRequired,
-  propertyFeatures: PropTypes.shape(
-      offerFeatures
-  ),
-  rating: PropTypes.string.isRequired
-};
+  propertyFeatures: offerFeatures,
+  rating: PropTypes.number.isRequired
+});
 
 export {offerItem};

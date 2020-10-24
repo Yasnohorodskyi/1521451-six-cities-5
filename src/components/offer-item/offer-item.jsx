@@ -1,8 +1,7 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {calcRating} from '../../helpers/calc-rating';
 import {premiumTemplate} from '../../helpers/premium-template';
-import offerItem from '../../shapes/offer-item';
+import {offerItem} from '../../shapes/offer-item';
 
 class OfferItem extends PureComponent {
   constructor(props) {
@@ -50,7 +49,7 @@ class OfferItem extends PureComponent {
 }
 
 OfferItem.propTypes = {
-  offer: PropTypes.shape(offerItem)
+  offer: offerItem
 };
 
 export default OfferItem;

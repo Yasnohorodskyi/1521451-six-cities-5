@@ -1,8 +1,7 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {calcRating} from '../../helpers/calc-rating';
 import {formatterData} from '../../helpers/formatter-data';
-import {reviewsProps} from '../../shapes/reviews-item';
+import {reviewsItem} from '../../shapes/reviews-item';
 
 class ReviewsItem extends PureComponent {
   constructor(props) {
@@ -41,10 +40,7 @@ class ReviewsItem extends PureComponent {
 }
 
 ReviewsItem.propTypes = {
-  review:
-    PropTypes.shape(
-        reviewsProps
-    )
+  review: reviewsItem
 };
 
 export default ReviewsItem;

@@ -67,12 +67,12 @@ App.propTypes = {
       PropTypes.shape({
         reviewsItem
       })
-  ).isRequired,
+  ),
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         offerItem
       })
-  ).isRequired,
+  ),
   history: PropTypes.object,
   match: PropTypes.object
 };

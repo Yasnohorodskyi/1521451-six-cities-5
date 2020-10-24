@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import {Map, TileLayer} from "react-leaflet";
-import offerItem from '../../shapes/offer-item';
+import {offerItem} from '../../shapes/offer-item';
 import PropTypes from 'prop-types';
 import L from 'leaflet';
 

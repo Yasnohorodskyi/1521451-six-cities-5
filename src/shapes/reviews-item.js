@@ -1,14 +1,13 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import {reviewUser} from './review-user';
 
-const reviewsItem = {
-  review: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    offers: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    text: PropTypes.number.isRequired,
-    user: PropTypes.shape(reviewUser),
-  }),
-};
+const reviewsItem = PropTypes.shape({
+    id: PropTypes.string,
+    offers: PropTypes.number,
+    rating: PropTypes.number,
+    text: PropTypes.string,
+    user: reviewUser,
+});
 
 export {reviewsItem};

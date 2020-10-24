@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MapCity from '../map/map';
 import OfferList from '../offer-list/offer-list';
-import offerItem from '../../shapes/offer-item';
+import {offerItem} from '../../shapes/offer-item';
 
 const Main = ({offers, rentCount}) => {
 
