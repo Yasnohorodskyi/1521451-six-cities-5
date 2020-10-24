@@ -9,12 +9,12 @@ const offerItem = PropTypes.shape({
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   gallery: PropTypes.arrayOf(
-    offerGallery
+      offerGallery
   ),
   premium: PropTypes.bool.isRequired,
   houseLevel: PropTypes.string.isRequired,
   insides: PropTypes.shape(
-    PropTypes.string.isRequired
+      PropTypes.string.isRequired
   ),
   map: offerMap,
   host: offerHost,

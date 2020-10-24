@@ -16,8 +16,9 @@ class OfferList extends PureComponent {
   }
   renderOffer(offer) {
     const {max} = this.props;
-    if (!max) { return (<OfferItem key={offer.id} offer={offer} />); }
-    else if (max && data.index < max) {
+    if (!max) {
+      return (<OfferItem key={offer.id} offer={offer} />);
+    } else if (max && data.index < max) {
       if (Number(offer.id) !== Number(this.state.currentRoom)) {
         data.index++;
         return (<OfferItem key={offer.id} offer={offer} />);
@@ -43,9 +44,9 @@ class OfferList extends PureComponent {
 
 OfferList.propTypes = {
   offers: PropTypes.arrayOf(
-    PropTypes.shape({
-      offerItem
-    })
+      PropTypes.shape({
+        offerItem
+      })
   ),
   max: PropTypes.number
 };

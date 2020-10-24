@@ -171,15 +171,11 @@ class Room extends PureComponent {
 Room.propTypes = {
   rentCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(
-    PropTypes.shape({
       offerItem
-    })
   ),
   match: PropTypes.object,
   reviews: PropTypes.arrayOf(
-    PropTypes.shape({
       reviewsItem
-    })
   )
 };
 
