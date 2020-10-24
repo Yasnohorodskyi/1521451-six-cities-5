@@ -43,9 +43,9 @@ class AddFormComment extends PureComponent {
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
           {this.state.titleInputs.map((item, index) => (
-            <div key={item}>
+            <React.Fragment key={item}>
               {this.inputRating(index, item)}
-            </div>
+            </React.Fragment>
           ))}
         </div>
         <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
