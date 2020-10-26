@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {calcRating} from '../../helpers/calc-rating';
-import {premiumTemplate} from '../../helpers/premium-template';
 import MapCity from '../map/map';
+import OfferList from '../offer-list/offer-list';
+import {offerItem} from '../../shapes/offer-item';
 
 const Main = ({offers, rentCount}) => {
 
@@ -14,7 +14,7 @@ const Main = ({offers, rentCount}) => {
           <div className="header__wrapper">
             <div className="header__left">
               <a className="header__logo-linkheader__logo-link--active">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
+                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
               </a>
             </div>
             <nav className="header__nav">
@@ -73,7 +73,7 @@ const Main = ({offers, rentCount}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found"> { rentCount } places to stay in Amsterdam</b>
+              <b className="places__found"> {rentCount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -88,7 +88,7 @@ const Main = ({offers, rentCount}) => {
                   <li className="places__option" tabIndex="0">Price: high to low</li>
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
-                <select defaultValue={'Popular'} className="places__sorting-type" id="places-sorting">
+                <select defaultValue={`Popular`} className="places__sorting-type" id="places-sorting">
                   <option className="places__option" value="popular">Popular</option>
                   <option className="places__option" value="to-high">Price: low to high</option>
                   <option className="places__option" value="to-low">Price: high to low</option>
@@ -96,44 +96,11 @@ const Main = ({offers, rentCount}) => {
                 </select>
               </form>
               <div className="cities__places-list places__list tabs__content">
-              { offers.map((offer) => (
-                <article key={offer.id} className="cities__place-card place-card">
-                  { (offer.premium) ? premiumTemplate('place-card__mark') : ''}
-                  <div className="cities__image-wrapper place-card__image-wrapper">
-                    <a href={`/offer/${offer.id}`}>
-                      <img className="place-card__image" src={offer.gallary[0].src} width="260" height="200" alt="Place image"/>
-                    </a>
-                  </div>
-                  <div className="place-card__info">
-                    <div className="place-card__price-wrapper">
-                      <div className="place-card__price">
-                        <b className="place-card__price-value">{offer.prices}</b>
-                        <span className="place-card__price-text">&#47;&nbsp;night</span>
-                      </div>
-                      <button className="place-card__bookmark-button button" type="button">
-                        <svg className="place-card__bookmark-icon" width="18" height="19">
-                          <use xlinkHref="#icon-bookmark"></use>
-                        </svg>
-                        <span className="visually-hidden">To bookmarks</span>
-                      </button>
-                    </div>
-                    <div className="place-card__rating rating">
-                      <div className="place-card__stars rating__stars">
-                        <span style={calcRating(offer.rating)}></span>
-                        <span className="visually-hidden">Rating</span>
-                      </div>
-                    </div>
-                    <h2 className="place-card__name">
-                        <a href="#">{offer.title}</a>
-                    </h2>
-                    <p className="place-card__type">{offer.houseLevel}</p>
-                  </div>
-                </article>
-              ))}
+                <OfferList offers={offers} />
               </div>
             </section>
             <div className="cities__right-section">
-                <MapCity offers={offers}/>
+              <MapCity offers={offers} />
             </div>
           </div>
         </div>
@@ -144,7 +111,11 @@ const Main = ({offers, rentCount}) => {
 
 Main.propTypes = {
   rentCount: PropTypes.number.isRequired,
-  offers: PropTypes.array.isRequired
+  offers: PropTypes.arrayOf(
+      PropTypes.shape({
+        offerItem
+      })
+  )
 };
 
 export default Main;

@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const SignIn = (props) => {
+const SignIn = () => {
 
   return (
     <div className="page page--gray page--login">
