@@ -158,7 +158,7 @@ class Room extends PureComponent {
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <OfferList max={MAX_OTHER_REVIEWS} offers={this.props.offers} />
+              <OfferList max={MAX_OTHER_REVIEWS} currentOffer={this.state.room.id} offers={this.props.offers} />
             </section>
           </div>
         </main>
