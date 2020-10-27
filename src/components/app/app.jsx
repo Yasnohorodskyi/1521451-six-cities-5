@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 
 const App = (props) => {
-  const {rentCount, offers, reviews} = props;
+  const {offers, reviews} = props;
 
   return (
     <Router>
@@ -39,7 +39,6 @@ const App = (props) => {
           render={(prop) => {
             return (<Room
               offers={offers}
-              rentCount={rentCount}
               reviews={reviews}
               history={prop.history}
               match={prop.match}
@@ -52,7 +51,6 @@ const App = (props) => {
           render={() => {
             return (<Main
               offers={offers}
-              rentCount={rentCount}
             />);
           }}
         />
@@ -62,7 +60,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  rentCount: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
         reviewsItem

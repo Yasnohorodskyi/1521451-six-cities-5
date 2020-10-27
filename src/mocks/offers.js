@@ -2,6 +2,7 @@ export default [
   {
     id: 1,
     title: `Beautiful & luxurious studio at great location`,
+    city: `Amsterdam`,
     gallery: [
       {
         id: 11,
@@ -84,6 +85,7 @@ export default [
   {
     id: 2,
     title: `Wood and stone place`,
+    city: `Amsterdam`,
     gallery: [
       {
         id: 21,
@@ -166,6 +168,7 @@ export default [
   {
     id: 3,
     title: `Nice, cozy, warm big bed apartment`,
+    city: `Amsterdam`,
     gallery: [
       {
         id: 31,
@@ -248,6 +251,7 @@ export default [
   {
     id: 4,
     title: `Canal View Prinsengracht`,
+    city: `Amsterdam`,
     gallery: [
       {
         id: 41,
@@ -330,6 +334,90 @@ export default [
   {
     id: 5,
     title: `Nice, cozy, warm big bed apartment`,
+    city: `Amsterdam`,
+    gallery: [
+      {
+        id: 51,
+        src: `/img/apartment-02.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 52,
+        src: `/img/apartment-01.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 53,
+        src: `/img/room.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 54,
+        src: `/img/apartment-03.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 55,
+        src: `/img/studio-01.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 56,
+        src: `/img/apartment-01.jpg`,
+        alt: `Photo studio`
+      },
+    ],
+    premium: false,
+    houseLevel: `Private room`,
+    rating: 4.9,
+    propertyFeatures: [
+      {
+        field: `Type`,
+        value: `Room`
+      },
+      {
+        field: `Count`,
+        value: `5 Bedrooms`
+      },
+      {
+        field: `MaxPeople`,
+        value: `Max 4 adults`
+      }
+    ],
+    prices: `€180`,
+    insides: {
+      1: `Wi-Fi`,
+      2: `Heating`,
+      3: `Kitchen`,
+      4: `Fridge`,
+      5: `Washing machine`,
+      6: `Coffee machine`,
+      7: `Dishwasher`,
+      8: `Towels`,
+      9: `Baby seat`,
+      10: `Cabel TV`
+    },
+    host: {
+      ava: `/img/avatar-angelina.jpg`,
+      name: `Angelina`,
+      description: [
+        `A quiet cozy and picturesque that hides behind a a
+  river by the unique lightness of Amsterdam.
+  The building is green and from 18th century.`,
+        `An independent House, strategically located between
+  Rembrand Square and National Opera, but where the
+  bustle of the city comes to rest in this alley flowery and colorful.`
+      ]
+    },
+    map: {
+      lat: 52.3809553943508,
+      lon: 4.739309666406198
+    }
+  },
+  {
+    id: 6,
+    title: `Nice, cozy, warm big bed apartment`,
+    city: `Hamburg`,
     gallery: [
       {
         id: 51,
