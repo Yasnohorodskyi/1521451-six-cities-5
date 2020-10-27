@@ -11,10 +11,10 @@ import {offerItem} from '../../shapes/offer-item';
 class ListCities extends PureComponent {
   constructor(props) {
     super(props);
-
+    let currentCity = this.props.currentCity;
     this.state = {
-      currentCity: `Amsterdam`,
-      rentCount: filterArrCities(this.props.offers, `Amsterdam`).length
+      currentCity,
+      rentCount: filterArrCities(this.props.offers, currentCity).length
     };
 
 
@@ -109,7 +109,8 @@ ListCities.propTypes = {
       PropTypes.shape({
         offerItem
       })
-  )
+  ).isRequired,
+  currentCity: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
