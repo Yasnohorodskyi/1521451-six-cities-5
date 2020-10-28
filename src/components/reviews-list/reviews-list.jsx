@@ -10,6 +10,7 @@ class ReviewsList extends PureComponent {
   }
   render() {
     const {reviews, addComment, countComments} = this.props;
+
     return (
       <React.Fragment>
         <h2 className="reviews__title">

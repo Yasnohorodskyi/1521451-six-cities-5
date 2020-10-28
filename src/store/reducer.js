@@ -4,7 +4,7 @@ import {extend} from "../helpers/extend";
 
 
 const initialState = {
-  town: `Amsterdam`,
+  city: `Amsterdam`,
   offers,
 };
 
@@ -12,11 +12,11 @@ const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-      action.payload.callback(
-          action.payload.title
-      );
+      console.log('CHANGE_CITY');
+      console.log(action);
+      console.log(state);
       return extend(state, {
-        town: action.payload.title,
+        city: action.payload.title,
       });
   }
 

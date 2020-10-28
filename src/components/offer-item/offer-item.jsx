@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {calcRating} from '../../helpers/calc-rating';
 import {premiumTemplate} from '../../helpers/premium-template';
 import {offerItem} from '../../shapes/offer-item';
+import {filterArrCities} from "../../helpers/filter-city";
 
 class OfferItem extends PureComponent {
   constructor(props) {
@@ -9,6 +10,7 @@ class OfferItem extends PureComponent {
   }
   render() {
     const {offer} = this.props;
+    console.log(this.props);
     return (
       <article key={offer.id} className="near-places__card place-card">
         {

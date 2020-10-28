@@ -4,11 +4,10 @@ export const ActionType = {
 };
 
 export const ActionCreator = {
-  changeCity: (titleCity, cb) => ({
+  changeCity: (titleCity) => ({
     type: ActionType.CHANGE_CITY,
     payload: {
-      title: titleCity,
-      callback: cb
+      title: titleCity
     }
   }),
   getOffers: () => ({

@@ -1,70 +1,23 @@
 import React, {PureComponent} from 'react';
 import MapCity from '../map/map';
-import cities from '../../mocks/cities';
 import OfferList from '../../components/offer-list/offer-list';
-import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
-import {filterCityClass, filterArrCities} from "../../helpers/filter-city";
+import {filterArrCities} from "../../helpers/filter-city";
 import PropTypes from 'prop-types';
 import {offerItem} from '../../shapes/offer-item';
 
-class ListCities extends PureComponent {
-  constructor(props) {
-    super(props);
-    let currentCity = this.props.currentCity;
-    this.state = {
-      currentCity,
-      rentCount: filterArrCities(this.props.offers, currentCity).length
-    };
 
 
-  }
-  change(title) {
-    const {
-      changeCity
-    } = this.props;
-    changeCity(title, (newTitle) => {
-      this.setState({
-        currentCity: newTitle,
-        rentCount: filterArrCities(this.props.offers, newTitle).length
-      });
-    });
-  }
-  render() {
-    const {
-      offers
-    } = this.props;
 
-    return (
-      <React.Fragment>
-        <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              {cities.map((city) => (
-                <li key={city.id} className="locations__item">
-                  <a onClick={
-                    () => {
-                      this.change(city.title);
-                    }
-                  }
-                  className={
-                    filterCityClass(city, this.state.currentCity)
-                  }
-                  href={city.link}>
-                    <span>{city.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+const ListCities = ({offers, currentCity}) => {
+  const offersCity = filterArrCities(offers, currentCity);
+  const count = offersCity.length
 
-        <div className="cities">
+  return(
+    <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found"> {this.state.rentCount} places to stay in {this.state.currentCity}</b>
+              <b className="places__found"> {count} places to stay in {currentCity} </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -89,20 +42,19 @@ class ListCities extends PureComponent {
               <div className="cities__places-list places__list tabs__content">
                 <OfferList
                   offers={
-                    filterArrCities(offers, this.state.currentCity)
+                    offersCity
                   }
                 />
               </div>
             </section>
             <div className="cities__right-section">
-              <MapCity offers={offers} />
+              <MapCity offers={offersCity} />
             </div>
           </div>
         </div>
-      </React.Fragment>
-    );
-  }
+  )
 }
+
 
 ListCities.propTypes = {
   offers: PropTypes.arrayOf(
@@ -113,23 +65,9 @@ ListCities.propTypes = {
   currentCity: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  currentCity: state.town,
-  offers: state.offers
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getOffers() {
-    dispatch(ActionCreator.getOffers());
-  },
-  changeCity(titleCity, cb) {
-    dispatch(ActionCreator.changeCity(titleCity, cb));
-  },
-});
 
 ListCities.propTypes = {
   changeCity: PropTypes.func
 };
 
-export {ListCities};
-export default connect(mapStateToProps, mapDispatchToProps)(ListCities);
+export default ListCities;

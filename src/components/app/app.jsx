@@ -7,6 +7,10 @@ import Favorites from '../favorites/favorites.jsx';
 import Room from '../room/room.jsx';
 import {offerItem} from '../../shapes/offer-item';
 import {reviewsItem} from '../../shapes/reviews-item';
+import {ListCities} from '../list-cities/list-cities';
+
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 
 import {
   BrowserRouter as Router,
@@ -14,8 +18,10 @@ import {
   Route
 } from "react-router-dom";
 
+
+
 const App = (props) => {
-  const {offers, reviews} = props;
+  const {offers, reviews, changeCityStore} = props;
 
   return (
     <Router>
@@ -37,6 +43,7 @@ const App = (props) => {
           exact
           path='/offer/:id'
           render={(prop) => {
+
             return (<Room
               offers={offers}
               reviews={reviews}
@@ -46,12 +53,17 @@ const App = (props) => {
           }}
         />
         <Route
-          exact
-          path="/"
-          render={() => {
-            return (<Main
-              offers={offers}
-            />);
+          path="/:city?"
+          render={(prop) => {
+
+            let currentCity = (prop.match.params.city) ? prop.match.params.city : 'Amserdam';
+
+            return (
+              <Main
+              currentCity={currentCity}
+              offers={prop.offers}
+              />
+            );
           }}
         />
       </Switch>
@@ -74,4 +86,21 @@ App.propTypes = {
   match: PropTypes.object
 };
 
-export default App;
+
+const mapStateToProps = (state) => ({
+  currentCity: state.town,
+  offers: state.offers
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getOffers() {
+    dispatch(ActionCreator.getOffers());
+  },
+  changeCityStore(titleCity, cb) {
+    dispatch(ActionCreator.changeCity(titleCity, cb));
+  },
+});
+
+export  {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+

@@ -10,12 +10,13 @@ class OfferList extends PureComponent {
     super(props);
   }
   render() {
-    const {max, currentOffer, offers} = this.props;
-
+    const {max, currentOffer, offers, currentCity} = this.props;
+    const filtredOffers = offers.filter(offer => offer.city == currentCity);
+    console.log(currentCity);
     return (
       <div className="near-places__list places__list">
         {
-          offers.map((offer) => {
+          filtredOffers.map((offer) => {
             switch (filterOffers(currentOffer, max, offer.id)) {
               case `main`:
                 return (<OfferItem key={offer.id} offer={offer} />);
@@ -40,5 +41,14 @@ OfferList.propTypes = {
   currentOffer: PropTypes.number
 };
 
-export default OfferList;
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
+
+const mapStateToProps = (state) => ({
+  currentCity: state.city,
+  offers: state.offers
+});
+
+export {OfferList};
+export default connect(mapStateToProps)(OfferList);
 

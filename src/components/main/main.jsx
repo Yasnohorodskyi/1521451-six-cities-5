@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {offerItem} from '../../shapes/offer-item';
-import ListCities from '../list-cities/list-cities';
+import CityPage from '../city-page/city-page';
 
-const Main = ({offers}) => {
+const Main = ({offers , currentCity}) => {
 
   return (
     <div className="page page--gray page--main">
@@ -31,7 +31,7 @@ const Main = ({offers}) => {
         </div>
       </header>
       <main className="page__main page__main--index">
-        <ListCities offers={offers}/>
+        <CityPage offers={offers} currentCity={currentCity}/>
       </main>
     </div>
   );
