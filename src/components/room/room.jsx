@@ -12,35 +12,24 @@ import {reviewsItem} from '../../shapes/reviews-item';
 import {MAX_OTHER_REVIEWS} from '../../const/OfferList';
 
 import MapCity from '../map/map';
+import {connect} from "react-redux";
 
 
 class Room extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      room: ``,
-      reviews: [],
-      refrash: ``
-    };
-
-    for (let room in this.props.offers) {
-      if (Number(this.props.offers[room].id) === Number(this.props.match.params.id)) {
-        this.state.room = this.props.offers[room];
-      }
-    }
-    for (let review in this.props.reviews) {
-      if (Number(this.props.reviews[review].offers) === Number(this.props.match.params.id)) {
-        this.state.reviews.push(
-            this.props.reviews[review]
-        );
-      }
-    }
   }
   addComment() {
 
   }
   render() {
+
+    const currentRoom = this.props.offers.filter(offer => offer.id == this.props.room)[0];
+    const currentReviews = this.props.reviews.filter(review => review.offers == this.props.room);
+    const otherRooms = this.props.offers.filter(offer => offer.city == currentRoom.city);
+
+
+
     return (
       <div className="page">
         <header className="header">
@@ -69,7 +58,7 @@ class Room extends PureComponent {
           <section className="property">
             <div className="property__gallery-container container">
               <div className="property__gallery">
-                {this.state.room.gallery.map((picture) => (
+                {currentRoom.gallery.map((picture) => (
                   <div key={picture.id} className="property__image-wrapper">
                     <img className="property__image" src={picture.src} alt={picture.alt} />
                   </div>
@@ -79,11 +68,11 @@ class Room extends PureComponent {
             <div className="property__container container">
               <div className="property__wrapper">
                 {
-                  (this.state.room.premium) ? premiumTemplate(`property__mark`) : ``
+                  (currentRoom.premium) ? premiumTemplate(`property__mark`) : ``
                 }
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
-                    {this.state.room.title}
+                    {currentRoom.title}
                   </h1>
                   <button className="property__bookmark-button button" type="button">
                     <svg className="property__bookmark-icon" width="31" height="33">
@@ -94,32 +83,32 @@ class Room extends PureComponent {
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span className="rating__stars__value" style={calcRating(this.state.room.rating)}></span>
+                    <span className="rating__stars__value" style={calcRating(currentRoom.rating)}></span>
                     <span className="visually-hidden">Rating</span>
                   </div>
-                  <span className="property__rating-value rating__value">{this.state.room.rating}</span>
+                  <span className="property__rating-value rating__value">{currentRoom.rating}</span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    {this.state.room.propertyFeatures[0].value}
+                    {currentRoom.propertyFeatures[0].value}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    {this.state.room.propertyFeatures[1].value}
+                    {currentRoom.propertyFeatures[1].value}
                   </li>
                   <li className="property__feature property__feature--adults">
-                    {this.state.room.propertyFeatures[2].value}
+                    {currentRoom.propertyFeatures[2].value}
                   </li>
                 </ul>
                 <div className="property__price">
-                  <b className="property__price-value">{this.state.room.prices[0]}</b>
-                  <span className="property__price-text">&nbsp;{this.state.room.prices[1]}</span>
+                  <b className="property__price-value">{currentRoom.prices[0]}</b>
+                  <span className="property__price-text">&nbsp;{currentRoom.prices[1]}</span>
                 </div>
                 <div className="property__inside">
                   <h2 className="property__inside-title">What&apos;s inside</h2>
                   <ul className="property__inside-list">
-                    {Object.keys(this.state.room.insides).map((id) => (
+                    {Object.keys(currentRoom.insides).map((id) => (
                       <li key={id} className="property__inside-item">
-                        {this.state.room.insides[id]}
+                        {currentRoom.insides[id]}
                       </li>
                     ))}
                   </ul>
@@ -128,14 +117,14 @@ class Room extends PureComponent {
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
                     <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                      <img className="property__avatar user__avatar" src={this.state.room.host.ava} width="74" height="74" alt="Host avatar" />
+                      <img className="property__avatar user__avatar" src={currentRoom.host.ava} width="74" height="74" alt="Host avatar" />
                     </div>
                     <span className="property__user-name">
-                      {this.state.room.host.name}
+                      {currentRoom.host.name}
                     </span>
                   </div>
                   <div className="property__description">
-                    {this.state.room.host.description.map((text, i) => (
+                    {currentRoom.host.description.map((text, i) => (
                       <p key={i} className="property__text">
                         {text}
                       </p>
@@ -144,9 +133,9 @@ class Room extends PureComponent {
                 </div>
                 <section className="property__reviews reviews">
                   <ReviewsList
-                    countComments={this.state.reviews.length}
+                    countComments={currentReviews.length}
                     addComment={this.addComment}
-                    reviews={this.state.reviews}
+                    reviews={currentReviews}
                   />
                 </section>
               </div>
@@ -158,7 +147,7 @@ class Room extends PureComponent {
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <OfferList max={MAX_OTHER_REVIEWS} currentOffer={this.state.room.id} offers={this.props.offers} />
+              <OfferList max={MAX_OTHER_REVIEWS}  offers={otherRooms} city={this.props.currentCity}/>
             </section>
           </div>
         </main>
@@ -179,4 +168,12 @@ Room.propTypes = {
   )
 };
 
-export default Room;
+
+const mapStateToProps = (state) => ({
+  currentCity: state.city,
+  offers: state.offers,
+  room: state.room
+});
+
+export {Room};
+export default connect(mapStateToProps)(Room);

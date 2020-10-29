@@ -4,17 +4,15 @@ import {extend} from "../helpers/extend";
 
 
 const initialState = {
-  city: `Amsterdam`,
+  city: (window.location.href.split('/')[3]) ? window.location.href.split('/')[3] : `Amsterdam`,
   offers,
+  room: window.location.href.split('/')[4]
 };
 
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-      console.log('CHANGE_CITY');
-      console.log(action);
-      console.log(state);
       return extend(state, {
         city: action.payload.title,
       });

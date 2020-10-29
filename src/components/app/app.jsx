@@ -42,25 +42,17 @@ const App = (props) => {
         <Route
           exact
           path='/offer/:id'
-          render={(prop) => {
-
+          render={() => {
             return (<Room
-              offers={offers}
               reviews={reviews}
-              history={prop.history}
-              match={prop.match}
             />);
           }}
         />
         <Route
           path="/:city?"
           render={(prop) => {
-
-            let currentCity = (prop.match.params.city) ? prop.match.params.city : 'Amserdam';
-
             return (
               <Main
-              currentCity={currentCity}
               offers={prop.offers}
               />
             );

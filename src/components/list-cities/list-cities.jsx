@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import MapCity from '../map/map';
 import OfferList from '../../components/offer-list/offer-list';
-import {filterArrCities} from "../../helpers/filter-city";
 import PropTypes from 'prop-types';
 import {offerItem} from '../../shapes/offer-item';
 
@@ -9,9 +8,10 @@ import {offerItem} from '../../shapes/offer-item';
 
 
 const ListCities = ({offers, currentCity}) => {
-  const offersCity = filterArrCities(offers, currentCity);
-  const count = offersCity.length
+  
+  const offersCity = offers.filter(offer => offer.city == currentCity);
 
+  const count = offersCity.length
   return(
     <div className="cities">
           <div className="cities__places-container container">

@@ -10,7 +10,7 @@ class ReviewsList extends PureComponent {
   }
   render() {
     const {reviews, addComment, countComments} = this.props;
-
+    console.log(reviews.text);
     return (
       <React.Fragment>
         <h2 className="reviews__title">
@@ -20,7 +20,7 @@ class ReviewsList extends PureComponent {
           </span>
         </h2>
         <ul className="reviews__list">
-          {reviews.map((review) => (
+          {this.props.reviews.map((review) => (
             <ReviewsItem key={review.id} review={review} />
           ))}
         </ul>
