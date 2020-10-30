@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import MapCity from '../map/map';
 import OfferList from '../../components/offer-list/offer-list';
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ import {offerItem} from '../../shapes/offer-item';
 
 
 const ListCities = ({offers, currentCity}) => {
-  
+
   const offersCity = offers.filter(offer => offer.city == currentCity);
 
   const count = offersCity.length

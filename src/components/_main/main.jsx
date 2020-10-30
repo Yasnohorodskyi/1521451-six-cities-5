@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {offerItem} from '../../shapes/offer-item';
 import CityPage from '../city-page/city-page';
 
-const Main = ({offers , currentCity}) => {
-
+const Main = ({offers , currentCity, id}) => {
+  console.log(id);
   return (
     <div className="page page--gray page--main">
       <header className="header">

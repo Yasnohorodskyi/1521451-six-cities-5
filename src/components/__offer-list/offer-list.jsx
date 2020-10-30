@@ -12,12 +12,11 @@ class OfferList extends PureComponent {
   render() {
     const {max, offers, room} = this.props;
     const offersFiltred = offers.filter(offer => offer.id != room);
-    console.log(offers);
-  
+
     return (
       <div className="near-places__list places__list">
       {
-        offers.map((offer, index) => {
+        offersFiltred.map((offer, index) => {
           if(max){
             if(index < max){
               return (<OfferItem key={offer.id} offer={offer} />);

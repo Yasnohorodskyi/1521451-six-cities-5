@@ -1,14 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Main from '../main/main.jsx';
-import SignIn from '../sign-in/sign-in.jsx';
-import Favorites from '../favorites/favorites.jsx';
-import Room from '../room/room.jsx';
-import {offerItem} from '../../shapes/offer-item';
-import {reviewsItem} from '../../shapes/reviews-item';
-import {ListCities} from '../list-cities/list-cities';
-
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
@@ -18,10 +10,21 @@ import {
   Route
 } from "react-router-dom";
 
+import MainScreen from '../main-screen/main-screen';
+//import SignIn from '../sign-in/sign-in.jsx';
+//import Favorites from '../favorites/favorites.jsx';
+//import Room from '../room/room.jsx';
+//import {offerItem} from '../../shapes/offer-item';
+//import {reviewsItem} from '../../shapes/reviews-item';
+//import {ListCities} from '../list-cities/list-cities';
+
+
+
+
 
 
 const App = (props) => {
-  const {offers, reviews, changeCityStore} = props;
+  
 
   return (
     <Router>
@@ -30,31 +33,30 @@ const App = (props) => {
           exact
           path="/login"
           render={() => {
-            return <SignIn />;
+            return '<SignIn />';
           }}
         />
         <Route exact
           path="/favorites"
           render={() => {
-            return <Favorites />;
+            return '<Favorites />';
           }}
         />
         <Route
           exact
           path='/offer/:id'
-          render={() => {
-            return (<Room
+          render={({match}) => {
+            return ('offer')(/*<Room
+              id={match.params.id}
               reviews={reviews}
             />);
           }}
-        />
+        />*/)}} />
         <Route
           path="/:city?"
-          render={(prop) => {
+          render={({match}) => {
             return (
-              <Main
-              offers={prop.offers}
-              />
+              <MainScreen/>
             );
           }}
         />
@@ -63,6 +65,7 @@ const App = (props) => {
   );
 };
 
+/*
 App.propTypes = {
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
@@ -77,17 +80,16 @@ App.propTypes = {
   history: PropTypes.object,
   match: PropTypes.object
 };
-
+*/
 
 const mapStateToProps = (state) => ({
-  currentCity: state.town,
-  offers: state.offers
+  currentCity : state.currentCity,
+  offers: state.offers,
+  cities: state.cities,
+  reviews: state.reviews
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOffers() {
-    dispatch(ActionCreator.getOffers());
-  },
   changeCityStore(titleCity, cb) {
     dispatch(ActionCreator.changeCity(titleCity, cb));
   },

@@ -9,10 +9,6 @@ export const ActionCreator = {
     payload: {
       title: titleCity
     }
-  }),
-  getOffers: () => ({
-    type: ActionType.GET_OFFERS,
-    payload: 1,
   })
 };
 

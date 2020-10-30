@@ -18,15 +18,20 @@ import {connect} from "react-redux";
 class Room extends PureComponent {
   constructor(props) {
     super(props);
+    this.currentRoom = this.props.offers.filter(offer => offer.id == this.props.id)[0];
+  }
+  componentDidMount(){
+    //this.currentRoom.city - после обновления добавлять в стор через диспач
   }
   addComment() {
 
   }
   render() {
 
-    const currentRoom = this.props.offers.filter(offer => offer.id == this.props.room)[0];
-    const currentReviews = this.props.reviews.filter(review => review.offers == this.props.room);
+    const currentRoom = this.props.offers.filter(offer => offer.id == this.props.id)[0];
+    const currentReviews = this.props.reviews.filter(review => review.offers == this.props.id);
     const otherRooms = this.props.offers.filter(offer => offer.city == currentRoom.city);
+
 
 
 

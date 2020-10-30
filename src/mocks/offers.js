@@ -410,13 +410,13 @@ export default [
       ]
     },
     map: {
-      lat: 52.3809553943508,
-      lon: 4.739309666406198
+      lat: 52.3809453943508,
+      lon: 4.931309666406198
     }
   },
   {
     id: 6,
-    title: `Nice, cozy, warm big bed apartment`,
+    title: `Nice, cozy, warm big bed Hamburg 1`,
     city: `Hamburg`,
     gallery: [
       {
@@ -493,8 +493,92 @@ export default [
       ]
     },
     map: {
-      lat: 52.3809553943508,
-      lon: 4.739309666406198
-    }
+      lat: 53.5611,
+      lon: 9.9933
+    },
+  },
+  {
+    id: 7,
+    title: `Nice, Hamburg 2`,
+    city: `Hamburg`,
+    gallery: [
+      {
+        id: 51,
+        src: `/img/apartment-02.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 52,
+        src: `/img/apartment-01.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 53,
+        src: `/img/room.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 54,
+        src: `/img/apartment-03.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 55,
+        src: `/img/studio-01.jpg`,
+        alt: `Photo studio`
+      },
+      {
+        id: 56,
+        src: `/img/apartment-01.jpg`,
+        alt: `Photo studio`
+      },
+    ],
+    premium: false,
+    houseLevel: `Private room`,
+    rating: 4.9,
+    propertyFeatures: [
+      {
+        field: `Type`,
+        value: `Room`
+      },
+      {
+        field: `Count`,
+        value: `5 Bedrooms`
+      },
+      {
+        field: `MaxPeople`,
+        value: `Max 4 adults`
+      }
+    ],
+    prices: `€180`,
+    insides: {
+      1: `Wi-Fi`,
+      2: `Heating`,
+      3: `Kitchen`,
+      4: `Fridge`,
+      5: `Washing machine`,
+      6: `Coffee machine`,
+      7: `Dishwasher`,
+      8: `Towels`,
+      9: `Baby seat`,
+      10: `Cabel TV`
+    },
+    host: {
+      ava: `/img/avatar-angelina.jpg`,
+      name: `Angelina`,
+      description: [
+        `A quiet cozy and picturesque that hides behind a a
+  river by the unique lightness of Amsterdam.
+  The building is green and from 18th century.`,
+        `An independent House, strategically located between
+  Rembrand Square and National Opera, but where the
+  bustle of the city comes to rest in this alley flowery and colorful.`
+      ]
+    },
+    map: {
+      lat: 53.5641,
+      lon: 9.9923
+    },
+
   }
 ];

@@ -2,12 +2,16 @@ export default [
   {
     id: `1`,
     title: `Amsterdam`,
-    link: `Amsterdam`
+    link: `Amsterdam`,
+    lat: 52.3809453943508,
+    lon: 4.931309666406198
   },
   {
     id: `2`,
     title: `Hamburg`,
-    link: `Hamburg`
+    link: `Hamburg`,
+    lat: 53.5611,
+    lon: 9.9933
   },
   {
     id: `3`,

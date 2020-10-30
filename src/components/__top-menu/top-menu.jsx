@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
 const TopMenu = ({cities, currentCity, changeCity}) => {
-  console.log(currentCity);
+
   return (
     <React.Fragment>
       <h1 className="visually-hidden">Cities</h1>

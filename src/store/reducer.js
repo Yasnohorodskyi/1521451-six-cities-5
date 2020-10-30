@@ -1,18 +1,23 @@
 import {ActionType} from "./action";
-import offers from "../mocks/offers";
 import {extend} from "../helpers/extend";
 
+import offers from "../mocks/offers";
+import cities from "../mocks/cities";
+import reviews from "../mocks/reviews";
 
+console.log(cities[0].title);
 const initialState = {
-  city: (window.location.href.split('/')[3]) ? window.location.href.split('/')[3] : `Amsterdam`,
+  currentCity: cities[0].title,
   offers,
-  room: window.location.href.split('/')[4]
+  cities,
+  reviews
 };
 
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ActionType.CHANGE_CITY:
+      console.log(state);
       return extend(state, {
         city: action.payload.title,
       });
