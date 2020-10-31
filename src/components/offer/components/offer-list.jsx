@@ -1,8 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import OfferItem from '../offer-item/offer-item';
-import {offerItem} from '../../shapes/offer-item';
-import {connect} from "react-redux";
+import OfferItem from './offer-item.jsx';
+
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -10,8 +9,14 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {max, offers, room} = this.props;
-    const offersFiltred = offers.filter(offer => offer.id != room);
+    const {offers, currentCity, param, max, currentOffer} = this.props;
+
+    const currentParam = (param) ? param : currentCity;
+
+    const offersFiltred = offers.filter(
+      offer => offer.city == currentParam && offer.id != currentOffer
+    )
+
 
     return (
       <div className="near-places__list places__list">
@@ -31,6 +36,7 @@ class OfferList extends PureComponent {
   }
 }
 
+/*
 OfferList.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
@@ -40,12 +46,7 @@ OfferList.propTypes = {
   max: PropTypes.number,
   currentOffer: PropTypes.number
 };
+*/
 
 
-const mapStateToProps = (state) => ({
-  room: state.room
-});
-
-export {OfferList};
-export default connect(mapStateToProps)(OfferList);
-
+export default OfferList

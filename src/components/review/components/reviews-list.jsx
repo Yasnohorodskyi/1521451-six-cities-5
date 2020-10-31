@@ -1,35 +1,34 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import ReviewsItem from '../reviews-item/reviews-item';
-import AddFormComment from '../add-form-comment/add-form-comment';
-import {reviewsItem} from '../../shapes/reviews-item';
+import ReviewsItem from "./reviews-item.jsx";
+
 
 class ReviewsList extends PureComponent {
   constructor(props) {
     super(props);
   }
   render() {
-    const {reviews, addComment, countComments} = this.props;
-    console.log(reviews.text);
+    const {reviews, currentOffer} = this.props;
+    const filterReviews = reviews.filter(review => review.offer == currentOffer);
+
     return (
       <React.Fragment>
-        <h2 className="reviews__title">
+       <h2 className="reviews__title">
           Reviews &middot;
           <span className="reviews__amount">
-            {countComments}
+              {filterReviews.length}
           </span>
         </h2>
         <ul className="reviews__list">
-          {this.props.reviews.map((review) => (
+          {filterReviews.map((review) => (
             <ReviewsItem key={review.id} review={review} />
           ))}
         </ul>
-        <AddFormComment addComment={addComment} />
       </React.Fragment>
     );
   }
 }
-
+/*
 ReviewsList.propTypes = {
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
@@ -38,6 +37,6 @@ ReviewsList.propTypes = {
   ),
   addComment: PropTypes.func,
   countComments: PropTypes.number,
-};
+};*/
 
 export default ReviewsList;

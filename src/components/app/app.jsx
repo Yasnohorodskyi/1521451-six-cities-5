@@ -13,7 +13,7 @@ import {
 import MainScreen from '../main-screen/main-screen';
 //import SignIn from '../sign-in/sign-in.jsx';
 //import Favorites from '../favorites/favorites.jsx';
-//import Room from '../room/room.jsx';
+import RoomScreen from '../room-screen/room-screen';
 //import {offerItem} from '../../shapes/offer-item';
 //import {reviewsItem} from '../../shapes/reviews-item';
 //import {ListCities} from '../list-cities/list-cities';
@@ -23,8 +23,8 @@ import MainScreen from '../main-screen/main-screen';
 
 
 
-const App = (props) => {
-  
+const App = () => {
+
 
   return (
     <Router>
@@ -46,17 +46,16 @@ const App = (props) => {
           exact
           path='/offer/:id'
           render={({match}) => {
-            return ('offer')(/*<Room
-              id={match.params.id}
-              reviews={reviews}
+            return (<RoomScreen
+              currentRoom={match.params.id}
             />);
           }}
-        />*/)}} />
+        />
         <Route
           path="/:city?"
           render={({match}) => {
             return (
-              <MainScreen/>
+              <MainScreen param={match.params.city}/>
             );
           }}
         />
@@ -82,19 +81,8 @@ App.propTypes = {
 };
 */
 
-const mapStateToProps = (state) => ({
-  currentCity : state.currentCity,
-  offers: state.offers,
-  cities: state.cities,
-  reviews: state.reviews
-});
 
-const mapDispatchToProps = (dispatch) => ({
-  changeCityStore(titleCity, cb) {
-    dispatch(ActionCreator.changeCity(titleCity, cb));
-  },
-});
 
-export  {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export  default App;
+//export default connect(mapStateToProps, mapDispatchToProps)(App);
 

@@ -3,7 +3,7 @@ import {
   Link
 } from "react-router-dom";
 
-const Menu = ({cities, currentCity}) => {
+const Menu = ({cities, currentCity, changeCity}) => {
 
   return (
 
@@ -21,7 +21,7 @@ const Menu = ({cities, currentCity}) => {
                 </li>
               ))}
             </ul>
-          
+
   );
 };
 

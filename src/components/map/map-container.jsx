@@ -2,25 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from "react-redux";
-
 import {MapCities} from "./components/map-cities"
 
-const MapScreen = ({currentCity, offers, cities}) =>{
-  console.log(currentCity);
+const MapContainer = ({currentCity, offers, cities, currentOffer, max}) =>{
   return (
-
-
             <MapCities
+              currentOffer={currentOffer}
               currentCity={currentCity}
               offers={offers}
               cities={cities}
+              max={max}
             />
-
     );
 }
 
 
-MapScreen.propTypes = {
+MapContainer.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
 
@@ -32,11 +29,10 @@ MapScreen.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
   offers: state.offers,
   cities: state.cities,
 });
 
 
-export {MapScreen};
-export default connect(mapStateToProps)(MapScreen);
+export {MapContainer};
+export default connect(mapStateToProps)(MapContainer);

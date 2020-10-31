@@ -1,10 +1,14 @@
 import React from 'react';
 import Filter from './components/filter';
-import MenuScreen from '../menu/menu-screen.jsx';
-import MapScreen from '../map/map-screen.jsx';
+import MenuContainer from '../menu/menu-container.jsx';
+import MapContainer from '../map/map-container.jsx';
+import OfferContainer from '../../components/offer/offer-container.jsx';
+import {connect} from "react-redux";
 
-const MainScreen = () => {
-
+const MainScreen = ({city, param, currentCity, offers}) => {
+  const filter = (param) ? param : currentCity;
+  const countOffers = offers.filter(offer => offer.city == filter).length;
+  const curCity = (param) ? param : currentCity;
   return (
     <div>
       <div className="page page--gray page--main">
@@ -31,18 +35,19 @@ const MainScreen = () => {
         </div>
       </header>
       <main className="page__main page__main--index">
-        <MenuScreen />
+        <MenuContainer param={param} city={city}/>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
+              <b className="places__found"> {countOffers} places to stay in  {curCity}</b>
               <Filter />
               <div className="cities__places-list places__list tabs__content">
-
+                <OfferContainer currentCity={curCity} param={param}/>
               </div>
             </section>
             <div className="cities__right-section">
-              <MapScreen />
+              <MapContainer param={param} currentCity={curCity}/>
             </div>
           </div>
         </div>
@@ -52,4 +57,12 @@ const MainScreen = () => {
   );
 };
 
-export default MainScreen;
+
+const mapStateToProps = (state) => ({
+  currentCity : state.currentCity,
+  offers: state.offers
+});
+
+
+export {MainScreen};
+export default connect(mapStateToProps)(MainScreen);

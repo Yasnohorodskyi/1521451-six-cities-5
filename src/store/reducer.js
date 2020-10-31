@@ -17,9 +17,8 @@ const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-      console.log(state);
       return extend(state, {
-        city: action.payload.title,
+        currentCity: action.payload.title,
       });
   }
 
