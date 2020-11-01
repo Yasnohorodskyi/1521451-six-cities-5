@@ -5,7 +5,6 @@ import offers from "../mocks/offers";
 import cities from "../mocks/cities";
 import reviews from "../mocks/reviews";
 
-console.log(cities[0].title);
 const initialState = {
   currentCity: cities[0].title,
   offers,

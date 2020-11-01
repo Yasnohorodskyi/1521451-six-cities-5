@@ -2,38 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import ReviewList from "./components/reviews-list.jsx";
+import {reviewsItem} from '../../shapes/reviews-item';
 
 const ReviewContainer = (props) => {
-    const {reviews, currentOffer} = props;
+  const {reviews, currentOffer} = props;
 
-    return (
-      <React.Fragment>
-        <ReviewList
-          reviews={reviews}
-          currentOffer={currentOffer}
-        />
-      </React.Fragment>
-    );
-}
+  return (
+    <React.Fragment>
+      <ReviewList
+        reviews={reviews}
+        currentOffer={currentOffer}
+      />
+    </React.Fragment>
+  );
+};
 
-/*
-
-{this.props.reviews.map((review) => (
-            <ReviewsItem key={review.id} review={review} />
-          ))}
-
-          <AddFormComment addComment={addComment} />
-
-OfferList.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        offerItem
-      })
+ReviewContainer.propTypes = {
+  reviews: PropTypes.arrayOf(
+      reviewsItem
   ),
-  max: PropTypes.number,
   currentOffer: PropTypes.number
 };
-*/
+
 
 const mapStateToProps = (state) => ({
   reviews: state.reviews

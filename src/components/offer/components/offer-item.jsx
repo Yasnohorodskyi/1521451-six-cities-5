@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {premiumTemplate} from '../../../helpers/premium-template';
 import {calcRating} from '../../../helpers/calc-rating';
+import PropTypes from 'prop-types';
+import {offerItem} from '../../../shapes/offer-item';
 
 class OfferItem extends PureComponent {
   constructor(props) {
@@ -49,4 +50,13 @@ class OfferItem extends PureComponent {
   }
 }
 
-export default OfferItem
+OfferItem.propTypes = {
+  offer: offerItem,
+  max: PropTypes.number,
+  currentCityRoom: PropTypes.string,
+  currentCity: PropTypes.string,
+  param: PropTypes.string,
+  currentOffer: PropTypes.number,
+};
+
+export default OfferItem;

@@ -40,7 +40,7 @@ class ReviewsItem extends PureComponent {
 }
 
 ReviewsItem.propTypes = {
-  review: reviewsItem
+  review: reviewsItem,
 };
 
 export default ReviewsItem;

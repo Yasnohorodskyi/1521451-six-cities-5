@@ -1,8 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
 
 import {
   BrowserRouter as Router,
@@ -11,17 +7,9 @@ import {
 } from "react-router-dom";
 
 import MainScreen from '../main-screen/main-screen';
-//import SignIn from '../sign-in/sign-in.jsx';
-//import Favorites from '../favorites/favorites.jsx';
 import RoomScreen from '../room-screen/room-screen';
-//import {offerItem} from '../../shapes/offer-item';
-//import {reviewsItem} from '../../shapes/reviews-item';
-//import {ListCities} from '../list-cities/list-cities';
-
-
-
-
-
+import FavoritesScreen from '../favorites-screen/favorites-screen';
+import SignInScreen from '../sign-in-screen/sign-in-screen';
 
 const App = () => {
 
@@ -33,13 +21,13 @@ const App = () => {
           exact
           path="/login"
           render={() => {
-            return '<SignIn />';
+            return <SignInScreen />;
           }}
         />
         <Route exact
           path="/favorites"
           render={() => {
-            return '<Favorites />';
+            return <FavoritesScreen />;
           }}
         />
         <Route
@@ -64,25 +52,5 @@ const App = () => {
   );
 };
 
-/*
-App.propTypes = {
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        reviewsItem
-      })
-  ),
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        offerItem
-      })
-  ),
-  history: PropTypes.object,
-  match: PropTypes.object
-};
-*/
 
-
-
-export  default App;
-//export default connect(mapStateToProps, mapDispatchToProps)(App);
-
+export default App;
