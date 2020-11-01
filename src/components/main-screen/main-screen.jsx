@@ -7,11 +7,16 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import {offerItem} from '../../shapes/offer-item';
 
-const MainScreen = ({param, currentCity, offers}) => {
+import {ActionCreator} from "../../store/action";
+
+
+const MainScreen = ({param, currentCity, offers, filterOffer, baseFilter}) => {
 
   const filter = (param) ? param : currentCity;
   const countOffers = offers.filter((offer) => offer.city === filter).length;
+  const currentOffers = offers.filter((offer) => offer.city === filter);
   const curCity = (param) ? param : currentCity;
+
   return (
     <div>
       <div className="page page--gray page--main">
@@ -44,7 +49,7 @@ const MainScreen = ({param, currentCity, offers}) => {
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found"> {countOffers} places to stay in  {curCity}</b>
-                <Filter />
+                <Filter baseFilter={baseFilter} filterOffer={filterOffer} currentOffers={currentOffers}/>
                 <div className="cities__places-list places__list tabs__content">
                   <OfferContainer currentCity={curCity} param={param} />
                 </div>
@@ -70,11 +75,18 @@ MainScreen.propTypes = {
   )
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  filterOffer(filter, offers) {
+      dispatch(ActionCreator.filterOffer(filter, offers));
+  },
+});
+
 const mapStateToProps = (state) => ({
   currentCity: state.currentCity,
-  offers: state.offers
+  offers: state.offers,
+  baseFilter: state.baseFilter
 });
 
 
 export {MainScreen};
-export default connect(mapStateToProps)(MainScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

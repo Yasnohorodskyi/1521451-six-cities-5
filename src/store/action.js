@@ -1,6 +1,7 @@
 export const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  GET_OFFERS: `GET_OFFERS`
+  GET_OFFERS: `GET_OFFERS`,
+  FILTER_OFFER: `FILTER_OFFER`
 };
 
 export const ActionCreator = {
@@ -9,6 +10,13 @@ export const ActionCreator = {
     payload: {
       title: titleCity
     }
-  })
+  }),
+  filterOffer: (filter, offers) => ({
+    type: ActionType.FILTER_OFFER,
+    payload: {
+      filter: filter,
+      offers: offers
+    }
+  }),
 };
 

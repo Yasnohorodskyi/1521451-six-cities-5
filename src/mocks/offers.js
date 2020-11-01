@@ -203,7 +203,7 @@ export default [
     ],
     premium: false,
     houseLevel: `Private room`,
-    rating: 4.9,
+    rating: 2.9,
     propertyFeatures: [
       {
         field: `Type`,
