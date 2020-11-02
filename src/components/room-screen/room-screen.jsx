@@ -15,6 +15,7 @@ import {offerItem} from '../../shapes/offer-item';
 
 const RoomScreen = ({currentRoom, offers}) => {
   const currentOffer = offers.filter((offer) => Number(offer.id) === Number(currentRoom))[0];
+
   return (
     <div className="page">
       <header className="header">
@@ -85,8 +86,8 @@ const RoomScreen = ({currentRoom, offers}) => {
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">{currentOffer.prices[0]}</b>
-                <span className="property__price-text">&nbsp;{currentOffer.prices[1]}</span>
+                <b className="property__price-value">{currentOffer.prices}</b>
+                <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>

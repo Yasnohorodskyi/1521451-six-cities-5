@@ -72,12 +72,14 @@ MainScreen.propTypes = {
       PropTypes.shape({
         offerItem
       })
-  )
+  ),
+  baseFilter: PropTypes.string,
+  filterOffer: PropTypes.func
 };
 
 const mapDispatchToProps = (dispatch) => ({
   filterOffer(filter, offers) {
-      dispatch(ActionCreator.filterOffer(filter, offers));
+    dispatch(ActionCreator.filterOffer(filter, offers));
   },
 });
 

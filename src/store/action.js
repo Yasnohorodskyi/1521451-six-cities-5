@@ -14,8 +14,8 @@ export const ActionCreator = {
   filterOffer: (filter, offers) => ({
     type: ActionType.FILTER_OFFER,
     payload: {
-      filter: filter,
-      offers: offers
+      filter,
+      offers
     }
   }),
 };
