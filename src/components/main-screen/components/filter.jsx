@@ -2,23 +2,37 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
 
+
+const enhanceWithClickOutside = require('react-click-outside');
+
 class Filter extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      select: ``
+    }
+
     this.filterDOM = React.createRef();
     this.filterToggle = this.filterToggle.bind(this);
     this.filterChange = this.filterChange.bind(this);
   }
   filterChange(event) {
-    const {filterOffer, currentOffers} = this.props;
-    this.filterDOM.current.classList.toggle(`active`);
+    const {currentOffers} = this.props;
     filterOffer(
         event.target.innerText,
         currentOffers
     );
   }
+  handleClickOutside() {
+    this.filterToggle();
+  }
   filterToggle() {
-    this.filterDOM.current.classList.toggle(`active`);
+    (this.state.select == `--opened`) ? this.setState({
+      select: ``
+    }) : this.setState({
+      select: `--opened`
+    })
   }
   render() {
     return (
@@ -31,7 +45,7 @@ class Filter extends PureComponent {
               <use xlinkHref="#icon-arrow-select"></use>
             </svg>
           </span>
-          <ul ref={this.filterDOM} className="places__options places__options--custom places__options--opened">
+          <ul ref={this.filterDOM} className={`places__options places__options--custom places__options`+this.state.select}>
             <li onClick={this.filterChange} className="places__option places__option--active" tabIndex="0">Popular</li>
             <li onClick={this.filterChange} className="places__option" tabIndex="0">Price: low to high</li>
             <li onClick={this.filterChange} className="places__option" tabIndex="0">Price: high to low</li>
@@ -59,4 +73,4 @@ Filter.propTypes = {
   ),
 };
 
-export default Filter;
+export default enhanceWithClickOutside(Filter);
