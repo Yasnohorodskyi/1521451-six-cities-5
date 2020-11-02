@@ -1,7 +1,7 @@
 export default [
   {
     id: `001`,
-    offers: 1,
+    offer: 1,
     user: {
       id: `1`,
       name: `Max`,
@@ -13,7 +13,7 @@ export default [
   },
   {
     id: `002`,
-    offers: 1,
+    offer: 1,
     user: {
       id: `2`,
       name: `Иван`,

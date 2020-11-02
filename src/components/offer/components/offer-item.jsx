@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
-import {calcRating} from '../../helpers/calc-rating';
-import {premiumTemplate} from '../../helpers/premium-template';
-import {offerItem} from '../../shapes/offer-item';
+import {premiumTemplate} from '../../../helpers/premium-template';
+import {calcRating} from '../../../helpers/calc-rating';
+import PropTypes from 'prop-types';
+import {offerItem} from '../../../shapes/offer-item';
 
 class OfferItem extends PureComponent {
   constructor(props) {
@@ -9,6 +10,7 @@ class OfferItem extends PureComponent {
   }
   render() {
     const {offer} = this.props;
+
     return (
       <article key={offer.id} className="near-places__card place-card">
         {
@@ -49,7 +51,12 @@ class OfferItem extends PureComponent {
 }
 
 OfferItem.propTypes = {
-  offer: offerItem
+  offer: offerItem,
+  max: PropTypes.number,
+  currentCityRoom: PropTypes.string,
+  currentCity: PropTypes.string,
+  param: PropTypes.string,
+  currentOffer: PropTypes.number,
 };
 
 export default OfferItem;

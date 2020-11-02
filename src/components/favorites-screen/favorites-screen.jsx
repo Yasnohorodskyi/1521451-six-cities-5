@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Favorites = () => {
+const FavoritesScreen = () => {
 
   return (
     <div className="page">
@@ -159,4 +159,4 @@ const Favorites = () => {
   );
 };
 
-export default Favorites;
+export default FavoritesScreen;

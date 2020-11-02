@@ -1,12 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import Main from '../main/main.jsx';
-import SignIn from '../sign-in/sign-in.jsx';
-import Favorites from '../favorites/favorites.jsx';
-import Room from '../room/room.jsx';
-import {offerItem} from '../../shapes/offer-item';
-import {reviewsItem} from '../../shapes/reviews-item';
 
 import {
   BrowserRouter as Router,
@@ -14,8 +6,13 @@ import {
   Route
 } from "react-router-dom";
 
-const App = (props) => {
-  const {rentCount, offers, reviews} = props;
+import MainScreen from '../main-screen/main-screen';
+import RoomScreen from '../room-screen/room-screen';
+import FavoritesScreen from '../favorites-screen/favorites-screen';
+import SignInScreen from '../sign-in-screen/sign-in-screen';
+
+const App = () => {
+
 
   return (
     <Router>
@@ -24,36 +21,30 @@ const App = (props) => {
           exact
           path="/login"
           render={() => {
-            return <SignIn />;
+            return <SignInScreen />;
           }}
         />
         <Route exact
           path="/favorites"
           render={() => {
-            return <Favorites />;
+            return <FavoritesScreen />;
           }}
         />
         <Route
           exact
           path='/offer/:id'
-          render={(prop) => {
-            return (<Room
-              offers={offers}
-              rentCount={rentCount}
-              reviews={reviews}
-              history={prop.history}
-              match={prop.match}
+          render={({match}) => {
+            return (<RoomScreen
+              currentRoom={match.params.id}
             />);
           }}
         />
         <Route
-          exact
-          path="/"
-          render={() => {
-            return (<Main
-              offers={offers}
-              rentCount={rentCount}
-            />);
+          path="/:city?"
+          render={({match}) => {
+            return (
+              <MainScreen param={match.params.city}/>
+            );
           }}
         />
       </Switch>
@@ -61,20 +52,5 @@ const App = (props) => {
   );
 };
 
-App.propTypes = {
-  rentCount: PropTypes.number.isRequired,
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        reviewsItem
-      })
-  ),
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        offerItem
-      })
-  ),
-  history: PropTypes.object,
-  match: PropTypes.object
-};
 
 export default App;
