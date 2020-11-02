@@ -48,7 +48,7 @@ class MapCities extends PureComponent {
           L.marker(offerCords, {icon}).addTo(this.map);
         }
       } else {
-        L.marker(offerCords, {icon}).addTo(this.map);
+        L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${city.id}`;
       }
     });
   }
