@@ -1,7 +1,8 @@
 import React from 'react';
 import SelectedClassOption from './components/selected-class-option.jsx';
-import MenuContainer from '../menu/menu-container.jsx';
 import MapContainer from '../map/map-container.jsx';
+import MenuContainer from '../menu/menu-container.jsx';
+
 import OfferContainer from '../../components/offer/offer-container.jsx';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
