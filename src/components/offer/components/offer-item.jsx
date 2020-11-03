@@ -4,15 +4,30 @@ import {calcRating} from '../../../helpers/calc-rating';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
 
+
+import L from 'leaflet';
+
 class OfferItem extends PureComponent {
   constructor(props) {
     super(props);
   }
+  hoverCard(id) {
+    const markerSelect = L.DomUtil.get(`marker-${id}`);
+    markerSelect.src = `/img/pin-active.svg`;
+  }
+  hoverOff(id) {
+    const markerSelect = L.DomUtil.get(`marker-${id}`);
+    markerSelect.src = `/img/pin.svg`;
+  }
   render() {
     const {offer} = this.props;
-
     return (
-      <article key={offer.id} className="near-places__card place-card">
+      <article
+        key={offer.id}
+        onMouseLeave={() => this.hoverOff(offer.id)}
+        onMouseEnter={() => this.hoverCard(offer.id)}
+        className="near-places__card place-card"
+      >
         {
           (offer.premium) ? premiumTemplate(`place-card__mark`) : ``
         }

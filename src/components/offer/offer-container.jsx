@@ -5,12 +5,12 @@ import OfferList from "./components/offer-list";
 import {offerItem} from '../../shapes/offer-item';
 
 const OfferContainer = (props) => {
-  const {currentCity, offers, param, max, currentCityRoom, currentOffer} = props;
+  const {currentCity, offers, cityId, max, currentRoomCity, currentOffer} = props;
   return (
     <div className="near-places__list places__list">
       <OfferList
-        param={param}
-        currentCity={currentCityRoom ? currentCityRoom : currentCity}
+        cityId={cityId}
+        currentCity={currentRoomCity ? currentRoomCity : currentCity}
         offers={offers}
         max={max}
         currentOffer={currentOffer}
@@ -28,8 +28,9 @@ OfferContainer.propTypes = {
   max: PropTypes.number,
   currentCityRoom: PropTypes.string,
   currentCity: PropTypes.string,
-  param: PropTypes.string,
+  cityId: PropTypes.string,
   currentOffer: PropTypes.number,
+  currentRoomCity: PropTypes.string,
 };
 
 

@@ -5,9 +5,16 @@ import offers from "../mocks/offers";
 import cities from "../mocks/cities";
 import reviews from "../mocks/reviews";
 
+export const reducerType = {
+  FILTER_POPULAR: `Popular`,
+  FILTER_TOP_RATED_FIRST: `Top rated first`,
+  FILTER_PRICE_LOW_TO_HIGH: `Price: low to high`,
+  FILTER_PRICE_HIGH_TO_LOW: `Price: high to low`
+};
+
 const initialState = {
   currentCity: cities[0].title,
-  baseFilter: `Popular`,
+  baseFilter: reducerType.FILTER_POPULAR,
   offers,
   cities,
   reviews
@@ -24,16 +31,16 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         offers,
         currentCity: action.payload.title,
-        baseFilter: `Popular`
+        baseFilter: reducerType.FILTER_POPULAR
       });
     case ActionType.FILTER_OFFER:
       switch (action.payload.filter) {
-        case `Popular`:
+        case reducerType.FILTER_POPULAR:
           return extend(state, {
             offers,
             baseFilter: action.payload.filter
           });
-        case `Top rated first`:
+        case reducerType.FILTER_TOP_RATED_FIRST:
           action.payload.offers.sort(function (a, b) {
             return b.rating - a.rating;
           });
@@ -41,7 +48,7 @@ const reducer = (state = initialState, action) => {
             offers: action.payload.offers,
             baseFilter: action.payload.filter
           });
-        case `Price: low to high`:
+        case reducerType.FILTER_PRICE_LOW_TO_HIGH:
           action.payload.offers.sort(function (a, b) {
             return converter(a.prices) - converter(b.prices);
           });
@@ -49,7 +56,7 @@ const reducer = (state = initialState, action) => {
             offers: action.payload.offers,
             baseFilter: action.payload.filter
           });
-        case `Price: high to low`:
+        case reducerType.FILTER_PRICE_HIGH_TO_LOW:
           action.payload.offers.sort(function (a, b) {
             return converter(b.prices) - converter(a.prices);
           });

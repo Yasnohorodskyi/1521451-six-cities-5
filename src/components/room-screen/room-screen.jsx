@@ -8,14 +8,15 @@ import {connect} from "react-redux";
 import ReviewContainer from "../review/review-container";
 import MapContainer from '../map/map-container.jsx';
 
-import {MAX_OTHER_REVIEWS} from '../../const/OfferList';
+import {MAX_OTHER_REVIEWS} from '../offer/const';
 import OfferContainer from '../../components/offer/offer-container.jsx';
 import {offerItem} from '../../shapes/offer-item';
 
 
 const RoomScreen = ({currentRoom, offers}) => {
-  const currentOffer = offers.filter((offer) => Number(offer.id) === Number(currentRoom))[0];
-
+  const currentOffer = offers.filter(
+      (offer) => Number.parseInt(offer.id, 10) === Number.parseInt(currentRoom, 10)
+  )[0];
   return (
     <div className="page">
       <header className="header">

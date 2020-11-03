@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {citiesShape} from '../../shapes/citiesShape';
 
 const MenuContainer = (props) => {
-  const {currentCity, cities, changeCity, param} = props;
+  const {currentCity, cities, changeCity, cityId} = props;
 
   return (
     <React.Fragment>
@@ -15,7 +15,7 @@ const MenuContainer = (props) => {
         <section className="locations container">
           <Menu
             changeCity={changeCity}
-            currentCity={(param) ? param : currentCity}
+            currentCity={(cityId) ? cityId : currentCity}
             cities={cities}
           />
         </section>
@@ -32,7 +32,7 @@ MenuContainer.propTypes = {
         citiesShape
       })
   ),
-  param: PropTypes.string
+  cityId: PropTypes.string
 };
 
 const mapDispatchToProps = (dispatch) => ({
