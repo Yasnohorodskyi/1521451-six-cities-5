@@ -9,12 +9,12 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, currentCity, param, max, currentOffer} = this.props;
+    const {offers, currentCity, cityId, max, currentOffer} = this.props;
 
-    const currentParam = (param) ? param : currentCity;
+    const currentId = (cityId) ? cityId : currentCity;
 
     const offersFiltred = offers.filter(
-        (offer) => offer.city === currentParam && offer.id !== currentOffer
+        (offer) => offer.city === currentId && offer.id !== currentOffer
     );
 
 
@@ -46,7 +46,7 @@ OfferList.propTypes = {
   max: PropTypes.number,
   currentCityRoom: PropTypes.string,
   currentCity: PropTypes.string,
-  param: PropTypes.string,
+  cityId: PropTypes.string,
   currentOffer: PropTypes.number,
 };
 

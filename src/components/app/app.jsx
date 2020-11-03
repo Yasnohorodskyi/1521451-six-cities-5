@@ -43,7 +43,7 @@ const App = () => {
           path="/:city?"
           render={({match}) => {
             return (
-              <MainScreen param={match.params.city}/>
+              <MainScreen cityId={match.params.city}/>
             );
           }}
         />

@@ -1,5 +1,5 @@
 import React from 'react';
-import Filter from './components/filter';
+import SortBySelector from './components/filter';
 import MenuContainer from '../menu/menu-container.jsx';
 import MapContainer from '../map/map-container.jsx';
 import OfferContainer from '../../components/offer/offer-container.jsx';
@@ -10,12 +10,12 @@ import {offerItem} from '../../shapes/offer-item';
 import {ActionCreator} from "../../store/action";
 
 
-const MainScreen = ({param, currentCity, offers, filterOffer, baseFilter}) => {
+const MainScreen = ({cityId, currentCity, offers, filterOffer, baseFilter}) => {
 
-  const filter = (param) ? param : currentCity;
+  const filter = (cityId) ? cityId : currentCity;
   const countOffers = offers.filter((offer) => offer.city === filter).length;
   const currentOffers = offers.filter((offer) => offer.city === filter);
-  const curCity = (param) ? param : currentCity;
+  const currentCityFilter = (cityId) ? cityId : currentCity;
 
   return (
     <div>
@@ -43,19 +43,23 @@ const MainScreen = ({param, currentCity, offers, filterOffer, baseFilter}) => {
           </div>
         </header>
         <main className="page__main page__main--index">
-          <MenuContainer param={param} />
+          <MenuContainer cityId={cityId} />
           <div className="cities">
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found"> {countOffers} places to stay in  {curCity}</b>
-                <Filter baseFilter={baseFilter} filterOffer={filterOffer} currentOffers={currentOffers}/>
+                <b className="places__found"> {countOffers} places to stay in  {currentCityFilter}</b>
+                <SortBySelector
+                  baseFilter={baseFilter}
+                  filterOffer={filterOffer}
+                  currentOffers={currentOffers}
+                />
                 <div className="cities__places-list places__list tabs__content">
-                  <OfferContainer currentCity={curCity} param={param} />
+                  <OfferContainer currentCity={currentCityFilter} cityId={cityId} />
                 </div>
               </section>
               <div className="cities__right-section">
-                <MapContainer param={param} currentCity={curCity} />
+                <MapContainer currentCity={currentCityFilter} />
               </div>
             </div>
           </div>
@@ -66,7 +70,7 @@ const MainScreen = ({param, currentCity, offers, filterOffer, baseFilter}) => {
 };
 
 MainScreen.propTypes = {
-  param: PropTypes.string,
+  cityId: PropTypes.string,
   currentCity: PropTypes.string,
   offers: PropTypes.arrayOf(
       PropTypes.shape({

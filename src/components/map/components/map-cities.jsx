@@ -4,6 +4,7 @@ import L from 'leaflet';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
 import {citiesShape} from '../../../shapes/citiesShape';
+import {ZOOM} from '../const';
 
 class MapCities extends PureComponent {
   constructor(props) {
@@ -27,7 +28,7 @@ class MapCities extends PureComponent {
       iconSize: [30, 30]
     });
 
-    const zoom = 12;
+    const zoom = ZOOM;
     this.map = L.map(`map`, {
       center: [info[`currentCityInfo`].lat, info[`currentCityInfo`].lon],
       zoom,
@@ -45,7 +46,7 @@ class MapCities extends PureComponent {
       const offerCords = [city.map.lat, city.map.lon];
       if (this.props.max) {
         if (index < 3) {
-          L.marker(offerCords, {icon}).addTo(this.map);
+          L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${city.id}`;
         }
       } else {
         L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${city.id}`;

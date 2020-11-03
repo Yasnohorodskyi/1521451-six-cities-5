@@ -3,53 +3,71 @@ import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
 
 
-const enhanceWithClickOutside = require('react-click-outside');
+const enhanceWithClickOutside = require(`react-click-outside`);
 
-class Filter extends PureComponent {
+class SortBySelector extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       select: ``
-    }
+    };
 
-    this.filterDOM = React.createRef();
-    this.filterToggle = this.filterToggle.bind(this);
+    this.filterOpen = this.filterOpen.bind(this);
     this.filterChange = this.filterChange.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+  onClick(event) {
+    switch (event.target.dataset.action) {
+      case `open`:
+        this.filterOpen();
+        break;
+      case `change`:
+        this.filterChange(event);
+        break;
+    }
   }
   filterChange(event) {
-    const {currentOffers} = this.props;
+    const {
+      currentOffers,
+      filterOffer
+    } = this.props;
+
     filterOffer(
         event.target.innerText,
         currentOffers
     );
+    this.filterClose();
   }
   handleClickOutside() {
-    this.filterToggle();
+    this.filterClose();
   }
-  filterToggle() {
-    (this.state.select == `--opened`) ? this.setState({
+  filterClose() {
+    this.setState({
       select: ``
-    }) : this.setState({
+    });
+  }
+  filterOpen() {
+    this.setState({
       select: `--opened`
-    })
+    });
   }
   render() {
     return (
       <React.Fragment>
-        <form className="places__sorting" action="#" method="get">
+        <form onClick={this.onClick} className="places__sorting" action="#" method="get">
           <span className="places__sorting-caption">Sort by</span>
-          <span className="places__sorting-type" onClick={this.filterToggle} tabIndex="0">
+          <span className="places__sorting-type" data-action="open" tabIndex="0">
             {this.props.baseFilter}
             <svg className="places__sorting-arrow" width="7" height="4">
               <use xlinkHref="#icon-arrow-select"></use>
             </svg>
           </span>
-          <ul ref={this.filterDOM} className={`places__options places__options--custom places__options`+this.state.select}>
-            <li onClick={this.filterChange} className="places__option places__option--active" tabIndex="0">Popular</li>
-            <li onClick={this.filterChange} className="places__option" tabIndex="0">Price: low to high</li>
-            <li onClick={this.filterChange} className="places__option" tabIndex="0">Price: high to low</li>
-            <li onClick={this.filterChange} className="places__option" tabIndex="0">Top rated first</li>
+          <ul className={`places__options places__options--custom places__options${this.state.select}`}>
+            <li data-action="change" className="places__option places__option--active" tabIndex="0">Popular</li>
+            <li data-action="change" className="places__option" tabIndex="0">Price: low to high</li>
+            <li data-action="change" className="places__option" tabIndex="0">Price: high to low</li>
+            <li data-action="change" className="places__option" tabIndex="0">Top rated first</li>
           </ul>
           <select defaultValue={`Popular`} className="places__sorting-type" id="places-sorting">
             <option className="places__option" value="popular">Popular</option>
@@ -63,7 +81,7 @@ class Filter extends PureComponent {
   }
 }
 
-Filter.propTypes = {
+SortBySelector.propTypes = {
   filterOffer: PropTypes.func,
   baseFilter: PropTypes.string,
   currentOffers: PropTypes.arrayOf(
@@ -73,4 +91,4 @@ Filter.propTypes = {
   ),
 };
 
-export default enhanceWithClickOutside(Filter);
+export default enhanceWithClickOutside(SortBySelector);
