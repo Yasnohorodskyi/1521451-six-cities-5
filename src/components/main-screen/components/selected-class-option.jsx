@@ -1,11 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
+import onClickOutside from "react-onclickoutside";
 
-
-const enhanceWithClickOutside = require(`react-click-outside`);
-
-class SortBySelector extends PureComponent {
+class SelectedClassOption extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -63,7 +61,10 @@ class SortBySelector extends PureComponent {
               <use xlinkHref="#icon-arrow-select"></use>
             </svg>
           </span>
-          <ul className={`places__options places__options--custom places__options${this.state.select}`}>
+          <ul className={
+            `places__options places__options--custom places__options${this.state.select ? this.state.select : ``}`
+          }
+          >
             <li data-action="change" className="places__option places__option--active" tabIndex="0">Popular</li>
             <li data-action="change" className="places__option" tabIndex="0">Price: low to high</li>
             <li data-action="change" className="places__option" tabIndex="0">Price: high to low</li>
@@ -81,7 +82,7 @@ class SortBySelector extends PureComponent {
   }
 }
 
-SortBySelector.propTypes = {
+SelectedClassOption.propTypes = {
   filterOffer: PropTypes.func,
   baseFilter: PropTypes.string,
   currentOffers: PropTypes.arrayOf(
@@ -91,4 +92,4 @@ SortBySelector.propTypes = {
   ),
 };
 
-export default enhanceWithClickOutside(SortBySelector);
+export default onClickOutside(SelectedClassOption);

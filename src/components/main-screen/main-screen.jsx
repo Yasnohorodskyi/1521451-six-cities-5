@@ -1,5 +1,5 @@
 import React from 'react';
-import SortBySelector from './components/sort-by-selector.jsx';
+import SelectedClassOption from './components/selected-class-option.jsx';
 import MenuContainer from '../menu/menu-container.jsx';
 import MapContainer from '../map/map-container.jsx';
 import OfferContainer from '../../components/offer/offer-container.jsx';
@@ -49,7 +49,7 @@ const MainScreen = ({cityId, currentCity, offers, filterOffer, baseFilter}) => {
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found"> {countOffers} places to stay in  {currentCityFilter}</b>
-                <SortBySelector
+                <SelectedClassOption
                   baseFilter={baseFilter}
                   filterOffer={filterOffer}
                   currentOffers={currentOffers}
