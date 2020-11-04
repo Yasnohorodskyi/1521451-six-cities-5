@@ -10,17 +10,14 @@ class MapCities extends PureComponent {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
-
   }
-  filterOffers(offers, currentCity, cities, currentOffer) {
-    return {
-      offers: offers.filter(
-          (offer) => offer.city === currentCity && offer.id !== currentOffer
-      ),
-      currentCityInfo: cities.filter(
-          (city) => city.title === currentCity
-      )[0]
-    };
+  filterOffers(offers, currentCity, currentOffer) {
+    const current = currentCity.name ? currentCity.name : currentCity;
+    return (
+      offers.filter(
+          (offer) => offer.city[`name`] === current && offer.id !== currentOffer
+      )
+    );
   }
   settingsMap(info) {
     const icon = L.icon({
@@ -30,20 +27,20 @@ class MapCities extends PureComponent {
 
     const zoom = ZOOM;
     this.map = L.map(`map`, {
-      center: [info[`currentCityInfo`].lat, info[`currentCityInfo`].lon],
+      center: [info[0].city[`location`].latitude, info[0].city[`location`].longitude],
       zoom,
       zoomControl: false,
       marker: true
     });
-    this.map.setView([info[`currentCityInfo`].lat, info[`currentCityInfo`].lon], zoom);
+    this.map.setView([info[0].city[`location`].latitude, info[0].city[`location`].longitude], zoom);
 
     L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     })
       .addTo(this.map);
 
-    info[`offers`].forEach((city, index) => {
-      const offerCords = [city.map.lat, city.map.lon];
+    info.forEach((city, index) => {
+      const offerCords = [city.location.latitude, city.location.longitude];
       if (this.props.max) {
         if (index < 3) {
           L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${city.id}`;
@@ -54,29 +51,27 @@ class MapCities extends PureComponent {
     });
   }
   componentDidUpdate(prevProps) {
+
     if (this.props.currentCity !== prevProps.currentCity) {
       this.map.remove();
       this.settingsMap(
           this.filterOffers(
               this.props.offers,
-              this.props.currentCity,
-              this.props.cities
+              this.props.currentCity
           )
       );
     }
   }
   componentDidMount() {
-    const {currentCity, offers, cities, currentOffer} = this.props;
+    const {currentCity, offers, currentOffer} = this.props;
 
     this.settingsMap(
         this.filterOffers(
             offers,
             currentCity,
-            cities,
             currentOffer
         )
     );
-
   }
   render() {
     return (

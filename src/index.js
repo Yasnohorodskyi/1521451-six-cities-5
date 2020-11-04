@@ -4,19 +4,32 @@ import App from './components/app/app';
 import offers from './mocks/offers';
 import reviews from './mocks/reviews';
 
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import {reducer} from "./store/reducer";
+import {composeWithDevTools} from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import {createAPI} from "./services/api";
+import {fetch} from "./store/api-action";
+
+const api = createAPI(
+    () => store.dispatch()
+);
 
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
+Promise.all([
+  store.dispatch(fetch())
+]);
 
 ReactDOM.render(
     <Provider store={store}>
-      <App offers={offers} reviews={reviews} />
+      <App offers={offers} store={store} reviews={reviews} />
     </Provider>,
     document.querySelector(`#root`)
 );

@@ -21,6 +21,7 @@ class OfferItem extends PureComponent {
   }
   render() {
     const {offer} = this.props;
+
     return (
       <article
         key={offer.id}
@@ -29,17 +30,17 @@ class OfferItem extends PureComponent {
         className="near-places__card place-card"
       >
         {
-          (offer.premium) ? premiumTemplate(`place-card__mark`) : ``
+          (offer.is_premium) ? premiumTemplate(`place-card__mark`) : ``
         }
         <div className="near-places__image-wrapper place-card__image-wrapper">
           <a href={`/offer/${offer.id}`}>
-            <img className="place-card__image" src={offer.gallery[0].src} width="260" height="200" alt="Place image" />
+            <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image" />
           </a>
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">
             <div className="place-card__price">
-              <b className="place-card__price-value">{offer.prices}</b>
+              <b className="place-card__price-value">€{offer.price}</b>
               <span className="place-card__price-text">/&nbsp;night</span>
             </div>
             <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
@@ -58,7 +59,7 @@ class OfferItem extends PureComponent {
           <h2 className="place-card__name">
             <a href="#">{offer.title}</a>
           </h2>
-          <p className="place-card__type">{offer.houseLevel}</p>
+          <p className="place-card__type">{offer.type}</p>
         </div>
       </article>
     );

@@ -13,9 +13,10 @@ import {ActionCreator} from "../../store/action";
 
 
 const MainScreen = ({cityId, currentCity, offers, filterOffer, baseFilter}) => {
+
   const filter = (cityId) ? cityId : currentCity;
-  const countOffers = offers.filter((offer) => offer.city === filter).length;
-  const currentOffers = offers.filter((offer) => offer.city === filter);
+  const countOffers = offers.filter((offer) => offer.city[`name`] === filter).length;
+  const currentOffers = offers.filter((offer) => offer.city[`name`] === filter);
   const currentCityFilter = (cityId) ? cityId : currentCity;
   return (
     <div>
