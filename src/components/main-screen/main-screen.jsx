@@ -7,7 +7,7 @@ import OfferNoempty from './components/offers-noempty';
 
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
-import offerItem from '../../shapes/offer-item';
+import {offerItem} from '../../shapes/offer-item';
 
 import {ActionCreator} from "../../store/action";
 

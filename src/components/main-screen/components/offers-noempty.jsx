@@ -3,7 +3,7 @@ import SelectedClassOption from './selected-class-option.jsx';
 import MapContainer from '../../map/map-container.jsx';
 import OfferContainer from '../../../components/offer/offer-container.jsx';
 import PropTypes from 'prop-types';
-import offerItem from '../../../shapes/offer-item';
+import {offerItem} from '../../../shapes/offer-item';
 
 const OfferNoempty = ({countOffers, currentCityFilter, baseFilter, filterOffer, currentOffers, cityId}) => {
   return (<div className="cities">
@@ -33,7 +33,7 @@ OfferNoempty.propTypes = {
   baseFilter: PropTypes.string,
   filterOffer: PropTypes.func,
   countOffers: PropTypes.number,
-  currentOffers: offerItem
+  currentOffers: PropTypes.arrayOf(offerItem)
 };
 
 export default OfferNoempty;
