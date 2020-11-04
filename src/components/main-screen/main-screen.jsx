@@ -1,23 +1,22 @@
 import React from 'react';
-import SelectedClassOption from './components/selected-class-option.jsx';
-import MapContainer from '../map/map-container.jsx';
+
 import MenuContainer from '../menu/menu-container.jsx';
 
-import OfferContainer from '../../components/offer/offer-container.jsx';
+import OfferEmpty from './components/offer-empty';
+import OfferNoempty from './components/offers-noempty';
+
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
-import {offerItem} from '../../shapes/offer-item';
+import offerItem from '../../shapes/offer-item';
 
 import {ActionCreator} from "../../store/action";
 
 
 const MainScreen = ({cityId, currentCity, offers, filterOffer, baseFilter}) => {
-
   const filter = (cityId) ? cityId : currentCity;
   const countOffers = offers.filter((offer) => offer.city === filter).length;
   const currentOffers = offers.filter((offer) => offer.city === filter);
   const currentCityFilter = (cityId) ? cityId : currentCity;
-
   return (
     <div>
       <div className="page page--gray page--main">
@@ -45,25 +44,16 @@ const MainScreen = ({cityId, currentCity, offers, filterOffer, baseFilter}) => {
         </header>
         <main className="page__main page__main--index">
           <MenuContainer cityId={cityId} />
-          <div className="cities">
-            <div className="cities__places-container container">
-              <section className="cities__places places">
-                <h2 className="visually-hidden">Places</h2>
-                <b className="places__found"> {countOffers} places to stay in  {currentCityFilter}</b>
-                <SelectedClassOption
-                  baseFilter={baseFilter}
-                  filterOffer={filterOffer}
-                  currentOffers={currentOffers}
-                />
-                <div className="cities__places-list places__list tabs__content">
-                  <OfferContainer currentCity={currentCityFilter} cityId={cityId} />
-                </div>
-              </section>
-              <div className="cities__right-section">
-                <MapContainer currentCity={currentCityFilter} />
-              </div>
-            </div>
-          </div>
+          {
+            (countOffers === 0) ? <OfferEmpty /> : <OfferNoempty
+              countOffers={countOffers}
+              currentCityFilter={currentCityFilter}
+              baseFilter={baseFilter}
+              filterOffer={filterOffer}
+              currentOffers={currentOffers}
+              cityId={cityId}
+            />
+          }
         </main>
       </div>
     </div>
