@@ -2,8 +2,8 @@ import React from 'react';
 
 import MenuContainer from '../menu/menu-container.jsx';
 
-import OfferEmpty from './components/offer-empty';
-import OfferNoempty from './components/offers-noempty';
+import OffersEmpty from './components/offers-empty';
+import OffersNoempty from './components/offers-noempty';
 
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
@@ -45,7 +45,7 @@ const MainScreen = ({cityId, currentCity, offers, filterOffer, baseFilter}) => {
         <main className="page__main page__main--index">
           <MenuContainer cityId={cityId} />
           {
-            (countOffers === 0) ? <OfferEmpty /> : <OfferNoempty
+            (countOffers === 0) ? <OffersEmpty /> : <OffersNoempty
               countOffers={countOffers}
               currentCityFilter={currentCityFilter}
               baseFilter={baseFilter}

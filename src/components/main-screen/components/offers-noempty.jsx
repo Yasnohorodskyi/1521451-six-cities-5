@@ -5,7 +5,7 @@ import OfferContainer from '../../../components/offer/offer-container.jsx';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
 
-const OfferNoempty = ({countOffers, currentCityFilter, baseFilter, filterOffer, currentOffers, cityId}) => {
+const OffersNoempty = ({countOffers, currentCityFilter, baseFilter, filterOffer, currentOffers, cityId}) => {
   return (<div className="cities">
     <div className="cities__places-container container">
       <section className="cities__places places">
@@ -27,7 +27,7 @@ const OfferNoempty = ({countOffers, currentCityFilter, baseFilter, filterOffer, 
   </div>);
 };
 
-OfferNoempty.propTypes = {
+OffersNoempty.propTypes = {
   cityId: PropTypes.string,
   currentCityFilter: PropTypes.string,
   baseFilter: PropTypes.string,
@@ -36,4 +36,4 @@ OfferNoempty.propTypes = {
   currentOffers: PropTypes.arrayOf(offerItem)
 };
 
-export default OfferNoempty;
+export default OffersNoempty;
