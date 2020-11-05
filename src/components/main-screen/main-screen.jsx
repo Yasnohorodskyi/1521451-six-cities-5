@@ -1,10 +1,21 @@
 import React from 'react';
+<<<<<<< HEAD
 
 import MenuContainer from '../menu/menu-container.jsx';
 
 import OffersEmpty from './components/offers-empty';
 import OffersNoempty from './components/offers-noempty';
 
+=======
+import MapContainer from '../map/map-container.jsx';
+import MenuContainer from '../menu/menu-container.jsx';
+
+import SelectedClassOption from './components/selected-class-option.jsx';
+import withOpenSelect from '../../hocs/with-open-select';
+const SelectedClassOptionWithClickOutside = withOpenSelect(SelectedClassOption);
+
+import OfferContainer from '../../components/offer/offer-container.jsx';
+>>>>>>> module6-task1
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import {offerItem} from '../../shapes/offer-item';
@@ -44,6 +55,7 @@ const MainScreen = ({cityId, currentCity, offers, filterOffer, baseFilter}) => {
         </header>
         <main className="page__main page__main--index">
           <MenuContainer cityId={cityId} />
+<<<<<<< HEAD
           {
             (countOffers === 0) ? <OffersEmpty /> : <OffersNoempty
               countOffers={countOffers}
@@ -54,6 +66,27 @@ const MainScreen = ({cityId, currentCity, offers, filterOffer, baseFilter}) => {
               cityId={cityId}
             />
           }
+=======
+          <div className="cities">
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found"> {countOffers} places to stay in  {currentCityFilter}</b>
+                <SelectedClassOptionWithClickOutside
+                  baseFilter={baseFilter}
+                  filterOffer={filterOffer}
+                  currentOffers={currentOffers}
+                />
+                <div className="cities__places-list places__list tabs__content">
+                  <OfferContainer currentCity={currentCityFilter} cityId={cityId} />
+                </div>
+              </section>
+              <div className="cities__right-section">
+                <MapContainer currentCity={currentCityFilter} />
+              </div>
+            </div>
+          </div>
+>>>>>>> module6-task1
         </main>
       </div>
     </div>
