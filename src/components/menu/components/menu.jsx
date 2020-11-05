@@ -5,7 +5,7 @@ import {
 import {citiesShape} from '../../../shapes/citiesShape';
 import PropTypes from 'prop-types';
 
-const Menu = ({cities, currentCity, changeCity}) => {
+const Menu = ({cities, currentCity, changeCity, activeItem}) => {
 
   return (
 
@@ -15,7 +15,7 @@ const Menu = ({cities, currentCity, changeCity}) => {
           <Link onClick={
             () => changeCity(city.title)
           }
-          className={`locations__item-link tabs__item${(city.title === currentCity) ? `--active` : ``}`}
+          className={`locations__item-link tabs__item${(city.title === currentCity) ? activeItem : ``}`}
           to={city.link}
           >
             <span>{city.title}</span>
@@ -30,6 +30,7 @@ const Menu = ({cities, currentCity, changeCity}) => {
 Menu.propTypes = {
   currentCity: PropTypes.string,
   changeCity: PropTypes.func,
+  activeItem: PropTypes.string,
   cities: PropTypes.arrayOf(
       PropTypes.shape({
         citiesShape
