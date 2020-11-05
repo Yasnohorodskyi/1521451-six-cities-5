@@ -4,6 +4,9 @@ import MapContainer from '../../map/map-container.jsx';
 import OfferContainer from '../../../components/offer/offer-container.jsx';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
+import withOpenSelect from '../../../hocs/with-open-select';
+const SelectedClassOptionWithClickOutside = withOpenSelect(SelectedClassOption);
+
 
 const OffersNoempty = ({countOffers, currentCityFilter, baseFilter, filterOffer, currentOffers, cityId}) => {
   return (<div className="cities">
@@ -11,7 +14,7 @@ const OffersNoempty = ({countOffers, currentCityFilter, baseFilter, filterOffer,
       <section className="cities__places places">
         <h2 className="visually-hidden">Places</h2>
         <b className="places__found"> {countOffers} places to stay in  {currentCityFilter}</b>
-        <SelectedClassOption
+        <SelectedClassOptionWithClickOutside
           baseFilter={baseFilter}
           filterOffer={filterOffer}
           currentOffers={currentOffers}

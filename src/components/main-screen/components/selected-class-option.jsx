@@ -5,32 +5,33 @@ import {offerItem} from '../../../shapes/offer-item';
 
 const SelectedClassOption = (props) => {
   const {optionList, baseFilter} = props;
-
-  const option = (props, type) => {
-    switch(type){
+  const option = (prop, type) => {
+    switch (type) {
       case `li`:
         return (<li data-action="change"
-          key={`option-${props}`}
-          className={`places__option ${(baseFilter == props) ? `places__option--active` : ``}`}
+          key={`option-${prop}`}
+          className={`places__option ${(baseFilter === prop) ? `places__option--active` : ``}`}
           tabIndex="0">
-          {props}
-        </li>)
-       case `option`:
+          {prop}
+        </li>);
+      case `option`:
         return (
-          <option className="places__option" value="popular">{props}</option>
-        )
+          <option key={`option-${prop}`} className="places__option" value="popular">{prop}</option>
+        );
     }
-
-    }
-    const createSelectArray = (object, type) => {
-      const array = [];
-      for (const property in object) {
-          array.push(
+    return null;
+  };
+  const createSelectArray = (object, type) => {
+    const array = [];
+    for (const property in object) {
+      if (object.hasOwnProperty(property)) {
+        array.push(
             option(object[property], type)
-          );
+        );
       }
-      return array;
     }
+    return array;
+  };
 
   return (
     <form onClick={props.click} className="places__sorting" action="#" method="get">
@@ -46,12 +47,12 @@ const SelectedClassOption = (props) => {
       }
       >
         {
-          createSelectArray(optionList , 'li')
+          createSelectArray(optionList, `li`)
         }
       </ul>
       <select defaultValue={`Popular`} className="places__sorting-type" id="places-sorting">
         {
-          createSelectArray(optionList , 'option')
+          createSelectArray(optionList, `option`)
         }
       </select>
     </form>
@@ -67,9 +68,12 @@ SelectedClassOption.propTypes = {
         offerItem
       })
   ),
-  optionList: PropTypes.arrayOf(
-      PropTypes.string
-  ),
+  optionList: PropTypes.shape({
+    FILTER_POPULAR: PropTypes.string,
+    FILTER_PRICE_HIGH_TO_LOW: PropTypes.string,
+    FILTER_PRICE_LOW_TO_HIGH: PropTypes.string,
+    FILTER_TOP_RATED_FIRST: PropTypes.string
+  }),
   click: PropTypes.func,
   select: PropTypes.string,
 };
