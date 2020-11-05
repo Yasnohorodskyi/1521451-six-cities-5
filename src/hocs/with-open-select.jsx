@@ -2,6 +2,8 @@ import onClickOutside from "react-onclickoutside";
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {offerItem} from '../shapes/offer-item';
+import {reducerType} from '../store/reducer';
+
 
 const withOpenSelect = (Component) => {
   class WithOpenSelect extends PureComponent {
@@ -65,7 +67,7 @@ const withOpenSelect = (Component) => {
         <Component
           {...this.props}
           select={select}
-          optionList={optionList}
+          optionList={reducerType}
           click={onClick}
         />
       );

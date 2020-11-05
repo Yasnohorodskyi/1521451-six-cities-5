@@ -4,7 +4,34 @@ import {offerItem} from '../../../shapes/offer-item';
 
 
 const SelectedClassOption = (props) => {
-  const {optionList} = props;
+  const {optionList, baseFilter} = props;
+
+  const option = (props, type) => {
+    switch(type){
+      case `li`:
+        return (<li data-action="change"
+          key={`option-${props}`}
+          className={`places__option ${(baseFilter == props) ? `places__option--active` : ``}`}
+          tabIndex="0">
+          {props}
+        </li>)
+       case `option`:
+        return (
+          <option className="places__option" value="popular">{props}</option>
+        )
+    }
+
+    }
+    const createSelectArray = (object, type) => {
+      const array = [];
+      for (const property in object) {
+          array.push(
+            option(object[property], type)
+          );
+      }
+      return array;
+    }
+
   return (
     <form onClick={props.click} className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
@@ -18,20 +45,14 @@ const SelectedClassOption = (props) => {
         `places__options places__options--custom places__options${props.select ? props.select : ``}`
       }
       >
-        {optionList.map((select, index) => {
-          return (<li data-action="change"
-            key={`option-${index}`}
-            className={`places__option ${(props.baseFilter === select) ? `places__option--active` : ``}`}
-            tabIndex="0">
-            {select}
-          </li>);
-        })}
+        {
+          createSelectArray(optionList , 'li')
+        }
       </ul>
       <select defaultValue={`Popular`} className="places__sorting-type" id="places-sorting">
-        <option className="places__option" value="popular">Popular</option>
-        <option className="places__option" value="to-high">Price: low to high</option>
-        <option className="places__option" value="to-low">Price: high to low</option>
-        <option className="places__option" value="top-rated">Top rated first</option>
+        {
+          createSelectArray(optionList , 'option')
+        }
       </select>
     </form>
   );
