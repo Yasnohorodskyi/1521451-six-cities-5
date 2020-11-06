@@ -2,20 +2,18 @@ import onClickOutside from "react-onclickoutside";
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {offerItem} from '../shapes/offer-item';
+import {reducerType} from '../store/reducer';
 
-const withOpenSelect = (Component) => {
+
+const withOpenSelect = (ComponentOutside) => {
+
   class WithOpenSelect extends PureComponent {
     constructor(props) {
       super(props);
 
       this.state = {
         select: ``,
-        optionList: [
-          `Popular`,
-          `Price: low to high`,
-          `Price: high to low`,
-          `Top rated first`
-        ]
+        optionList: reducerType
       };
 
       this.filterOpen = this.filterOpen.bind(this);
@@ -58,14 +56,13 @@ const withOpenSelect = (Component) => {
       });
     }
     render() {
-      const {select, optionList} = this.state;
+      const {select} = this.state;
       const onClick = this.onClick;
-
       return (
-        <Component
+        <ComponentOutside
           {...this.props}
           select={select}
-          optionList={optionList}
+          optionList={reducerType}
           click={onClick}
         />
       );
