@@ -3,13 +3,14 @@ import ReviewsItem from "./reviews-item.jsx";
 import AddFormComment from "./add-form-comment.jsx";
 import {reviewsItem} from '../../../shapes/reviews-item';
 import PropTypes from 'prop-types';
+import reviews from '../../../mocks/reviews';
 
 class ReviewsList extends PureComponent {
   constructor(props) {
     super(props);
   }
   render() {
-    const {reviews, currentOffer} = this.props;
+    const {currentOffer} = this.props;
     const filterReviews = reviews.filter((review) => review.offer === currentOffer);
 
     return (

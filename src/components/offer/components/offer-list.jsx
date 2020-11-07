@@ -12,6 +12,7 @@ class OfferList extends PureComponent {
     const {offers, currentCity, cityId, max, currentOffer} = this.props;
 
     const currentId = (cityId) ? cityId : currentCity;
+
     let currentName = (currentId.name) ? currentId.name : currentId;
     const offersFiltred = offers.filter(
         (offer) => offer.city[`name`] === currentName && offer.id !== currentOffer

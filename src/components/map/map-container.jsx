@@ -39,7 +39,7 @@ MapContainer.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: state.getOffers.offers,
   cities: state.cities,
 });
 

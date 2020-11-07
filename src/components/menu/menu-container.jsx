@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Menu from './components/menu';
-import wihActiveItem from '../../hocs/wih-active-item';
-const MenuWihActiveItem = wihActiveItem(Menu);
+import withActiveItem from '../../hocs/with-active-item';
+const MenuWithActiveItem = withActiveItem(Menu);
 
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
@@ -10,18 +10,19 @@ import PropTypes from 'prop-types';
 import {citiesShape} from '../../shapes/citiesShape';
 
 
-const MenuContainer = (props) => {
-  const {currentCity, cities, changeCity, cityId} = props;
 
+const MenuContainer = (props) => {
+  const {currentCity, changeCity, cityId, offers, sortOffers} = props;
   return (
     <React.Fragment>
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <MenuWihActiveItem
+          <MenuWithActiveItem
             changeCity={changeCity}
             currentCity={(cityId) ? cityId : currentCity}
-            cities={cities}
+            offers={offers}
+            sortOffers={sortOffers}
           />
         </section>
       </div>
@@ -42,14 +43,16 @@ MenuContainer.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   changeCity(titleCity) {
-    dispatch(ActionCreator.changeCity(titleCity));
+    dispatch(ActionCreator.changeCity(titleCity, dispatch));
   },
 });
 
-const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  cities: state.cities
-});
+const mapStateToProps = (state) => {
+  return {
+    currentCity: state.getOffers.baseCity,
+    sortOffers: state.getOffers.sortOffers
+  }
+};
 
 export {MenuContainer};
 export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer);

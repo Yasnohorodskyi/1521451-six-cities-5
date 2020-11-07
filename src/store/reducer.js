@@ -4,6 +4,8 @@ import {extend} from "../helpers/extend";
 import cities from "../mocks/cities";
 import reviews from "../mocks/reviews";
 
+
+
 export const reducerType = {
   FILTER_POPULAR: `Popular`,
   FILTER_TOP_RATED_FIRST: `Top rated first`,

@@ -18,7 +18,6 @@ const RoomScreen = ({currentRoom, offers}) => {
       (offer) => Number.parseInt(offer.id, 10) === Number.parseInt(currentRoom, 10)
   )[0];
 
-  if (offers.length !== 0) {
     return (
       <div className="page">
         <header className="header">
@@ -148,9 +147,6 @@ const RoomScreen = ({currentRoom, offers}) => {
 
       </div>
     );
-  } else {
-    return (<h1>Loading</h1>);
-  }
 };
 
 
@@ -163,10 +159,17 @@ RoomScreen.propTypes = {
       })
   )
 };
+/*
+const mapStateToProps = (state) => {
+  console.log(state);
+}*/
+
+
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  offers: state.offers
+  currentCity: state.getOffers.baseCity,
+  offers: state.getOffers.offers
 });
+
 
 export {RoomScreen};
 export default connect(mapStateToProps)(RoomScreen);

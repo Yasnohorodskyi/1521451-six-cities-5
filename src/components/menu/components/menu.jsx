@@ -5,26 +5,25 @@ import {
 import {citiesShape} from '../../../shapes/citiesShape';
 import PropTypes from 'prop-types';
 
-const Menu = ({cities, currentCity, changeCity, activeItem}) => {
+const Menu = ({currentCity, changeCity, activeItem, sortOffers}) => {
 
-  return (
+  return (<ul className="locations__list tabs__list">
+      {Array.from(sortOffers).map((value) => {
+        return(
+          <li key={value[0]} className="locations__item">
+            <Link onClick={
+              () => changeCity(value[0])
+            }
+            className={`locations__item-link tabs__item${(value[0] === currentCity) ? activeItem : ``}`}
+            to={value[0]}
+            >
+              <span>{value[0]}</span>
+            </Link>
+          </li>
+        )
 
-    <ul className="locations__list tabs__list">
-      {cities.map((city) => (
-        <li key={city.id} className="locations__item">
-          <Link onClick={
-            () => changeCity(city.title)
-          }
-          className={`locations__item-link tabs__item${(city.title === currentCity) ? activeItem : ``}`}
-          to={city.link}
-          >
-            <span>{city.title}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-
-  );
+      })}
+    </ul>)
 };
 
 Menu.propTypes = {
