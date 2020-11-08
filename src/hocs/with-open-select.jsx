@@ -34,7 +34,6 @@ const withOpenSelect = (ComponentOutside) => {
         offers,
         filterOffer
       } = this.props;
-      console.log(this.props);
       filterOffer(
           event.target.innerText,
           offers

@@ -79,7 +79,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     currentCity: 'Amsterdam',
     offers: state.getOffers.offers,

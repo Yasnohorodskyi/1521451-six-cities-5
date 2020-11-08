@@ -28,6 +28,7 @@ const stateOffers = {
 
 
 export default function reducerGetOffers(state = stateOffers, action) {
+
   switch (action.type) {
     case actionCity.LOAD_OFFERS:
       action.payload.map((x) => {
@@ -52,39 +53,33 @@ export default function reducerGetOffers(state = stateOffers, action) {
   }
 
   if(action.payload){
-
     switch (action.payload.filter) {
         case actionOffers.FILTER_POPULAR:
           return extend(state, {
-            offers: state.offers,
-            baseFilter: actionOffers.FILTER_POPULAR
+            offers: action.payload.offers,
+            baseFilter: action.payload.filter
           });
         case actionOffers.FILTER_TOP_RATED_FIRST:
           return extend(state, {
+            sortOffers: x,
+            offers: action.payload.offers ,
+            baseFilter: action.payload.filter,
+            sortOffers: state.sortOffers
+          });
+        case actionOffers.FILTER_PRICE_LOW_TO_HIGH:
+          return extend(state, {
             offers: action.payload.offers.sort(function (a, b) {
-              return b.rating - a.rating;
+              return a.price - b.price;
             }),
             baseFilter: action.payload.filter
           });
 
 
-        case actionOffers.FILTER_PRICE_LOW_TO_HIGH:
-          console.log(action)
-          action.payload.offers.sort(function (a, b) {
-            return a.price - b.price;
-          });
-          return extend(state, {
-            offers: action.payload.offers,
-            baseFilter: action.payload.filter
-          });
-
-
         case actionOffers.FILTER_PRICE_HIGH_TO_LOW:
-          action.payload.offers.sort(function (a, b) {
-            return b.price - a.price;
-          });
           return extend(state, {
-            offers:action.payload.offers,
+            offers: action.payload.offers.sort(function (a, b) {
+              return b.price - a.price;
+            }),
             baseFilter: action.payload.filter
           });
       }

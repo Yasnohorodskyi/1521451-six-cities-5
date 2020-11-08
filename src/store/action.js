@@ -39,7 +39,6 @@ export const ActionCreator = {
       }
   },
   filterOffer: (filter, offers, dispatch) => {
-    console.log(offers);
     return {
       type: ActionType.FILTER_OFFER,
         payload: {
