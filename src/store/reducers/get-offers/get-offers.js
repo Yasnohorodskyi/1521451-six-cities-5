@@ -83,12 +83,11 @@ export default function reducerGetOffers(state = stateOffers, action) {
           let resA =  action.payload.offers.sort(function (a, b) {
               return a.price - b.price;
             })
-            console.log(action)
+
             const s = stateOffers.sortOffers.set(
               action.payload.currentCity ,
               resA
             )
-            console.log(stateOffers.sortOffers)
 
           return extend(state, {
             sortOffers: s,
