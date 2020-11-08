@@ -5,14 +5,12 @@ import {offerItem} from '../../../shapes/offer-item';
 
 const SelectedClassOption = (props) => {
   const {optionList, baseFilter} = props;
-  console.log(optionList);
-  console.log(baseFilter);
   const option = (prop, type) => {
     switch (type) {
       case `li`:
         return (<li data-action="change"
           key={`option-${prop}`}
-          className={`places__option ${(optionList[0] === prop) ? `places__option--active` : ``}`}
+          className={`places__option ${(baseFilter === prop) ? `places__option--active` : ``}`}
           tabIndex="0">
           {prop}
         </li>);

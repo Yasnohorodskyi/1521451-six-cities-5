@@ -32,11 +32,14 @@ const withOpenSelect = (ComponentOutside) => {
     filterChange(event) {
       const {
         offers,
-        filterOffer
+        filterOffer,
+        currentCity
       } = this.props;
+   
       filterOffer(
           event.target.innerText,
-          offers
+          offers,
+          currentCity
       );
       this.filterClose();
     }

@@ -18,6 +18,7 @@ const OffersNoempty = ({currentCity, offers, filterOffer, baseFilter}) => {
             offers={offers}
             filterOffer={filterOffer}
             baseFilter={baseFilter}
+            currentCity={currentCity}
           />
         <div className="cities__places-list places__list tabs__content">
             <OfferContainer offers={offers} currentCity={currentCity}/>

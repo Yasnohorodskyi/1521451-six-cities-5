@@ -38,12 +38,13 @@ export const ActionCreator = {
 
       }
   },
-  filterOffer: (filter, offers, dispatch) => {
+  filterOffer: (filter, offers, currentCity) => {
     return {
       type: ActionType.FILTER_OFFER,
         payload: {
           filter,
-          offers
+          offers,
+          currentCity
         }
     }
   },

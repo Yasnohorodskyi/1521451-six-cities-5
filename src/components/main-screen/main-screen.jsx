@@ -68,8 +68,9 @@ MainScreen.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  filterOffer(filter, offers) {
-    dispatch(ActionCreator.filterOffer(filter, offers, dispatch));
+  filterOffer(filter, offers, currentCity) {
+    console.log(currentCity);
+    dispatch(ActionCreator.filterOffer(filter, offers, currentCity));
   }
 })
 
@@ -77,18 +78,11 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     fullOffers: state.getOffers.fullOffers,
     sortOffers: state.getOffers.sortOffers,
     baseCity: state.getOffers.baseCity,
     baseFilter: state.getOffers.baseFilter,
-    /*
-    currentCity: 'Amsterdam',
-    offers: state.getOffers.offers,
-
-    sortOffers: state.getOffers.sortOffers
-    */
   }
 }
 
