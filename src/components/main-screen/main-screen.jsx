@@ -7,11 +7,9 @@ import {ActionCreator} from "../../store/action";
 import OffersEmpty from "./components/offers-empty";
 import OffersNoempty from "./components/offers-noempty";
 
-const MainScreen = ({cityId, currentCity, offers, filterOffer, sortOffers, baseFilter}) => {
+const MainScreen = ({cityId, baseCity, sortOffers, filterOffer, baseFilter}) => {
 
-  if(offers){
-
-    const filter = (cityId) ? cityId : currentCity;
+    const filter = (cityId) ? cityId : baseCity;
     const currentOffers = sortOffers.get(filter);
 
     return (
@@ -40,20 +38,20 @@ const MainScreen = ({cityId, currentCity, offers, filterOffer, sortOffers, baseF
             </div>
           </header>
           <main className="page__main page__main--index">
-            <MenuContainer cityId={cityId} />
-            {
-              ( currentOffers === undefined || currentOffers.length === 0) ? <OffersEmpty /> : <OffersNoempty
-                filterOffer={filterOffer}
-                currentCity={filter}
-                offers={currentOffers}
-                baseFilter={baseFilter}
-              />
-            }
+            <MenuContainer cityId={filter} />
+              {
+                ( currentOffers === undefined || currentOffers.length === 0) ? <OffersEmpty /> : <OffersNoempty
+                  filterOffer={filterOffer}
+                  currentCity={filter}
+                  offers={currentOffers}
+                  baseFilter={baseFilter}
+                />
+              }
           </main>
         </div>
       </div>
     );
-  }else return(<h1>LOADING</h1>)
+
 
 };
 
@@ -79,11 +77,18 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
+    fullOffers: state.getOffers.fullOffers,
+    sortOffers: state.getOffers.sortOffers,
+    baseCity: state.getOffers.baseCity,
+    baseFilter: state.getOffers.baseFilter,
+    /*
     currentCity: 'Amsterdam',
     offers: state.getOffers.offers,
-    baseFilter: state.getOffers.baseFilter,
+
     sortOffers: state.getOffers.sortOffers
+    */
   }
 }
 

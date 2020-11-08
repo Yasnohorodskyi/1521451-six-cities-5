@@ -13,11 +13,15 @@ class MapCities extends PureComponent {
   }
   filterOffers(offers, currentCity, currentOffer) {
     const current = currentCity.name ? currentCity.name : currentCity;
-    return (
+    console.log(offers);
+    console.log(current);
+    console.log(offers.get(current));
+    return offers.get(current);
+      /*
       offers.filter(
           (offer) => offer.city[`name`] === current && offer.id !== currentOffer
-      )
-    );
+      )*/
+    //);
   }
   settingsMap(info) {
     const icon = L.icon({

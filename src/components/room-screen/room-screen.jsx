@@ -13,7 +13,10 @@ import OfferContainer from '../../components/offer/offer-container.jsx';
 import {offerItem} from '../../shapes/offer-item';
 
 
-const RoomScreen = ({currentRoom, offers}) => {
+const RoomScreen = ({currentRoom, offers, currentCity}) => {
+  console.log(currentCity);
+  console.log(currentRoom);
+  console.log(offers);
   const currentOffer = offers.filter(
       (offer) => Number.parseInt(offer.id, 10) === Number.parseInt(currentRoom, 10)
   )[0];
@@ -167,7 +170,7 @@ const mapStateToProps = (state) => {
 
 const mapStateToProps = (state) => ({
   currentCity: state.getOffers.baseCity,
-  offers: state.getOffers.offers
+  offers: state.getOffers.fullOffers
 });
 
 
