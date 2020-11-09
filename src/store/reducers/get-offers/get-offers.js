@@ -24,7 +24,24 @@ const stateOffers = {
 };
 
 
+const setFilter = (state, action, sortFunction) => {
+  let map = new Map([]);
+  state.fullOffers.map((offer) => {
+      map.set(
+         offer.city.name ,
+         state.fullOffers.filter((offerCurrent) => offerCurrent.city[`name`] === offer.city.name)
+      )
+    }
+  )
 
+  let res = action.payload.offers.sort(sortFunction)
+  map.set(
+    action.payload.currentCity ,
+    res
+  )
+
+  return map
+}
 
 export default function reducerGetOffers(state = stateOffers, action) {
 
@@ -67,93 +84,33 @@ export default function reducerGetOffers(state = stateOffers, action) {
               )
             }
           })
-
           return extend(state, {
             baseFilter: action.payload.filter,
             sortOffers: map
           });
-
-
         case actionFilter.FILTER_TOP_RATED_FIRST:
-
-          let res2 = action.payload.offers.sort(function (a, b) {
-            return  b.rating  - a.rating;
-          })
-
-          let map2 = new Map([]);
-
-          state.fullOffers.map((offer) => {
-            if(offer.city){
-              map2.set(
-                 offer.city.name ,
-                 state.fullOffers.filter((offerCurrent) => offerCurrent.city[`name`] === offer.city.name)
-              )
-            }
-          })
-          map2.set(
-            action.payload.currentCity ,
-            res2
-          )
-
           return extend(state, {
             offers: action.payload.offers ,
             baseFilter: action.payload.filter,
-            sortOffers: map2
+            sortOffers: setFilter(state, action, function (a, b) {
+              return  b.rating  - a.rating;
+            })
           });
         case actionFilter.FILTER_PRICE_LOW_TO_HIGH:
-
-          let res3 = action.payload.offers.sort(function (a, b) {
-            return a.price - b.price;
-          })
-
-          let map3 = new Map([]);
-
-          state.fullOffers.map((offer) => {
-            if(offer.city){
-              map3.set(
-                 offer.city.name ,
-                 state.fullOffers.filter((offerCurrent) => offerCurrent.city[`name`] === offer.city.name)
-              )
-            }
-          })
-          map3.set(
-            action.payload.currentCity ,
-            res3
-          )
-
           return extend(state, {
             offers: action.payload.offers ,
             baseFilter: action.payload.filter,
-            sortOffers: map3
+            sortOffers: setFilter(state, action, function (a, b) {
+              return a.price - b.price;
+            })
           });
-
-
-
         case actionFilter.FILTER_PRICE_HIGH_TO_LOW:
-
-          let res4 = action.payload.offers.sort(function (a, b) {
-            return b.price - a.price;
-          })
-
-          let map4 = new Map([]);
-
-          state.fullOffers.map((offer) => {
-            if(offer.city){
-              map4.set(
-                 offer.city.name ,
-                 state.fullOffers.filter((offerCurrent) => offerCurrent.city[`name`] === offer.city.name)
-              )
-            }
-          })
-          map4.set(
-            action.payload.currentCity ,
-            res4
-          )
-
           return extend(state, {
             offers: action.payload.offers ,
             baseFilter: action.payload.filter,
-            sortOffers: map4
+            sortOffers:  setFilter(state, action, function (a, b) {
+              return b.price - a.price;
+            })
           });
       }
   }
