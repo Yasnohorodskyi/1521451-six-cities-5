@@ -8,14 +8,14 @@ import {offerItem} from '../../shapes/offer-item';
 
 import {citiesShape} from '../../shapes/citiesShape';
 
-const MapContainer = ({currentCity, offers, cities, currentOffer, max}) => {
+const MapContainer = ({currentCity, offers, cities, max, currentOffer}) => {
   return (
     <MapCities
-      currentOffer={currentOffer}
       currentCity={currentCity}
       offers={offers}
       cities={cities}
       max={max}
+      currentOffer={currentOffer}
     />
   );
 };
@@ -27,7 +27,12 @@ MapContainer.propTypes = {
         offerItem
       })
   ),
-  currentCity: PropTypes.string,
+  currentCity: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number,
+    name: PropTypes.string
+  }),
   currentOffer: PropTypes.number,
   cities: PropTypes.arrayOf(
       PropTypes.shape({
@@ -37,12 +42,12 @@ MapContainer.propTypes = {
   max: PropTypes.number
 };
 
-
-const mapStateToProps = (state) => ({
-  offers: state.getOffers.sortOffers,
-  cities: state.cities,
-});
-
+const mapStateToProps = (state, props) => {
+  return {
+    currentCity: state.Offers.currentCity ? state.Offers.currentCity : props.currentCity,
+    currentOffer: props.currentOffer
+  };
+};
 
 export {MapContainer};
 export default connect(mapStateToProps)(MapContainer);

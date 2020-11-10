@@ -4,14 +4,17 @@ import {connect} from "react-redux";
 import OfferList from "./components/offer-list";
 import {offerItem} from '../../shapes/offer-item';
 
+
 const OfferContainer = (props) => {
-  const {currentCity, offers, max} = props;
+  const {currentCity, offers, max, currentOffer} = props;
+
   return (
     <div className="near-places__list places__list">
       <OfferList
         currentCity={currentCity}
         offers={offers}
-        max={max ? max : ''}
+        max={max ? max : ``}
+        currentOffer={currentOffer}
       />
     </div>
   );
@@ -25,20 +28,27 @@ OfferContainer.propTypes = {
   ),
   max: PropTypes.number,
   currentCityRoom: PropTypes.string,
-  currentCity: PropTypes.string,
+  currentCity: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number,
+    name: PropTypes.string
+  }),
   cityId: PropTypes.string,
-  currentOffer: PropTypes.number,
+  currentOffers: PropTypes.arrayOf(
+    PropTypes.shape({
+      offerItem
+    })
+  ),
   currentRoomCity: PropTypes.string,
 };
 
 
-const mapStateToProps = (state) => (
-  {
-    offers: state.getOffers.sortOffers,
-    cities: state.cities,
-    reviews: state.reviews
-  }
-);
+const mapStateToProps = (state, props) => {
+  return {
+    currentOffer: props.currentOffer
+  };
+};
 
 
 export {OfferContainer};

@@ -5,36 +5,48 @@ import {
 import {citiesShape} from '../../../shapes/citiesShape';
 import PropTypes from 'prop-types';
 
-const Menu = ({currentCity, changeCity, activeItem, sortOffers}) => {
+const Menu = ({cities, activeItem, changeCity, currentCity}) => {
+
+  const createElementMenu = () => {
+    const itemsMenu = [];
+    for (let city in cities) {
+      if (cities.hasOwnProperty(city)) {
+        itemsMenu.push(
+            <li key={city} className="locations__item">
+              <Link onClick={
+                () => changeCity(cities[city])
+              }
+              className={`locations__item-link tabs__item${(city === currentCity.name) ? activeItem : ``}`}
+              to={city}
+              >
+                <span>{city}</span>
+              </Link>
+            </li>
+        );
+      }
+    }
+    return itemsMenu;
+  };
 
   return (<ul className="locations__list tabs__list">
-      {Array.from(sortOffers).map((value) => {
-        return(
-          <li key={value[0]} className="locations__item">
-            <Link onClick={
-              () => changeCity(value[0])
-            }
-            className={`locations__item-link tabs__item${(value[0] === currentCity) ? activeItem : ``}`}
-            to={value[0]}
-            >
-              <span>{value[0]}</span>
-            </Link>
-          </li>
-        )
-
-      })}
-    </ul>)
+    {createElementMenu()}
+  </ul>);
 };
+
 
 Menu.propTypes = {
-  currentCity: PropTypes.string,
+  currentCity: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number,
+    name: PropTypes.string
+  }),
   changeCity: PropTypes.func,
   activeItem: PropTypes.string,
-  cities: PropTypes.arrayOf(
-      PropTypes.shape({
-        citiesShape
-      })
-  ),
+  cities: PropTypes.shape({
+    citiesShape
+  })
 };
+
 
 export default Menu;

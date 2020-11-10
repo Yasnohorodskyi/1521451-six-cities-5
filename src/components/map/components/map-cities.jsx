@@ -11,46 +11,44 @@ class MapCities extends PureComponent {
     super(props);
     this.ref = React.createRef();
   }
-  filterOffers(offers, currentCity, currentOffer) {
-    const current = currentCity.name ? currentCity.name : currentCity;
-    console.log(offers);
-    console.log(current);
-    console.log(offers.get(current));
-    return offers.get(current);
-      /*
-      offers.filter(
-          (offer) => offer.city[`name`] === current && offer.id !== currentOffer
-      )*/
-    //);
-  }
   settingsMap(info) {
+
+    const {currentOffer} = this.props;
+
     const icon = L.icon({
       iconUrl: `/img/pin.svg`,
       iconSize: [30, 30]
     });
 
     const zoom = ZOOM;
+
     this.map = L.map(`map`, {
-      center: [info[0].city[`location`].latitude, info[0].city[`location`].longitude],
+      center: [
+        this.props.currentCity[`location`].latitude,
+        this.props.currentCity[`location`].longitude
+      ],
       zoom,
       zoomControl: false,
       marker: true
     });
-    this.map.setView([info[0].city[`location`].latitude, info[0].city[`location`].longitude], zoom);
+
+    this.map.setView([this.props.currentCity[`location`].latitude, this.props.currentCity[`location`].longitude], zoom);
 
     L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     })
       .addTo(this.map);
 
-    info.forEach((city, index) => {
-      const offerCords = [city.location.latitude, city.location.longitude];
+    let index = 0;
+    info.forEach((offer) => {
+      const offerCords = [offer.location.latitude, offer.location.longitude];
       if (this.props.max) {
-        if (index < 3) {
-          L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${city.id}`;
+        if (index < 3 && offer.city.name === this.props.currentCity[`name`] && offer.id !== currentOffer) {
+          L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
+          index++;
         }
       } else {
-        L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${city.id}`;
+        L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
       }
     });
   }
@@ -59,22 +57,16 @@ class MapCities extends PureComponent {
     if (this.props.currentCity !== prevProps.currentCity) {
       this.map.remove();
       this.settingsMap(
-          this.filterOffers(
-              this.props.offers,
-              this.props.currentCity
-          )
+          this.props.offers
       );
     }
   }
   componentDidMount() {
-    const {currentCity, offers, currentOffer} = this.props;
+    const {offers} = this.props;
+
 
     this.settingsMap(
-        this.filterOffers(
-            offers,
-            currentCity,
-            currentOffer
-        )
+        offers
     );
   }
   render() {
@@ -100,7 +92,12 @@ class MapCities extends PureComponent {
 
 MapCities.propTypes = {
   currentOffer: PropTypes.number,
-  currentCity: PropTypes.string,
+  currentCity: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number,
+    name: PropTypes.string
+  }),
   offers: PropTypes.arrayOf(
       offerItem
   ),

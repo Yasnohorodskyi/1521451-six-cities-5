@@ -9,10 +9,8 @@ import {ActionCreator} from "../../store/action";
 import PropTypes from 'prop-types';
 import {citiesShape} from '../../shapes/citiesShape';
 
-
-
 const MenuContainer = (props) => {
-  const {currentCity, changeCity, cityId, offers, sortOffers} = props;
+  const {currentCity, changeCity, cities} = props;
   return (
     <React.Fragment>
       <h1 className="visually-hidden">Cities</h1>
@@ -20,9 +18,8 @@ const MenuContainer = (props) => {
         <section className="locations container">
           <MenuWithActiveItem
             changeCity={changeCity}
-            currentCity={(cityId) ? cityId : currentCity}
-            offers={offers}
-            sortOffers={sortOffers}
+            cities={cities}
+            currentCity={currentCity}
           />
         </section>
       </div>
@@ -31,27 +28,29 @@ const MenuContainer = (props) => {
 };
 
 MenuContainer.propTypes = {
-  currentCity: PropTypes.string,
+  currentCity: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number,
+    name: PropTypes.string
+  }),
   changeCity: PropTypes.func,
-  cities: PropTypes.arrayOf(
-      PropTypes.shape({
-        citiesShape
-      })
-  ),
+  cities: PropTypes.shape({
+      citiesShape
+  }),
   cityId: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  changeCity(titleCity) {
-    dispatch(ActionCreator.changeCity(titleCity, dispatch));
+  changeCity(currentCity) {
+    dispatch(ActionCreator.changeCity(currentCity));
   },
 });
 
 const mapStateToProps = (state) => {
   return {
-    currentCity: state.getOffers.baseCity,
-    sortOffers: state.getOffers.sortOffers
-  }
+    currentCity: state.Offers.currentCity,
+  };
 };
 
 export {MenuContainer};

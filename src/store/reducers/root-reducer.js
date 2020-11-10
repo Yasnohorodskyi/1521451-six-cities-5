@@ -1,8 +1,7 @@
 import {combineReducers} from "redux";
 
-import changeCity from "./change-city/change-city";
-import filterOffers from "./filter-offers/filter-offers";
-import getOffers from "./get-offers/get-offers";
+import Rewiew from "./reviews/reviews";
+import Offers from "./offers/offers";
 
 export const NameSpace = {
   CHANGE: `CHANGE`,
@@ -11,7 +10,6 @@ export const NameSpace = {
 };
 
 export default combineReducers({
-  //filterOffers,
-  //changeCity,
-  getOffers
+  Rewiew,
+  Offers
 });

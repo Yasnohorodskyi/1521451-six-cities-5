@@ -21,7 +21,12 @@ const withActiveItem = (ComponentOutside) => {
   }
 
   WithActiveItem.propTypes = {
-    currentCity: PropTypes.string,
+    currentCity: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number,
+      name: PropTypes.string
+    }),
     baseFilter: PropTypes.string,
   };
 

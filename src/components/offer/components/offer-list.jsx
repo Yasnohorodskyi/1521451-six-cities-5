@@ -9,22 +9,19 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, currentCity, cityId, max, currentOffer} = this.props;
+    const {offers, currentCity, max, currentOffer} = this.props;
 
-    const currentId = (cityId) ? cityId : currentCity;
-    console.log(offers);
-    let currentName = (currentId.name) ? currentId.name : currentId;
-    console.log(offers.get(currentName));
-
-    const offersFiltred = offers.get(currentName)
-
+    let indexGloal = 0;
     return (
       <div className="near-places__list places__list">
         {
-          offersFiltred.map((offer, index) => {
+          offers.map((offer) => {
             if (max) {
-              if (index < max) {
-                return (<OfferItem key={offer.id} offer={offer} />);
+              if (indexGloal < max) {
+                if (currentCity.name === offer.city.name && currentOffer !== offer.id) {
+                  indexGloal++;
+                  return (<OfferItem key={offer.id} offer={offer} />);
+                }
               }
             } else {
               return (<OfferItem key={offer.id} offer={offer} />);
@@ -43,9 +40,17 @@ OfferList.propTypes = {
         offerItem
       })
   ),
-  max: PropTypes.number,
+  max: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   currentCityRoom: PropTypes.string,
-  currentCity: PropTypes.string,
+  currentCity: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number,
+    name: PropTypes.string
+  }),
   cityId: PropTypes.string,
   currentOffer: PropTypes.number,
 };

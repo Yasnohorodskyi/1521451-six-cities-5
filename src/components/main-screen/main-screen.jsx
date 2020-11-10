@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import MenuContainer from '../menu/menu-container.jsx';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
@@ -7,11 +7,15 @@ import {ActionCreator} from "../../store/action";
 import OffersEmpty from "./components/offers-empty";
 import OffersNoempty from "./components/offers-noempty";
 
-const MainScreen = ({cityId, baseCity, sortOffers, filterOffer, baseFilter}) => {
+import {selectCityOffers} from "../../store/selects/offers/select-city-offers";
 
-    const filter = (cityId) ? cityId : baseCity;
-    const currentOffers = sortOffers.get(filter);
+class MainScreen extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
+  render() {
+    const {cityId, filterOffer, baseFilter, offers, cities, currentCity} = this.props;
     return (
       <div>
         <div className="page page--gray page--main">
@@ -38,57 +42,60 @@ const MainScreen = ({cityId, baseCity, sortOffers, filterOffer, baseFilter}) => 
             </div>
           </header>
           <main className="page__main page__main--index">
-            <MenuContainer cityId={filter} />
-              {
-                ( currentOffers === undefined || currentOffers.length === 0) ? <OffersEmpty /> : <OffersNoempty
-                  filterOffer={filterOffer}
-                  currentCity={filter}
-                  offers={currentOffers}
-                  baseFilter={baseFilter}
-                />
-              }
+            <MenuContainer cities={cities} currentCity={currentCity} />
+            {
+              (offers === undefined || offers.length === 0) ? <OffersEmpty /> : <OffersNoempty
+                currentCity={cityId ? cities[cityId] : currentCity}
+                offers={offers}
+                baseFilter={baseFilter}
+                filterOffer={filterOffer}
+              />
+            }
           </main>
         </div>
       </div>
     );
-
-
-};
+  }
+}
 
 MainScreen.propTypes = {
   cityId: PropTypes.string,
-  currentCity: PropTypes.string,
+  currentCity:  PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number,
+    name: PropTypes.string
+  }),
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         offerItem
       })
   ),
   baseFilter: PropTypes.string,
-  filterOffer: PropTypes.func
+  filterOffer: PropTypes.func,
+  cities: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number,
+  }),
+  name: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   filterOffer(filter, offers, currentCity) {
-    console.log(currentCity);
     dispatch(ActionCreator.filterOffer(filter, offers, currentCity));
   }
-})
-
-
+});
 
 
 const mapStateToProps = (state) => {
   return {
-    fullOffers: state.getOffers.fullOffers,
-    sortOffers: state.getOffers.sortOffers,
-    baseCity: state.getOffers.baseCity,
-    baseFilter: state.getOffers.baseFilter,
-  }
-}
-
-
-
-
+    offers: selectCityOffers(state),
+    cities: state.Offers.listCities,
+    currentCity: state.Offers.currentCity,
+    baseFilter: state.Offers.baseFilter,
+  };
+};
 
 
 export {MainScreen};
