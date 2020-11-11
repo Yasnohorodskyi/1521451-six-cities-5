@@ -60,7 +60,7 @@ class MainScreen extends PureComponent {
 
 MainScreen.propTypes = {
   cityId: PropTypes.string,
-  currentCity:  PropTypes.shape({
+  currentCity: PropTypes.shape({
     latitude: PropTypes.number,
     longitude: PropTypes.number,
     zoom: PropTypes.number,
@@ -74,9 +74,9 @@ MainScreen.propTypes = {
   baseFilter: PropTypes.string,
   filterOffer: PropTypes.func,
   cities: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
-      zoom: PropTypes.number,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number,
   }),
   name: PropTypes.string,
 };

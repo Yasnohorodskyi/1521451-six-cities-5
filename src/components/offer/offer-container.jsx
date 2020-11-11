@@ -35,10 +35,10 @@ OfferContainer.propTypes = {
     name: PropTypes.string
   }),
   cityId: PropTypes.string,
-  currentOffers: PropTypes.arrayOf(
-    PropTypes.shape({
-      offerItem
-    })
+  currentOffer: PropTypes.arrayOf(
+      PropTypes.shape({
+        offerItem
+      })
   ),
   currentRoomCity: PropTypes.string,
 };

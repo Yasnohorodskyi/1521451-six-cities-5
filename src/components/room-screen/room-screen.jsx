@@ -163,11 +163,9 @@ RoomScreen.propTypes = {
         offerItem
       })
   ),
-  offer: PropTypes.arrayOf(
-    PropTypes.shape({
-      offerItem
-    })
-  )
+  offer: PropTypes.shape({
+    offerItem
+  })
 };
 
 const mapStateToProps = (state, props) => {

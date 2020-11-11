@@ -36,7 +36,7 @@ MenuContainer.propTypes = {
   }),
   changeCity: PropTypes.func,
   cities: PropTypes.shape({
-      citiesShape
+    citiesShape
   }),
   cityId: PropTypes.string,
 };
