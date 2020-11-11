@@ -6,7 +6,7 @@ import {MapCities} from "./components/map-cities";
 
 import {offerItem} from '../../shapes/offer-item';
 
-import {citiesShape} from '../../shapes/citiesShape';
+import {currentCityShape} from '../../shapes/current-city';
 
 const MapContainer = ({currentCity, offers, cities, max, currentOffer}) => {
   return (
@@ -27,17 +27,10 @@ MapContainer.propTypes = {
         offerItem
       })
   ),
-  currentCity: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-    name: PropTypes.string
-  }),
+  currentCity: currentCityShape,
   currentOffer: PropTypes.number,
   cities: PropTypes.arrayOf(
-      PropTypes.shape({
-        citiesShape
-      })
+      currentCityShape
   ),
   max: PropTypes.number
 };

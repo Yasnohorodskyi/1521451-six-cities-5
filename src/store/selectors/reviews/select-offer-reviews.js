@@ -5,7 +5,7 @@ const selectAllComments = (data) => data;
 export const selectOfferReviews = createSelector(
     selectAllComments,
     (data) => {
-      return data.state[`Rewiew`].reviews.filter(
+      return data.state[`Review`].reviews.filter(
           (review) => (review.offer === data.props[`currentOffer`])
       );
     }

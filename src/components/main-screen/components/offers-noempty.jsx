@@ -5,9 +5,9 @@ import OfferContainer from '../../../components/offer/offer-container.jsx';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
 import withOpenSelect from '../../../hocs/with-open-select';
+import {currentCityShape} from '../../../shapes/current-city';
 
 const SelectedClassOptionWithClickOutside = withOpenSelect(SelectedClassOption);
-
 
 const OffersNoempty = ({currentCity, offers, filterOffer, baseFilter}) => {
   return (<div className="cities">
@@ -32,7 +32,6 @@ const OffersNoempty = ({currentCity, offers, filterOffer, baseFilter}) => {
   </div>);
 };
 
-
 OffersNoempty.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
@@ -40,12 +39,7 @@ OffersNoempty.propTypes = {
       })
   ),
   cityId: PropTypes.string,
-  currentCity: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-    name: PropTypes.string
-  }),
+  currentCity: currentCityShape,
   baseFilter: PropTypes.string,
   filterOffer: PropTypes.func,
   countOffers: PropTypes.number,

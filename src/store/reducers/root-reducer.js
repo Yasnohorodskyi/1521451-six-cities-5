@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 
-import Rewiew from "./reviews/reviews";
+import Review from "./reviews/reviews";
 import Offers from "./offers/offers";
 
 export const NameSpace = {
@@ -10,6 +10,6 @@ export const NameSpace = {
 };
 
 export default combineReducers({
-  Rewiew,
+  Review,
   Offers
 });

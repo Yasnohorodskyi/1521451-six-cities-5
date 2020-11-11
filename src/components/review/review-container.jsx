@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import ReviewList from "./components/reviews-list.jsx";
 import {reviewsItem} from '../../shapes/reviews-item';
-import {selectOfferReviews} from '../../store/selects/reviews/select-offer-reviews';
+import {selectOfferReviews} from '../../store/selectors/reviews/select-offer-reviews';
 
 const ReviewContainer = (props) => {
-  const {rewiews} = props;
+  const {reviews} = props;
   return (
     <React.Fragment>
       <ReviewList
-        reviews={rewiews}
+        reviews={reviews}
       />
     </React.Fragment>
   );
 };
 
 ReviewContainer.propTypes = {
-  rewiews: PropTypes.arrayOf(
+  reviews: PropTypes.arrayOf(
       reviewsItem
   ),
   currentOffer: PropTypes.number
@@ -30,7 +30,7 @@ const mapStateToProps = (state, props) => {
     props
   };
   return {
-    rewiews: selectOfferReviews(data)
+    reviews: selectOfferReviews(data)
   };
 };
 

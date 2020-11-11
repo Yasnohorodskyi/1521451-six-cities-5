@@ -6,8 +6,9 @@ import {offerItem} from '../../shapes/offer-item';
 import {ActionCreator} from "../../store/action";
 import OffersEmpty from "./components/offers-empty";
 import OffersNoempty from "./components/offers-noempty";
+import {currentCityShape} from '../../shapes/current-city';
 
-import {selectCityOffers} from "../../store/selects/offers/select-city-offers";
+import {selectCityOffers} from "../../store/selectors/offers/select-city-offers";
 
 class MainScreen extends PureComponent {
   constructor(props) {
@@ -60,12 +61,7 @@ class MainScreen extends PureComponent {
 
 MainScreen.propTypes = {
   cityId: PropTypes.string,
-  currentCity: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-    name: PropTypes.string
-  }),
+  currentCity: currentCityShape,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         offerItem
@@ -73,11 +69,7 @@ MainScreen.propTypes = {
   ),
   baseFilter: PropTypes.string,
   filterOffer: PropTypes.func,
-  cities: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-  }),
+  cities: currentCityShape,
   name: PropTypes.string,
 };
 

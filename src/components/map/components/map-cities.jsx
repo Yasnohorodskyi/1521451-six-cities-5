@@ -3,7 +3,7 @@ import {Map, TileLayer} from "react-leaflet";
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
-import {citiesShape} from '../../../shapes/citiesShape';
+import {currentCityShape} from '../../../shapes/current-city';
 import {ZOOM} from '../const';
 
 class MapCities extends PureComponent {
@@ -92,19 +92,12 @@ class MapCities extends PureComponent {
 
 MapCities.propTypes = {
   currentOffer: PropTypes.number,
-  currentCity: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-    name: PropTypes.string
-  }),
+  currentCity: currentCityShape,
   offers: PropTypes.arrayOf(
       offerItem
   ),
   cities: PropTypes.arrayOf(
-      PropTypes.shape({
-        citiesShape
-      })
+      currentCityShape
   ),
   max: PropTypes.number
 };

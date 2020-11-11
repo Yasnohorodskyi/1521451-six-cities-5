@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import OfferItem from './offer-item.jsx';
 import {offerItem} from '../../../shapes/offer-item';
+import {currentCityShape} from '../../../shapes/current-city';
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -45,12 +46,7 @@ OfferList.propTypes = {
     PropTypes.number
   ]),
   currentCityRoom: PropTypes.string,
-  currentCity: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-    name: PropTypes.string
-  }),
+  currentCity: currentCityShape,
   cityId: PropTypes.string,
   currentOffer: PropTypes.number,
 };

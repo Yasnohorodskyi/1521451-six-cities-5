@@ -6,7 +6,7 @@ export const selectRoomOffer = createSelector(
     selectAllOffers,
     ({state, props}) => {
       return state.Offers[`data`].filter(
-          (offer) => Number(offer.id) === Number(window.location.href.split(`/`)[4]) && Number(offer.id) !== props.currentRoom
+          (offer) => Number(offer.id) === Number(props.currentRoom) && Number(offer.id) !== props.currentRoom
       );
     }
 );

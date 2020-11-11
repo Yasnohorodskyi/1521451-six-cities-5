@@ -7,7 +7,7 @@ const MenuWithActiveItem = withActiveItem(Menu);
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 import PropTypes from 'prop-types';
-import {citiesShape} from '../../shapes/citiesShape';
+import {currentCityShape} from '../../shapes/current-city';
 
 const MenuContainer = (props) => {
   const {currentCity, changeCity, cities} = props;
@@ -28,16 +28,9 @@ const MenuContainer = (props) => {
 };
 
 MenuContainer.propTypes = {
-  currentCity: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-    name: PropTypes.string
-  }),
+  currentCity: currentCityShape,
   changeCity: PropTypes.func,
-  cities: PropTypes.shape({
-    citiesShape
-  }),
+  cities: currentCityShape,
   cityId: PropTypes.string,
 };
 

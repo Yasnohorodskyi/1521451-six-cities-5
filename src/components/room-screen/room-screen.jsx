@@ -12,11 +12,13 @@ import {MAX_OTHER_REVIEWS} from '../offer/const';
 import OfferContainer from '../../components/offer/offer-container.jsx';
 import {offerItem} from '../../shapes/offer-item';
 
-import {selectRoomOffer} from "../../store/selects/offers/select-room-offer";
+import {selectRoomOffer} from "../../store/selectors/offers/select-room-offer";
+
+import {currentCityShape} from '../../shapes/current-city';
 
 const RoomScreen = ({offers, offer}) => {
 
-  const city = offer[0].city;
+  const city = offer.city;
 
   return (
     <div className="page">
@@ -46,7 +48,7 @@ const RoomScreen = ({offers, offer}) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {offer[0].images.map((picture, index) => (
+              {offer.images.map((picture, index) => (
                 <div key={index} className="property__image-wrapper">
                   <img className="property__image" src={picture} />
                 </div>
@@ -56,11 +58,11 @@ const RoomScreen = ({offers, offer}) => {
           <div className="property__container container">
             <div className="property__wrapper">
               {
-                (offer[0].premium) ? premiumTemplate(`property__mark`) : ``
+                (offer.premium) ? premiumTemplate(`property__mark`) : ``
               }
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {offer[0].title}
+                  {offer.title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -71,30 +73,30 @@ const RoomScreen = ({offers, offer}) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span className="rating__stars__value" style={calcRating(offer[0].rating)}></span>
+                  <span className="rating__stars__value" style={calcRating(offer.rating)}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{offer[0].rating}</span>
+                <span className="property__rating-value rating__value">{offer.rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {offer[0].type}
+                  {offer.type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  {offer[0].bedrooms}
+                  {offer.bedrooms}
                 </li>
                 <li className="property__feature property__feature--adults">
-                  {offer[0].max_adults}
+                  {offer.max_adults}
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">€{offer[0].price}</b>
+                <b className="property__price-value">€{offer.price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {offer[0].goods.map((good, index) => (
+                  {offer.goods.map((good, index) => (
                     <li key={index} className="property__inside-item">
                       {good}
                     </li>
@@ -108,19 +110,19 @@ const RoomScreen = ({offers, offer}) => {
 
                   </div>
                   <span className="property__user-name">
-                    {offer[0].host.name}
+                    {offer.host.name}
                   </span>
                 </div>
                 <div className="property__description">
 
                   <p className="property__text">
-                    {offer[0].description}
+                    {offer.description}
                   </p>
 
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <ReviewContainer currentOffer={offer[0].id} />
+                <ReviewContainer currentOffer={offer.id} />
               </section>
             </div>
           </div>
@@ -128,7 +130,7 @@ const RoomScreen = ({offers, offer}) => {
             <MapContainer
               currentCity={city}
               max={MAX_OTHER_REVIEWS}
-              currentOffer={offer[0].id}
+              currentOffer={offer.id}
               offers={offers}
             />
           </section>
@@ -138,8 +140,8 @@ const RoomScreen = ({offers, offer}) => {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OfferContainer
               max={MAX_OTHER_REVIEWS}
-              currentCity={offer[0].city}
-              currentOffer={offer[0].id}
+              currentCity={offer.city}
+              currentOffer={offer.id}
               offers={offers}
             />
           </section>
@@ -151,21 +153,14 @@ const RoomScreen = ({offers, offer}) => {
 };
 
 RoomScreen.propTypes = {
-  currentCity: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-    name: PropTypes.string
-  }),
+  currentCity: currentCityShape,
   currentRoom: PropTypes.string,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         offerItem
       })
   ),
-  offer: PropTypes.shape({
-    offerItem
-  })
+  offer: offerItem
 };
 
 const mapStateToProps = (state, props) => {
@@ -175,7 +170,7 @@ const mapStateToProps = (state, props) => {
   };
   return {
     listCities: state.Offers.listCities,
-    offer: selectRoomOffer(data),
+    offer: selectRoomOffer(data)[0],
     offers: state.Offers.data
   };
 };

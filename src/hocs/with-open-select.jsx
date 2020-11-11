@@ -2,7 +2,8 @@ import onClickOutside from "react-onclickoutside";
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {offerItem} from '../shapes/offer-item';
-import {actionFilter} from '../store/reducers/offers/offers';
+import {actionFilter} from '../store/reducers/offers/const';
+import {currentCityShape} from '../shapes/current-city';
 
 
 const withOpenSelect = (ComponentOutside) => {
@@ -71,12 +72,7 @@ const withOpenSelect = (ComponentOutside) => {
   }
 
   WithOpenSelect.propTypes = {
-    currentCity: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
-      zoom: PropTypes.number,
-      name: PropTypes.string
-    }),
+    currentCity: currentCityShape,
     filterOffer: PropTypes.func,
     baseFilter: PropTypes.string,
     currentOffers: PropTypes.arrayOf(

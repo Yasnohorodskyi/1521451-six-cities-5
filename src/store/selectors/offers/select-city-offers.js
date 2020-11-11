@@ -1,4 +1,5 @@
 import {createSelector} from "reselect";
+import {actionFilter} from "./const";
 
 const selectAllState = (state) => state.Offers;
 
@@ -6,7 +7,7 @@ export const selectCityOffers = createSelector(
     selectAllState,
     (state) => {
       switch (state.baseFilter) {
-        case `Top rated first`:
+        case actionFilter.FILTER_TOP_RATED_FIRST:
           return state.data.filter(
               (offer) => (offer.city.name === state.currentCity[`name`])
           ).sort(
@@ -14,7 +15,7 @@ export const selectCityOffers = createSelector(
                 return b.rating - a.rating;
               }
           );
-        case `Price: low to high`:
+        case actionFilter.FILTER_PRICE_LOW_TO_HIGH:
           return state.data.filter(
               (offer) => (offer.city.name === state.currentCity[`name`])
           ).sort(
@@ -22,7 +23,7 @@ export const selectCityOffers = createSelector(
                 return a.price - b.price;
               }
           );
-        case `Price: high to low`:
+        case actionFilter.FILTER_PRICE_HIGH_TO_LOW:
           return state.data.filter(
               (offer) => (offer.city.name === state.currentCity[`name`])
           ).sort(

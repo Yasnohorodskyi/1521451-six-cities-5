@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Link
 } from "react-router-dom";
-import {citiesShape} from '../../../shapes/citiesShape';
+import {currentCityShape} from '../../../shapes/current-city';
 import PropTypes from 'prop-types';
 
 const Menu = ({cities, activeItem, changeCity, currentCity}) => {
@@ -35,17 +35,10 @@ const Menu = ({cities, activeItem, changeCity, currentCity}) => {
 
 
 Menu.propTypes = {
-  currentCity: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-    zoom: PropTypes.number,
-    name: PropTypes.string
-  }),
+  currentCity: currentCityShape,
   changeCity: PropTypes.func,
   activeItem: PropTypes.string,
-  cities: PropTypes.shape({
-    citiesShape
-  })
+  cities: currentCityShape
 };
 
 
