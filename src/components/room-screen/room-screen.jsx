@@ -12,11 +12,14 @@ import {MAX_OTHER_REVIEWS} from '../offer/const';
 import OfferContainer from '../../components/offer/offer-container.jsx';
 import {offerItem} from '../../shapes/offer-item';
 
+import {selectRoomOffer} from "../../store/selectors/offers/select-room-offer";
 
-const RoomScreen = ({currentRoom, offers}) => {
-  const currentOffer = offers.filter(
-      (offer) => Number.parseInt(offer.id, 10) === Number.parseInt(currentRoom, 10)
-  )[0];
+import {currentCityShape} from '../../shapes/current-city';
+
+const RoomScreen = ({offers, offer}) => {
+
+  const city = offer.city;
+
   return (
     <div className="page">
       <header className="header">
@@ -45,9 +48,9 @@ const RoomScreen = ({currentRoom, offers}) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {currentOffer.gallery.map((picture) => (
-                <div key={picture.id} className="property__image-wrapper">
-                  <img className="property__image" src={picture.src} alt={picture.alt} />
+              {offer.images.map((picture, index) => (
+                <div key={index} className="property__image-wrapper">
+                  <img className="property__image" src={picture} />
                 </div>
               ))}
             </div>
@@ -55,11 +58,11 @@ const RoomScreen = ({currentRoom, offers}) => {
           <div className="property__container container">
             <div className="property__wrapper">
               {
-                (currentOffer.premium) ? premiumTemplate(`property__mark`) : ``
+                (offer.premium) ? premiumTemplate(`property__mark`) : ``
               }
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {currentOffer.title}
+                  {offer.title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -70,32 +73,32 @@ const RoomScreen = ({currentRoom, offers}) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span className="rating__stars__value" style={calcRating(currentOffer.rating)}></span>
+                  <span className="rating__stars__value" style={calcRating(offer.rating)}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{currentOffer.rating}</span>
+                <span className="property__rating-value rating__value">{offer.rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {currentOffer.propertyFeatures[0].value}
+                  {offer.type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  {currentOffer.propertyFeatures[1].value}
+                  {offer.bedrooms}
                 </li>
                 <li className="property__feature property__feature--adults">
-                  {currentOffer.propertyFeatures[2].value}
+                  {offer.max_adults}
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">{currentOffer.prices}</b>
+                <b className="property__price-value">€{offer.price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {Object.keys(currentOffer.insides).map((id) => (
-                    <li key={id} className="property__inside-item">
-                      {currentOffer.insides[id]}
+                  {offer.goods.map((good, index) => (
+                    <li key={index} className="property__inside-item">
+                      {good}
                     </li>
                   ))}
                 </ul>
@@ -104,30 +107,31 @@ const RoomScreen = ({currentRoom, offers}) => {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={currentOffer.host.ava} width="74" height="74" alt="Host avatar" />
+
                   </div>
                   <span className="property__user-name">
-                    {currentOffer.host.name}
+                    {offer.host.name}
                   </span>
                 </div>
                 <div className="property__description">
-                  {currentOffer.host.description.map((text, i) => (
-                    <p key={i} className="property__text">
-                      {text}
-                    </p>
-                  ))}
+
+                  <p className="property__text">
+                    {offer.description}
+                  </p>
+
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <ReviewContainer currentOffer={currentOffer.id} />
+                <ReviewContainer currentOffer={offer.id} />
               </section>
             </div>
           </div>
           <section className="property__map map">
             <MapContainer
-              currentCity={currentOffer.city}
+              currentCity={city}
               max={MAX_OTHER_REVIEWS}
-              currentOffer={currentOffer.id}
+              currentOffer={offer.id}
+              offers={offers}
             />
           </section>
         </section>
@@ -136,8 +140,9 @@ const RoomScreen = ({currentRoom, offers}) => {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OfferContainer
               max={MAX_OTHER_REVIEWS}
-              currentCity={currentOffer.city}
-              currentOffer={currentOffer.id}
+              currentCity={offer.city}
+              currentOffer={offer.id}
+              offers={offers}
             />
           </section>
         </div>
@@ -147,21 +152,28 @@ const RoomScreen = ({currentRoom, offers}) => {
   );
 };
 
-
 RoomScreen.propTypes = {
-  currentCity: PropTypes.string,
+  currentCity: currentCityShape,
   currentRoom: PropTypes.string,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         offerItem
       })
-  )
+  ),
+  offer: offerItem
 };
-const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  offers: state.offers
-});
 
+const mapStateToProps = (state, props) => {
+  const data = {
+    state,
+    props
+  };
+  return {
+    listCities: state.Offers.listCities,
+    offer: selectRoomOffer(data)[0],
+    offers: state.Offers.data
+  };
+};
 
 export {RoomScreen};
 export default connect(mapStateToProps)(RoomScreen);

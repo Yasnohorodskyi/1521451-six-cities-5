@@ -11,14 +11,14 @@ const offerItem = PropTypes.shape({
   gallery: PropTypes.arrayOf(
       offerGallery
   ),
-  premium: PropTypes.bool.isRequired,
-  houseLevel: PropTypes.string.isRequired,
+  premium: PropTypes.bool,
+  houseLevel: PropTypes.string,
   insides: PropTypes.shape(
       PropTypes.string.isRequired
   ),
   map: offerMap,
   host: offerHost,
-  prices: PropTypes.string.isRequired,
+  prices: PropTypes.string,
   propertyFeatures: offerFeatures,
   rating: PropTypes.number.isRequired
 });

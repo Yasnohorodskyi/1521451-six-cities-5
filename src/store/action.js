@@ -5,18 +5,23 @@ export const ActionType = {
 };
 
 export const ActionCreator = {
-  changeCity: (titleCity) => ({
-    type: ActionType.CHANGE_CITY,
-    payload: {
-      title: titleCity
+  changeCity: (currentCity) => (
+    {
+      type: ActionType.CHANGE_CITY,
+      payload: {
+        currentCity
+      }
     }
-  }),
-  filterOffer: (filter, offers) => ({
-    type: ActionType.FILTER_OFFER,
-    payload: {
-      filter,
-      offers
-    }
-  }),
+  ),
+  filterOffer: (filter, offers, currentCity) => {
+    return {
+      type: ActionType.FILTER_OFFER,
+      payload: {
+        filter,
+        offers,
+        currentCity
+      }
+    };
+  },
 };
 

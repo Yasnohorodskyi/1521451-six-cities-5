@@ -3,80 +3,71 @@ import {Map, TileLayer} from "react-leaflet";
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
-import {citiesShape} from '../../../shapes/citiesShape';
+import {currentCityShape} from '../../../shapes/current-city';
 import {ZOOM} from '../const';
 
 class MapCities extends PureComponent {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
-
-  }
-  filterOffers(offers, currentCity, cities, currentOffer) {
-    return {
-      offers: offers.filter(
-          (offer) => offer.city === currentCity && offer.id !== currentOffer
-      ),
-      currentCityInfo: cities.filter(
-          (city) => city.title === currentCity
-      )[0]
-    };
   }
   settingsMap(info) {
+
+    const {currentOffer} = this.props;
+
     const icon = L.icon({
       iconUrl: `/img/pin.svg`,
       iconSize: [30, 30]
     });
 
     const zoom = ZOOM;
+
     this.map = L.map(`map`, {
-      center: [info[`currentCityInfo`].lat, info[`currentCityInfo`].lon],
+      center: [
+        this.props.currentCity[`location`].latitude,
+        this.props.currentCity[`location`].longitude
+      ],
       zoom,
       zoomControl: false,
       marker: true
     });
-    this.map.setView([info[`currentCityInfo`].lat, info[`currentCityInfo`].lon], zoom);
+
+    this.map.setView([this.props.currentCity[`location`].latitude, this.props.currentCity[`location`].longitude], zoom);
 
     L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     })
       .addTo(this.map);
 
-    info[`offers`].forEach((city, index) => {
-      const offerCords = [city.map.lat, city.map.lon];
+    let index = 0;
+    info.forEach((offer) => {
+      const offerCords = [offer.location.latitude, offer.location.longitude];
       if (this.props.max) {
-        if (index < 3) {
-          L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${city.id}`;
+        if (index < 3 && offer.city.name === this.props.currentCity[`name`] && offer.id !== currentOffer) {
+          L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
+          index++;
         }
       } else {
-        L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${city.id}`;
+        L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
       }
     });
   }
   componentDidUpdate(prevProps) {
+
     if (this.props.currentCity !== prevProps.currentCity) {
       this.map.remove();
       this.settingsMap(
-          this.filterOffers(
-              this.props.offers,
-              this.props.currentCity,
-              this.props.cities
-          )
+          this.props.offers
       );
     }
   }
   componentDidMount() {
-    const {currentCity, offers, cities, currentOffer} = this.props;
+    const {offers} = this.props;
+
 
     this.settingsMap(
-        this.filterOffers(
-            offers,
-            currentCity,
-            cities,
-            currentOffer
-        )
+        offers
     );
-
   }
   render() {
     return (
@@ -101,14 +92,12 @@ class MapCities extends PureComponent {
 
 MapCities.propTypes = {
   currentOffer: PropTypes.number,
-  currentCity: PropTypes.string,
+  currentCity: currentCityShape,
   offers: PropTypes.arrayOf(
       offerItem
   ),
   cities: PropTypes.arrayOf(
-      PropTypes.shape({
-        citiesShape
-      })
+      currentCityShape
   ),
   max: PropTypes.number
 };

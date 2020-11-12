@@ -2,7 +2,8 @@ import onClickOutside from "react-onclickoutside";
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {offerItem} from '../shapes/offer-item';
-import {reducerType} from '../store/reducer';
+import {actionFilter} from '../store/reducers/offers/const';
+import {currentCityShape} from '../shapes/current-city';
 
 
 const withOpenSelect = (ComponentOutside) => {
@@ -10,10 +11,9 @@ const withOpenSelect = (ComponentOutside) => {
   class WithOpenSelect extends PureComponent {
     constructor(props) {
       super(props);
-
       this.state = {
         select: ``,
-        optionList: reducerType
+        optionList: actionFilter
       };
 
       this.filterOpen = this.filterOpen.bind(this);
@@ -32,13 +32,15 @@ const withOpenSelect = (ComponentOutside) => {
     }
     filterChange(event) {
       const {
-        currentOffers,
-        filterOffer
+        offers,
+        filterOffer,
+        currentCity
       } = this.props;
 
       filterOffer(
           event.target.innerText,
-          currentOffers
+          offers,
+          currentCity
       );
       this.filterClose();
     }
@@ -62,7 +64,7 @@ const withOpenSelect = (ComponentOutside) => {
         <ComponentOutside
           {...this.props}
           select={select}
-          optionList={reducerType}
+          optionList={actionFilter}
           click={onClick}
         />
       );
@@ -70,6 +72,7 @@ const withOpenSelect = (ComponentOutside) => {
   }
 
   WithOpenSelect.propTypes = {
+    currentCity: currentCityShape,
     filterOffer: PropTypes.func,
     baseFilter: PropTypes.string,
     currentOffers: PropTypes.arrayOf(
@@ -82,6 +85,11 @@ const withOpenSelect = (ComponentOutside) => {
     ),
     click: PropTypes.func,
     select: PropTypes.string,
+    offers: PropTypes.arrayOf(
+        PropTypes.shape({
+          offerItem
+        })
+    ),
   };
 
   return onClickOutside(WithOpenSelect);

@@ -11,8 +11,8 @@ import RoomScreen from '../room-screen/room-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import SignInScreen from '../sign-in-screen/sign-in-screen';
 
-const App = () => {
 
+const App = () => {
 
   return (
     <Router>

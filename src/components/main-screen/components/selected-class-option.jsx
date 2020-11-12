@@ -32,12 +32,11 @@ const SelectedClassOption = (props) => {
     }
     return array;
   };
-
   return (
     <form onClick={props.click} className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" data-action="open" tabIndex="0">
-        {props.baseFilter}
+        {baseFilter}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>

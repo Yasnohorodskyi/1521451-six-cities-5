@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import OfferItem from './offer-item.jsx';
 import {offerItem} from '../../../shapes/offer-item';
+import {currentCityShape} from '../../../shapes/current-city';
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -9,22 +10,19 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, currentCity, cityId, max, currentOffer} = this.props;
+    const {offers, currentCity, max, currentOffer} = this.props;
 
-    const currentId = (cityId) ? cityId : currentCity;
-
-    const offersFiltred = offers.filter(
-        (offer) => offer.city === currentId && offer.id !== currentOffer
-    );
-
-
+    let indexGloal = 0;
     return (
       <div className="near-places__list places__list">
         {
-          offersFiltred.map((offer, index) => {
+          offers.map((offer) => {
             if (max) {
-              if (index < max) {
-                return (<OfferItem key={offer.id} offer={offer} />);
+              if (indexGloal < max) {
+                if (currentCity.name === offer.city.name && currentOffer !== offer.id) {
+                  indexGloal++;
+                  return (<OfferItem key={offer.id} offer={offer} />);
+                }
               }
             } else {
               return (<OfferItem key={offer.id} offer={offer} />);
@@ -43,9 +41,12 @@ OfferList.propTypes = {
         offerItem
       })
   ),
-  max: PropTypes.number,
+  max: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   currentCityRoom: PropTypes.string,
-  currentCity: PropTypes.string,
+  currentCity: currentCityShape,
   cityId: PropTypes.string,
   currentOffer: PropTypes.number,
 };

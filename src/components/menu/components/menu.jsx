@@ -2,40 +2,44 @@ import React from 'react';
 import {
   Link
 } from "react-router-dom";
-import {citiesShape} from '../../../shapes/citiesShape';
+import {currentCityShape} from '../../../shapes/current-city';
 import PropTypes from 'prop-types';
 
-const Menu = ({cities, currentCity, changeCity, activeItem}) => {
+const Menu = ({cities, activeItem, changeCity, currentCity}) => {
 
-  return (
+  const createElementMenu = () => {
+    const itemsMenu = [];
+    for (let city in cities) {
+      if (cities.hasOwnProperty(city)) {
+        itemsMenu.push(
+            <li key={city} className="locations__item">
+              <Link onClick={
+                () => changeCity(cities[city])
+              }
+              className={`locations__item-link tabs__item${(city === currentCity.name) ? activeItem : ``}`}
+              to={city}
+              >
+                <span>{city}</span>
+              </Link>
+            </li>
+        );
+      }
+    }
+    return itemsMenu;
+  };
 
-    <ul className="locations__list tabs__list">
-      {cities.map((city) => (
-        <li key={city.id} className="locations__item">
-          <Link onClick={
-            () => changeCity(city.title)
-          }
-          className={`locations__item-link tabs__item${(city.title === currentCity) ? activeItem : ``}`}
-          to={city.link}
-          >
-            <span>{city.title}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-
-  );
+  return (<ul className="locations__list tabs__list">
+    {createElementMenu()}
+  </ul>);
 };
+
 
 Menu.propTypes = {
-  currentCity: PropTypes.string,
+  currentCity: currentCityShape,
   changeCity: PropTypes.func,
   activeItem: PropTypes.string,
-  cities: PropTypes.arrayOf(
-      PropTypes.shape({
-        citiesShape
-      })
-  ),
+  cities: currentCityShape
 };
+
 
 export default Menu;

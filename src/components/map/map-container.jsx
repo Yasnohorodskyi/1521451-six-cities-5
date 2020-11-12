@@ -6,17 +6,16 @@ import {MapCities} from "./components/map-cities";
 
 import {offerItem} from '../../shapes/offer-item';
 
-import {citiesShape} from '../../shapes/citiesShape';
+import {currentCityShape} from '../../shapes/current-city';
 
-const MapContainer = ({currentCity, offers, cities, currentOffer, max}) => {
-
+const MapContainer = ({currentCity, offers, cities, max, currentOffer}) => {
   return (
     <MapCities
-      currentOffer={currentOffer}
       currentCity={currentCity}
       offers={offers}
       cities={cities}
       max={max}
+      currentOffer={currentOffer}
     />
   );
 };
@@ -28,22 +27,20 @@ MapContainer.propTypes = {
         offerItem
       })
   ),
-  currentCity: PropTypes.string,
+  currentCity: currentCityShape,
   currentOffer: PropTypes.number,
   cities: PropTypes.arrayOf(
-      PropTypes.shape({
-        citiesShape
-      })
+      currentCityShape
   ),
   max: PropTypes.number
 };
 
-
-const mapStateToProps = (state) => ({
-  offers: state.offers,
-  cities: state.cities,
-});
-
+const mapStateToProps = (state, props) => {
+  return {
+    currentCity: state.Offers.currentCity ? state.Offers.currentCity : props.currentCity,
+    currentOffer: props.currentOffer
+  };
+};
 
 export {MapContainer};
 export default connect(mapStateToProps)(MapContainer);
