@@ -14,16 +14,15 @@ import SignInScreen from '../sign-in-screen/sign-in-screen';
 import browserHistory from "../../browser-history";
 
 import PrivateRoute from "../private-route/private-route";
-import { withRouter } from "react-router";
 
-const App = () => {
+const App = () =>{
   return (
     <Router history={browserHistory}>
       <Switch>
         <Route
           exact
           path="/login"
-          render={(history) => {
+          render={() => {
             return <SignInScreen />;
           }}
         />
@@ -46,8 +45,8 @@ const App = () => {
         <Route
           path="/:city?"
           render={({match}) => (
-              <MainScreen cityId={ match.params.city }/>
-            )
+            <MainScreen cityId={ match.params.city }/>
+          )
           }
         />
       </Switch>

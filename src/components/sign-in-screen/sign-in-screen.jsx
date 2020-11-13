@@ -77,6 +77,10 @@ class SignInScreen extends PureComponent {
       </div>
     );
   }
+}
+
+SignInScreen.propTypes = {
+  onSubmit: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({

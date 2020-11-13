@@ -15,7 +15,7 @@ import {AuthorizationStatus} from '../../store/const';
 import {
   Link
 } from "react-router-dom";
-import {get_cookie} from '../../helpers/cookie';
+import {getCookie} from '../../helpers/cookie';
 
 class MainScreen extends PureComponent {
   constructor(props) {
@@ -23,11 +23,11 @@ class MainScreen extends PureComponent {
   }
 
   render() {
-    const {cityId, filterOffer, baseFilter, offers, cities, currentCity, user} = this.props;
+    const {cityId, filterOffer, baseFilter, offers, cities, currentCity, authorizationStatus} = this.props;
 
-    const userCach = {}
-    if(get_cookie("userData") != 'undefined'){
-      userCach.info = JSON.parse(get_cookie("userData"));
+    const userCach = {};
+    if (getCookie(`userData`) !== `undefined`) {
+      userCach.info = JSON.parse(getCookie(`userData`));
     }
     return (
       <div>
@@ -43,22 +43,22 @@ class MainScreen extends PureComponent {
                 <nav className="header__nav">
                   <ul className="header__nav-list">
                     <li className="header__nav-item user">
-                        { (user.authorizationStatus == AuthorizationStatus.NO_AUTH) ?
-                          <div className="header__nav-link header__nav-link--profile">
-                            <div className="header__avatar-wrapper user__avatar-wrapper">
-                            </div>
-                            <span className="header__user-name user__name">
-                              <Link to='/login'> Sign In </Link>
-                            </span>
+                      { (authorizationStatus === AuthorizationStatus.NO_AUTH) ?
+                        <div className="header__nav-link header__nav-link--profile">
+                          <div className="header__avatar-wrapper user__avatar-wrapper">
                           </div>
+                          <span className="header__user-name user__name">
+                            <Link to='/login'> Sign In </Link>
+                          </span>
+                        </div>
                         :
-                          <div className="header__nav-link header__nav-link--profile">
-                            <img className="header__avatar-wrapper" src={userCach.info.avatar_url} />
-                            <span className="header__user-name user__name">
-                              <Link to='/favorites'> {userCach.info.email}</Link>
-                            </span>
-                          </div>
-                        }
+                        <div className="header__nav-link header__nav-link--profile">
+                          <img className="header__avatar-wrapper" src={userCach.info.avatar_url} />
+                          <span className="header__user-name user__name">
+                            <Link to='/favorites'> {userCach.info.email}</Link>
+                          </span>
+                        </div>
+                      }
                     </li>
                   </ul>
                 </nav>
@@ -68,7 +68,7 @@ class MainScreen extends PureComponent {
           <main className="page__main page__main--index">
             <MenuContainer cities={cities} currentCity={cityId ? cities[cityId] : currentCity} />
             {
-              (offers === undefined || offers === null ) ? <OffersEmpty /> : <OffersNoempty
+              (offers === undefined || offers === null) ? <OffersEmpty /> : <OffersNoempty
                 currentCity={cityId ? cities[cityId] : currentCity}
                 offers={offers}
                 baseFilter={baseFilter}
@@ -94,6 +94,7 @@ MainScreen.propTypes = {
   filterOffer: PropTypes.func,
   cities: currentCityShape,
   name: PropTypes.string,
+  authorizationStatus: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -106,11 +107,11 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
 
   return {
+    authorizationStatus: state.User.authorizationStatus,
     offers: selectCityOffers(state),
     cities: state.Offers.listCities,
     currentCity: state.Offers.currentCity,
-    baseFilter: state.Offers.baseFilter,
-    user: state.User
+    baseFilter: state.Offers.baseFilter
   };
 };
 

@@ -12,19 +12,19 @@ import OfferContainer from '../../components/offer/offer-container.jsx';
 import {offerItem} from '../../shapes/offer-item';
 import {selectRoomOffer} from "../../store/selectors/offers/select-room-offer";
 import {currentCityShape} from '../../shapes/current-city';
-import {get_cookie} from '../../helpers/cookie';
+import {getCookie} from '../../helpers/cookie';
 import {AuthorizationStatus} from '../../store/const';
 
 import {
   Link
 } from "react-router-dom";
 
-const RoomScreen = ({offers, offer, user}) => {
+const RoomScreen = ({offers, offer, authorizationStatus}) => {
 
   const city = offer.city;
-  const userCach = {}
-  if(get_cookie("userData") != 'undefined'){
-    userCach.info = JSON.parse(get_cookie("userData"));
+  const userCach = {};
+  if (getCookie(`userData`) !== `undefined`) {
+    userCach.info = JSON.parse(getCookie(`userData`));
   }
 
   return (
@@ -40,22 +40,22 @@ const RoomScreen = ({offers, offer, user}) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                { (user.authorizationStatus == AuthorizationStatus.NO_AUTH) ?
-                          <a className="header__nav-link header__nav-link--profile" href="#">
-                            <div className="header__avatar-wrapper user__avatar-wrapper">
-                            </div>
-                            <span className="header__user-name user__name">
-                              <Link to='/login'> Sign In </Link>
-                            </span>
-                          </a>
-                        :
-                          <a className="header__nav-link header__nav-link--profile" href="#">
-                            <img className="header__avatar-wrapper" src={userCach.info.avatar_url} />
-                            <span className="header__user-name user__name">
-                              <Link to='/favorites'> {userCach.info.email}</Link>
-                            </span>
-                          </a>
-                        }
+                  {(authorizationStatus === AuthorizationStatus.NO_AUTH) ?
+                    <div className="header__nav-link header__nav-link--profile" href="#">
+                      <div className="header__avatar-wrapper user__avatar-wrapper">
+                      </div>
+                      <span className="header__user-name user__name">
+                        <Link to='/login'> Sign In </Link>
+                      </span>
+                    </div>
+                    :
+                    <div className="header__nav-link header__nav-link--profile" href="#">
+                      <img className="header__avatar-wrapper" src={userCach.info.avatar_url} />
+                      <span className="header__user-name user__name">
+                        <Link to='/favorites'> {userCach.info.email}</Link>
+                      </span>
+                    </div>
+                  }
                 </li>
               </ul>
             </nav>
@@ -178,7 +178,8 @@ RoomScreen.propTypes = {
         offerItem
       })
   ),
-  offer: offerItem
+  offer: offerItem,
+  authorizationStatus: PropTypes.string,
 };
 
 const mapStateToProps = (state, props) => {
@@ -190,7 +191,7 @@ const mapStateToProps = (state, props) => {
     listCities: state.Offers.listCities,
     offer: selectRoomOffer(data)[0],
     offers: state.Offers.data,
-    user: state.User
+    authorizationStatus: state.User.authorizationStatus
   };
 };
 

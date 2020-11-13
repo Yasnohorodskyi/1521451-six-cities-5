@@ -1,4 +1,4 @@
-import {AppRoute, APIRoute, actionCity} from "./const"
+import {AppRoute, APIRoute, actionCity} from "./const";
 import {redirectToRoute, requireAuthorization} from "./action";
 import {AuthorizationStatus} from "./const";
 
@@ -15,7 +15,8 @@ export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
     .catch((error) => {
-      new Error(error);
+      const errorDisplay = new Error(error);
+      errorDisplay();
     })
 );
 
@@ -23,9 +24,8 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 export const login = ({email, password}) => (dispatch, _getState, api) => {
   api.post(APIRoute.LOGIN, {email, password})
     .then((response) => {
-      console.log(response.data.token);
-      dispatch(requireAuthorization(AuthorizationStatus.AUTH, response.data))
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH, response.data));
     })
-    .then(() => dispatch(redirectToRoute(AppRoute.RESULT)))
+    .then(() => dispatch(redirectToRoute(AppRoute.RESULT)));
 };
 

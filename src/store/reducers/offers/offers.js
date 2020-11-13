@@ -11,8 +11,6 @@ const stateOffers = {
 
 export default function Offers(state = stateOffers, action) {
 
-  console.log(action);
-
   switch (action.type) {
     case actionCity.LOAD_OFFERS:
       const arrCity = {};
@@ -21,10 +19,9 @@ export default function Offers(state = stateOffers, action) {
       });
 
       const keys = Object.keys(arrCity);
-      console.log(arrCity[keys[0]]);
       return extend(state, {
         data: action.payload,
-        currentCity: (browserHistory.location.pathname.slice(1) !== '') ? arrCity[browserHistory.location.pathname.slice(1)] : arrCity[keys[0]],
+        currentCity: (browserHistory.location.pathname.slice(1) !== ``) ? arrCity[browserHistory.location.pathname.slice(1)] : arrCity[keys[0]],
         listCities: arrCity,
         baseFilter: actionFilter.FILTER_POPULAR
       });
@@ -36,20 +33,13 @@ export default function Offers(state = stateOffers, action) {
       });
 
   }
-  //Тут проблема!
-  let d = '';
-
-  if(action.payload == '/'){
-     d = actionFilter.FILTER_POPULAR;
-  }else if(action.payload){
-    d = action.payload.filter;
-  }
 
   if (action.payload) {
     return extend(state, {
-      baseFilter: d
+      baseFilter: (action.payload === `/`) ? actionFilter.FILTER_POPULAR : action.payload.filter
     });
   }
+
 
   return state;
 }

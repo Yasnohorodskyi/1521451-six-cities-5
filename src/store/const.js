@@ -11,8 +11,8 @@ export const AppRoute = {
 const baseUrl = `https://5.react.pages.academy/six-cities/`;
 
 export const APIRoute = {
-  GET_OFFER: baseUrl+`hotels`,
-  LOGIN: baseUrl+`login`
+  GET_OFFER: baseUrl + `hotels`,
+  LOGIN: baseUrl + `login`
 };
 
 export const actionFilter = {

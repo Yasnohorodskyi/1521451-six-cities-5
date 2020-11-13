@@ -30,12 +30,12 @@ export const ActionCreator = {
 
 export const requireAuthorization = (status, data) => {
   return {
-  type: ActionType.REQUIRED_AUTHORIZATION,
-  payload: {
-    status,
-    data
-  },
-  }
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: {
+      status,
+      data
+    },
+  };
 };
 export const redirectToRoute = (url) => ({
   type: ActionType.REDIRECT_TO_ROUTE,
