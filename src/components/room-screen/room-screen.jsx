@@ -7,18 +7,25 @@ import {connect} from "react-redux";
 
 import ReviewContainer from "../review/review-container";
 import MapContainer from '../map/map-container.jsx';
-
 import {MAX_OTHER_REVIEWS} from '../offer/const';
 import OfferContainer from '../../components/offer/offer-container.jsx';
 import {offerItem} from '../../shapes/offer-item';
-
 import {selectRoomOffer} from "../../store/selectors/offers/select-room-offer";
-
 import {currentCityShape} from '../../shapes/current-city';
+import {get_cookie} from '../../helpers/cookie';
+import {AuthorizationStatus} from '../../store/const';
 
-const RoomScreen = ({offers, offer}) => {
+import {
+  Link
+} from "react-router-dom";
+
+const RoomScreen = ({offers, offer, user}) => {
 
   const city = offer.city;
+  const userCach = {}
+  if(get_cookie("userData") != 'undefined'){
+    userCach.info = JSON.parse(get_cookie("userData"));
+  }
 
   return (
     <div className="page">
@@ -33,11 +40,22 @@ const RoomScreen = ({offers, offer}) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
+                { (user.authorizationStatus == AuthorizationStatus.NO_AUTH) ?
+                          <a className="header__nav-link header__nav-link--profile" href="#">
+                            <div className="header__avatar-wrapper user__avatar-wrapper">
+                            </div>
+                            <span className="header__user-name user__name">
+                              <Link to='/login'> Sign In </Link>
+                            </span>
+                          </a>
+                        :
+                          <a className="header__nav-link header__nav-link--profile" href="#">
+                            <img className="header__avatar-wrapper" src={userCach.info.avatar_url} />
+                            <span className="header__user-name user__name">
+                              <Link to='/favorites'> {userCach.info.email}</Link>
+                            </span>
+                          </a>
+                        }
                 </li>
               </ul>
             </nav>
@@ -171,7 +189,8 @@ const mapStateToProps = (state, props) => {
   return {
     listCities: state.Offers.listCities,
     offer: selectRoomOffer(data)[0],
-    offers: state.Offers.data
+    offers: state.Offers.data,
+    user: state.User
   };
 };
 

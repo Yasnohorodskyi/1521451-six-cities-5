@@ -10,13 +10,25 @@ import {currentCityShape} from '../../shapes/current-city';
 
 import {selectCityOffers} from "../../store/selectors/offers/select-city-offers";
 
+import {AuthorizationStatus} from '../../store/const';
+
+import {
+  Link
+} from "react-router-dom";
+import {get_cookie} from '../../helpers/cookie';
+
 class MainScreen extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {cityId, filterOffer, baseFilter, offers, cities, currentCity} = this.props;
+    const {cityId, filterOffer, baseFilter, offers, cities, currentCity, user} = this.props;
+
+    const userCach = {}
+    if(get_cookie("userData") != 'undefined'){
+      userCach.info = JSON.parse(get_cookie("userData"));
+    }
     return (
       <div>
         <div className="page page--gray page--main">
@@ -31,11 +43,22 @@ class MainScreen extends PureComponent {
                 <nav className="header__nav">
                   <ul className="header__nav-list">
                     <li className="header__nav-item user">
-                      <a className="header__nav-link header__nav-link--profile" href="#">
-                        <div className="header__avatar-wrapper user__avatar-wrapper">
-                        </div>
-                        <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                      </a>
+                        { (user.authorizationStatus == AuthorizationStatus.NO_AUTH) ?
+                          <div className="header__nav-link header__nav-link--profile">
+                            <div className="header__avatar-wrapper user__avatar-wrapper">
+                            </div>
+                            <span className="header__user-name user__name">
+                              <Link to='/login'> Sign In </Link>
+                            </span>
+                          </div>
+                        :
+                          <div className="header__nav-link header__nav-link--profile">
+                            <img className="header__avatar-wrapper" src={userCach.info.avatar_url} />
+                            <span className="header__user-name user__name">
+                              <Link to='/favorites'> {userCach.info.email}</Link>
+                            </span>
+                          </div>
+                        }
                     </li>
                   </ul>
                 </nav>
@@ -43,9 +66,9 @@ class MainScreen extends PureComponent {
             </div>
           </header>
           <main className="page__main page__main--index">
-            <MenuContainer cities={cities} currentCity={currentCity} />
+            <MenuContainer cities={cities} currentCity={cityId ? cities[cityId] : currentCity} />
             {
-              (offers === undefined || offers.length === 0) ? <OffersEmpty /> : <OffersNoempty
+              (offers === undefined || offers === null ) ? <OffersEmpty /> : <OffersNoempty
                 currentCity={cityId ? cities[cityId] : currentCity}
                 offers={offers}
                 baseFilter={baseFilter}
@@ -81,11 +104,13 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const mapStateToProps = (state) => {
+
   return {
     offers: selectCityOffers(state),
     cities: state.Offers.listCities,
     currentCity: state.Offers.currentCity,
     baseFilter: state.Offers.baseFilter,
+    user: state.User
   };
 };
 

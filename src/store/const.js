@@ -1,3 +1,20 @@
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+export const AppRoute = {
+  RESULT: `/`,
+  LOGIN: `/login`
+};
+
+const baseUrl = `https://5.react.pages.academy/six-cities/`;
+
+export const APIRoute = {
+  GET_OFFER: baseUrl+`hotels`,
+  LOGIN: baseUrl+`login`
+};
+
 export const actionFilter = {
   FILTER_POPULAR: `Popular`,
   FILTER_TOP_RATED_FIRST: `Top rated first`,

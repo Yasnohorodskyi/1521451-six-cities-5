@@ -9,6 +9,7 @@ import {currentCityShape} from '../../../shapes/current-city';
 
 const SelectedClassOptionWithClickOutside = withOpenSelect(SelectedClassOption);
 
+
 const OffersNoempty = ({currentCity, offers, filterOffer, baseFilter}) => {
   return (<div className="cities">
     <div className="cities__places-container container">

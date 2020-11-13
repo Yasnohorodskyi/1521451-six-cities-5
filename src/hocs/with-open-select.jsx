@@ -2,7 +2,7 @@ import onClickOutside from "react-onclickoutside";
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {offerItem} from '../shapes/offer-item';
-import {actionFilter} from '../store/reducers/offers/const';
+import {actionFilter} from '../store/const';
 import {currentCityShape} from '../shapes/current-city';
 
 

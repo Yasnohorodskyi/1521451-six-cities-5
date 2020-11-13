@@ -5,6 +5,7 @@ import {offerItem} from '../../../shapes/offer-item';
 
 const SelectedClassOption = (props) => {
   const {optionList, baseFilter} = props;
+  console.log(baseFilter);
   const option = (prop, type) => {
     switch (type) {
       case `li`:
