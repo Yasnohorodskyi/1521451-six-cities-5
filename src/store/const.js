@@ -3,6 +3,16 @@ export const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
+export const ActionType = {
+  CHANGE_CITY: `CHANGE_CITY`,
+  GET_OFFERS: `GET_OFFERS`,
+  GET_OFFER: `GET_OFFER`,
+  FILTER_OFFER: `FILTER_OFFER`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  GET_REVIEWS: `GET_REVIEWS`,
+};
+
 export const AppRoute = {
   RESULT: `/`,
   LOGIN: `/login`
@@ -12,7 +22,9 @@ const baseUrl = `https://5.react.pages.academy/six-cities/`;
 
 export const APIRoute = {
   GET_OFFER: baseUrl + `hotels`,
-  LOGIN: baseUrl + `login`
+  GET_REVIEWS: baseUrl + `comments`,
+  LOGIN: baseUrl + `login`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 export const actionFilter = {

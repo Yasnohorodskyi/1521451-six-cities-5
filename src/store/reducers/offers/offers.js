@@ -1,28 +1,42 @@
 import {extend} from "../../../helpers/extend";
-import {actionFilter, actionCity} from "../../const";
+import {actionFilter, actionCity, ActionType} from "../../const";
 import browserHistory from "../../../browser-history";
 
 const stateOffers = {
   currentCity: null,
   baseFilter: actionFilter.FILTER_POPULAR,
-  offers: []
+  offers: [],
+  offer: null,
+  nearby: []
 };
 
 
 export default function Offers(state = stateOffers, action) {
 
+
   switch (action.type) {
-    case actionCity.LOAD_OFFERS:
-      const arrCity = {};
-      action.payload.map((offer) => {
-        arrCity[offer.city.name] = offer.city;
+    case ActionType.GET_OFFER:
+      console.log(action.payload)
+      return extend(state, {
+        offer: action.payload.offer,
+        nearby: action.payload.nearby
       });
 
-      const keys = Object.keys(arrCity);
+    case ActionType.GET_OFFERS:
+
+    const firstCity = action.payload[0].city;
+
+     const list = {};
+      action.payload.map(v => v.city)
+      .filter((item) => {
+        list[item.name] = item;
+      });
+
+
       return extend(state, {
         data: action.payload,
-        currentCity: (browserHistory.location.pathname.slice(1) !== ``) ? arrCity[browserHistory.location.pathname.slice(1)] : arrCity[keys[0]],
-        listCities: arrCity,
+        currentCity: firstCity,
+        listCities: list ,
         baseFilter: actionFilter.FILTER_POPULAR
       });
 

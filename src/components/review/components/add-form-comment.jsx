@@ -10,16 +10,19 @@ class AddFormComment extends PureComponent {
       reviews: [],
       rating: 0
     };
-    this.addComment = () => {
 
-    };
     this.handleSubmit = (event) => {
+      const {addReviews, currentOffer, uppReviews} = this.props;
+
       event.preventDefault();
       let comment = new FormData(event.currentTarget).get(`review`);
-      this.addComment(
+
+      addReviews(
           comment,
-          this.state.rating
+          this.state.rating,
+          currentOffer
       );
+
     };
     this.handleChange = (event) => {
       this.state.rating = event.currentTarget.value;
@@ -62,7 +65,7 @@ class AddFormComment extends PureComponent {
               50 characters
             </b>.
           </p>
-          <button className="reviews__submit form__submit button" type="submit" disabled="">Submit</button>
+          <button className="reviews__submit form__submit button" type="submit">Submit</button>
         </div>
       </form>
     );

@@ -1,9 +1,9 @@
 import browserHistory from "../../browser-history";
-import {ActionType} from "../action";
+import {APIRoute} from "../const";
 
 export const redirect = (_store) => (next) => (action) => {
   if (action) {
-    if (action.type === ActionType.REDIRECT_TO_ROUTE) {
+    if (action.type === APIRoute.REDIRECT_TO_ROUTE) {
       browserHistory.push(action.payload);
     }
   }

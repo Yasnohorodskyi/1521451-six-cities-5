@@ -13,8 +13,6 @@ const MapContainer = ({currentCity, offers, cities, max, currentOffer}) => {
     <MapCities
       currentCity={currentCity}
       offers={offers}
-      cities={cities}
-      max={max}
       currentOffer={currentOffer}
     />
   );

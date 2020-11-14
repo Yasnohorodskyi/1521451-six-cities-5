@@ -5,19 +5,21 @@ import withActiveItem from '../../hocs/with-active-item';
 const MenuWithActiveItem = withActiveItem(Menu);
 
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+//import {ActionOffer} from "../../store/actions/offers/offers";
+import {changeCity} from "../../store/actions/offers/offers";
+
 import PropTypes from 'prop-types';
 import {currentCityShape} from '../../shapes/current-city';
 
 const MenuContainer = (props) => {
-  const {currentCity, changeCity, cities} = props;
+  const {currentCity, changeCityProp, cities} = props;
   return (
     <React.Fragment>
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
           <MenuWithActiveItem
-            changeCity={changeCity}
+            changeCity={changeCityProp}
             cities={cities}
             currentCity={currentCity}
           />
@@ -35,8 +37,8 @@ MenuContainer.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  changeCity(currentCity) {
-    dispatch(ActionCreator.changeCity(currentCity));
+  changeCityProp(currentCity) {
+    dispatch(changeCity(currentCity));
   },
 });
 

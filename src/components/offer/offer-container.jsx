@@ -11,10 +11,10 @@ const OfferContainer = (props) => {
   return (
     <div className="near-places__list places__list">
       <OfferList
-        currentCity={currentCity}
+        //currentCity={currentCity}
         offers={offers}
-        max={max || ``}
-        currentOffer={currentOffer}
+        //max={max || ``}
+        //currentOffer={currentOffer}
       />
     </div>
   );

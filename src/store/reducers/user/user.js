@@ -1,6 +1,6 @@
+
 import {AuthorizationStatus} from "../../const";
-import {ActionType} from "../../action";
-import {setCookie} from '../../../helpers/cookie';
+import {UserType} from "../../actions/const";
 
 const userState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -9,14 +9,14 @@ const userState = {
 
 export default function User(state = userState, action) {
   switch (action.type) {
-    case ActionType.REQUIRED_AUTHORIZATION:
-      setCookie(`userData`, JSON.stringify(action.payload.data));
+    case UserType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {
-        authorizationStatus: state.authorizationStatus,
-        data: action.payload.data
+        data: action.payload.data,
+        authorizationStatus: `AUTH`
       });
-    case ActionType.REDIRECT_TO_ROUTE:
+    case UserType.AuthorizationStatus:
       return Object.assign({}, state, {
+        data: action.payload.data,
         authorizationStatus: `AUTH`
       });
   }

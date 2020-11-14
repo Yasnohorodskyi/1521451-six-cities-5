@@ -11,12 +11,16 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import {createAPI} from "./services/api";
 
-import {fetch, checkAuth} from "./store/api-action";
+
 import {redirect} from "./store/middlewares/redirect";
 
-import {AuthorizationStatus} from "./store/const";
 
-import {requireAuthorization} from "./store/action";
+//import {fetch, checkAuth} from "./store/api-action";
+
+//import {AuthorizationStatus} from "./store/const";
+//import {requireAuthorization} from "./store/action";
+import {checkAuth, requireAuthorization} from "./store/actions/user/user";
+import {fetchOffers} from "./store/actions/offers/offers";
 
 
 const api = createAPI(
@@ -33,7 +37,7 @@ const store = createStore(
 
 Promise.all([
   store.dispatch(checkAuth(api)),
-  store.dispatch(fetch()),
+  store.dispatch(fetchOffers()),
 ]).then(() => {
 
   ReactDOM.render(

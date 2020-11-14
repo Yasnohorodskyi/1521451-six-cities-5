@@ -1,7 +1,7 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {login} from "../../store/api-action";
+import {login} from "../../store/actions/user/user";
 
 class SignInScreen extends PureComponent {
   constructor(props) {
