@@ -13,6 +13,10 @@ export default function Reviews(state = stateReviews, action) {
       return extend(state, {
         reviews: action.payload.data
       });
+    case ActionType.ADD_REVIEWS:
+      return extend(state, {
+        reviews: action.payload.data
+      });
   }
 
   return extend(state, {

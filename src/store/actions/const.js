@@ -11,5 +11,6 @@ export const UserType = {
   NO_AUTH: `NO_AUTH`,
 };
 export const ReviewType = {
+  ADD_REVIEWS: `ADD_REVIEWS`,
   GET_REVIEWS: `GET_REVIEWS`
 };
