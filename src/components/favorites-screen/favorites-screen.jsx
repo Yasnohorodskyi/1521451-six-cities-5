@@ -3,7 +3,9 @@ import HeaderContainer from '../header/header-container';
 import { getFavorite } from '../../store/actions/offers/offers';
 import { connect } from "react-redux";
 import { selectFavorites } from "../../store/selectors/offers/filter-favorites";
-
+import {Footer} from "../share/footer/footer-container";
+import {FavoritesEmpty} from "./favorites-empty";
+console.log(FavoritesEmpty);
 class FavoritesScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -11,8 +13,9 @@ class FavoritesScreen extends PureComponent {
   }
   render() {
     const { favorites } = this.props;
-
-    return (
+    console.log(favorites);
+    if(favorites.length !== 0){
+      return (
       <div className="page">
         <HeaderContainer />
         <main className="page__main page__main--favorites">
@@ -60,7 +63,7 @@ class FavoritesScreen extends PureComponent {
                                     </div>
                                   </div>
                                   <h2 className="place-card__name">
-                                    <a href="#">{favorite.title}</a>
+                                    <a href={`/offer/${favorite.id}`}>{favorite.title}</a>
                                   </h2>
                                   <p className="place-card__type">{favorite.type}</p>
                                 </div>
@@ -77,13 +80,17 @@ class FavoritesScreen extends PureComponent {
             </section>
           </div>
         </main>
-        <footer className="footer container">
-          <a className="footer__logo-link" href="main.html">
-            <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-          </a>
-        </footer>
+        <Footer />
       </div>
     );
+   }else return (
+    <div className="page page--favorites-empty">
+      <HeaderContainer />
+      <FavoritesEmpty />
+      <Footer />
+    </div>
+   );
+
   };
 }
 

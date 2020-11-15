@@ -53,6 +53,7 @@ export default function Offers(state = stateOffers, action) {
   }
 
   if (action.payload) {
+    console.log(action.payload);
     return extend(state, {
       baseFilter: (action.payload === `/`) ? actionFilter.FILTER_POPULAR : action.payload.filter
     });
