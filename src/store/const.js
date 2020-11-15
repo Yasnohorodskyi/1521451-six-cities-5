@@ -12,6 +12,8 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   GET_REVIEWS: `GET_REVIEWS`,
   ADD_REVIEWS: `ADD_REVIEWS`,
+  SET_FAVORITE: `SET_FAVORITE`,
+  GET_FAVORITE: `GET_FAVORITE`
 };
 
 export const AppRoute = {
@@ -26,6 +28,7 @@ export const APIRoute = {
   GET_REVIEWS: baseUrl + `comments`,
   LOGIN: baseUrl + `login`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  FAVORITE: baseUrl + `favorite`,
 };
 
 export const actionFilter = {

@@ -49,3 +49,25 @@ export const filterOffer = (filter, offers, currentCity) => (dispatch) => {
     }
   })
 }
+
+
+export const setFavorite = (idRoom) => (dispatch, _getState, api) => {
+  api.post(`${APIRoute.FAVORITE}/${idRoom}/1`).then((response) => {
+    console.log(response);
+  })
+  .then(() => {console.log('as')});
+}
+
+
+export const getFavorite = () => (dispatch, _getState, api) => {
+  api.get(`${APIRoute.FAVORITE}`).then((response) => {
+    console.log(OffersType);
+    dispatch({
+      type: OffersType.GET_FAVORITE,
+      payload:{
+        favorites: response.data
+      }
+    })
+  })
+  .then(() => {console.log('as')});
+}

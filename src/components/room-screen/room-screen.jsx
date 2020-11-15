@@ -14,7 +14,7 @@ import {selectRoomOffer} from "../../store/selectors/offers/select-room-offer";
 import {currentCityShape} from '../../shapes/current-city';
 import {getCookie} from '../../helpers/cookie';
 import {AuthorizationStatus} from '../../store/const';
-import {getOffer} from '../../store/actions/offers/offers';
+import {getOffer, setFavorite} from '../../store/actions/offers/offers';
 import HeaderContainer from '../header/header-container';
 
 import {
@@ -24,11 +24,13 @@ import {
 class RoomScreen extends PureComponent {
   constructor(props) {
     super(props);
-    const {currentRoom, getOffer} = this.props;
+    const {currentRoom, getOffer, setFavorite} = this.props;
     getOffer(currentRoom)
+    //Не получилось сделать бинд
+    //this.setFavorite = setFavorite.bind(this);
   }
   render() {
-    const {cityId, filterOffer, baseFilter, offers, cities, currentCity, user, offer, authorizationStatus, nearby} = this.props;
+    const {cityId, filterOffer, baseFilter, offers, cities, currentCity, user, offer, authorizationStatus, nearby, setFavorite} = this.props;
 
       if(offer === null) return null;
 
@@ -56,7 +58,7 @@ class RoomScreen extends PureComponent {
                     <h1 className="property__name">
                       {offer.title}
                     </h1>
-                    <button className="property__bookmark-button button" type="button">
+                    <button onClick={()=>setFavorite(offer.id)} className="property__bookmark-button button" type="button">
                       <svg className="property__bookmark-icon" width="31" height="33">
                         <use xlinkHref="#icon-bookmark"></use>
                       </svg>
@@ -163,6 +165,9 @@ RoomScreen.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   getOffer(id) {
     dispatch(getOffer(id));
+  },
+  setFavorite(id){
+    dispatch(setFavorite(id));
   }
 });
 

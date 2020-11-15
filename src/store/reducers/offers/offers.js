@@ -1,22 +1,20 @@
 import {extend} from "../../../helpers/extend";
 import {actionFilter, actionCity, ActionType} from "../../const";
-import browserHistory from "../../../browser-history";
 
 const stateOffers = {
   currentCity: null,
   baseFilter: actionFilter.FILTER_POPULAR,
   offers: [],
   offer: null,
-  nearby: []
+  nearby: [],
+  favorites: []
 };
 
 
 export default function Offers(state = stateOffers, action) {
 
-
   switch (action.type) {
     case ActionType.GET_OFFER:
-      console.log(action.payload)
       return extend(state, {
         offer: action.payload.offer,
         nearby: action.payload.nearby
@@ -38,6 +36,12 @@ export default function Offers(state = stateOffers, action) {
         currentCity: firstCity,
         listCities: list ,
         baseFilter: actionFilter.FILTER_POPULAR
+      });
+
+    case ActionType.GET_FAVORITE:
+
+      return extend(state, {
+        favorites: action.payload.favorites,
       });
 
     case actionCity.CHANGE_CITY:
