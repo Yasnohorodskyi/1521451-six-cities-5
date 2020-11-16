@@ -42,9 +42,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
-    currentCity: state.Offers.currentCity,
+    currentCity: props.currentCity,
   };
 };
 

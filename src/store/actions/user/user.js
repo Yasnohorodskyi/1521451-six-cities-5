@@ -3,7 +3,7 @@ import {APIRoute, AppRoute, AuthorizationStatus, ActionType} from "../../const";
 
 
 export const checkAuth = () => (dispatch, _getState, api) => (
-  api.get(APIRoute.LOGIN, {withCredentials: true})
+  api.get(APIRoute.LOGIN)
     .then((res) => {
       console.log(res.data);
       dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH, res.data))
@@ -16,7 +16,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 
 
 export const login = ({email, password}) => (dispatch, _getState, api) => {
-  api.post(APIRoute.LOGIN, {withCredentials: true}
+  api.post(APIRoute.LOGIN, {email, password}
     ).then((response) => {
       console.log(response);
       dispatch(requireAuthorization(AuthorizationStatus.AUTH, response.data));

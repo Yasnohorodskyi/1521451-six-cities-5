@@ -23,10 +23,11 @@ class MainScreen extends PureComponent {
   }
 
   render() {
-    const {cityId, filterOffer, baseFilter, offers, cities, currentCity, user} = this.props;
+    const {cityId, filterOffer, baseFilter, offers, cities, currentCity} = this.props;
 
+    if(!cities) return null;
 
-      return (
+    return (
       <div>
         <div className="page page--gray page--main">
           <HeaderContainer />
@@ -44,7 +45,8 @@ class MainScreen extends PureComponent {
         </div>
       </div>
     );
-  }
+
+}
 
 }
 
@@ -71,13 +73,17 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+  const data = {
+    state,
+    props
+  }
   return {
     authorizationStatus: state.User.authorizationStatus,
     cities: state.Offers.listCities,
     currentCity: state.Offers.currentCity,
     baseFilter: state.Offers.baseFilter,
-    offers: selectCityOffers(state),
+    offers: selectCityOffers(data),
     user: state.User,
   };
 };

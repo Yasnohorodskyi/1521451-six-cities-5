@@ -30,7 +30,7 @@ export default function Offers(state = stateOffers, action) {
         list[item.name] = item;
       });
 
-
+      console.log(state);
       return extend(state, {
         data: action.payload,
         currentCity: firstCity,
@@ -53,7 +53,6 @@ export default function Offers(state = stateOffers, action) {
   }
 
   if (action.payload) {
-    console.log(action.payload);
     return extend(state, {
       baseFilter: (action.payload === `/`) ? actionFilter.FILTER_POPULAR : action.payload.filter
     });

@@ -6,12 +6,13 @@ import {offerItem} from '../../shapes/offer-item';
 import {currentCityShape} from '../../shapes/current-city';
 
 const OfferContainer = (props) => {
-  const {offers} = props;
+  const {offers, currentCity} = props;
 
   return (
     <div className="near-places__list places__list">
       <OfferList
         offers={offers}
+        currentCity={currentCity}
       />
     </div>
   );
@@ -33,12 +34,6 @@ OfferContainer.propTypes = {
 
 
 
-const mapStateToProps = (state, props) => {
-  return {
-    currentOffer: props.currentOffer
-  };
-};
 
+export default OfferContainer;
 
-export {OfferContainer};
-export default connect(mapStateToProps)(OfferContainer);

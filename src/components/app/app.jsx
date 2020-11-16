@@ -44,8 +44,8 @@ const App = () =>{
         />
         <Route
           path="/:city?"
-          render={({match}) => (
-            <MainScreen cityId={ match.params.city }/>
+          render={({match, location}) => (
+            <MainScreen location={location} cityId={ match.params.city }/>
           )
           }
         />
