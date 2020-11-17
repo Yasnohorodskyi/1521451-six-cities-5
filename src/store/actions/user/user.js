@@ -1,9 +1,19 @@
 import {APIRoute, AppRoute, AuthorizationStatus, ActionType} from "../../const";
 
+const converterUser = (data) => {
+  return {
+    avatarUrl: data.avatar_url,
+    email: data.email,
+    id: data.id,
+    isPro: data.is_pro,
+    name: data.name
+  };
+};
+
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then((res) => {
-      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH, res.data));
+      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH, converterUser(res.data)));
     })
     .catch(() => {
     })
@@ -13,7 +23,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 export const login = ({email, password}) => (dispatch, _getState, api) => {
   api.post(APIRoute.LOGIN, {email, password}
   ).then((response) => {
-    dispatch(requireAuthorization(AuthorizationStatus.AUTH, response.data));
+    dispatch(requireAuthorization(AuthorizationStatus.AUTH, converterUser(response.data)));
   })
   .then(() => dispatch(redirectToRoute(AppRoute.RESULT)));
 };

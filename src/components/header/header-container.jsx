@@ -14,7 +14,7 @@ class HeaderContainer extends PureComponent {
   authHeader(user) {
     return (
       <div className="header__nav-link header__nav-link--profile">
-        <img className="header__avatar-wrapper" src={user.data.avatar_url} />
+        <img className="header__avatar-wrapper" src={user.data.avatarUrl} />
         <span className="header__user-name user__name">
           <Link to='/favorites'> {user.data.email} </Link>
         </span>

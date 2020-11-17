@@ -2,6 +2,7 @@ import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {login} from "../../store/actions/user/user";
+import {currentCityShape} from '../../shapes/current-city';
 
 class SignInScreen extends PureComponent {
   constructor(props) {
@@ -26,7 +27,6 @@ class SignInScreen extends PureComponent {
 
   render() {
     const {currentCity} = this.props;
-    console.log(currentCity);
     return (
       <div className="page page--gray page--login">
         <header className="header">
@@ -83,6 +83,7 @@ class SignInScreen extends PureComponent {
 
 SignInScreen.propTypes = {
   onSubmit: PropTypes.func,
+  currentCity: currentCityShape
 };
 
 const mapDispatchToProps = (dispatch) => ({
