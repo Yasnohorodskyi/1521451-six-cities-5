@@ -1,12 +1,8 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { AuthorizationStatus } from '../../store/const';
-import { connect } from "react-redux";
-//import {connect} from "react-redux";
-//import ReviewList from "./components/reviews-list.jsx";
-//import {reviewsItem} from '../../shapes/reviews-item';
-//import {selectOfferReviews} from '../../store/selectors/reviews/select-offer-reviews';
-//import {getReviews} from '../../store/actions/reviews/reviews';
+import React, {PureComponent} from 'react';
+import {AuthorizationStatus} from '../../store/const';
+import {connect} from "react-redux";
+import {appUser} from "../../shapes/app-user";
+
 import {
   Link
 } from "react-router-dom";
@@ -23,7 +19,7 @@ class HeaderContainer extends PureComponent {
           <Link to='/favorites'> {user.data.email} </Link>
         </span>
       </div>
-    )
+    );
   }
   notAuthHeader() {
     return (
@@ -34,7 +30,7 @@ class HeaderContainer extends PureComponent {
           <Link to='/login'> Sign In </Link>
         </span>
       </div>
-    )
+    );
   }
   render() {
     const {user} = this.props;
@@ -51,7 +47,7 @@ class HeaderContainer extends PureComponent {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                { (user.authorizationStatus === AuthorizationStatus.NO_AUTH)  ? this.notAuthHeader() : this.authHeader(user)}
+                  { (user.authorizationStatus === AuthorizationStatus.NO_AUTH) ? this.notAuthHeader() : this.authHeader(user)}
                 </li>
               </ul>
             </nav>
@@ -61,33 +57,18 @@ class HeaderContainer extends PureComponent {
     );
   }
 }
-/*
 
 
-
-
-ReviewContainer.propTypes = {
-  reviews: PropTypes.arrayOf(
-      reviewsItem
-  ),
-  currentOffer: PropTypes.number
+HeaderContainer.propTypes = {
+  user: appUser
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  getReviews(id) {
-    dispatch(getReviews(id));
-  }
-});
-
-
-*/
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     user: state.User
   };
 };
 
-export { HeaderContainer };
+export {HeaderContainer};
 export default connect(mapStateToProps)(HeaderContainer);

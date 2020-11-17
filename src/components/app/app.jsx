@@ -15,7 +15,7 @@ import browserHistory from "../../browser-history";
 
 import PrivateRoute from "../private-route/private-route";
 
-const App = () =>{
+const App = () => {
   return (
     <Router history={browserHistory}>
       <Switch>
@@ -45,7 +45,7 @@ const App = () =>{
         <Route
           path="/:city?"
           render={({match, location}) => (
-            <MainScreen location={location} cityId={ match.params.city }/>
+            <MainScreen location={location} cityId={match.params.city} />
           )
           }
         />

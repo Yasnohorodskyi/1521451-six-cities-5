@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import {offerItem} from '../../shapes/offer-item';
 
-//import {ActionOffer} from "../../store/actions/offers/offers";
 import {filterOffer} from "../../store/actions/offers/offers";
 
 import OffersEmpty from "./components/offers-empty";
@@ -23,9 +22,11 @@ class MainScreen extends PureComponent {
   }
 
   render() {
-    const {cityId, filterOffer, baseFilter, offers, cities, currentCity} = this.props;
+    const {cityId, filterOfferDispatch, baseFilter, offers, cities, currentCity} = this.props;
 
-    if(!cities) return null;
+    if (!cities) {
+      return null;
+    }
 
     return (
       <div>
@@ -38,15 +39,14 @@ class MainScreen extends PureComponent {
                 currentCity={cityId ? cities[cityId] : currentCity}
                 offers={offers}
                 baseFilter={baseFilter}
-                filterOffer={filterOffer}
+                filterOffer={filterOfferDispatch}
               />
             }
           </main>
         </div>
       </div>
     );
-
-}
+  }
 
 }
 
@@ -60,14 +60,14 @@ MainScreen.propTypes = {
       })
   ),
   baseFilter: PropTypes.string,
-  filterOffer: PropTypes.func,
+  filterOfferDispatch: PropTypes.func,
   cities: currentCityShape,
   name: PropTypes.string,
   authorizationStatus: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  filterOffer(filter, offers, currentCity) {
+  filterOfferDispatch(filter, offers, currentCity) {
     dispatch(filterOffer(filter, offers, currentCity));
   }
 });
@@ -77,7 +77,7 @@ const mapStateToProps = (state, props) => {
   const data = {
     state,
     props
-  }
+  };
   return {
     authorizationStatus: state.User.authorizationStatus,
     cities: state.Offers.listCities,

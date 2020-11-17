@@ -14,11 +14,8 @@ import {createAPI} from "./services/api";
 
 import {redirect} from "./store/middlewares/redirect";
 
+import {AuthorizationStatus} from "./store/const";
 
-//import {fetch, checkAuth} from "./store/api-action";
-
-//import {AuthorizationStatus} from "./store/const";
-//import {requireAuthorization} from "./store/action";
 import {checkAuth, requireAuthorization} from "./store/actions/user/user";
 import {fetchOffers} from "./store/actions/offers/offers";
 

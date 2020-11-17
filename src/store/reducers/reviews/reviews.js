@@ -1,4 +1,3 @@
-import reviews from '../../../mocks/reviews';
 import {extend} from "../../../helpers/extend";
 import {ActionType} from "../../const";
 

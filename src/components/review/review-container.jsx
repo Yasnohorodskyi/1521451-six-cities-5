@@ -3,26 +3,26 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import ReviewList from "./components/reviews-list.jsx";
 import {reviewsItem} from '../../shapes/reviews-item';
-import {selectOfferReviews} from '../../store/selectors/reviews/select-offer-reviews';
+import {appUser} from '../../shapes/app-user';
 import {getReviews, addReviews} from '../../store/actions/reviews/reviews';
 
 class ReviewContainer extends PureComponent {
   constructor(props) {
     super(props);
-    const {getReviews, currentOffer} = this.props;
+    const {getReviewsDispatch, currentOffer} = this.props;
     this.state = {
       update: 0
-    }
-    getReviews(currentOffer);
+    };
+    getReviewsDispatch(currentOffer);
   }
   render() {
-    const {reviews, user, addReviews, currentOffer} = this.props;
+    const {reviews, user, addReviewsDispatch, currentOffer} = this.props;
     return (
       <React.Fragment>
         <ReviewList
           reviews={reviews}
           user={user}
-          addReviews={addReviews}
+          addReviews={addReviewsDispatch}
           currentOffer={currentOffer}
         />
       </React.Fragment>
@@ -34,19 +34,25 @@ ReviewContainer.propTypes = {
   reviews: PropTypes.arrayOf(
       reviewsItem
   ),
-  currentOffer: PropTypes.number
+  currentOffer: PropTypes.number,
+  user: appUser,
+  getReviewsDispatch: PropTypes.func,
+  addReviewsDispatch: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addReviews(comment, rating, currentOffer) {
-     dispatch(addReviews(comment, rating, currentOffer));
+  addReviewsDispatch(comment, rating, currentOffer) {
+    /* Доделать в след. задании: Добавить ограничение на комменты, не более 4ых в одной карточке
+    */
+    // dispatch(setFavorite(id));
+    // dispatch(addReviews(comment, rating, currentOffer));
   },
-  getReviews(currentOffer) {
+  getReviewsDispatch(currentOffer) {
     dispatch(getReviews(currentOffer));
- }
+  }
 });
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     reviews: state.Review.reviews,
     user: state.User

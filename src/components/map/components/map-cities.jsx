@@ -39,7 +39,7 @@ class MapCities extends PureComponent {
 
     info.forEach((offer) => {
       const offerCords = [offer.location.latitude, offer.location.longitude];
-          L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
+      L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
     });
   }
   componentDidUpdate(prevProps) {

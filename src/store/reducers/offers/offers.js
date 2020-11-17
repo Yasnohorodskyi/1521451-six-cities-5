@@ -22,19 +22,18 @@ export default function Offers(state = stateOffers, action) {
 
     case ActionType.GET_OFFERS:
 
-    const firstCity = action.payload[0].city;
+      const firstCity = action.payload[0].city;
+      const list = {};
 
-     const list = {};
-      action.payload.map(v => v.city)
+      action.payload.map((v) => v.city)
       .filter((item) => {
         list[item.name] = item;
       });
 
-      console.log(state);
       return extend(state, {
         data: action.payload,
         currentCity: firstCity,
-        listCities: list ,
+        listCities: list,
         baseFilter: actionFilter.FILTER_POPULAR
       });
 

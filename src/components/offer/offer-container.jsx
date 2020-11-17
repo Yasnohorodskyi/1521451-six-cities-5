@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 import OfferList from "./components/offer-list";
 import {offerItem} from '../../shapes/offer-item';
 import {currentCityShape} from '../../shapes/current-city';
@@ -33,7 +32,4 @@ OfferContainer.propTypes = {
 };
 
 
-
-
 export default OfferContainer;
-

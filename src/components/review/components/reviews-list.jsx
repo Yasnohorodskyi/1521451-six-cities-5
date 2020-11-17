@@ -3,7 +3,8 @@ import ReviewsItem from "./reviews-item.jsx";
 import AddFormComment from "./add-form-comment.jsx";
 import {reviewsItem} from '../../../shapes/reviews-item';
 import PropTypes from 'prop-types';
-import { AuthorizationStatus } from '../../../store/const';
+import {AuthorizationStatus} from '../../../store/const';
+import {appUser} from '../../../shapes/app-user';
 
 class ReviewsList extends PureComponent {
   constructor(props) {
@@ -24,7 +25,7 @@ class ReviewsList extends PureComponent {
             return (<ReviewsItem key={review.id} review={review} />);
           })}
         </ul>
-        { (user.authorizationStatus === AuthorizationStatus.NO_AUTH)  ? null : <AddFormComment uppReviews={uppReviews} currentOffer={currentOffer} addReviews={addReviews}/> }
+        { (user.authorizationStatus === AuthorizationStatus.NO_AUTH) ? null : <AddFormComment uppReviews={uppReviews} currentOffer={currentOffer} addReviews={addReviews}/> }
       </React.Fragment>
     );
   }
@@ -34,7 +35,10 @@ ReviewsList.propTypes = {
   reviews: PropTypes.arrayOf(
       reviewsItem
   ),
-  currentOffer: PropTypes.number
+  currentOffer: PropTypes.number,
+  user: appUser,
+  addReviews: PropTypes.func,
+  uppReviews: PropTypes.func
 };
 
 export default ReviewsList;

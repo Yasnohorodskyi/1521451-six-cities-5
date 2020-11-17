@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 class AddFormComment extends PureComponent {
   constructor(props) {
@@ -12,7 +13,7 @@ class AddFormComment extends PureComponent {
     };
 
     this.handleSubmit = (event) => {
-      const {addReviews, currentOffer, uppReviews} = this.props;
+      const {addReviews, currentOffer} = this.props;
 
       event.preventDefault();
       let comment = new FormData(event.currentTarget).get(`review`);
@@ -72,5 +73,9 @@ class AddFormComment extends PureComponent {
   }
 }
 
+AddFormComment.propTypes = {
+  addReviews: PropTypes.func,
+  currentOffer: PropTypes.number,
+};
 
 export default AddFormComment;

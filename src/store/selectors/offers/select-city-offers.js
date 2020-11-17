@@ -6,10 +6,12 @@ const selectAllState = (data) => data;
 export const selectCityOffers = createSelector(
     selectAllState,
     ({state, props}) => {
-      let currentCity = '';
-      if(state.Offers.listCities && props.cityId){
-         currentCity = state.Offers.listCities[props.cityId];
-      } else  currentCity = props.cityId ? state.Offers.currentCity : state.Offers.currentCity;
+      let currentCity = ``;
+      if (state.Offers.listCities && props.cityId) {
+        currentCity = state.Offers.listCities[props.cityId];
+      } else {
+        currentCity = props.cityId ? state.Offers.currentCity : state.Offers.currentCity;
+      }
 
       switch (state.Offers.baseFilter) {
         case actionFilter.FILTER_TOP_RATED_FIRST:

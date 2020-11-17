@@ -5,7 +5,6 @@ import withActiveItem from '../../hocs/with-active-item';
 const MenuWithActiveItem = withActiveItem(Menu);
 
 import {connect} from "react-redux";
-//import {ActionOffer} from "../../store/actions/offers/offers";
 import {changeCity} from "../../store/actions/offers/offers";
 
 import PropTypes from 'prop-types';
@@ -31,6 +30,7 @@ const MenuContainer = (props) => {
 
 MenuContainer.propTypes = {
   currentCity: currentCityShape,
+  changeCityProp: PropTypes.func,
   changeCity: PropTypes.func,
   cities: currentCityShape,
   cityId: PropTypes.string,
@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state, props) => {
   return {
-    currentCity: props.currentCity,
+    changeCityProp: props.currentCity,
   };
 };
 

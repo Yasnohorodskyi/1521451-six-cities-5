@@ -25,6 +25,8 @@ class SignInScreen extends PureComponent {
   }
 
   render() {
+    const {currentCity} = this.props;
+    console.log(currentCity);
     return (
       <div className="page page--gray page--login">
         <header className="header">
@@ -67,8 +69,8 @@ class SignInScreen extends PureComponent {
             </section>
             <section className="locations locations--login locations--current">
               <div className="locations__item">
-                <a className="locations__item-link" href="#">
-                  <span>Amsterdam</span>
+                <a className="locations__item-link" href={`/${ (currentCity) ? currentCity.name : ``}`}>
+                  <span>{(currentCity) ? currentCity.name : ``}</span>
                 </a>
               </div>
             </section>
@@ -88,6 +90,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(login(authData));
   }
 });
-
+const mapStateToProps = (state) => {
+  return {
+    currentCity: state.Offers.currentCity
+  };
+};
 export {SignInScreen};
-export default connect(null, mapDispatchToProps)(SignInScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen);

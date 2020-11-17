@@ -8,7 +8,7 @@ import {offerItem} from '../../shapes/offer-item';
 
 import {currentCityShape} from '../../shapes/current-city';
 
-const MapContainer = ({currentCity, offers, cities, max, currentOffer}) => {
+const MapContainer = ({currentCity, offers, currentOffer}) => {
   return (
     <MapCities
       currentCity={currentCity}

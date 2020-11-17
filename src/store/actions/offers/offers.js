@@ -7,7 +7,7 @@ export const fetchOffers = () => (dispatch, _getState, api) => {
     .then(({data}) => dispatch({
       type: OffersType.GET_OFFERS,
       payload: data
-    }))
+    }));
 };
 
 export const changeCity = (currentCity) => (dispatch) => {
@@ -16,8 +16,8 @@ export const changeCity = (currentCity) => (dispatch) => {
     payload: {
       currentCity
     }
-  })
-}
+  });
+};
 
 export const getOffer = (idRoom) => (dispatch, _getState, api) => {
   const sendData = {};
@@ -25,18 +25,18 @@ export const getOffer = (idRoom) => (dispatch, _getState, api) => {
     .then(({data}) => {
       sendData.offer = data;
       api.get(`${APIRoute.GET_OFFER}/${idRoom}/nearby`)
-      .then(({data}) => {
-        sendData.nearby = data;
-        dispatch({
-          type: OffersType.GET_OFFER,
-          payload:{
-            offer: sendData.offer,
-            nearby: sendData.nearby
-          }
-        })
-      })
-    })
-}
+        .then((response) => {
+          sendData.nearby = response.data;
+          dispatch({
+            type: OffersType.GET_OFFER,
+            payload: {
+              offer: sendData.offer,
+              nearby: sendData.nearby
+            }
+          });
+        });
+    });
+};
 
 
 export const filterOffer = (filter, offers, currentCity) => (dispatch) => {
@@ -47,27 +47,25 @@ export const filterOffer = (filter, offers, currentCity) => (dispatch) => {
       offers,
       currentCity
     }
-  })
-}
+  });
+};
 
 
-export const setFavorite = (idRoom) => (dispatch, _getState, api) => {
-  api.post(`${APIRoute.FAVORITE}/${idRoom}/1`).then((response) => {
-    console.log(response);
+export const setFavorite = (idRoom) => (_getState, api) => {
+  api.post(`${APIRoute.FAVORITE}/${idRoom}/1`).then(() => {
   })
-  .then(() => {console.log('as')});
-}
+    .then(() => { });
+};
 
 
 export const getFavorite = () => (dispatch, _getState, api) => {
   api.get(`${APIRoute.FAVORITE}`).then((response) => {
-    console.log(OffersType);
     dispatch({
       type: OffersType.GET_FAVORITE,
-      payload:{
+      payload: {
         favorites: response.data
       }
-    })
+    });
   })
-  .then(() => {console.log('as')});
-}
+    .then(() => { });
+};

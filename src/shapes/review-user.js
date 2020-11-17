@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const reviewUser = PropTypes.shape({
-  id: PropTypes.string,
+  id: PropTypes.number,
   ava: PropTypes.string,
   name: PropTypes.string
 });

@@ -11,9 +11,8 @@ class OfferList extends PureComponent {
 
   render() {
     const {offers, currentCity, max, currentOffer} = this.props;
-    console.log(currentCity);
-    console.log(offers);
     let indexGloal = 0;
+
     return (
       <div className="near-places__list places__list">
         {
