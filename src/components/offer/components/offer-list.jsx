@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
 import OfferItem from './offer-item.jsx';
 import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';

@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
+
 import ReviewList from "./components/reviews-list.jsx";
 import {reviewsItem} from '../../shapes/reviews-item';
 import {appUser} from '../../shapes/app-user';

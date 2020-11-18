@@ -8,16 +8,17 @@ const userState = {
 };
 
 export default function User(state = userState, action) {
+
   switch (action.type) {
     case UserType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {
         data: action.payload.data,
-        authorizationStatus: `AUTH`
+        authorizationStatus: action.payload.status
       });
     case UserType.AuthorizationStatus:
       return Object.assign({}, state, {
         data: action.payload.data,
-        authorizationStatus: `AUTH`
+        authorizationStatus: action.payload.status
       });
   }
 

@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+
 import {calcRating} from '../../../helpers/calc-rating';
 import {formatterData} from '../../../helpers/formatter-data';
 import {reviewsItem} from '../../../shapes/reviews-item';

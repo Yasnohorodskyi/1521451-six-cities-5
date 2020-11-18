@@ -19,8 +19,6 @@ class RoomScreen extends PureComponent {
     super(props);
     const {currentRoom, getOfferDispatch} = this.props;
     getOfferDispatch(currentRoom);
-    //  Не получилось сделать бинд
-    //  this.setFavorite = setFavorite.bind(this);
   }
   render() {
     const {offer, nearby, setFavoriteDispatch} = this.props;

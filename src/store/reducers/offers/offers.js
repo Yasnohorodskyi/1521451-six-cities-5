@@ -7,7 +7,7 @@ const stateOffers = {
   offers: [],
   offer: null,
   nearby: [],
-  favorites: []
+  favorites: null
 };
 
 
@@ -23,22 +23,21 @@ export default function Offers(state = stateOffers, action) {
     case ActionType.GET_OFFERS:
 
       const firstCity = action.payload[0].city;
-      const list = {};
+      const listCity = {};
 
-      action.payload.map((v) => v.city)
-      .filter((item) => {
-        list[item.name] = item;
+      action.payload.map((offer) => offer.city)
+      .filter((city) => {
+        listCity[city.name] = city;
       });
 
       return extend(state, {
         data: action.payload,
         currentCity: firstCity,
-        listCities: list,
+        listCities: listCity,
         baseFilter: actionFilter.FILTER_POPULAR
       });
 
     case ActionType.GET_FAVORITE:
-
       return extend(state, {
         favorites: action.payload.favorites,
       });

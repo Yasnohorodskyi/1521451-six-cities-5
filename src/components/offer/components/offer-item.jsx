@@ -1,10 +1,10 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
+import L from 'leaflet';
+
 import {premiumTemplate} from '../../../helpers/premium-template';
 import {calcRating} from '../../../helpers/calc-rating';
-import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
-
-import L from 'leaflet';
 
 class OfferItem extends PureComponent {
   constructor(props) {

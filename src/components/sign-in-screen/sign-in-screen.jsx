@@ -1,6 +1,7 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+
 import {login} from "../../store/actions/user/user";
 import {currentCityShape} from '../../shapes/current-city';
 
@@ -10,6 +11,7 @@ class SignInScreen extends PureComponent {
 
     this.emailRef = createRef();
     this.passwordRef = createRef();
+    this.warningRef = createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -21,7 +23,7 @@ class SignInScreen extends PureComponent {
     onSubmit({
       email: this.emailRef.current.value,
       password: this.passwordRef.current.value,
-    });
+    }, this.warningRef);
 
   }
 
@@ -65,6 +67,7 @@ class SignInScreen extends PureComponent {
                   <input ref={this.passwordRef} className="login__input form__input" type="password" name="password" placeholder="Password" required="" />
                 </div>
                 <button className="login__submit form__submit button" type="submit">Sign in</button>
+                <div ref={this.warningRef} className="warning_container"></div>
               </form>
             </section>
             <section className="locations locations--login locations--current">
@@ -87,8 +90,8 @@ SignInScreen.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
-    dispatch(login(authData));
+  onSubmit(authData, warningContainer) {
+    dispatch(login(authData, warningContainer.current));
   }
 });
 const mapStateToProps = (state) => {

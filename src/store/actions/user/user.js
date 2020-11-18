@@ -1,6 +1,6 @@
 import {APIRoute, AppRoute, AuthorizationStatus, ActionType} from "../../const";
 
-const converterUser = (data) => {
+const convertUser = (data) => {
   return {
     avatarUrl: data.avatar_url,
     email: data.email,
@@ -13,19 +13,35 @@ const converterUser = (data) => {
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then((res) => {
-      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH, converterUser(res.data)));
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH, convertUser(res.data)));
     })
     .catch(() => {
+      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
     })
 );
 
 
-export const login = ({email, password}) => (dispatch, _getState, api) => {
+export const login = ({email, password}, warningContainer) => (dispatch, _getState, api) => {
   api.post(APIRoute.LOGIN, {email, password}
   ).then((response) => {
-    dispatch(requireAuthorization(AuthorizationStatus.AUTH, converterUser(response.data)));
+    switch (response.status) {
+      case 200:
+        dispatch(requireAuthorization(AuthorizationStatus.AUTH, convertUser(response.data)));
+        break;
+      case 401:
+        dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+        break;
+      default:
+        warningContainer.innerText = `Error login: ${response.status}`;
+    }
+
   })
-  .then(() => dispatch(redirectToRoute(AppRoute.RESULT)));
+    .then(() => {
+      return !warningContainer.innerText ? dispatch(redirectToRoute(AppRoute.RESULT)) : ``;
+    })
+    .catch((error) => {
+      warningContainer.innerText = `Error axios: ${error}`;
+    });
 };
 
 export const requireAuthorization = (status, data) => ({

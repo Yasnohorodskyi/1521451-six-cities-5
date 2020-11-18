@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {Map, TileLayer} from "react-leaflet";
 import L from 'leaflet';
 import PropTypes from 'prop-types';
+
 import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';
 import {ZOOM} from '../const';

@@ -1,13 +1,12 @@
 import onClickOutside from "react-onclickoutside";
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
 import {offerItem} from '../shapes/offer-item';
 import {actionFilter} from '../store/const';
 import {currentCityShape} from '../shapes/current-city';
 
-
 const withOpenSelect = (ComponentOutside) => {
-
   class WithOpenSelect extends PureComponent {
     constructor(props) {
       super(props);

@@ -1,20 +1,29 @@
 import React, {PureComponent} from 'react';
+import {connect} from "react-redux";
+import PropTypes from 'prop-types';
+
 import HeaderContainer from '../header/header-container';
 import {getFavorite} from '../../store/actions/offers/offers';
-import {connect} from "react-redux";
 import {selectFavorites} from "../../store/selectors/offers/filter-favorites";
 import {Footer} from "../share/footer/footer-container";
 import {FavoritesEmpty} from "./favorites-empty";
-import PropTypes from 'prop-types';
 import {offerItem} from '../../shapes/offer-item';
 
 class FavoritesScreen extends PureComponent {
   constructor(props) {
     super(props);
-    this.props.getFavorite();
+  }
+  componentDidMount() {
+    const {getFavoriteDispatch} = this.props;
+    getFavoriteDispatch();
   }
   render() {
     const {favorites} = this.props;
+
+    if (favorites === null) {
+      return null;
+    }
+
 
     if (favorites.length !== 0) {
       return (
@@ -102,6 +111,7 @@ class FavoritesScreen extends PureComponent {
 
 FavoritesScreen.propTypes = {
   getFavorite: PropTypes.func,
+  getFavoriteDispatch: PropTypes.func,
   favorites: PropTypes.arrayOf(
       PropTypes.shape({
         offerItem
@@ -116,7 +126,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getFavorite() {
+  getFavoriteDispatch() {
     dispatch(getFavorite());
   }
 });

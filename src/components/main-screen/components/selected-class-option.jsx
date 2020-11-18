@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {offerItem} from '../../../shapes/offer-item';
 
+import {offerItem} from '../../../shapes/offer-item';
 
 const SelectedClassOption = (props) => {
   const {optionList, baseFilter} = props;
