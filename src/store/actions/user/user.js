@@ -10,6 +10,8 @@ const convertUser = (data) => {
   };
 };
 
+const global = {};
+
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then((res) => {
@@ -21,9 +23,10 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 );
 
 
-export const login = ({email, password}, warningContainer) => (dispatch, _getState, api) => {
+export const login = ({email, password}, setWarning) => (dispatch, _getState, api) => {
   api.post(APIRoute.LOGIN, {email, password}
   ).then((response) => {
+    global.status = response.status;
     switch (response.status) {
       case 200:
         dispatch(requireAuthorization(AuthorizationStatus.AUTH, convertUser(response.data)));
@@ -32,15 +35,15 @@ export const login = ({email, password}, warningContainer) => (dispatch, _getSta
         dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
         break;
       default:
-        warningContainer.innerText = `Error login: ${response.status}`;
+        setWarning(`Error login: ${response.status}`);
     }
 
   })
     .then(() => {
-      return !warningContainer.innerText ? dispatch(redirectToRoute(AppRoute.RESULT)) : ``;
+      return global.status === 200 ? dispatch(redirectToRoute(AppRoute.RESULT)) : ``;
     })
     .catch((error) => {
-      warningContainer.innerText = `Error axios: ${error}`;
+      setWarning(`Error axios: ${error}`);
     });
 };
 

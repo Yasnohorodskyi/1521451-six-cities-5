@@ -11,24 +11,37 @@ class SignInScreen extends PureComponent {
 
     this.emailRef = createRef();
     this.passwordRef = createRef();
-    this.warningRef = createRef();
+
+    this.state = {
+      warning: ``,
+      setWarning: null
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount() {
+    const setWarning = (error) => {
+      return this.setState({
+        warning: error
+      });
+    };
+    this.setWarning = setWarning;
+  }
   handleSubmit(evt) {
     const {onSubmit} = this.props;
-
     evt.preventDefault();
 
     onSubmit({
       email: this.emailRef.current.value,
       password: this.passwordRef.current.value,
-    }, this.warningRef);
-
+    }, this.setWarning);
   }
 
   render() {
+
     const {currentCity} = this.props;
+    const {warning} = this.state;
+
     return (
       <div className="page page--gray page--login">
         <header className="header">
@@ -67,7 +80,7 @@ class SignInScreen extends PureComponent {
                   <input ref={this.passwordRef} className="login__input form__input" type="password" name="password" placeholder="Password" required="" />
                 </div>
                 <button className="login__submit form__submit button" type="submit">Sign in</button>
-                <div ref={this.warningRef} className="warning_container"></div>
+                <div className="warning_container">{warning}</div>
               </form>
             </section>
             <section className="locations locations--login locations--current">
@@ -90,8 +103,8 @@ SignInScreen.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData, warningContainer) {
-    dispatch(login(authData, warningContainer.current));
+  onSubmit(authData, setWarning) {
+    dispatch(login(authData, setWarning));
   }
 });
 const mapStateToProps = (state) => {
