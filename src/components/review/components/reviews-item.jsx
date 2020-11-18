@@ -10,7 +10,7 @@ class ReviewsItem extends PureComponent {
   }
   render() {
     const {review} = this.props;
-
+    console.log(review);
     return (
       <li key={review.id} className="reviews__item">
         <div className="reviews__user user">
@@ -32,7 +32,7 @@ class ReviewsItem extends PureComponent {
             {review.comment}
           </p>
           <time className="reviews__time" dateTime={formatterData(review.date, `YearMonthDay`)}>
-            {formatterData(review.date, `DayMonth`)}
+            {formatterData(review.date, `MonthDay`)}
           </time>
         </div>
       </li>

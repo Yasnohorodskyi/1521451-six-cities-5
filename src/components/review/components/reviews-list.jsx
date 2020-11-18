@@ -12,7 +12,8 @@ class ReviewsList extends PureComponent {
     super(props);
   }
   render() {
-    const {reviews, user, addReviews, currentOffer, uppReviews} = this.props;
+    const {reviews, user, addReviews, currentOffer, uppReviews, maxReviews} = this.props;
+    const reviewsRevert = reviews.reverse();
     return (
       <React.Fragment>
         <h2 className="reviews__title">
@@ -22,8 +23,10 @@ class ReviewsList extends PureComponent {
           </span>
         </h2>
         <ul className="reviews__list">
-          {reviews.map((review) => {
-            return (<ReviewsItem key={review.id} review={review} />);
+          {reviewsRevert.map((review , index) => {
+            if(index < maxReviews){
+              return (<ReviewsItem key={review.id} review={review} />)
+            }
           })}
         </ul>
         { (user.authorizationStatus !== AuthorizationStatus.NO_AUTH) && <AddFormComment uppReviews={uppReviews} currentOffer={currentOffer} addReviews={addReviews}/> }

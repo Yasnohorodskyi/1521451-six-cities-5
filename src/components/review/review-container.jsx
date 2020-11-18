@@ -6,14 +6,12 @@ import ReviewList from "./components/reviews-list.jsx";
 import {reviewsItem} from '../../shapes/reviews-item';
 import {appUser} from '../../shapes/app-user';
 import {getReviews, addReviews} from '../../store/actions/reviews/reviews';
+import {MAX_REVIEWS} from './const';
 
 class ReviewContainer extends PureComponent {
   constructor(props) {
     super(props);
     const {getReviewsDispatch, currentOffer} = this.props;
-    this.state = {
-      update: 0
-    };
     getReviewsDispatch(currentOffer);
   }
   render() {
@@ -25,6 +23,7 @@ class ReviewContainer extends PureComponent {
           user={user}
           addReviews={addReviewsDispatch}
           currentOffer={currentOffer}
+          maxReviews={MAX_REVIEWS}
         />
       </React.Fragment>
     );
@@ -46,7 +45,9 @@ const mapDispatchToProps = (dispatch) => ({
     /* Доделать в след. задании: Добавить ограничение на комменты, не более 4ых в одной карточке
     */
     // dispatch(setFavorite(id));
-    // dispatch(addReviews(comment, rating, currentOffer));
+    console.log(comment);
+    console.log(rating);
+    dispatch(addReviews(comment, rating, currentOffer));
   },
   getReviewsDispatch(currentOffer) {
     dispatch(getReviews(currentOffer));
