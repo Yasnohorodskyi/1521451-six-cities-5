@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
 import OfferItem from './offer-item.jsx';
 import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';
@@ -11,8 +12,8 @@ class OfferList extends PureComponent {
 
   render() {
     const {offers, currentCity, max, currentOffer} = this.props;
-
     let indexGloal = 0;
+
     return (
       <div className="near-places__list places__list">
         {

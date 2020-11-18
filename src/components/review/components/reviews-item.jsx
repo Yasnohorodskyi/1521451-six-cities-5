@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+
 import {calcRating} from '../../../helpers/calc-rating';
 import {formatterData} from '../../../helpers/formatter-data';
 import {reviewsItem} from '../../../shapes/reviews-item';
@@ -14,7 +15,7 @@ class ReviewsItem extends PureComponent {
       <li key={review.id} className="reviews__item">
         <div className="reviews__user user">
           <div className="reviews__avatar-wrapper user__avatar-wrapper">
-            <img className="reviews__avatar user__avatar" src={review.user.ava} width="54" height="54" alt="Reviews avatar" />
+            <img className="reviews__avatar user__avatar" src={review.user.avatar_url} width="54" height="54" alt="Reviews avatar" />
           </div>
           <span className="reviews__user-name">
             {review.user.name}
@@ -28,10 +29,10 @@ class ReviewsItem extends PureComponent {
             </div>
           </div>
           <p className="reviews__text">
-            {review.text}
+            {review.comment}
           </p>
-          <time className="reviews__time" dateTime={formatterData(review.timestamp, `YearMonthDay`)}>
-            {formatterData(review.timestamp, `DayMonth`)}
+          <time className="reviews__time" dateTime={formatterData(review.date, `YearMonthDay`)}>
+            {formatterData(review.date, `DayMonth`)}
           </time>
         </div>
       </li>

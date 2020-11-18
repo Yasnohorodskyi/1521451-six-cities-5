@@ -1,21 +1,21 @@
 import React from 'react';
-
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route
 } from "react-router-dom";
+
 
 import MainScreen from '../main-screen/main-screen';
 import RoomScreen from '../room-screen/room-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import SignInScreen from '../sign-in-screen/sign-in-screen';
-
+import browserHistory from "../../browser-history";
+import PrivateRoute from "../private-route/private-route";
 
 const App = () => {
-
   return (
-    <Router>
+    <Router history={browserHistory}>
       <Switch>
         <Route
           exact
@@ -24,7 +24,8 @@ const App = () => {
             return <SignInScreen />;
           }}
         />
-        <Route exact
+        <PrivateRoute
+          exact
           path="/favorites"
           render={() => {
             return <FavoritesScreen />;
@@ -41,11 +42,10 @@ const App = () => {
         />
         <Route
           path="/:city?"
-          render={({match}) => {
-            return (
-              <MainScreen cityId={match.params.city}/>
-            );
-          }}
+          render={({match, location}) => (
+            <MainScreen location={location} cityId={match.params.city} />
+          )
+          }
         />
       </Switch>
     </Router>

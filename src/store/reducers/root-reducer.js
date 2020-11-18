@@ -2,6 +2,7 @@ import {combineReducers} from "redux";
 
 import Review from "./reviews/reviews";
 import Offers from "./offers/offers";
+import User from "./user/user";
 
 export const NameSpace = {
   CHANGE: `CHANGE`,
@@ -11,5 +12,6 @@ export const NameSpace = {
 
 export default combineReducers({
   Review,
-  Offers
+  Offers,
+  User
 });

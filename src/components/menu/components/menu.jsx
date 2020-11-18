@@ -6,7 +6,6 @@ import {currentCityShape} from '../../../shapes/current-city';
 import PropTypes from 'prop-types';
 
 const Menu = ({cities, activeItem, changeCity, currentCity}) => {
-
   const createElementMenu = () => {
     const itemsMenu = [];
     for (let city in cities) {

@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {Map, TileLayer} from "react-leaflet";
 import L from 'leaflet';
 import PropTypes from 'prop-types';
+
 import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';
 import {ZOOM} from '../const';
@@ -13,8 +14,6 @@ class MapCities extends PureComponent {
   }
   settingsMap(info) {
 
-    const {currentOffer} = this.props;
-
     const icon = L.icon({
       iconUrl: `/img/pin.svg`,
       iconSize: [30, 30]
@@ -24,32 +23,24 @@ class MapCities extends PureComponent {
 
     this.map = L.map(`map`, {
       center: [
-        this.props.currentCity[`location`].latitude,
-        this.props.currentCity[`location`].longitude
+        info[0].city[`location`].latitude,
+        info[0].city[`location`].longitude
       ],
       zoom,
       zoomControl: false,
       marker: true
     });
 
-    this.map.setView([this.props.currentCity[`location`].latitude, this.props.currentCity[`location`].longitude], zoom);
+    this.map.setView([info[0].city[`location`].latitude, info[0].city[`location`].longitude], zoom);
 
     L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     })
       .addTo(this.map);
 
-    let index = 0;
     info.forEach((offer) => {
       const offerCords = [offer.location.latitude, offer.location.longitude];
-      if (this.props.max) {
-        if (index < 3 && offer.city.name === this.props.currentCity[`name`] && offer.id !== currentOffer) {
-          L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
-          index++;
-        }
-      } else {
-        L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
-      }
+      L.marker(offerCords, {icon}).addTo(this.map)._icon.id = `marker-${offer.id}`;
     });
   }
   componentDidUpdate(prevProps) {
@@ -63,7 +54,6 @@ class MapCities extends PureComponent {
   }
   componentDidMount() {
     const {offers} = this.props;
-
 
     this.settingsMap(
         offers

@@ -1,27 +1,45 @@
 import {extend} from "../../../helpers/extend";
-import {actionFilter, actionCity} from "./const";
-
+import {actionFilter, actionCity, ActionType} from "../../const";
 
 const stateOffers = {
   currentCity: null,
   baseFilter: actionFilter.FILTER_POPULAR,
-  offers: []
+  offers: [],
+  offer: null,
+  nearby: [],
+  favorites: null
 };
 
 
 export default function Offers(state = stateOffers, action) {
 
   switch (action.type) {
-    case actionCity.LOAD_OFFERS:
-      const arrCity = {};
-      action.payload.map((offer) => {
-        arrCity[offer.city.name] = offer.city;
+    case ActionType.GET_OFFER:
+      return extend(state, {
+        offer: action.payload.offer,
+        nearby: action.payload.nearby
       });
-      const keys = Object.keys(arrCity);
+
+    case ActionType.GET_OFFERS:
+
+      const firstCity = action.payload[0].city;
+      const listCity = {};
+
+      action.payload.map((offer) => offer.city)
+      .filter((city) => {
+        listCity[city.name] = city;
+      });
+
       return extend(state, {
         data: action.payload,
-        currentCity: (window.location.href.split(`/`)[3]) ? arrCity[window.location.href.split(`/`)[3]] : arrCity[keys[0]],
-        listCities: arrCity
+        currentCity: firstCity,
+        listCities: listCity,
+        baseFilter: actionFilter.FILTER_POPULAR
+      });
+
+    case ActionType.GET_FAVORITE:
+      return extend(state, {
+        favorites: action.payload.favorites,
       });
 
     case actionCity.CHANGE_CITY:
@@ -34,9 +52,10 @@ export default function Offers(state = stateOffers, action) {
 
   if (action.payload) {
     return extend(state, {
-      baseFilter: action.payload.filter
+      baseFilter: (action.payload === `/`) ? actionFilter.FILTER_POPULAR : action.payload.filter
     });
   }
+
 
   return state;
 }

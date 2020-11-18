@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import {connect} from "react-redux";
+
 import {MapCities} from "./components/map-cities";
-
 import {offerItem} from '../../shapes/offer-item';
-
 import {currentCityShape} from '../../shapes/current-city';
 
-const MapContainer = ({currentCity, offers, cities, max, currentOffer}) => {
+const MapContainer = ({currentCity, offers, currentOffer}) => {
   return (
     <MapCities
       currentCity={currentCity}
       offers={offers}
-      cities={cities}
-      max={max}
       currentOffer={currentOffer}
     />
   );

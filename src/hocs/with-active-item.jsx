@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
 import {currentCityShape} from '../shapes/current-city';
 
 const withActiveItem = (ComponentOutside) => {
