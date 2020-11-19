@@ -42,6 +42,15 @@ export default function Offers(state = stateOffers, action) {
         favorites: action.payload.favorites,
       });
 
+    case ActionType.SET_FAVORITE:
+      return {
+        ...state,
+        offer: {
+          ...state.offer,
+          is_favorite: action.payload.status
+        }
+      }
+
     case actionCity.CHANGE_CITY:
 
       return extend(state, {

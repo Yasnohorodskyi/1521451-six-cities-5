@@ -51,10 +51,17 @@ export const filterOffer = (filter, offers, currentCity) => (dispatch) => {
 };
 
 
-export const setFavorite = (idRoom) => (_getState, api) => {
-  api.post(`${APIRoute.FAVORITE}/${idRoom}/1`).then(() => {
-  })
-    .then(() => { });
+export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api) => {
+  api.post(`${APIRoute.FAVORITE}/${idRoom}/${(currentStatus) ? 0 : 1}`).then(() => {
+  }).then(() => {
+    dispatch({
+      type: OffersType.SET_FAVORITE,
+      payload: {
+        id: idRoom,
+        status: (currentStatus) ? false : true
+      }
+    });
+  });
 };
 
 

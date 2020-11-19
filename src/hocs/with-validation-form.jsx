@@ -36,7 +36,7 @@ const withValidationForm = (ComponentOutside) => {
             currentOffer,
             () => {
               this.refText.current.value = '';
-              this.refRating.current.value = '';
+              this.refRating.current.value = 0;
             }
         );
 

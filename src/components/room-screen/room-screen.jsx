@@ -26,7 +26,7 @@ class RoomScreen extends PureComponent {
     if (offer === null) {
       return null;
     }
-
+    console.log(offer.is_favorite)
     return (
 
       <div className="page">
@@ -51,8 +51,8 @@ class RoomScreen extends PureComponent {
                   <h1 className="property__name">
                     {offer.title}
                   </h1>
-                  <button onClick={()=>setFavoriteDispatch(offer.id)} className="property__bookmark-button button" type="button">
-                    <svg className="property__bookmark-icon" width="31" height="33">
+                  <button onClick={()=>setFavoriteDispatch(offer.id, offer.is_favorite)} className="property__bookmark-button button" type="button">
+                    <svg className={`property__bookmark-icon ${offer.is_favorite ? `active` : ``}`} width="31" height="33">
                       <use xlinkHref="#icon-bookmark"></use>
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>
@@ -161,12 +161,8 @@ const mapDispatchToProps = (dispatch) => ({
   getOfferDispatch(id) {
     dispatch(getOffer(id));
   },
-  setFavoriteDispatch(id) {
-    /* Доделать в след. задании: При добавлянии в избранное,
-      флаг должен оставатся желны, так же добавить возможность
-      отжимать флаг и убирать из избранного
-    */
-    // dispatch(setFavorite(id));
+  setFavoriteDispatch(id, currentStatus) {
+    dispatch(setFavorite(id, currentStatus));
   }
 });
 
