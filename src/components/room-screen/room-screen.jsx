@@ -21,7 +21,7 @@ class RoomScreen extends PureComponent {
     getOfferDispatch(currentRoom);
   }
   render() {
-    const {offer, nearby, setFavoriteDispatch} = this.props;
+    const {offer, nearby, setFavoriteDispatch, authorizationStatus} = this.props;
 
     if (offer === null) {
       return null;
@@ -51,12 +51,17 @@ class RoomScreen extends PureComponent {
                   <h1 className="property__name">
                     {offer.title}
                   </h1>
-                  <button onClick={()=>setFavoriteDispatch(offer.id, offer.is_favorite)} className="property__bookmark-button button" type="button">
-                    <svg className={`property__bookmark-icon ${offer.is_favorite ? `active` : ``}`} width="31" height="33">
-                      <use xlinkHref="#icon-bookmark"></use>
-                    </svg>
-                    <span className="visually-hidden">To bookmarks</span>
-                  </button>
+                  {
+                    (authorizationStatus === true)
+                    ?
+                    <button onClick={()=>setFavoriteDispatch(offer.id, offer.is_favorite)} className="property__bookmark-button button" type="button">
+                      <svg className={`property__bookmark-icon ${offer.is_favorite ? `active` : ``}`} width="31" height="33">
+                        <use xlinkHref="#icon-bookmark"></use>
+                      </svg>
+                      <span className="visually-hidden">To bookmarks</span>
+                    </button>
+                    : ``
+                  }
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
