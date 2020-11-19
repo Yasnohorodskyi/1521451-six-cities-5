@@ -14,21 +14,19 @@ export const getReviews = (idRoom) => (dispatch, _getState, api) => {
 };
 
 
-export const addReviews = (comment, rating, idRoom) => (dispatch, _getState, api) => {
+export const addReviews = (comment, rating, idRoom, callback) => (dispatch, _getState, api) => {
 
   api.post(`${APIRoute.GET_REVIEWS}/${idRoom}`, {comment, rating}
   ).then((response) => {
     if (response.request.status === 200) {
-
+      callback();
       dispatch({
         type: ReviewType.ADD_REVIEWS,
         payload: {
           data: JSON.parse(response.request.response)
         }
       });
-
     }
-
   })
   .then(() => {});
 

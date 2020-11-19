@@ -6,6 +6,9 @@ import AddFormComment from "./add-form-comment.jsx";
 import {reviewsItem} from '../../../shapes/reviews-item';
 import {AuthorizationStatus} from '../../../store/const';
 import {appUser} from '../../../shapes/app-user';
+import withValidationForm from '../../../hocs/with-validation-form';
+
+const AddFormCommentWithValidation = withValidationForm(AddFormComment);
 
 class ReviewsList extends PureComponent {
   constructor(props) {
@@ -29,7 +32,7 @@ class ReviewsList extends PureComponent {
             }
           })}
         </ul>
-        { (user.authorizationStatus !== AuthorizationStatus.NO_AUTH) && <AddFormComment uppReviews={uppReviews} currentOffer={currentOffer} addReviews={addReviews}/> }
+        { (user.authorizationStatus !== AuthorizationStatus.NO_AUTH) && <AddFormCommentWithValidation uppReviews={uppReviews} currentOffer={currentOffer} addReviews={addReviews}/> }
       </React.Fragment>
     );
   }
