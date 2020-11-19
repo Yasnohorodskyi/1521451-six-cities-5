@@ -26,7 +26,7 @@ class RoomScreen extends PureComponent {
     if (offer === null) {
       return null;
     }
-    console.log(offer.is_favorite)
+    console.log(authorizationStatus)
     return (
 
       <div className="page">
@@ -52,7 +52,7 @@ class RoomScreen extends PureComponent {
                     {offer.title}
                   </h1>
                   {
-                    (authorizationStatus === true)
+                    (authorizationStatus === `AUTH`)
                     ?
                     <button onClick={()=>setFavoriteDispatch(offer.id, offer.is_favorite)} className="property__bookmark-button button" type="button">
                       <svg className={`property__bookmark-icon ${offer.is_favorite ? `active` : ``}`} width="31" height="33">
