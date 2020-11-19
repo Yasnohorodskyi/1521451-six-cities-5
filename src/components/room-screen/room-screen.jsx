@@ -17,6 +17,8 @@ import HeaderContainer from '../header/header-container';
 class RoomScreen extends PureComponent {
   constructor(props) {
     super(props);
+  }
+  componentDidMount(){
     const {currentRoom, getOfferDispatch} = this.props;
     getOfferDispatch(currentRoom);
   }
@@ -26,7 +28,7 @@ class RoomScreen extends PureComponent {
     if (offer === null) {
       return null;
     }
-    console.log(authorizationStatus)
+
     return (
 
       <div className="page">
