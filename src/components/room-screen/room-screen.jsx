@@ -56,8 +56,8 @@ class RoomScreen extends PureComponent {
                   {
                     (authorizationStatus === `AUTH`)
                     ?
-                    <button onClick={()=>setFavoriteDispatch(offer.id, offer.is_favorite)} className="property__bookmark-button button" type="button">
-                      <svg className={`property__bookmark-icon ${offer.is_favorite ? `active` : ``}`} width="31" height="33">
+                    <button onClick={()=>setFavoriteDispatch(offer.id, offer.is_favorite)} className={`property__bookmark-button${offer.is_favorite ? `--active` : ``} button`} type="button">
+                      <svg className={`property__bookmark-icon`} width="31" height="33">
                         <use xlinkHref="#icon-bookmark"></use>
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>
