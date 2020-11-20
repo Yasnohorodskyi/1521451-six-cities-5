@@ -41,7 +41,7 @@ class AddFormComment extends PureComponent {
           </p>
           <button
             className="reviews__submit form__submit button"
-            disabled={!(ratingField && textField )  }
+            disabled={!(ratingField && textField)}
             type="submit">
             Submit
           </button>
@@ -54,6 +54,16 @@ class AddFormComment extends PureComponent {
 AddFormComment.propTypes = {
   addReviews: PropTypes.func,
   currentOffer: PropTypes.number,
+  titleInputs: PropTypes.arrayOf(
+      PropTypes.string
+  ),
+  handleSubmit: PropTypes.func,
+  handleChange: PropTypes.func,
+  inputRating: PropTypes.func,
+  ratingField: PropTypes.bool,
+  textField: PropTypes.bool,
+  refText: PropTypes.object,
+  refRating: PropTypes.object,
 };
 
 export default AddFormComment;

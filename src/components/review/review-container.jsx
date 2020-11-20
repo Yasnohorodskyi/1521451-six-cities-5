@@ -42,11 +42,6 @@ ReviewContainer.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   addReviewsDispatch(comment, rating, currentOffer, callback) {
-    /* Доделать в след. задании: Добавить ограничение на комменты, не более 4ых в одной карточке
-    */
-    // dispatch(setFavorite(id));
-    console.log(comment);
-    console.log(rating);
     dispatch(addReviews(comment, rating, currentOffer, callback));
   },
   getReviewsDispatch(currentOffer) {

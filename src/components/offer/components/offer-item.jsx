@@ -6,6 +6,10 @@ import {premiumTemplate} from '../../../helpers/premium-template';
 import {calcRating} from '../../../helpers/calc-rating';
 import {offerItem} from '../../../shapes/offer-item';
 
+import {
+  Link
+} from "react-router-dom";
+
 class OfferItem extends PureComponent {
   constructor(props) {
     super(props);
@@ -56,7 +60,9 @@ class OfferItem extends PureComponent {
             </div>
           </div>
           <h2 className="place-card__name">
-            <a href="#">{offer.title}</a>
+            <Link to="/">
+              {offer.title}
+            </Link>
           </h2>
           <p className="place-card__type">{offer.type}</p>
         </div>

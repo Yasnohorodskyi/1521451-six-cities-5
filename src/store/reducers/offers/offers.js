@@ -43,13 +43,14 @@ export default function Offers(state = stateOffers, action) {
       });
 
     case ActionType.SET_FAVORITE:
+
       return {
         ...state,
         offer: {
           ...state.offer,
-          is_favorite: action.payload.status
+          isFavorite: action.payload.status
         }
-      }
+      };
 
     case actionCity.CHANGE_CITY:
 

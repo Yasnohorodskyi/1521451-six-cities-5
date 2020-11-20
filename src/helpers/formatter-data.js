@@ -13,7 +13,7 @@ const namesMonth = {
   10: `October`,
   11: `November`,
   12: `December`
-}
+};
 
 const addZero = (numb) => {
   if (numb < 10) {
@@ -29,21 +29,22 @@ const formatYearMonthDay = (time) => {
   const month = addZero(new Date(timestamp * 1000).getMonth() + 1);
   const day = addZero(new Date(timestamp * 1000).getDay());
   return `${year}-${month}-${day}`;
-}
+};
+
 const formatMonthYear = (time) => {
   const month = namesMonth[new Date(time).getMonth() + 1];
   const year = new Date(time).getFullYear();
   return `${month} ${year}`;
-}
+};
 
 const formatterData = (time, type) => {
   switch (type) {
     case `MonthDay`:
-      return formatMonthYear(time)
+      return formatMonthYear(time);
     case `YearMonthDay`:
-      return formatYearMonthDay(time)
+      return formatYearMonthDay(time);
     default:
-      return timestamp;
+      return time;
   }
 };
 

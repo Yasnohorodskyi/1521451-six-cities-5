@@ -26,10 +26,11 @@ class ReviewsList extends PureComponent {
           </span>
         </h2>
         <ul className="reviews__list">
-          {reviewsRevert.map((review , index) => {
-            if(index < maxReviews){
-              return (<ReviewsItem key={review.id} review={review} />)
+          {reviewsRevert.map((review, index) => {
+            if (index < maxReviews) {
+              return (<ReviewsItem key={review.id} review={review} />);
             }
+            return null;
           })}
         </ul>
         { (user.authorizationStatus !== AuthorizationStatus.NO_AUTH) && <AddFormCommentWithValidation uppReviews={uppReviews} currentOffer={currentOffer} addReviews={addReviews}/> }
@@ -45,7 +46,8 @@ ReviewsList.propTypes = {
   currentOffer: PropTypes.number,
   user: appUser,
   addReviews: PropTypes.func,
-  uppReviews: PropTypes.func
+  uppReviews: PropTypes.func,
+  maxReviews: PropTypes.number,
 };
 
 export default ReviewsList;
