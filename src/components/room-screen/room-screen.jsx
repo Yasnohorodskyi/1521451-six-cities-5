@@ -29,7 +29,6 @@ class RoomScreen extends PureComponent {
       return null;
     }
 
-
     return (
 
       <div className="page">

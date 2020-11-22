@@ -6,7 +6,15 @@ export const fetchOffers = () => (dispatch, _getState, api) => {
     .then(({data}) => dispatch({
       type: OffersType.GET_OFFERS,
       payload: data
-    }));
+    }))
+    .catch((error) => {
+      dispatch({
+        type: OffersType.ERROR_LOAD,
+        payload: {
+          error
+        }
+      });
+    });
 };
 
 export const changeCity = (currentCity) => (dispatch) => {
@@ -31,6 +39,14 @@ export const getOffer = (idRoom) => (dispatch, _getState, api) => {
             payload: {
               offer: sendData.offer,
               nearby: sendData.nearby
+            }
+          });
+        })
+        .catch((error) => {
+          dispatch({
+            type: OffersType.ERROR_OFFER,
+            payload: {
+              error
             }
           });
         });
@@ -60,6 +76,14 @@ export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api)
         status: !currentStatus
       }
     });
+  })
+  .catch((error) => {
+    dispatch({
+      type: OffersType.ERROR_SET_FAVORITE,
+      payload: {
+        error
+      }
+    });
   });
 };
 
@@ -73,5 +97,12 @@ export const getFavorite = () => (dispatch, _getState, api) => {
       }
     });
   })
-    .then(() => { });
+  .catch((error) => {
+    dispatch({
+      type: OffersType.ERROR_GET_FAVORITE,
+      payload: {
+        error
+      }
+    });
+  });
 };

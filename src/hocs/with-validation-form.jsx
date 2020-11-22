@@ -13,33 +13,28 @@ const withValidationForm = (ComponentOutside) => {
         room: ``,
         reviews: [],
         selectedOption: ``,
-        textarea: ''
+        textarea: ``
       };
 
       this.handleSubmit = (event) => {
         const {addReviews, currentOffer} = this.props;
-
         event.preventDefault();
-        const Component = this;
-
         addReviews(
             this.state.textarea,
             this.state.selectedOption,
-            currentOffer,
-            () => {
-              Component.setState({
-                selectedOption: ``,
-                textarea: ``
-              });
-            }
+            currentOffer
         );
+        this.setState({
+          selectedOption: ``,
+          textarea: ``
+        });
 
       };
       this.handleChange = (field, value) => {
         this.setState({
           [field]: value.currentTarget.value
         });
-      }
+      };
     }
     inputRating(number, title, titleInputs, handleChange, selectedOption) {
       let index = titleInputs.length - number;
@@ -52,7 +47,7 @@ const withValidationForm = (ComponentOutside) => {
             value={index}
             id={`${index}-stars`}
             type="radio"
-            onChange={handleChange.bind(this, 'selectedOption')}
+            onChange={handleChange.bind(this, `selectedOption`)}
           />
           <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={title}>
             <svg className="form__star-image" width="37" height="33">

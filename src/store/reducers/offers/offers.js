@@ -45,13 +45,18 @@ export default function Offers(state = stateOffers, action) {
 
     case OffersType.SET_FAVORITE:
 
-      return {
-        ...state,
-        offer: {
-          ...state.offer,
-          isFavorite: action.payload.status
-        }
-      };
+      state.offer.isFavorite = action.payload.status;
+      return JSON.parse(JSON.stringify(state));
+      /*
+        Не нравится линтеру
+        return {
+          ...state,
+          offer: {
+            ...state.offer,
+            isFavorite: action.payload.status
+          }
+        };
+      */
 
     case OffersType.CHANGE_CITY:
 

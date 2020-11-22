@@ -28,7 +28,7 @@ class AddFormComment extends PureComponent {
         </div>
         <textarea
           value={textarea}
-          onChange={handleChange.bind(this, 'textarea')}
+          onChange={handleChange.bind(this, `textarea`)}
           className="reviews__textarea form__textarea" id="review" name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
         />
@@ -66,8 +66,10 @@ AddFormComment.propTypes = {
   inputRating: PropTypes.func,
   ratingField: PropTypes.bool,
   textField: PropTypes.bool,
-  refText: PropTypes.object,
-  refRating: PropTypes.object,
+  selectedOption: PropTypes.arrayOf(
+      PropTypes.string
+  ),
+  textarea: PropTypes.string,
 };
 
 export default AddFormComment;
