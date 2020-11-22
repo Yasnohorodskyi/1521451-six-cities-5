@@ -14,8 +14,6 @@ import {currentCityShape} from '../../shapes/current-city';
 import {getOffer, setFavorite} from '../../store/actions/offers/offers';
 import HeaderContainer from '../header/header-container';
 
-import {offerAdapter} from '../../helpers/offer-adapter';
-
 class RoomScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -31,7 +29,6 @@ class RoomScreen extends PureComponent {
       return null;
     }
 
-    const newOffer = offerAdapter(offer);
 
     return (
 
@@ -41,7 +38,7 @@ class RoomScreen extends PureComponent {
           <section className="property">
             <div className="property__gallery-container container">
               <div className="property__gallery">
-                {newOffer.images.map((picture, index) => (
+                {offer.images.map((picture, index) => (
                   <div key={index} className="property__image-wrapper">
                     <img className="property__image" src={picture} />
                   </div>
@@ -51,16 +48,16 @@ class RoomScreen extends PureComponent {
             <div className="property__container container">
               <div className="property__wrapper">
                 {
-                  (newOffer.premium) ? premiumTemplate(`property__mark`) : ``
+                  (offer.premium) ? premiumTemplate(`property__mark`) : ``
                 }
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
-                    {newOffer.title}
+                    {offer.title}
                   </h1>
                   {
                     (authorizationStatus === `AUTH`)
                       ?
-                      <button onClick={() => setFavoriteDispatch(newOffer.id, newOffer.isFavorite)} className={`property__bookmark-button${newOffer.isFavorite ? `--active` : ``} button`} type="button">
+                      <button onClick={() => setFavoriteDispatch(offer.id, offer.isFavorite)} className={`property__bookmark-button ${offer.isFavorite ? `active` : ``} button`} type="button">
                         <svg className={`property__bookmark-icon`} width="31" height="33">
                           <use xlinkHref="#icon-bookmark"></use>
                         </svg>
@@ -71,30 +68,30 @@ class RoomScreen extends PureComponent {
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span className="rating__stars__value" style={calcRating(newOffer.rating)}></span>
+                    <span className="rating__stars__value" style={calcRating(offer.rating)}></span>
                     <span className="visually-hidden">Rating</span>
                   </div>
-                  <span className="property__rating-value rating__value">{newOffer.rating}</span>
+                  <span className="property__rating-value rating__value">{offer.rating}</span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    {newOffer.type}
+                    {offer.type}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    {newOffer.bedrooms}
+                    {offer.bedrooms}
                   </li>
                   <li className="property__feature property__feature--adults">
-                    {newOffer.max_adults}
+                    {offer.max_adults}
                   </li>
                 </ul>
                 <div className="property__price">
-                  <b className="property__price-value">€{newOffer.price}</b>
+                  <b className="property__price-value">€{offer.price}</b>
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
                 <div className="property__inside">
                   <h2 className="property__inside-title">What&apos;s inside</h2>
                   <ul className="property__inside-list">
-                    {newOffer.goods.map((good, index) => (
+                    {offer.goods.map((good, index) => (
                       <li key={index} className="property__inside-item">
                         {good}
                       </li>
@@ -107,25 +104,25 @@ class RoomScreen extends PureComponent {
                     <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
                     </div>
                     <span className="property__user-name">
-                      {newOffer.host.name}
+                      {offer.host.name}
                     </span>
                   </div>
                   <div className="property__description">
                     <p className="property__text">
-                      {newOffer.description}
+                      {offer.description}
                     </p>
                   </div>
                 </div>
                 <section className="property__reviews reviews">
-                  <ReviewContainer currentOffer={newOffer.id} />
+                  <ReviewContainer currentOffer={offer.id} />
                 </section>
               </div>
             </div>
             <section className="property__map map">
               <MapContainer
-                currentCity={newOffer.city}
+                currentCity={offer.city}
                 max={MAX_OTHER_REVIEWS}
-                currentOffer={newOffer.id}
+                currentOffer={offer.id}
                 offers={nearby}
               />
             </section>
@@ -135,8 +132,8 @@ class RoomScreen extends PureComponent {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <OfferContainer
                 max={MAX_OTHER_REVIEWS}
-                currentCity={newOffer.city}
-                currentOffer={newOffer.id}
+                currentCity={offer.city}
+                currentOffer={offer.id}
                 offers={nearby}
               />
             </section>

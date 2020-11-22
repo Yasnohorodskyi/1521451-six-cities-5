@@ -1,6 +1,5 @@
 
-import {AuthorizationStatus} from "../../const";
-import {UserType} from "../../actions/const";
+import {AuthorizationStatus, UserType} from "../../const";
 
 const userState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,

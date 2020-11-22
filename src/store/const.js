@@ -3,7 +3,7 @@ export const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
-export const ActionType = {
+export const OffersType = {
   CHANGE_CITY: `CHANGE_CITY`,
   GET_OFFERS: `GET_OFFERS`,
   GET_OFFER: `GET_OFFER`,
@@ -15,6 +15,19 @@ export const ActionType = {
   ADD_REVIEWS: `ADD_REVIEWS`,
   SET_FAVORITE: `SET_FAVORITE`,
   GET_FAVORITE: `GET_FAVORITE`
+};
+
+export const UserType = {
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  RESULT: ``,
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+  REQUIRED_ERROR: `REQUIRED_ERROR`,
+};
+
+export const ReviewType = {
+  ADD_REVIEWS: `ADD_REVIEWS`,
+  GET_REVIEWS: `GET_REVIEWS`
 };
 
 export const AppRoute = {
@@ -37,9 +50,4 @@ export const actionFilter = {
   FILTER_TOP_RATED_FIRST: `Top rated first`,
   FILTER_PRICE_LOW_TO_HIGH: `Price: low to high`,
   FILTER_PRICE_HIGH_TO_LOW: `Price: high to low`,
-};
-
-export const actionCity = {
-  CHANGE_CITY: `CHANGE_CITY`,
-  LOAD_OFFERS: `LOAD_OFFERS`
 };

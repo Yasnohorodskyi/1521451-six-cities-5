@@ -1,5 +1,6 @@
 import {extend} from "../../../helpers/extend";
-import {actionFilter, actionCity, ActionType} from "../../const";
+import {actionFilter, OffersType} from "../../const";
+import {offerAdapter} from '../../../helpers/offer-adapter';
 
 const stateOffers = {
   currentCity: null,
@@ -14,13 +15,13 @@ const stateOffers = {
 export default function Offers(state = stateOffers, action) {
 
   switch (action.type) {
-    case ActionType.GET_OFFER:
+    case OffersType.GET_OFFER:
       return extend(state, {
-        offer: action.payload.offer,
+        offer: offerAdapter(action.payload.offer),
         nearby: action.payload.nearby
       });
 
-    case ActionType.GET_OFFERS:
+    case OffersType.GET_OFFERS:
 
       const firstCity = action.payload[0].city;
       const listCity = {};
@@ -37,12 +38,12 @@ export default function Offers(state = stateOffers, action) {
         baseFilter: actionFilter.FILTER_POPULAR
       });
 
-    case ActionType.GET_FAVORITE:
+    case OffersType.GET_FAVORITE:
       return extend(state, {
         favorites: action.payload.favorites,
       });
 
-    case ActionType.SET_FAVORITE:
+    case OffersType.SET_FAVORITE:
 
       return {
         ...state,
@@ -52,7 +53,7 @@ export default function Offers(state = stateOffers, action) {
         }
       };
 
-    case actionCity.CHANGE_CITY:
+    case OffersType.CHANGE_CITY:
 
       return extend(state, {
         currentCity: action.payload.currentCity

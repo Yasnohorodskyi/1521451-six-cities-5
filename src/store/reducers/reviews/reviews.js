@@ -1,5 +1,5 @@
 import {extend} from "../../../helpers/extend";
-import {ActionType} from "../../const";
+import {ReviewType} from "../../const";
 
 const stateReviews = {
   reviews: []
@@ -8,11 +8,11 @@ const stateReviews = {
 export default function Reviews(state = stateReviews, action) {
 
   switch (action.type) {
-    case ActionType.GET_REVIEWS:
+    case ReviewType.GET_REVIEWS:
       return extend(state, {
         reviews: action.payload.data
       });
-    case ActionType.ADD_REVIEWS:
+    case ReviewType.ADD_REVIEWS:
       return extend(state, {
         reviews: action.payload.data
       });

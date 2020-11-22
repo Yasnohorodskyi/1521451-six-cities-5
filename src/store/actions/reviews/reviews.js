@@ -1,5 +1,4 @@
-import {APIRoute} from '../../const';
-import {ReviewType} from '../const';
+import {APIRoute, ReviewType} from '../../const';
 
 export const getReviews = (idRoom) => (dispatch, _getState, api) => {
   api.get(`${APIRoute.GET_REVIEWS}/${idRoom}`)

@@ -6,28 +6,32 @@ class AddFormComment extends PureComponent {
     super(props);
   }
   render() {
+
     const {
       titleInputs,
       handleSubmit,
       handleChange,
       inputRating,
-      ratingField,
-      textField,
-      refText,
-      refRating
+      selectedOption,
+      textarea
     } = this.props;
 
     return (
-      <form disabled onSubmit={handleSubmit} className="reviews__form form" action="#" method="post">
+      <form onSubmit={handleSubmit} className="reviews__form form" action="#" method="post">
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
           {titleInputs.map((item, index) => (
             <React.Fragment key={item}>
-              {inputRating(index, item, titleInputs, refRating, handleChange)}
+              {inputRating(index, item, titleInputs, handleChange, selectedOption)}
             </React.Fragment>
           ))}
         </div>
-        <textarea ref={refText} data-type="comment" onInput={(e) => handleChange(e)} className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
+        <textarea
+          value={textarea}
+          onChange={handleChange.bind(this, 'textarea')}
+          className="reviews__textarea form__textarea" id="review" name="review"
+          placeholder="Tell how was your stay, what you like and what can be improved"
+        />
         <div className="reviews__button-wrapper">
           <p className="reviews__help">
             To submit review please make sure to set
@@ -41,7 +45,7 @@ class AddFormComment extends PureComponent {
           </p>
           <button
             className="reviews__submit form__submit button"
-            disabled={!(ratingField && textField)}
+            disabled={!(selectedOption && textarea.length >= 50 && textarea.length <= 300)}
             type="submit">
             Submit
           </button>

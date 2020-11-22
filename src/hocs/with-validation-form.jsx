@@ -12,78 +12,48 @@ const withValidationForm = (ComponentOutside) => {
         titleInputs: [`terribly`, `badly`, `not bad`, `good`, `perfect`],
         room: ``,
         reviews: [],
-        rating: 0,
-        textField: false,
-        ratingField: false
+        selectedOption: ``,
+        textarea: ''
       };
-
-      this.refText = React.createRef();
-      this.refRating = React.createRef();
 
       this.handleSubmit = (event) => {
         const {addReviews, currentOffer} = this.props;
 
         event.preventDefault();
-
-        this.setState({
-          textField: false,
-          ratingField: false
-        });
+        const Component = this;
 
         addReviews(
-            this.refText.current.value,
-            this.refRating.current.value,
+            this.state.textarea,
+            this.state.selectedOption,
             currentOffer,
             () => {
-              this.refText.current.value = ``;
-              this.refRating.current.value = 0;
+              Component.setState({
+                selectedOption: ``,
+                textarea: ``
+              });
             }
         );
 
       };
-
-
-      this.handleChange = (event) => {
-
-        switch (event.target.dataset.type) {
-          case `comment`:
-            this.validateText(
-                event.target.value
-            );
-            break;
-          case `rating`:
-            this.validateRating(
-                event.target.value
-            );
-            break;
-        }
-      };
-    }
-    validateText(text) {
-      if (text.length >= 50 && text.length <= 300) {
+      this.handleChange = (field, value) => {
         this.setState({
-          textField: true
-        });
-      } else {
-        this.setState({
-          textField: false
+          [field]: value.currentTarget.value
         });
       }
     }
-    validateRating(rating) {
-      return (rating) ?
-        this.setState({
-          ratingField: true
-        })
-        : this.setState({
-          ratingField: false
-        });
-    }
-    inputRating(number, title, titleInputs, refRating, handleChange) {
+    inputRating(number, title, titleInputs, handleChange, selectedOption) {
       let index = titleInputs.length - number;
       return (
         <React.Fragment>
-          <input ref={refRating} className="form__rating-input visually-hidden" data-type="rating" name="rating" value={index} id={`${index}-stars`} type="radio" onChange={handleChange} />
+          <input
+            checked={Number(selectedOption) === Number(index)}
+            className="form__rating-input visually-hidden"
+            name="rating"
+            value={index}
+            id={`${index}-stars`}
+            type="radio"
+            onChange={handleChange.bind(this, 'selectedOption')}
+          />
           <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={title}>
             <svg className="form__star-image" width="37" height="33">
               <use xlinkHref="#icon-star"></use>
@@ -92,6 +62,7 @@ const withValidationForm = (ComponentOutside) => {
         </React.Fragment>
       );
     }
+
     render() {
       return <ComponentOutside
         {...this.props}
@@ -99,8 +70,6 @@ const withValidationForm = (ComponentOutside) => {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         inputRating={this.inputRating}
-        refText={this.refText}
-        refRating={this.refRating}
       />;
     }
   }

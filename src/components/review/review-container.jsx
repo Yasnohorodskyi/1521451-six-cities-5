@@ -19,7 +19,7 @@ class ReviewContainer extends PureComponent {
     return (
       <React.Fragment>
         <ReviewList
-          reviews={reviews}
+          reviews={reviews.reverse()}
           user={user}
           addReviews={addReviewsDispatch}
           currentOffer={currentOffer}

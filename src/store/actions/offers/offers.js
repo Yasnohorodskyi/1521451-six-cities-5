@@ -1,5 +1,4 @@
-import {APIRoute} from '../../const';
-import {OffersType} from '../const';
+import {APIRoute, OffersType} from '../../const';
 
 export const fetchOffers = () => (dispatch, _getState, api) => {
 
@@ -58,7 +57,7 @@ export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api)
       type: OffersType.SET_FAVORITE,
       payload: {
         id: idRoom,
-        status: (currentStatus) ? false : true
+        status: !currentStatus
       }
     });
   });

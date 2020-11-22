@@ -1,4 +1,4 @@
-import {APIRoute, AppRoute, AuthorizationStatus, ActionType} from "../../const";
+import {APIRoute, AppRoute, AuthorizationStatus, UserType} from "../../const";
 
 const convertUser = (data) => {
   return {
@@ -49,14 +49,14 @@ export const login = ({email, password}) => (dispatch, _getState, api) => {
 };
 
 export const requireError = (error) => ({
-  type: ActionType.REQUIRED_ERROR,
+  type: UserType.REQUIRED_ERROR,
   payload: {
     error
   }
 });
 
 export const requireAuthorization = (status, data, error) => ({
-  type: ActionType.REQUIRED_AUTHORIZATION,
+  type: UserType.REQUIRED_AUTHORIZATION,
   payload: {
     status,
     data,
@@ -65,6 +65,6 @@ export const requireAuthorization = (status, data, error) => ({
 });
 
 export const redirectToRoute = (url) => ({
-  type: ActionType.REDIRECT_TO_ROUTE,
+  type: APIRoute.REDIRECT_TO_ROUTE,
   payload: url,
 });
