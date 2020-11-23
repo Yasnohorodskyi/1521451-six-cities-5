@@ -6,13 +6,17 @@ import AddFormComment from "./add-form-comment.jsx";
 import {reviewsItem} from '../../../shapes/reviews-item';
 import {AuthorizationStatus} from '../../../store/const';
 import {appUser} from '../../../shapes/app-user';
+import withValidationForm from '../../../hocs/with-validation-form';
+
+const AddFormCommentWithValidation = withValidationForm(AddFormComment);
 
 class ReviewsList extends PureComponent {
   constructor(props) {
     super(props);
   }
   render() {
-    const {reviews, user, addReviews, currentOffer, uppReviews} = this.props;
+    const {reviews, user, addReviews, currentOffer, uppReviews, maxReviews} = this.props;
+
     return (
       <React.Fragment>
         <h2 className="reviews__title">
@@ -22,11 +26,11 @@ class ReviewsList extends PureComponent {
           </span>
         </h2>
         <ul className="reviews__list">
-          {reviews.map((review) => {
-            return (<ReviewsItem key={review.id} review={review} />);
+          {reviews.map((review, index) => {
+            return index < maxReviews && (<ReviewsItem key={review.id} review={review} />);
           })}
         </ul>
-        { (user.authorizationStatus !== AuthorizationStatus.NO_AUTH) && <AddFormComment uppReviews={uppReviews} currentOffer={currentOffer} addReviews={addReviews}/> }
+        { (user.authorizationStatus !== AuthorizationStatus.NO_AUTH) && <AddFormCommentWithValidation uppReviews={uppReviews} currentOffer={currentOffer} addReviews={addReviews}/> }
       </React.Fragment>
     );
   }
@@ -39,7 +43,8 @@ ReviewsList.propTypes = {
   currentOffer: PropTypes.number,
   user: appUser,
   addReviews: PropTypes.func,
-  uppReviews: PropTypes.func
+  uppReviews: PropTypes.func,
+  maxReviews: PropTypes.number,
 };
 
 export default ReviewsList;

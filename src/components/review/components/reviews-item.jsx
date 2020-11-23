@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 import {calcRating} from '../../../helpers/calc-rating';
 import {formatterData} from '../../../helpers/formatter-data';
@@ -10,7 +11,6 @@ class ReviewsItem extends PureComponent {
   }
   render() {
     const {review} = this.props;
-
     return (
       <li key={review.id} className="reviews__item">
         <div className="reviews__user user">
@@ -32,7 +32,7 @@ class ReviewsItem extends PureComponent {
             {review.comment}
           </p>
           <time className="reviews__time" dateTime={formatterData(review.date, `YearMonthDay`)}>
-            {formatterData(review.date, `DayMonth`)}
+            {formatterData(review.date, `MonthDay`)}
           </time>
         </div>
       </li>
@@ -42,6 +42,7 @@ class ReviewsItem extends PureComponent {
 
 ReviewsItem.propTypes = {
   review: reviewsItem,
+  maxReviews: PropTypes.number
 };
 
 export default ReviewsItem;

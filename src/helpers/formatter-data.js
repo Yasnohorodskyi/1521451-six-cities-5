@@ -1,21 +1,33 @@
 import PropTypes from 'prop-types';
 
-const addZero = (numb) => {
-  if (numb < 10) {
-    return `0${numb}`;
-  } else {
-    return numb;
-  }
+
+const formatYearMonthDay = (time) => {
+
+  const timestamp = new Date(time).getTime();
+
+  let options = {
+    year: `numeric`,
+    month: `numeric`,
+    day: `numeric`,
+  };
+
+  const dateArray = new Intl.DateTimeFormat(`en-EN`, options).format(timestamp).split(`/`);
+  return `${dateArray[2]}-${(dateArray[1].length === 1) ? `0${dateArray[1]}` : `${dateArray[1]}`}-${dateArray[0]}`;
+
 };
+
+const formatMonthYear = (time) => {
+  const options = {month: `long`, year: `numeric`};
+  const date = new Date(time);
+  return new Intl.DateTimeFormat(`en-EN`, options).format(date);
+};
+
 const formatterData = (time, type) => {
-  let arr = new Date(time * 1000).toString().split(` `);
   switch (type) {
-    case `DayMonth`:
-      return `${arr[1]} ${arr[3]}`;
+    case `MonthDay`:
+      return formatMonthYear(time);
     case `YearMonthDay`:
-      const month = addZero(new Date(time * 1000).getMonth() + 1);
-      const day = addZero(new Date(time * 1000).getDay());
-      return `${arr[3]}-${month}-${day}`;
+      return formatYearMonthDay(time);
     default:
       return time;
   }

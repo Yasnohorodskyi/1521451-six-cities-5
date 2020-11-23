@@ -1,10 +1,10 @@
 
-import {AuthorizationStatus} from "../../const";
-import {UserType} from "../../actions/const";
+import {AuthorizationStatus, UserType} from "../../const";
 
 const userState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  data: null
+  data: null,
+  error: ``
 };
 
 export default function User(state = userState, action) {
@@ -19,6 +19,10 @@ export default function User(state = userState, action) {
       return Object.assign({}, state, {
         data: action.payload.data,
         authorizationStatus: action.payload.status
+      });
+    case UserType.REQUIRED_ERROR:
+      return Object.assign({}, state, {
+        error: action.payload.error,
       });
   }
 

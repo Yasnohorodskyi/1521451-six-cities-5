@@ -12,20 +12,7 @@ class SignInScreen extends PureComponent {
     this.emailRef = createRef();
     this.passwordRef = createRef();
 
-    this.state = {
-      warning: ``,
-      setWarning: null
-    };
-
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentDidMount() {
-    const setWarning = (error) => {
-      return this.setState({
-        warning: error
-      });
-    };
-    this.setWarning = setWarning;
   }
   handleSubmit(evt) {
     const {onSubmit} = this.props;
@@ -34,13 +21,12 @@ class SignInScreen extends PureComponent {
     onSubmit({
       email: this.emailRef.current.value,
       password: this.passwordRef.current.value,
-    }, this.setWarning);
+    });
   }
 
   render() {
 
-    const {currentCity} = this.props;
-    const {warning} = this.state;
+    const {currentCity, error} = this.props;
 
     return (
       <div className="page page--gray page--login">
@@ -80,7 +66,7 @@ class SignInScreen extends PureComponent {
                   <input ref={this.passwordRef} className="login__input form__input" type="password" name="password" placeholder="Password" required="" />
                 </div>
                 <button className="login__submit form__submit button" type="submit">Sign in</button>
-                <div className="warning_container">{warning}</div>
+                <div className="warning_container">{error}</div>
               </form>
             </section>
             <section className="locations locations--login locations--current">
@@ -99,17 +85,19 @@ class SignInScreen extends PureComponent {
 
 SignInScreen.propTypes = {
   onSubmit: PropTypes.func,
-  currentCity: currentCityShape
+  currentCity: currentCityShape,
+  error: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData, setWarning) {
-    dispatch(login(authData, setWarning));
+  onSubmit(authData) {
+    dispatch(login(authData));
   }
 });
 const mapStateToProps = (state) => {
   return {
-    currentCity: state.Offers.currentCity
+    currentCity: state.Offers.currentCity,
+    error: state.User.error
   };
 };
 export {SignInScreen};

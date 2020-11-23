@@ -1,4 +1,4 @@
-import {APIRoute, AppRoute, AuthorizationStatus, ActionType} from "../../const";
+import {APIRoute, AppRoute, AuthorizationStatus, UserType} from "../../const";
 
 const convertUser = (data) => {
   return {
@@ -23,7 +23,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 );
 
 
-export const login = ({email, password}, setWarning) => (dispatch, _getState, api) => {
+export const login = ({email, password}) => (dispatch, _getState, api) => {
   api.post(APIRoute.LOGIN, {email, password}
   ).then((response) => {
     global.status = response.status;
@@ -32,10 +32,11 @@ export const login = ({email, password}, setWarning) => (dispatch, _getState, ap
         dispatch(requireAuthorization(AuthorizationStatus.AUTH, convertUser(response.data)));
         break;
       case 401:
-        dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+        dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH, null, response.status));
         break;
       default:
-        setWarning(`Error login: ${response.status}`);
+        dispatch(requireError(response.request.responseText));
+        break;
     }
 
   })
@@ -43,19 +44,27 @@ export const login = ({email, password}, setWarning) => (dispatch, _getState, ap
       return global.status === 200 ? dispatch(redirectToRoute(AppRoute.RESULT)) : ``;
     })
     .catch((error) => {
-      setWarning(`Error axios: ${error}`);
+      dispatch(redirectToRoute(error));
     });
 };
 
-export const requireAuthorization = (status, data) => ({
-  type: ActionType.REQUIRED_AUTHORIZATION,
+export const requireError = (error) => ({
+  type: UserType.REQUIRED_ERROR,
+  payload: {
+    error
+  }
+});
+
+export const requireAuthorization = (status, data, error) => ({
+  type: UserType.REQUIRED_AUTHORIZATION,
   payload: {
     status,
-    data
+    data,
+    error
   }
 });
 
 export const redirectToRoute = (url) => ({
-  type: ActionType.REDIRECT_TO_ROUTE,
+  type: APIRoute.REDIRECT_TO_ROUTE,
   payload: url,
 });

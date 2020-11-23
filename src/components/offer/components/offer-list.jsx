@@ -11,7 +11,7 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, currentCity, max, currentOffer} = this.props;
+    const {offers, currentCity, max, currentOffer, authorizationStatus} = this.props;
     let indexGloal = 0;
 
     return (
@@ -22,11 +22,11 @@ class OfferList extends PureComponent {
               if (indexGloal < max) {
                 if (currentCity.name === offer.city.name && currentOffer !== offer.id) {
                   indexGloal++;
-                  return (<OfferItem key={offer.id} offer={offer} />);
+                  return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offer} />);
                 }
               }
             } else {
-              return (<OfferItem key={offer.id} offer={offer} />);
+              return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offer} />);
             }
             return null;
           })
@@ -50,6 +50,7 @@ OfferList.propTypes = {
   currentCity: currentCityShape,
   cityId: PropTypes.string,
   currentOffer: PropTypes.number,
+  authorizationStatus: PropTypes.string,
 };
 
 export default OfferList;

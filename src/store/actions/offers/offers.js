@@ -1,5 +1,4 @@
-import {APIRoute} from '../../const';
-import {OffersType} from '../const';
+import {APIRoute, OffersType} from '../../const';
 
 export const fetchOffers = () => (dispatch, _getState, api) => {
 
@@ -7,7 +6,15 @@ export const fetchOffers = () => (dispatch, _getState, api) => {
     .then(({data}) => dispatch({
       type: OffersType.GET_OFFERS,
       payload: data
-    }));
+    }))
+    .catch((error) => {
+      dispatch({
+        type: OffersType.ERROR_LOAD,
+        payload: {
+          error
+        }
+      });
+    });
 };
 
 export const changeCity = (currentCity) => (dispatch) => {
@@ -34,6 +41,14 @@ export const getOffer = (idRoom) => (dispatch, _getState, api) => {
               nearby: sendData.nearby
             }
           });
+        })
+        .catch((error) => {
+          dispatch({
+            type: OffersType.ERROR_OFFER,
+            payload: {
+              error
+            }
+          });
         });
     });
 };
@@ -51,10 +66,25 @@ export const filterOffer = (filter, offers, currentCity) => (dispatch) => {
 };
 
 
-export const setFavorite = (idRoom) => (_getState, api) => {
-  api.post(`${APIRoute.FAVORITE}/${idRoom}/1`).then(() => {
+export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api) => {
+  api.post(`${APIRoute.FAVORITE}/${idRoom}/${(currentStatus) ? 0 : 1}`).then(() => {
+  }).then(() => {
+    dispatch({
+      type: OffersType.SET_FAVORITE,
+      payload: {
+        id: idRoom,
+        status: !currentStatus
+      }
+    });
   })
-    .then(() => { });
+  .catch((error) => {
+    dispatch({
+      type: OffersType.ERROR_SET_FAVORITE,
+      payload: {
+        error
+      }
+    });
+  });
 };
 
 
@@ -67,5 +97,12 @@ export const getFavorite = () => (dispatch, _getState, api) => {
       }
     });
   })
-    .then(() => { });
+  .catch((error) => {
+    dispatch({
+      type: OffersType.ERROR_GET_FAVORITE,
+      payload: {
+        error
+      }
+    });
+  });
 };
