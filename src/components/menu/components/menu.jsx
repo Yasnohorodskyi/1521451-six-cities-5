@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  Link
+  Link,
+  BrowserRouter
 } from "react-router-dom";
 import {currentCityShape} from '../../../shapes/current-city';
 import PropTypes from 'prop-types';
@@ -28,7 +29,9 @@ const Menu = ({cities, activeItem, changeCity, currentCity}) => {
   };
 
   return (<ul className="locations__list tabs__list">
-    {createElementMenu()}
+    <BrowserRouter>
+      {createElementMenu()}
+    </BrowserRouter>
   </ul>);
 };
 

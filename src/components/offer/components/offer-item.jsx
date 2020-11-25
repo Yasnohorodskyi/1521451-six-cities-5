@@ -8,7 +8,8 @@ import {offerItem} from '../../../shapes/offer-item';
 import {AuthorizationStatus} from '../../../store/const';
 
 import {
-  Link
+  Link,
+  Router
 } from "react-router-dom";
 
 class OfferItem extends PureComponent {

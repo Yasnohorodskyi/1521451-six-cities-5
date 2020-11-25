@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Header Render HeaderContainer 1`] = `null`;
+
+exports[`Render Header Render authHeader 1`] = `<authHeader />`;
+
+exports[`Render Header Render notAuthHeader 1`] = `<notAuthHeader />`;

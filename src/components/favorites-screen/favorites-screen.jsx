@@ -1,6 +1,9 @@
 import React, {PureComponent} from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
+import {
+  Link
+} from "react-router-dom";
 
 import HeaderContainer from '../header/header-container';
 import {getFavorite} from '../../store/actions/offers/offers';
@@ -111,6 +114,7 @@ class FavoritesScreen extends PureComponent {
 
 FavoritesScreen.propTypes = {
   getFavorite: PropTypes.func,
+  setFavoriteDispatch: PropTypes.func,
   getFavoriteDispatch: PropTypes.func,
   favorites: PropTypes.arrayOf(
       PropTypes.shape({
@@ -128,7 +132,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   getFavoriteDispatch() {
     dispatch(getFavorite());
-  }
+  },
 });
 
 export {FavoritesScreen};
