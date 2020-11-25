@@ -35,6 +35,8 @@ const withValidationForm = (ComponentOutside) => {
           [field]: value.currentTarget.value
         });
       };
+
+
     }
     inputRating(number, title, titleInputs, handleChange, selectedOption) {
       let index = titleInputs.length - number;

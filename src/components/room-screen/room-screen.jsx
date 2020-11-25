@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import {calcRating} from '../../helpers/calc-rating';
 import {premiumTemplate} from '../../helpers/premium-template';
 import {connect} from "react-redux";
+import {
+  Link
+} from "react-router-dom";
 
 import ReviewContainer from "../review/review-container";
 import MapContainer from '../map/map-container.jsx';
@@ -62,7 +65,15 @@ class RoomScreen extends PureComponent {
                         </svg>
                         <span className="visually-hidden">To bookmarks</span>
                       </button>
-                      : ``
+                      :
+                      <Link to="/login">
+                        <button className='property__bookmark-button button' type="button">
+                          <svg className={`property__bookmark-icon`} width="31" height="33">
+                            <use xlinkHref="#icon-bookmark"></use>
+                          </svg>
+                          <span className="visually-hidden">To bookmarks</span>
+                        </button>
+                      </Link>
                   }
                 </div>
                 <div className="property__rating rating">

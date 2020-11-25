@@ -16,6 +16,9 @@ class AddFormComment extends PureComponent {
       textarea
     } = this.props;
 
+
+    const unblockedSubmit = (selectedOption && textarea.length >= 50 && textarea.length <= 300);
+
     return (
       <form onSubmit={handleSubmit} className="reviews__form form" action="#" method="post">
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
@@ -28,7 +31,7 @@ class AddFormComment extends PureComponent {
         </div>
         <textarea
           value={textarea}
-          onChange={handleChange.bind(this, `textarea`)}
+          onChange={()=>{handleChange(this, `textarea`)}}
           className="reviews__textarea form__textarea" id="review" name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
         />
@@ -45,7 +48,7 @@ class AddFormComment extends PureComponent {
           </p>
           <button
             className="reviews__submit form__submit button"
-            disabled={!(selectedOption && textarea.length >= 50 && textarea.length <= 300)}
+            disabled={!unblockedSubmit}
             type="submit">
             Submit
           </button>

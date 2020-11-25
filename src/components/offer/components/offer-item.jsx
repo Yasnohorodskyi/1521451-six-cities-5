@@ -54,7 +54,16 @@ class OfferItem extends PureComponent {
                 </svg>
                 <span className="visually-hidden">In bookmarks</span>
               </button>
-              : `` }
+              :
+              <Link to="/login">
+                <button className={`place-card__bookmark-button place-card__bookmark-button${offer.is_favorite ? `--active` : ``} button`} type="button">
+                  <svg className="place-card__bookmark-icon" width="18" height="19">
+                    <use xlinkHref="#icon-bookmark"></use>
+                  </svg>
+                  <span className="visually-hidden">In bookmarks</span>
+                </button>
+              </Link>
+              }
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
