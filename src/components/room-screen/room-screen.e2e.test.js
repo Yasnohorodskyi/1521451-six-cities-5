@@ -1,9 +1,8 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {RoomScreen} from "./room-screen";
-import configureStore from "redux-mock-store";
 
+import {RoomScreen} from "./room-screen";
 import {offers} from "../../mocks-for-tests/mocks";
 
 Enzyme.configure({
@@ -12,21 +11,13 @@ Enzyme.configure({
 
 const noop = () => {};
 
-it(`Should replay button be pressed`, () => {
+it(`RoomScreen click button`, () => {
 
-
-
-
- const mockStore = configureStore([]);
  const handleReplayButtonClick = jest.fn();
-      let store = null;
+
 
       beforeEach(() => {
-
-        store = mockStore({});
-
-        store.dispatch = jest.fn();
-
+        const handlePlayButtonClick = jest.fn();
         const wrapper = shallow(
           <RoomScreen
             onReplayButtonClick={handleReplayButtonClick}
@@ -38,7 +29,6 @@ it(`Should replay button be pressed`, () => {
           ).toJSON();
 
           wrapper.find('button').simulate('click');
-          console.log(wrapper);
-
+          expect(handlePlayButtonClick).toHaveBeenCalledTimes(1);
       });
 });

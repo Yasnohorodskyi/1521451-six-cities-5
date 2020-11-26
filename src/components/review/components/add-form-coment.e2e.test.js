@@ -12,18 +12,14 @@ Enzyme.configure({
 
 const noop = () => {};
 
-it(`Should replay button be pressed`, () => {
+it(`Add forn comment click`, () => {
 
- const mockStore = configureStore([]);
+
  const handleReplayButtonClick = jest.fn();
-
-      let store = null;
 
       beforeEach(() => {
 
-        store = mockStore({});
-
-        store.dispatch = jest.fn();
+        const handlePlayButtonClick = jest.fn();
 
         const wrapper = shallow(
           <AddFormComment
@@ -35,7 +31,7 @@ it(`Should replay button be pressed`, () => {
           ).toJSON();
 
           wrapper.find('button').simulate('click');
-          console.log(wrapper);
+          expect(handlePlayButtonClick).toHaveBeenCalledTimes(1);
 
       });
 });
