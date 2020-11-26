@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Favorites Render FavoritesEmpty 1`] = `
+exports[`Favorites tests Render FavoritesEmpty 1`] = `
 <main
   className="page__main page__main--favorites page__main--favorites-empty"
 >
@@ -33,5 +33,3 @@ exports[`Render Favorites Render FavoritesEmpty 1`] = `
   </div>
 </main>
 `;
-
-exports[`Render Favorites Render FavoritesScreen 1`] = `null`;

@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 
 import {AuthorizationStatus} from '../../store/const';
 import {appUser} from "../../shapes/app-user";
-import {authHeader} from "./components/auth-header";
-import {notAuthHeader} from "./components/noauth-header";
+import AuthHeader from "./components/auth-header";
+import NotAuthHeader from "./components/noauth-header";
 
 class HeaderContainer extends PureComponent {
   constructor(props) {
@@ -26,7 +26,7 @@ class HeaderContainer extends PureComponent {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  { (user.authorizationStatus === AuthorizationStatus.NO_AUTH) ? notAuthHeader() : authHeader(user)}
+                  { (user.authorizationStatus === AuthorizationStatus.NO_AUTH) ? <NotAuthHeader /> : <AuthHeader user={user} />}
                 </li>
               </ul>
             </nav>

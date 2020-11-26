@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render ReviewsItem Render ReviewsItem 1`] = `
+<li
+  className="reviews__item"
+>
+  <div
+    className="reviews__user user"
+  >
+    <div
+      className="reviews__avatar-wrapper user__avatar-wrapper"
+    >
+      <img
+        alt="Reviews avatar"
+        className="reviews__avatar user__avatar"
+        height="54"
+        src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
+        width="54"
+      />
+    </div>
+    <span
+      className="reviews__user-name"
+    >
+      r-sasha
+    </span>
+  </div>
+  <div
+    className="reviews__info"
+  >
+    <div
+      className="reviews__rating rating"
+    >
+      <div
+        className="reviews__stars rating__stars"
+      >
+        <span
+          className="rating__stars__value"
+          style={
+            Object {
+              "width": "80%",
+            }
+          }
+        />
+        <span
+          className="visually-hidden"
+        >
+          Rating
+        </span>
+      </div>
+    </div>
+    <p
+      className="reviews__text"
+    >
+      вапвпапвапвавапва вапвпапвапвавапвавапвпапвапвавапвавапвпапвапвавапвавапвпапвапвавапва
+    </p>
+    <time
+      className="reviews__time"
+      dateTime="11-24-2020"
+    >
+      November 2020
+    </time>
+  </div>
+</li>
+`;

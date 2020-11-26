@@ -1,6 +1,9 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {
+  Link
+} from "react-router-dom";
 
 import {login} from "../../store/actions/user/user";
 import {currentCityShape} from '../../shapes/current-city';
@@ -71,9 +74,9 @@ class SignInScreen extends PureComponent {
             </section>
             <section className="locations locations--login locations--current">
               <div className="locations__item">
-                <a className="locations__item-link" href={`/${ (currentCity) ? currentCity.name : ``}`}>
+                <Link className="locations__item-link" to={`/${ (currentCity) ? currentCity.name : ``}`}>
                   <span>{(currentCity) ? currentCity.name : ``}</span>
-                </a>
+                </Link>
               </div>
             </section>
           </div>

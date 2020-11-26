@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Offer Render OfferList 1`] = `
+exports[`Render OfferItem Render OfferItem 1`] = `
 <article
   className="near-places__card place-card"
   onMouseEnter={[Function]}
@@ -11,13 +11,13 @@ exports[`Render Offer Render OfferList 1`] = `
     className="near-places__image-wrapper place-card__image-wrapper"
   >
     <a
-      href="/offer/34"
+      href="/offer/11"
     >
       <img
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
+        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg"
         width="260"
       />
     </a>
@@ -35,7 +35,7 @@ exports[`Render Offer Render OfferList 1`] = `
           className="place-card__price-value"
         >
           €
-          485
+          190
         </b>
         <span
           className="place-card__price-text"
@@ -45,7 +45,6 @@ exports[`Render Offer Render OfferList 1`] = `
       </div>
       <a
         href="/login"
-        onClick={[Function]}
       >
         <button
           className="place-card__bookmark-button place-card__bookmark-button--active button"
@@ -78,7 +77,7 @@ exports[`Render Offer Render OfferList 1`] = `
           className="rating__stars__value"
           style={
             Object {
-              "width": "50%",
+              "width": "86%",
             }
           }
         />
@@ -93,10 +92,9 @@ exports[`Render Offer Render OfferList 1`] = `
       className="place-card__name"
     >
       <a
-        href="/"
-        onClick={[Function]}
+        to="/"
       >
-        Nice, cozy, warm big bed apartment
+        The house among olive 
       </a>
     </h2>
     <p

@@ -3,24 +3,14 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
-import {FavoritesEmpty} from "../favorites-empty";
-import {FavoritesScreen} from "../favorites-screen";
 
-import {testData, userData} from "./mocks";
+import {FavoritesScreen} from "./favorites-screen";
+
+import {offers} from "../../mocks-for-tests/mocks";
 
 
-describe(`Render Favorites`, () => {
-  it(`Render FavoritesEmpty`, () => {
-    const tree = renderer
-      .create(
-          <FavoritesEmpty />
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
+describe(`Favorites tests`, () => {
   it(`Render FavoritesScreen`, () => {
-
    const mockStore = configureStore([]);
   let store = null;
   let winScreenComponent = null;
@@ -38,7 +28,7 @@ describe(`Render Favorites`, () => {
 
     winScreenComponent = renderer.create(
         <Provider store={store}>
-          <FavoritesScreen favorites={testData}/>
+          <FavoritesScreen favorites={offers}/>
         </Provider>
       )
   });

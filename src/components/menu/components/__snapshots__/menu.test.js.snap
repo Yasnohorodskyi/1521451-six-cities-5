@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Menu Render Menu 1`] = `
+<ul
+  className="locations__list tabs__list"
+>
+  <li
+    className="locations__item"
+  >
+    <a
+      className="locations__item-link tabs__item--active"
+      href="/Cologne"
+      onClick={[Function]}
+    >
+      <span>
+        Cologne
+      </span>
+    </a>
+  </li>
+  <li
+    className="locations__item"
+  >
+    <a
+      className="locations__item-link tabs__item"
+      href="/Brussels"
+      onClick={[Function]}
+    >
+      <span>
+        Brussels
+      </span>
+    </a>
+  </li>
+  <li
+    className="locations__item"
+  >
+    <a
+      className="locations__item-link tabs__item"
+      href="/Amsterdam"
+      onClick={[Function]}
+    >
+      <span>
+        Amsterdam
+      </span>
+    </a>
+  </li>
+  <li
+    className="locations__item"
+  >
+    <a
+      className="locations__item-link tabs__item"
+      href="/Paris"
+      onClick={[Function]}
+    >
+      <span>
+        Paris
+      </span>
+    </a>
+  </li>
+  <li
+    className="locations__item"
+  >
+    <a
+      className="locations__item-link tabs__item"
+      href="/Hamburg"
+      onClick={[Function]}
+    >
+      <span>
+        Hamburg
+      </span>
+    </a>
+  </li>
+  <li
+    className="locations__item"
+  >
+    <a
+      className="locations__item-link tabs__item"
+      href="/Dusseldorf"
+      onClick={[Function]}
+    >
+      <span>
+        Dusseldorf
+      </span>
+    </a>
+  </li>
+</ul>
+`;

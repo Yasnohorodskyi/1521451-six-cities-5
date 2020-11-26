@@ -17,7 +17,7 @@ class AddFormComment extends PureComponent {
     } = this.props;
 
 
-    const unblockedSubmit = (selectedOption && textarea.length >= 50 && textarea.length <= 300);
+    const isBlockedSubmitButton = (selectedOption && textarea.length >= 50 && textarea.length <= 300);
 
     return (
       <form onSubmit={handleSubmit} className="reviews__form form" action="#" method="post">
@@ -48,7 +48,7 @@ class AddFormComment extends PureComponent {
           </p>
           <button
             className="reviews__submit form__submit button"
-            disabled={!unblockedSubmit}
+            disabled={!isBlockedSubmitButton}
             type="submit">
             Submit
           </button>
@@ -69,9 +69,7 @@ AddFormComment.propTypes = {
   inputRating: PropTypes.func,
   ratingField: PropTypes.bool,
   textField: PropTypes.bool,
-  selectedOption: PropTypes.arrayOf(
-      PropTypes.string
-  ),
+  selectedOption: PropTypes.string,
   textarea: PropTypes.string,
 };
 

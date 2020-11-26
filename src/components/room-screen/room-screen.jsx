@@ -17,6 +17,7 @@ import {currentCityShape} from '../../shapes/current-city';
 import {getOffer, setFavorite} from '../../store/actions/offers/offers';
 import HeaderContainer from '../header/header-container';
 
+
 class RoomScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -56,25 +57,18 @@ class RoomScreen extends PureComponent {
                   <h1 className="property__name">
                     {offer.title}
                   </h1>
-                  {
-                    (authorizationStatus === `AUTH`)
-                      ?
-                      <button onClick={() => setFavoriteDispatch(offer.id, offer.isFavorite)} className={`property__bookmark-button ${offer.isFavorite ? `active` : ``} button`} type="button">
+
+                        <button
+                          onClick={() => setFavoriteDispatch(offer.id, offer.isFavorite)}
+                          className={`property__bookmark-button ${offer.isFavorite ? `active` : ``} button`}
+                          type="button"
+                        >
                         <svg className={`property__bookmark-icon`} width="31" height="33">
                           <use xlinkHref="#icon-bookmark"></use>
                         </svg>
                         <span className="visually-hidden">To bookmarks</span>
                       </button>
-                      :
-                      <Link to="/login">
-                        <button className='property__bookmark-button button' type="button">
-                          <svg className={`property__bookmark-icon`} width="31" height="33">
-                            <use xlinkHref="#icon-bookmark"></use>
-                          </svg>
-                          <span className="visually-hidden">To bookmarks</span>
-                        </button>
-                      </Link>
-                  }
+
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">

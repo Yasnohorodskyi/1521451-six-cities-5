@@ -1,4 +1,5 @@
-import {APIRoute, OffersType} from '../../const';
+import {APIRoute, OffersType, AppRoute} from '../../const';
+import {redirectToRoute} from '../user/user';
 
 export const fetchOffers = () => (dispatch, _getState, api) => {
 
@@ -78,14 +79,16 @@ export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api)
     });
   })
   .catch((error) => {
-    dispatch({
-      type: OffersType.ERROR_SET_FAVORITE,
-      payload: {
-        error
-      }
-    });
+
+    dispatch(
+      redirectToRoute(
+        AppRoute.LOGIN
+      )
+    );
+
   });
 };
+
 
 
 export const getFavorite = () => (dispatch, _getState, api) => {

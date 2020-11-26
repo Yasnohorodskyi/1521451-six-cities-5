@@ -6,39 +6,15 @@ import {
   BrowserRouter
 } from "react-router-dom";
 
-import OfferItem from "../components/offer-item";
-import OfferList from "../components/offer-list";
+import OfferList from "./offer-list";
 
-import {Offer, Offers} from "./mocks";
+import {Offers} from "../../../mocks-for-tests/mocks";
 
 
 
 describe(`Render Offer`, () => {
 
-  it(`Render OfferItem`, () => {
-      const mockStore = configureStore([]);
-      let store = null;
 
-      beforeEach(() => {
-
-        store = mockStore({});
-
-        store.dispatch = jest.fn();
-
-        const OfferItemTest = renderer.create(
-          <BrowserRouter>
-            <Provider store={store}>
-              <OfferItem location={null} offer={Offer}/>
-            </Provider>
-          </BrowserRouter>
-
-          ).toJSON();
-
-        expect(OfferItemTest).toMatchSnapshot();
-
-      });
-
-  })
 
   it(`Render OfferList`, () => {
 
