@@ -8,17 +8,16 @@ import {cities} from "../../../mocks-for-tests/mocks";
 describe(`Render Menu`, () => {
 
   it(`Render Menu`, () => {
-      const MenuTest = renderer.create(
+    const MenuTest = renderer.create(
         <Menu
           activeItem={`--active`}
           cities={cities}
-          currentCity={cities['Cologne']}
+          currentCity={cities[`Cologne`]}
         />
-        ).toJSON();
+    ).toJSON();
 
-      expect(MenuTest).toMatchSnapshot();
+    expect(MenuTest).toMatchSnapshot();
 
-  })
+  });
 
-
-})
+});

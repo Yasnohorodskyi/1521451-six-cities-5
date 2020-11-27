@@ -78,17 +78,16 @@ export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api)
       }
     });
   })
-  .catch((error) => {
+  .catch(() => {
 
     dispatch(
-      redirectToRoute(
-        AppRoute.LOGIN
-      )
+        redirectToRoute(
+            AppRoute.LOGIN
+        )
     );
 
   });
 };
-
 
 
 export const getFavorite = () => (dispatch, _getState, api) => {

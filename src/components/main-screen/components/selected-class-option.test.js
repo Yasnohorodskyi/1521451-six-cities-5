@@ -6,17 +6,11 @@ import withOpenSelect from '../../../hocs/with-open-select';
 
 const SelectedClassOptionWithClickOutside = withOpenSelect(SelectedClassOption);
 
-
-
-
-  it(`Render SelectedClassOption`, () => {
-    const tree = renderer
-      .create(
-          <SelectedClassOptionWithClickOutside />
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-
-
+it(`Render SelectedClassOption`, () => {
+  const tree = renderer
+    .create(
+        <SelectedClassOptionWithClickOutside />
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});

@@ -12,17 +12,17 @@ Enzyme.configure({
 
 it(`SelectedClassOption click filter`, () => {
 
-      beforeEach(() => {
-        const handleChangeFilter = jest.fn();
-        const wrapper = shallow(
-          <SelectedClassOption
-              optionList={optionList}
-              baseFilter={baseFilter}
-              click={handleChangeFilter}
-            />
-          ).toJSON();
+  beforeEach(() => {
+    const handleChangeFilter = jest.fn();
+    const wrapper = shallow(
+        <SelectedClassOption
+          optionList={optionList}
+          baseFilter={baseFilter}
+          click={handleChangeFilter}
+        />
+    ).toJSON();
 
-          wrapper.find('.places__option').simulate('click');
-          expect(handleChangeCityButton).toHaveBeenCalledTimes(1);
-      });
+    wrapper.find(`.places__option`).simulate(`click`);
+    expect(handleChangeFilter).toHaveBeenCalledTimes(1);
+  });
 });

@@ -30,7 +30,7 @@ const withValidationForm = (ComponentOutside) => {
         });
 
       };
-      this.handleChange = (field, value) => {
+      this.handleChange = (value, field) => {
         this.setState({
           [field]: value.currentTarget.value
         });
@@ -49,7 +49,7 @@ const withValidationForm = (ComponentOutside) => {
             value={index}
             id={`${index}-stars`}
             type="radio"
-            onChange={handleChange.bind(this, `selectedOption`)}
+            onChange={(event) => handleChange(event, `selectedOption`)}
           />
           <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={title}>
             <svg className="form__star-image" width="37" height="33">

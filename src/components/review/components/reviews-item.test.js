@@ -7,15 +7,10 @@ import {Reviews} from "../../../mocks-for-tests/mocks";
 describe(`Render ReviewsItem`, () => {
 
   it(`Render ReviewsItem`, () => {
-
-      const ReviewsItemTest = renderer.create(
+    const ReviewsItemTest = renderer.create(
         <ReviewsItem review={Reviews[0]}/>
-        ).toJSON();
+    ).toJSON();
+    expect(ReviewsItemTest).toMatchSnapshot();
+  });
 
-      expect(ReviewsItemTest).toMatchSnapshot();
-
-  })
-
-
-
-})
+});

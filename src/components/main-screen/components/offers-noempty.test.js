@@ -13,19 +13,19 @@ Enzyme.configure({
 
 it(`Tests OffersNoEmpty`, () => {
 
- const mockStore = configureStore([]);
+  const mockStore = configureStore([]);
 
-      let store = null;
-      beforeEach(() => {
-        store = mockStore({});
-        store.dispatch = jest.fn();
+  let store = null;
+  beforeEach(() => {
+    store = mockStore({});
+    store.dispatch = jest.fn();
 
-        const wrapper = shallow(
-          <OffersNoempty
-            offers={offers}
-            />
-          ).toJSON();
-          expect(wrapper).toMatchSnapshot();
+    const wrapper = shallow(
+        <OffersNoempty
+          offers={offers}
+        />
+    ).toJSON();
+    expect(wrapper).toMatchSnapshot();
 
-      });
+  });
 });

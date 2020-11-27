@@ -4,7 +4,6 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
 import AuthHeader from "./auth-header";
-
 import {Users} from "../../../mocks-for-tests/mocks";
 
 
@@ -26,16 +25,14 @@ describe(`Render Header`, () => {
       store.dispatch = jest.fn();
 
       authHeaderRenderer = renderer
-      .create(
-        <Provider store={store}>
-          <AuthHeader />
-        </Provider>
-      )
-      .toJSON();
-      });
-      expect(authHeaderRenderer).toMatchSnapshot();
-  })
+        .create(
+            <Provider store={store}>
+              <AuthHeader />
+            </Provider>
+        )
+        .toJSON();
+    });
+    expect(authHeaderRenderer).toMatchSnapshot();
+  });
 
-
-
-})
+});

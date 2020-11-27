@@ -77,7 +77,7 @@ class FavoritesScreen extends PureComponent {
                                       </div>
                                     </div>
                                     <h2 className="place-card__name">
-                                      <a href={`/offer/${favorite.id}`}>{favorite.title}</a>
+                                      <Link to={`/offer/${favorite.id}`}>{favorite.title}</Link>
                                     </h2>
                                     <p className="place-card__type">{favorite.type}</p>
                                   </div>

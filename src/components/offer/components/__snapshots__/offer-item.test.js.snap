@@ -12,12 +12,12 @@ exports[`Render OfferItem Render OfferItem 1`] = `
   >
     <a
       href="/offer/11"
+      onClick={[Function]}
     >
       <img
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg"
         width="260"
       />
     </a>
@@ -47,7 +47,7 @@ exports[`Render OfferItem Render OfferItem 1`] = `
         href="/login"
       >
         <button
-          className="place-card__bookmark-button place-card__bookmark-button--active button"
+          className="place-card__bookmark-button place-card__bookmark-button button"
           type="button"
         >
           <svg

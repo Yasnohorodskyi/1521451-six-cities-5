@@ -31,7 +31,7 @@ class AddFormComment extends PureComponent {
         </div>
         <textarea
           value={textarea}
-          onChange={()=>{handleChange(this, `textarea`)}}
+          onChange={ (event)=> handleChange(event, `textarea`) }
           className="reviews__textarea form__textarea" id="review" name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
         />

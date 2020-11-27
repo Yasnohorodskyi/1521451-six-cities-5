@@ -12,17 +12,17 @@ Enzyme.configure({
 
 it(`Menu click link`, () => {
 
-      beforeEach(() => {
-        const handleChangeCityButton = jest.fn();
-        const wrapper = shallow(
-          <Menu
-              changeCity={handleChangeCityButton}
-              cities={cities}
-              currentCity={cities['Cologne']}
-            />
-          ).toJSON();
+  beforeEach(() => {
+    const handleChangeCityButton = jest.fn();
+    const wrapper = shallow(
+        <Menu
+          changeCity={handleChangeCityButton}
+          cities={cities}
+          currentCity={cities[`Cologne`]}
+        />
+    ).toJSON();
 
-          wrapper.find('a').simulate('click');
-          expect(handleChangeCityButton).toHaveBeenCalledTimes(1);
-      });
+    wrapper.find(`a`).simulate(`click`);
+    expect(handleChangeCityButton).toHaveBeenCalledTimes(1);
+  });
 });

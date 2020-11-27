@@ -8,14 +8,12 @@ import {offers} from "../../../mocks-for-tests/mocks";
 describe(`Render OfferItem`, () => {
 
   it(`Render OfferItem`, () => {
-      const OffersItemTest = renderer.create(
-        <OfferItem offer={offers[0]}/>
-        ).toJSON();
+    const OffersItemTest = renderer.create(
+        <OfferItem offer={offers[0]} />
+    ).toJSON();
 
-      expect(OffersItemTest).toMatchSnapshot();
+    expect(OffersItemTest).toMatchSnapshot();
 
-  })
+  });
 
-
-
-})
+});

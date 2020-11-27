@@ -11,8 +11,8 @@ const formatYearMonthDay = (time) => {
     day: `numeric`
   };
 
-  var formatter =new Intl.DateTimeFormat(`en-EN`, options).format(timestamp);
-  return formatter.toString().replace(/\//g, "-");
+  const formatter = new Intl.DateTimeFormat(`en-EN`, options).format(timestamp);
+  return formatter.toString().replace(/\//g, `-`);
 
 };
 

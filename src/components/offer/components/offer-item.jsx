@@ -12,6 +12,9 @@ import {
   Router
 } from "react-router-dom";
 
+import browserHistory from "../../../browser-history";
+
+
 class OfferItem extends PureComponent {
   constructor(props) {
     super(props);
@@ -38,9 +41,11 @@ class OfferItem extends PureComponent {
           (offer.is_premium) ? premiumTemplate(`place-card__mark`) : ``
         }
         <div className="near-places__image-wrapper place-card__image-wrapper">
-          <a href={`/offer/${offer.id}`}>
-            <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image" />
-          </a>
+          <Router history={browserHistory}>
+            <Link to={`/offer/${offer.id}`}>
+              <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image" />
+            </Link>
+          </Router>
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">
@@ -64,7 +69,7 @@ class OfferItem extends PureComponent {
                   <span className="visually-hidden">In bookmarks</span>
                 </button>
               </a>
-              }
+            }
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
