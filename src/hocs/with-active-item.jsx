@@ -1,25 +1,16 @@
-import React, {PureComponent} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import {currentCityShape} from '../shapes/current-city';
 
 const withActiveItem = (ComponentOutside) => {
-  class WithActiveItem extends PureComponent {
-    constructor(props) {
-      super(props);
+  function WithActiveItem(props){
+    let [activeItem] = useState(`--active`);
 
-      this.state = {
-        activeItem: `--active`,
-      };
-    }
-    render() {
-      const {activeItem} = this.state;
-
-      return <ComponentOutside
-        {...this.props}
+    return <ComponentOutside
+        {...props}
         activeItem={activeItem}
       />;
-    }
   }
 
   WithActiveItem.propTypes = {
@@ -28,7 +19,6 @@ const withActiveItem = (ComponentOutside) => {
   };
 
   return WithActiveItem;
-};
-
+}
 
 export default withActiveItem;
