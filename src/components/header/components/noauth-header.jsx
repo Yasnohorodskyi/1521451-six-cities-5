@@ -1,10 +1,7 @@
 import React from 'react';
 import {
   Link,
-  Router
 } from "react-router-dom";
-
-import browserHistory from "../../../browser-history";
 
 const NotAuthHeader = () => {
   return (
@@ -12,12 +9,11 @@ const NotAuthHeader = () => {
       <div className="header__avatar-wrapper user__avatar-wrapper">
       </div>
       <span className="header__user-name user__name">
-        <Router history={browserHistory}>
-          <Link to='/login'> Sign In </Link>
-        </Router>
+        <Link to='/login'> Sign In </Link>
       </span>
     </div>
   );
 };
 
+export {NotAuthHeader};
 export default NotAuthHeader;

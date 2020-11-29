@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapCities is rendered correctly 1`] = `
+<div
+  id="map"
+>
+  <Map
+    animate={true}
+    doubleClickZoom={true}
+    dragging={true}
+    easeLinearity={0.35}
+    scrollWheelZoom={true}
+  >
+    <TileLayer
+      attribution="© <a href=\\"http://osm.org/copyright\\">OpenStreetMap</a> contributors"
+      url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+    />
+  </Map>
+</div>
+`;

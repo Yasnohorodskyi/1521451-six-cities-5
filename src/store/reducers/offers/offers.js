@@ -24,7 +24,6 @@ export default function Offers(state = stateOffers, action) {
       });
 
     case OffersType.GET_OFFERS:
-
       const firstCity = action.payload[0].city;
       const listCity = {};
 
@@ -65,12 +64,9 @@ export default function Offers(state = stateOffers, action) {
 
   }
 
-  if (action.payload) {
-    return extend(state, {
-      baseFilter: (action.payload === `/`) ? actionFilter.FILTER_POPULAR : action.payload.filter
-    });
-  }
-
-
-  return state;
+  return extend(state, {
+    baseFilter: !action.payload ? actionFilter.FILTER_POPULAR : action.payload.filter
+  });
 }
+
+export {Offers};

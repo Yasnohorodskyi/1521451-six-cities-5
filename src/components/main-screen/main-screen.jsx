@@ -36,7 +36,7 @@ class MainScreen extends PureComponent {
             <MenuContainer cities={cities} currentCity={cityId ? cities[cityId] : currentCity} />
             {
               (offers === undefined || offers === null) ? <OffersEmpty /> : <OffersNoempty
-                currentCity={cityId ? cities[cityId] : currentCity}
+                currentCity={currentCity}
                 offers={offers}
                 baseFilter={baseFilter}
                 filterOffer={filterOfferDispatch}
@@ -81,7 +81,7 @@ const mapStateToProps = (state, props) => {
   return {
     authorizationStatus: state.User.authorizationStatus,
     cities: state.Offers.listCities,
-    currentCity: state.Offers.currentCity,
+    currentCity: (data.props.cityId && state.Offers.listCities) ? state.Offers.listCities[data.props.cityId] : state.Offers.currentCity,
     baseFilter: state.Offers.baseFilter,
     offers: selectCityOffers(data),
     user: state.User,

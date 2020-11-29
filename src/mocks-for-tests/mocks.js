@@ -273,7 +273,7 @@ export const cities = {
 };
 
 
-export const Reviews = [
+export const reviews = [
   {
     id: 18,
     user: {
@@ -493,7 +493,7 @@ export const Reviews = [
 ];
 
 
-export const Users = {
+export const user = {
   authorizationStatus: `AUTH`,
   data: {
     avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`,

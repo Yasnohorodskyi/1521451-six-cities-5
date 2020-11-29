@@ -1,19 +1,12 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import L from 'leaflet';
+import {Link} from "react-router-dom";
 
 import {premiumTemplate} from '../../../helpers/premium-template';
 import {calcRating} from '../../../helpers/calc-rating';
 import {offerItem} from '../../../shapes/offer-item';
 import {AuthorizationStatus} from '../../../store/const';
-
-import {
-  Link,
-  Router
-} from "react-router-dom";
-
-import browserHistory from "../../../browser-history";
-
 
 class OfferItem extends PureComponent {
   constructor(props) {
@@ -41,11 +34,9 @@ class OfferItem extends PureComponent {
           (offer.is_premium) ? premiumTemplate(`place-card__mark`) : ``
         }
         <div className="near-places__image-wrapper place-card__image-wrapper">
-          <Router history={browserHistory}>
-            <Link to={`/offer/${offer.id}`}>
-              <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image" />
-            </Link>
-          </Router>
+          <Link to={`/offer/${offer.id}`}>
+            <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image" />
+          </Link>
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">
@@ -53,23 +44,12 @@ class OfferItem extends PureComponent {
               <b className="place-card__price-value">€{offer.price}</b>
               <span className="place-card__price-text">/&nbsp;night</span>
             </div>
-            { (authorizationStatus === AuthorizationStatus.AUTH) ?
-              <button className={`place-card__bookmark-button place-card__bookmark-button${offer.is_favorite ? `--active` : ``} button`} type="button">
-                <svg className="place-card__bookmark-icon" width="18" height="19">
-                  <use xlinkHref="#icon-bookmark"></use>
-                </svg>
-                <span className="visually-hidden">In bookmarks</span>
-              </button>
-              :
-              <a href="/login">
-                <button className={`place-card__bookmark-button place-card__bookmark-button${offer.is_favorite ? `--active` : ``} button`} type="button">
-                  <svg className="place-card__bookmark-icon" width="18" height="19">
-                    <use xlinkHref="#icon-bookmark"></use>
-                  </svg>
-                  <span className="visually-hidden">In bookmarks</span>
-                </button>
-              </a>
-            }
+            <button className={`place-card__bookmark-button place-card__bookmark-button${offer.is_favorite ? `--active` : ``} button`} type="button">
+              <svg className="place-card__bookmark-icon" width="18" height="19">
+                <use xlinkHref="#icon-bookmark"></use>
+              </svg>
+              <span className="visually-hidden">In bookmarks</span>
+            </button>
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
@@ -78,7 +58,7 @@ class OfferItem extends PureComponent {
             </div>
           </div>
           <h2 className="place-card__name">
-            <a to="/">
+            <a href={`/offer/${offer.id}`}>
               {offer.title}
             </a>
           </h2>

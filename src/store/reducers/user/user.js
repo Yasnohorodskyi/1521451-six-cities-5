@@ -28,3 +28,5 @@ export default function User(state = userState, action) {
 
   return state;
 }
+
+export {User};

@@ -1,34 +1,15 @@
 import React from "react";
-import configureStore from "redux-mock-store";
-import {Provider} from "react-redux";
-import renderer from "react-test-renderer";
-import {
-  BrowserRouter
-} from 'react-router-dom';
-
-import SignInScreen from "./sign-in-screen";
+import ShallowRenderer from 'react-test-renderer/shallow';
+import {SignInScreen} from "./sign-in-screen";
 import {cities} from "../../mocks-for-tests/mocks";
 
-it(`Should replay button be pressed`, () => {
-
-  const mockStore = configureStore([]);
-  let store = null;
-
-  beforeEach(() => {
-
-    store = mockStore({});
-    store.dispatch = jest.fn();
-
-    const SignInScreenTest = renderer.create(
-        <BrowserRouter>
-          <Provider store={store}>
-            <SignInScreen currentCity={cities[0]} error={null} />
-          </Provider>
-        </BrowserRouter>
-    ).toJSON();
-
-    expect(SignInScreenTest).toMatchSnapshot();
-
-  });
-
+it(`SignInScreen is rendered correctly with offers`, () => {
+  const renderer = new ShallowRenderer();
+  const tree = renderer.render(
+      <SignInScreen
+        currentCity={cities[0]}
+        error={null}
+      />
+  );
+  expect(tree).toMatchSnapshot();
 });

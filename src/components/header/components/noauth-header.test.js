@@ -1,18 +1,26 @@
 
 import React from "react";
 import renderer from "react-test-renderer";
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
 
-import NoauthHeader from "./noauth-header";
+import NotAuthHeader from "./noauth-header";
 
-describe(`Render NoauthHeader`, () => {
+describe(`Render NotAuthHeader`, () => {
 
-  it(`Render NoauthHeader`, () => {
-    const NoauthHeaderTest = renderer.create(
-        <NoauthHeader />
+
+  it(`Render NotAuthHeader without store`, () => {
+
+    const NotAuthHeaderTest = renderer.create(
+        <Router>
+          <NotAuthHeader/>
+        </Router>
     ).toJSON();
 
-    expect(NoauthHeaderTest).toMatchSnapshot();
+    expect(NotAuthHeaderTest).toMatchSnapshot();
 
   });
+
 
 });

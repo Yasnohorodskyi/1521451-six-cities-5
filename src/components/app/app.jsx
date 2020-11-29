@@ -13,7 +13,6 @@ import SignInScreen from '../sign-in-screen/sign-in-screen';
 import browserHistory from "../../browser-history";
 import PrivateRoute from "../private-route/private-route";
 
-import {login} from "../../store/actions/user/user";
 
 
 const App = () => {
@@ -24,7 +23,7 @@ const App = () => {
           exact
           path="/login"
           render={() => {
-            return <SignInScreen login={login}/>;
+            return <SignInScreen />;
           }}
         />
         <PrivateRoute

@@ -22,3 +22,5 @@ export default function Reviews(state = stateReviews, action) {
     reviews: state.reviews
   });
 }
+
+export {Reviews};

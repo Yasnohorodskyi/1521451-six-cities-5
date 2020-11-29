@@ -10,7 +10,6 @@ const convertUser = (data) => {
   };
 };
 
-const globalUser = {};
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
@@ -26,7 +25,6 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 export const login = ({email, password}) => (dispatch, _getState, api) => {
   api.post(APIRoute.LOGIN, {email, password}
   ).then((response) => {
-    globalUser.status = response.status;
     switch (response.status) {
       case 200:
         dispatch(requireAuthorization(AuthorizationStatus.AUTH, convertUser(response.data)));
@@ -38,15 +36,16 @@ export const login = ({email, password}) => (dispatch, _getState, api) => {
         dispatch(requireError(response.request.responseText));
         break;
     }
-
+    return response;
   })
-    .then(() => {
-      return globalUser.status === 200 ? dispatch(redirectToRoute(AppRoute.RESULT)) : ``;
+    .then((response) => {
+      return response.status === 200 ? dispatch(redirectToRoute(AppRoute.RESULT)) : ``;
     })
     .catch((error) => {
       dispatch(redirectToRoute(error));
     });
 };
+
 
 export const requireError = (error) => ({
   type: UserType.REQUIRED_ERROR,

@@ -1,3 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Header Render authHeader 1`] = `null`;
+exports[`Favorites is rendered correctly 1`] = `
+<div
+  className="header__nav-link header__nav-link--profile"
+>
+  <img
+    className="header__avatar-wrapper"
+    src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
+  />
+  <span
+    className="header__user-name user__name"
+  >
+    <Link
+      to="/favorites"
+    >
+       
+      r-sasha@list.ru
+       
+    </Link>
+  </span>
+</div>
+`;

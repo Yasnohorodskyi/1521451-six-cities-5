@@ -92,7 +92,7 @@ exports[`Render OfferItem Render OfferItem 1`] = `
       className="place-card__name"
     >
       <a
-        to="/"
+        href="/offer/11"
       >
         The house among olive 
       </a>
