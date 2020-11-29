@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import {currentCityShape} from '../shapes/current-city';
 
 const withActiveItem = (ComponentOutside) => {
-  function WithActiveItem(props){
+  function WithActiveItem(props) {
     let [activeItem] = useState(`--active`);
 
     return <ComponentOutside
-        {...props}
-        activeItem={activeItem}
-      />;
+      {...props}
+      activeItem={activeItem}
+    />;
   }
 
   WithActiveItem.propTypes = {
@@ -19,6 +19,6 @@ const withActiveItem = (ComponentOutside) => {
   };
 
   return WithActiveItem;
-}
+};
 
 export default withActiveItem;

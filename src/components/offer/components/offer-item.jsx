@@ -6,7 +6,6 @@ import {Link} from "react-router-dom";
 import {premiumTemplate} from '../../../helpers/premium-template';
 import {calcRating} from '../../../helpers/calc-rating';
 import {offerItem} from '../../../shapes/offer-item';
-import {AuthorizationStatus} from '../../../store/const';
 
 class OfferItem extends PureComponent {
   constructor(props) {
@@ -21,7 +20,7 @@ class OfferItem extends PureComponent {
     markerSelect.src = `/img/pin.svg`;
   }
   render() {
-    const {offer, authorizationStatus} = this.props;
+    const {offer} = this.props;
 
     return (
       <article
