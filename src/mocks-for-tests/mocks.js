@@ -230,12 +230,30 @@ export const cities = {
       zoom: 13
     }
   },
+  /*
   Brussels: {
     name: `Brussels`,
     location: {
-      latitude: 50.846558,
-      longitude: 4.351697,
-      zoom: 13
+      latitude: 50.839557,
+      longitude: 4.346697,
+      zoom: 16
+    }
+  },
+  */
+ Paris: {
+  name: `Paris`,
+  location: {
+    latitude: 50.839557,
+    longitude: 4.346697,
+    zoom: 16
+  }
+},
+  Brussels: {
+    name: `Brussels`,
+    location: {
+      latitude: 50.839557,
+      longitude: 4.346697,
+      zoom: 16
     }
   },
   Amsterdam: {
@@ -246,14 +264,7 @@ export const cities = {
       zoom: 13
     }
   },
-  Paris: {
-    name: `Paris`,
-    location: {
-      latitude: 48.85661,
-      longitude: 2.351499,
-      zoom: 13
-    }
-  },
+
   Hamburg: {
     name: `Hamburg`,
     location: {
@@ -262,6 +273,7 @@ export const cities = {
       zoom: 13
     }
   },
+
   Dusseldorf: {
     name: `Dusseldorf`,
     location: {

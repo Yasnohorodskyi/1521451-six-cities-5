@@ -2,7 +2,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {
-  BrowserRouter as Router,
+  MemoryRouter as Router,
 } from 'react-router-dom';
 
 import NotAuthHeader from "./noauth-header";

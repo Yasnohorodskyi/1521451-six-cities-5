@@ -11,14 +11,13 @@ const mockStore = createStore({
     offer: offers[0],
     nearby: offers,
     favorites: offers,
-    data: offers
+    data: offers,
+    getFavoriteDispatch: ()=>{}
   },
   Review: {
     reviews
   },
-  User: {
-    data: user
-  },
+  User: user,
   offer: offers[0]
 });
 

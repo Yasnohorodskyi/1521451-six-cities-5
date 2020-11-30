@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favorites is rendered correctly 1`] = `
+exports[`Should authHeaderRenderer connected to store render correctly 1`] = `
 <div
   className="header__nav-link header__nav-link--profile"
 >
@@ -11,13 +11,14 @@ exports[`Favorites is rendered correctly 1`] = `
   <span
     className="header__user-name user__name"
   >
-    <Link
-      to="/favorites"
+    <a
+      href="/favorites"
+      onClick={[Function]}
     >
        
       r-sasha@list.ru
        
-    </Link>
+    </a>
   </span>
 </div>
 `;

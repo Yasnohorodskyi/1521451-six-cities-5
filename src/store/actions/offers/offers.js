@@ -1,8 +1,7 @@
 import {APIRoute, OffersType, AppRoute} from '../../const';
 import {redirectToRoute} from '../user/user';
 
-export const fetchOffers = () => (dispatch, _getState, api) => {
-
+export const fetchOffers = () => (dispatch, _getState, api) => (
   api.get(APIRoute.GET_OFFER)
     .then(({data}) => dispatch({
       type: OffersType.GET_OFFERS,
@@ -15,8 +14,8 @@ export const fetchOffers = () => (dispatch, _getState, api) => {
           error
         }
       });
-    });
-};
+    })
+);
 
 export const changeCity = (currentCity) => (dispatch) => {
   dispatch({

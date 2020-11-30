@@ -5,6 +5,14 @@ import {
 
 import {reviews} from "../../../mocks-for-tests/mocks";
 
+
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(Reviews(void 0, {})).toEqual({
+    reviews: []
+  });
+});
+
+/*
 it(`GET_REVIEWS`, () => {
   expect(
       new Reviews(
@@ -28,3 +36,4 @@ it(`Add_REVIEWS`, () => {
           }
       )).toEqual({});
 });
+*/

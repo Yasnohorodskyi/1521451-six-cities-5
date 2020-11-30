@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should HeaderContainer render correctly Should headerScreenComponent connected to store render correctly 1`] = `
+exports[`Render connected to store component Should headerScreenComponent connected to store render correctly 1`] = `
 <header
   className="header"
 >
@@ -39,6 +39,7 @@ exports[`Should HeaderContainer render correctly Should headerScreenComponent co
             >
               <img
                 className="header__avatar-wrapper"
+                src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
               />
               <span
                 className="header__user-name user__name"
@@ -48,6 +49,7 @@ exports[`Should HeaderContainer render correctly Should headerScreenComponent co
                   onClick={[Function]}
                 >
                    
+                  r-sasha@list.ru
                    
                 </a>
               </span>

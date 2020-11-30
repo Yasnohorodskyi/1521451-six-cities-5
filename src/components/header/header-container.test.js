@@ -1,4 +1,3 @@
-
 import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
@@ -9,9 +8,7 @@ import {
 import {mockStore} from "../../mocks-for-tests/store";
 import HeaderContainer from "./header-container";
 
-
-describe(`Should HeaderContainer render correctly`, () => {
-
+describe(`Render connected to store component`, () => {
 
   let headerScreenComponent = null;
 
@@ -26,6 +23,7 @@ describe(`Should HeaderContainer render correctly`, () => {
           </Provider>
         </BrowserRouter>
     );
+
   });
 
   it(`Should headerScreenComponent connected to store render correctly`, () => {
