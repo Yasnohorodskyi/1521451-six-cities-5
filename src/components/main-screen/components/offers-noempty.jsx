@@ -11,6 +11,7 @@ const SelectedClassOptionWithClickOutside = withOpenSelect(SelectedClassOption);
 
 
 const OffersNoempty = ({currentCity, offers, filterOffer, baseFilter}) => {
+  console.log(currentCity);
   return (<div className="cities">
     <div className="cities__places-container container">
       <section className="cities__places places">

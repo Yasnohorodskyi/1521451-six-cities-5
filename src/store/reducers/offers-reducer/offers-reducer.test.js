@@ -28,24 +28,15 @@ describe(`Offer reducers`, () => {
 
 
     it(`GET OFFERS`, () => {
-      expect(offersReducer({
-        offers: [],
-        listCities: [],
-        authorizationStatus: null,
-        user
-      }, {
+      expect(offersReducer({}, {
         type: OffersType.GET_OFFERS,
         payload: offers
       })).toEqual({
-        offers: offers,
-        currentCity: cities['Hamburg'],
-        baseFilter: "Popular",
-        authorizationStatus: null,
-        user
+        data: offers
       });
     });
 
-  /*
+/*
     it(`GET OFFER`, () => {
       const offer = offers[0];
       expect(Offers({

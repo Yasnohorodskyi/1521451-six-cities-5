@@ -11,7 +11,7 @@ import OffersNoempty from "./components/offers-noempty";
 import {currentCityShape} from '../../shapes/current-city';
 
 import {selectCityOffers} from "../../store/selectors/offers/select-city-offers";
-
+import {selectCityList, selectFirstCity} from "../../store/selectors/offers/select-city-list";
 
 import HeaderContainer from '../header/header-container';
 
@@ -74,16 +74,22 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const mapStateToProps = (state, props) => {
+
   const data = {
     state,
-    props
+    props,
+    listCities: selectCityList({state}),
+    currentCity: selectFirstCity({state})
   };
+
   return {
     authorizationStatus: state.User.authorizationStatus,
-    cities: state.Offers.listCities,
-    currentCity: (data.props.cityId && state.Offers.listCities) ? state.Offers.listCities[data.props.cityId] : state.Offers.currentCity,
+    cities: selectCityList(data),
+    currentCity: (data.props.cityId) ? selectCityList(data)[data.props.cityId] : selectFirstCity(data),
     baseFilter: state.Offers.baseFilter,
-    offers: selectCityOffers(data),
+    offers: selectCityOffers(
+      data
+    ),
     user: state.User,
   };
 };

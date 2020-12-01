@@ -26,17 +26,12 @@ export default function offersReducer(state = stateOffers, action) {
 
     case OffersType.GET_OFFERS:
       const firstCity = action.payload[0].city;
-      const listCity = {};
 
-      action.payload.map((offer) => offer.city)
-        .filter((city) => {
-          listCity[city.name] = city;
-        });
 
       return extend(state, {
         data: action.payload,
-        currentCity: firstCity,
-        listCities: listCity,
+        //currentCity: firstCity,
+        //listCities: listCity,
         baseFilter: actionFilter.FILTER_POPULAR
       });
 

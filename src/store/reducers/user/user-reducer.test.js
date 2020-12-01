@@ -8,32 +8,34 @@ const api = createAPI(() => {});
 
 
 describe(`Reducer User`, () => {
-  /*
+
   it(`REQUIRED_AUTHORIZATION`, () => {
-    expect(User(initialState ,{
+    expect(userReducer({} ,{
       type: UserType.REQUIRED_AUTHORIZATION,
       payload: {
-        user
+        data: user,
+        status: user.authorizationStatus
       },
     })).toEqual({
-      user,
+      data: user,
       authorizationStatus: `AUTH`
     });
   });
 
 
   it(`AuthorizationStatus`, () => {
-    expect(User({user} ,{
+    expect(userReducer({} ,{
       type: UserType.AuthorizationStatus,
       payload: {
-        data: user
+        data: user,
+        status: user.authorizationStatus
       }
     })).toEqual({
       data: user,
-      authorizationStatus: user.AuthorizationStatus
+      authorizationStatus: `AUTH`
     });
   });
-  */
+
 
 
   it(`REQUIRED_ERROR`, () => {
