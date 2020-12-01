@@ -1,5 +1,6 @@
 import configureStore from "redux-mock-store";
 import {offers, cities, reviews, user, baseFilter} from "./mocks";
+import {offersAdapter, offerAdapter} from "../helpers/offers-adapter";
 
 const createStore = configureStore();
 
@@ -7,18 +8,18 @@ const mockStore = createStore({
   Offers: {
     currentCity: cities[`Brussels`],
     baseFilter,
-    offers,
-    offer: offers[0],
-    nearby: offers,
-    favorites: offers,
-    data: offers,
+    offers: offersAdapter(offers),
+    offer: offerAdapter(offers[0]),
+    nearby: offersAdapter(offers),
+    favorites: offersAdapter(offers),
+    data: offersAdapter(offers),
     getFavoriteDispatch: ()=>{}
   },
   Review: {
     reviews
   },
   User: user,
-  Offer: offers[0]
+  Offer: offerAdapter(offers[0])
 });
 
 export {mockStore};

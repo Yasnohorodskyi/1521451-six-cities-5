@@ -84,11 +84,11 @@ const mapStateToProps = (state, props) => {
 
   return {
     authorizationStatus: state.User.authorizationStatus,
+    baseFilter: state.Offers.baseFilter,
     cities: selectCityList(data),
     currentCity: (data.props.cityId) ? selectCityList(data)[data.props.cityId] : selectFirstCity(data),
-    baseFilter: state.Offers.baseFilter,
     offers: selectCityOffers(
-      data
+        data
     ),
     user: state.User,
   };

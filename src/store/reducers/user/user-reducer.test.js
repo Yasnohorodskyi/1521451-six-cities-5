@@ -10,7 +10,7 @@ const api = createAPI(() => {});
 describe(`Reducer User`, () => {
 
   it(`REQUIRED_AUTHORIZATION`, () => {
-    expect(userReducer({} ,{
+    expect(userReducer({}, {
       type: UserType.REQUIRED_AUTHORIZATION,
       payload: {
         data: user,
@@ -24,7 +24,7 @@ describe(`Reducer User`, () => {
 
 
   it(`AuthorizationStatus`, () => {
-    expect(userReducer({} ,{
+    expect(userReducer({}, {
       type: UserType.AuthorizationStatus,
       payload: {
         data: user,
@@ -35,8 +35,6 @@ describe(`Reducer User`, () => {
       authorizationStatus: `AUTH`
     });
   });
-
-
 
   it(`REQUIRED_ERROR`, () => {
     expect(userReducer({error: `error`}, {

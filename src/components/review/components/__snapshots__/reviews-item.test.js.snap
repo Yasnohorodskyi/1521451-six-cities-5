@@ -14,7 +14,6 @@ exports[`Render ReviewsItem Render ReviewsItem 1`] = `
         alt="Reviews avatar"
         className="reviews__avatar user__avatar"
         height="54"
-        src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
         width="54"
       />
     </div>

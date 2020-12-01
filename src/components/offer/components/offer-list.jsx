@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import OfferItem from './offer-item.jsx';
 import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';
+import {offerAdapter} from '../../../helpers/offers-adapter';
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -15,11 +16,9 @@ class OfferList extends PureComponent {
     return (
       <div className="near-places__list places__list">
         {
-          (offers.length > 1) ?
           offers.map((offer) => {
-            return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offer} />);
+            return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offerAdapter(offer)} />);
           })
-          : (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offer} />)
         }
       </div>
     );

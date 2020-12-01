@@ -6,6 +6,7 @@ exports[`Should authHeaderRenderer connected to store render correctly 1`] = `
 >
   <img
     className="header__avatar-wrapper"
+    src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
   />
   <span
     className="header__user-name user__name"

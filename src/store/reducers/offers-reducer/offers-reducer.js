@@ -18,21 +18,14 @@ export default function offersReducer(state = stateOffers, action) {
     case OffersType.GET_OFFER:
 
       return extend(state, {
-        offer: extend(action.payload.offer, {
-          isFavorite: action.payload.offer.is_favorite
-        }),
+        offer: action.payload.offer,
         nearby: action.payload.nearby
       });
 
     case OffersType.GET_OFFERS:
-      const firstCity = action.payload[0].city;
-
 
       return extend(state, {
         data: action.payload,
-        //currentCity: firstCity,
-        //listCities: listCity,
-        baseFilter: actionFilter.FILTER_POPULAR
       });
 
     case OffersType.GET_FAVORITE:
@@ -41,16 +34,20 @@ export default function offersReducer(state = stateOffers, action) {
       });
 
     case OffersType.SET_FAVORITE:
-
+      const statusFavorities = action.payload.status;
       return extend(
           state,
           {
             offer: extend(state.offer, {
-              isFavorite: action.payload.status
+              isFavorite: statusFavorities
             })
           }
       );
 
+    case OffersType.FILTER_OFFER:
+      return extend(state, {
+        baseFilter: (action.payload) ? action.payload.filter : actionFilter.FILTER_POPULAR
+      });
 
     case OffersType.CHANGE_CITY:
       return extend(state, {
@@ -59,9 +56,7 @@ export default function offersReducer(state = stateOffers, action) {
 
   }
 
-  return extend(state, {
-    baseFilter: !action.payload ? actionFilter.FILTER_POPULAR : action.payload.filter
-  });
+  return state;
 }
 
 export {offersReducer};

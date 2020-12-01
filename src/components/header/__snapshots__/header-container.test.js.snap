@@ -39,6 +39,7 @@ exports[`Render connected to store component Should headerScreenComponent connec
             >
               <img
                 className="header__avatar-wrapper"
+                src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
               />
               <span
                 className="header__user-name user__name"

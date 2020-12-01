@@ -18,7 +18,7 @@ it(`SelectedClassOption click filter`, () => {
         <SelectedClassOption
           optionList={optionList}
           baseFilter={baseFilter}
-          click={handleChangeFilter}
+          handleChangeFilter={handleChangeFilter}
         />
     ).toJSON();
 

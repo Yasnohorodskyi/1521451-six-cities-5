@@ -1,11 +1,12 @@
 import {APIRoute, OffersType, AppRoute} from '../../const';
 import {redirectToRoute} from '../user/user';
+import {offersAdapter, offerAdapter} from '../../../helpers/offers-adapter';
 
 export const fetchOffers = () => (dispatch, _getState, api) => (
   api.get(APIRoute.GET_OFFER)
     .then(({data}) => dispatch({
       type: OffersType.GET_OFFERS,
-      payload: data
+      payload: offersAdapter(data)
     }))
     .catch((error) => {
       dispatch({
@@ -16,7 +17,6 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
       });
     })
 );
-
 
 export const changeCity = (currentCity) => (dispatch) => {
   dispatch({
@@ -38,8 +38,8 @@ export const getOffer = (idRoom) => (dispatch, _getState, api) => {
           dispatch({
             type: OffersType.GET_OFFER,
             payload: {
-              offer: sendData.offer,
-              nearby: sendData.nearby
+              offer: offerAdapter(sendData.offer),
+              nearby: offersAdapter(sendData.nearby)
             }
           });
         })
@@ -55,16 +55,16 @@ export const getOffer = (idRoom) => (dispatch, _getState, api) => {
 };
 
 
-export const filterOffer = (filter, offers, currentCity) => (dispatch) => (
-  dispatch({
-    type: OffersType.FILTER_OFFER,
-    payload: {
-      filter,
-      offers,
-      currentCity
-    }
-  })
-);
+export const filterOffer = (filter) => (dispatch) => {
+  return (
+    dispatch({
+      type: OffersType.FILTER_OFFER,
+      payload: {
+        filter
+      }
+    })
+  );
+};
 
 
 export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api) => {
@@ -78,13 +78,13 @@ export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api)
       }
     });
   })
-  .catch(() => {
-    dispatch(
-        redirectToRoute(
-            AppRoute.LOGIN
-        )
-    );
-  });
+    .catch(() => {
+      dispatch(
+          redirectToRoute(
+              AppRoute.LOGIN
+          )
+      );
+    });
 };
 
 
@@ -97,12 +97,12 @@ export const getFavorite = () => (dispatch, _getState, api) => {
       }
     });
   })
-  .catch((error) => {
-    dispatch({
-      type: OffersType.ERROR_GET_FAVORITE,
-      payload: {
-        error
-      }
+    .catch((error) => {
+      dispatch({
+        type: OffersType.ERROR_GET_FAVORITE,
+        payload: {
+          error
+        }
+      });
     });
-  });
 };

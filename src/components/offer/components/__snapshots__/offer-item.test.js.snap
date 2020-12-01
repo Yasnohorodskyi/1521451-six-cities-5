@@ -17,6 +17,7 @@ exports[`Render OfferItem Render OfferItem 1`] = `
         alt="Place image"
         className="place-card__image"
         height="200"
+        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg"
         width="260"
       />
     </a>

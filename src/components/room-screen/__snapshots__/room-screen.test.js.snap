@@ -147,7 +147,7 @@ exports[`RoomScreen 1`] = `
               The house among olive 
             </h1>
             <button
-              className="property__bookmark-button  button"
+              className="property__bookmark-button true active button"
               onClick={[Function]}
               type="button"
             >
@@ -274,6 +274,7 @@ exports[`RoomScreen 1`] = `
               >
                 Angelina
               </span>
+              true
             </div>
             <div
               className="property__description"

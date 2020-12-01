@@ -1,9 +1,8 @@
 import MockAdapter from "axios-mock-adapter";
 
 import {offersReducer} from "./offers-reducer";
-import {extend} from "../../../helpers/extend";
 import {fetchOffers} from "../../actions/offers/offers";
-import {offers, cities, user} from "../../../mocks-for-tests/mocks";
+import {offers, cities} from "../../../mocks-for-tests/mocks";
 import {APIRoute, OffersType} from "../../const";
 import {createAPI} from "../../../services/api";
 
@@ -18,7 +17,7 @@ const initialState = {
   favorites: null,
   listCities: [],
 };
-
+const offer = offers[0];
 
 describe(`Offer reducers`, () => {
 
@@ -27,34 +26,32 @@ describe(`Offer reducers`, () => {
   });
 
 
-    it(`GET OFFERS`, () => {
-      expect(offersReducer({}, {
-        type: OffersType.GET_OFFERS,
-        payload: offers
-      })).toEqual({
+  it(`GET OFFERS`, () => {
+    expect(offersReducer({}, {
+      type: OffersType.GET_OFFERS,
+      payload: {
         data: offers
-      });
+      }
+    })).toEqual({
+      data: {
+        data: offers
+      }
     });
+  });
 
-/*
-    it(`GET OFFER`, () => {
-      const offer = offers[0];
-      expect(Offers({
-        nearby: [],
-        offer: null,
-      }, {
-        type: OffersType.GET_OFFER,
-        payload: {
-          offer
-        },
-      })).toEqual({
-        nearby: offers,
-        offer: extend(offer, {
-          isFavorite: offer.is_favorite
-        }),
-      });
+
+  it(`GET OFFER`, () => {
+
+    expect(offersReducer({offer}, {
+      type: OffersType.GET_OFFER,
+      payload: {
+        offer,
+      },
+    })).toEqual({
+      offer
     });
-  */
+  });
+
   it(`GET favorites`, () => {
     expect(offersReducer({
       favorites: [],
@@ -69,15 +66,14 @@ describe(`Offer reducers`, () => {
   });
 
   it(`SET favorite`, () => {
-    const offer = offers[0];
+
     expect(offersReducer({
-      offer,
+      offer
     }, {
       type: OffersType.SET_FAVORITE,
       payload: {
-        offer: extend(offer, {
-          isFavorite: 1
-        })
+        status: true,
+        id: 2
       }
     })).toEqual({
       offer
@@ -110,7 +106,7 @@ describe(`Async operation work correctly`, () => {
       .onGet(APIRoute.HOTELS)
       .reply(200, [{fake: true}]);
 
-    return offersLoader(dispatch, () => {}, api)
+    return offersLoader(dispatch, () => { }, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {

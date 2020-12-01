@@ -8,9 +8,9 @@ export const selectCityOffers = createSelector(
     ({state, props, listCities, currentCity}) => {
 
       if (listCities && props.cityId) {
-         currentCity = listCities[props.cityId];
+        currentCity = listCities[props.cityId];
       } else {
-         currentCity = props.cityId ? currentCity : currentCity;
+        currentCity = props.cityId ? currentCity : currentCity;
       }
 
       switch (state.Offers.baseFilter) {

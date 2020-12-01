@@ -17,9 +17,9 @@ const withOpenSelect = (ComponentOutside) => {
 
       this.filterOpen = this.filterOpen.bind(this);
       this.filterChange = this.filterChange.bind(this);
-      this.onClick = this.onClick.bind(this);
+      this.handleChangeFilter = this.handleChangeFilter.bind(this);
     }
-    onClick(event) {
+    handleChangeFilter(event) {
       switch (event.target.dataset.action) {
         case `open`:
           this.filterOpen();
@@ -58,13 +58,13 @@ const withOpenSelect = (ComponentOutside) => {
     }
     render() {
       const {select} = this.state;
-      const onClick = this.onClick;
+      const handleChangeFilter = this.handleChangeFilter;
       return (
         <ComponentOutside
           {...this.props}
           select={select}
           optionList={actionFilter}
-          click={onClick}
+          handleChangeFilter={handleChangeFilter}
         />
       );
     }
@@ -82,7 +82,7 @@ const withOpenSelect = (ComponentOutside) => {
     optionList: PropTypes.arrayOf(
         PropTypes.string
     ),
-    click: PropTypes.func,
+    handleChangeFilter: PropTypes.func,
     select: PropTypes.string,
     offers: PropTypes.arrayOf(
         PropTypes.shape({

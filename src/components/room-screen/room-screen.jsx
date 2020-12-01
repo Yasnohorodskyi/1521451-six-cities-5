@@ -33,6 +33,7 @@ class RoomScreen extends PureComponent {
     return (
 
       <div className="page">
+
         <HeaderContainer />
         <main className="page__main page__main--property">
           <section className="property">
@@ -54,10 +55,9 @@ class RoomScreen extends PureComponent {
                   <h1 className="property__name">
                     {offer.title}
                   </h1>
-
                   <button
                     onClick={() => setFavoriteDispatch(offer.id, offer.isFavorite)}
-                    className={`property__bookmark-button ${offer.isFavorite ? `active` : ``} button`}
+                    className={`property__bookmark-button ${offer.isFavorite} ${offer.isFavorite ? `active` : ``} button`}
                     type="button"
                   >
                     <svg className={`property__bookmark-icon`} width="31" height="33">
@@ -65,7 +65,6 @@ class RoomScreen extends PureComponent {
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>
                   </button>
-
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
@@ -106,7 +105,7 @@ class RoomScreen extends PureComponent {
                     </div>
                     <span className="property__user-name">
                       {offer.host.name}
-                    </span>
+                    </span>{offer.isFavorite}
                   </div>
                   <div className="property__description">
                     <p className="property__text">
