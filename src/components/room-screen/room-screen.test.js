@@ -1,7 +1,7 @@
 import ShallowRenderer from "react-test-renderer/shallow";
 import React from "react";
 
-import {RoomScreen} from "./room-screen";
+import RoomScreen from "./room-screen";
 import {offers} from "../../mocks-for-tests/mocks";
 
 import {mockStore} from "../../mocks-for-tests/store";
@@ -22,27 +22,29 @@ it(`RoomScreen is rendered correctly`, () => {
 });
 */
 
-describe(`Render connected to store component`, () => {
+//const renderer = new ShallowRenderer();
+
+describe(`Render RoomScreen`, () => {
 
 
-let headerScreenComponent = null;
+let roomScreenComponent = null;
 
   beforeEach(() => {
 
     mockStore.dispatch = jest.fn();
 
 
-    headerScreenComponent = renderer.create(
+    roomScreenComponent = renderer.create(
         <MemoryRouter>
           <Provider store={mockStore}>
-            <RoomScreen offer={offers[0]} offers={offers}/>
+            <RoomScreen />
           </Provider>
         </MemoryRouter>
     );
   });
 
-  it(`Should Favorites is rendered correctly `, () => {
-    expect(headerScreenComponent.toJSON()).toMatchSnapshot();
+  it(`RoomScreen`, () => {
+    expect(roomScreenComponent.toJSON()).toMatchSnapshot();
   });
 
 });

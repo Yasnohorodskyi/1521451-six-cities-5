@@ -9,24 +9,11 @@ exports[`Menu tests Render Menu 1`] = `
   >
     <a
       className="locations__item-link tabs__item"
-      href="/Cologne"
+      href="/Amsterdam"
       onClick={[Function]}
     >
       <span>
-        Cologne
-      </span>
-    </a>
-  </li>
-  <li
-    className="locations__item"
-  >
-    <a
-      className="locations__item-link tabs__item"
-      href="/Paris"
-      onClick={[Function]}
-    >
-      <span>
-        Paris
+        Amsterdam
       </span>
     </a>
   </li>
@@ -48,11 +35,24 @@ exports[`Menu tests Render Menu 1`] = `
   >
     <a
       className="locations__item-link tabs__item"
-      href="/Amsterdam"
+      href="/Cologne"
       onClick={[Function]}
     >
       <span>
-        Amsterdam
+        Cologne
+      </span>
+    </a>
+  </li>
+  <li
+    className="locations__item"
+  >
+    <a
+      className="locations__item-link tabs__item"
+      href="/Dusseldorf"
+      onClick={[Function]}
+    >
+      <span>
+        Dusseldorf
       </span>
     </a>
   </li>
@@ -74,11 +74,11 @@ exports[`Menu tests Render Menu 1`] = `
   >
     <a
       className="locations__item-link tabs__item"
-      href="/Dusseldorf"
+      href="/Paris"
       onClick={[Function]}
     >
       <span>
-        Dusseldorf
+        Paris
       </span>
     </a>
   </li>

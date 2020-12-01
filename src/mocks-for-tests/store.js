@@ -18,7 +18,7 @@ const mockStore = createStore({
     reviews
   },
   User: user,
-  offer: offers[0]
+  Offer: offers[0]
 });
 
 export {mockStore};

@@ -23,7 +23,7 @@ exports[`Offer is rendered correctly 1`] = `
           "Laptop friendly workspace",
         ],
         "host": Object {
-          "avatarUrl": "img/avatar-angelina.jpg",
+          "avatar_url": "img/avatar-angelina.jpg",
           "id": 25,
           "isPro": true,
           "name": "Angelina",
@@ -45,8 +45,8 @@ exports[`Offer is rendered correctly 1`] = `
           "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
           "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
         ],
-        "isFavorite": true,
-        "isPremium": false,
+        "is_favorite": true,
+        "is_premium": false,
         "location": Object {
           "latitude": 53.53434,
           "longitude": 9.998654,
@@ -84,7 +84,7 @@ exports[`Offer is rendered correctly 1`] = `
           "Laptop friendly workspace",
         ],
         "host": Object {
-          "avatarUrl": "img/avatar-angelina.jpg",
+          "avatar_url": "img/avatar-angelina.jpg",
           "id": 25,
           "isPro": true,
           "name": "Angelina",
@@ -106,8 +106,7 @@ exports[`Offer is rendered correctly 1`] = `
           "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/7.jpg",
           "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg",
         ],
-        "isFavorite": true,
-        "isPremium": false,
+        "is_favorite": false,
         "location": Object {
           "latitude": 48.86561,
           "longitude": 2.350499,
@@ -143,7 +142,7 @@ exports[`Offer is rendered correctly 1`] = `
           "Baby seat",
         ],
         "host": Object {
-          "avatarUrl": "img/avatar-angelina.jpg",
+          "avatar_url": "img/avatar-angelina.jpg",
           "id": 25,
           "isPro": true,
           "name": "Angelina",
@@ -165,8 +164,8 @@ exports[`Offer is rendered correctly 1`] = `
           "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
           "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg",
         ],
-        "isFavorite": true,
-        "isPremium": false,
+        "is_favorite": true,
+        "is_premium": false,
         "location": Object {
           "latitude": 50.86556,
           "longitude": 4.371697,
@@ -202,7 +201,7 @@ exports[`Offer is rendered correctly 1`] = `
           "Air conditioning",
         ],
         "host": Object {
-          "avatarUrl": "img/avatar-angelina.jpg",
+          "avatar_url": "img/avatar-angelina.jpg",
           "id": 25,
           "isPro": true,
           "name": "Angelina",
@@ -224,8 +223,8 @@ exports[`Offer is rendered correctly 1`] = `
           "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg",
           "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg",
         ],
-        "isFavorite": true,
-        "isPremium": false,
+        "is_favorite": true,
+        "is_premium": false,
         "location": Object {
           "latitude": 50.945362,
           "longitude": 6.935974,

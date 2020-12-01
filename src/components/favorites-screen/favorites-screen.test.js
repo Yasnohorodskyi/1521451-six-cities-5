@@ -19,7 +19,7 @@ import {
 } from 'react-router-dom';
 
 import {mockStore} from "../../mocks-for-tests/store";
-import {FavoritesScreen} from "./favorites-screen";
+import FavoritesScreen from "./favorites-screen";
 import ShallowRenderer from "react-test-renderer/shallow";
 import renderer from "react-test-renderer";
 
@@ -32,11 +32,10 @@ describe(`FavoriteScreen`, () => {
 
     mockStore.dispatch = jest.fn();
 
-    console.log(mockStore);
     headerScreenComponent = renderer.create(
         <MemoryRouter>
           <Provider store={mockStore}>
-            <FavoritesScreen /*favorites={[]} getFavoriteDispatch={()=>{}}*//>
+            <FavoritesScreen />
           </Provider>
         </MemoryRouter>
     );

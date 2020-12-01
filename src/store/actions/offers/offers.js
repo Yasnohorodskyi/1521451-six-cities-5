@@ -17,14 +17,14 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
     })
 );
 
-export const changeCity = (currentCity) => (dispatch) => {
+export const changeCity = (currentCity) => (dispatch) => (
   dispatch({
     type: OffersType.CHANGE_CITY,
     payload: {
       currentCity
     }
-  });
-};
+  })
+);
 
 export const getOffer = (idRoom) => (dispatch, _getState, api) => {
   const sendData = {};
@@ -54,7 +54,7 @@ export const getOffer = (idRoom) => (dispatch, _getState, api) => {
 };
 
 
-export const filterOffer = (filter, offers, currentCity) => (dispatch) => {
+export const filterOffer = (filter, offers, currentCity) => (dispatch) => (
   dispatch({
     type: OffersType.FILTER_OFFER,
     payload: {
@@ -62,8 +62,8 @@ export const filterOffer = (filter, offers, currentCity) => (dispatch) => {
       offers,
       currentCity
     }
-  });
-};
+  })
+);
 
 
 export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api) => {

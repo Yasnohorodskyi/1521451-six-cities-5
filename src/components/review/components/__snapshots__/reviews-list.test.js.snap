@@ -28,6 +28,7 @@ Array [
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
+            src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
             width="54"
           />
         </div>
@@ -87,6 +88,7 @@ Array [
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
+            src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
             width="54"
           />
         </div>
@@ -150,6 +152,7 @@ To submit review please make sure to setratingand describe your stay with at lea
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
+            src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
             width="54"
           />
         </div>

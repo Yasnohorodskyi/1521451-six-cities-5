@@ -26,8 +26,8 @@ export const offers = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg`
     ],
     title: `The house among olive `,
-    isFavorite: true,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     rating: 4.3,
     type: `house`,
     bedrooms: 5,
@@ -42,7 +42,7 @@ export const offers = [
       id: 25,
       name: `Angelina`,
       isPro: true,
-      avatarUrl: `img/avatar-angelina.jpg`
+      avatar_url: `img/avatar-angelina.jpg`
     },
     description: `I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!`,
     location: {
@@ -79,8 +79,8 @@ export const offers = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg`
     ],
     title: `Tile House`,
-    isFavorite: true,
-    isPremium: false,
+    is_favorite: true,
+    is_favorite: false,
     rating: 2.9,
     type: `hotel`,
     bedrooms: 2,
@@ -99,7 +99,7 @@ export const offers = [
       id: 25,
       name: `Angelina`,
       isPro: true,
-      avatarUrl: `img/avatar-angelina.jpg`
+      avatar_url: `img/avatar-angelina.jpg`
     },
     description: `Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.`,
     location: {
@@ -136,8 +136,8 @@ export const offers = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg`
     ],
     title: `The house among olive `,
-    isFavorite: true,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     rating: 4.6,
     type: `apartment`,
     bedrooms: 4,
@@ -154,7 +154,7 @@ export const offers = [
       id: 25,
       name: `Angelina`,
       isPro: true,
-      avatarUrl: `img/avatar-angelina.jpg`
+      avatar_url: `img/avatar-angelina.jpg`
     },
     description: `Relax, rejuvenate and unplug in this ultimate rustic getaway experience in the country. In our beautiful screened Pondhouse, you can gaze at the stars and listen to the sounds of nature from your cozy warm bed.`,
     location: {
@@ -191,8 +191,8 @@ export const offers = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`
     ],
     title: `Nice, cozy, warm big bed apartment`,
-    isFavorite: true,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     rating: 2.5,
     type: `house`,
     bedrooms: 2,
@@ -209,7 +209,7 @@ export const offers = [
       id: 25,
       name: `Angelina`,
       isPro: true,
-      avatarUrl: `img/avatar-angelina.jpg`
+      avatar_url: `img/avatar-angelina.jpg`
     },
     description: `Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.`,
     location: {
@@ -222,40 +222,6 @@ export const offers = [
 ];
 
 export const cities = {
-  Cologne: {
-    name: `Cologne`,
-    location: {
-      latitude: 50.938362,
-      longitude: 6.959974,
-      zoom: 13
-    }
-  },
-  /*
-  Brussels: {
-    name: `Brussels`,
-    location: {
-      latitude: 50.839557,
-      longitude: 4.346697,
-      zoom: 16
-    }
-  },
-  */
- Paris: {
-  name: `Paris`,
-  location: {
-    latitude: 50.839557,
-    longitude: 4.346697,
-    zoom: 16
-  }
-},
-  Brussels: {
-    name: `Brussels`,
-    location: {
-      latitude: 50.839557,
-      longitude: 4.346697,
-      zoom: 16
-    }
-  },
   Amsterdam: {
     name: `Amsterdam`,
     location: {
@@ -264,7 +230,30 @@ export const cities = {
       zoom: 13
     }
   },
-
+  Brussels: {
+    name: `Brussels`,
+    location: {
+      latitude: 50.839557,
+      longitude: 4.346697,
+      zoom: 16
+    }
+  },
+  Cologne: {
+    name: `Cologne`,
+    location: {
+      latitude: 50.938362,
+      longitude: 6.959974,
+      zoom: 13
+    }
+  },
+  Dusseldorf: {
+    name: `Dusseldorf`,
+    location: {
+      latitude: 51.225403,
+      longitude: 6.776314,
+      zoom: 13
+    }
+  },
   Hamburg: {
     name: `Hamburg`,
     location: {
@@ -273,15 +262,14 @@ export const cities = {
       zoom: 13
     }
   },
-
-  Dusseldorf: {
-    name: `Dusseldorf`,
-    location: {
-      latitude: 51.225403,
-      longitude: 6.776314,
-      zoom: 13
-    }
+ Paris: {
+  name: `Paris`,
+  location: {
+    latitude: 50.839557,
+    longitude: 4.346697,
+    zoom: 16
   }
+}
 };
 
 
@@ -292,7 +280,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 4,
     comment: `вапвпапвапвавапва вапвпапвапвавапвавапвпапвапвавапвавапвпапвапвавапвавапвпапвапвавапва`,
@@ -304,7 +292,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 4,
     comment: `Test1 To submit review please make sure to setratingand describe your stay with at least50 characters.\nTo submit review please make sure to setratingand describe your stay with at least50 characters.\n\n\n`,
@@ -316,7 +304,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 2,
     comment: `234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123234324324234234221332323213123123123123`,
@@ -328,7 +316,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 3,
     comment: `sadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadass`,
@@ -340,7 +328,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 4,
     comment: `sadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsadasadsadsadsada`,
@@ -352,7 +340,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 4,
     comment: `efeffqw efeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqwefeffqw`,
@@ -364,7 +352,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 3,
     comment: `The deluxe room was a quite comfortable one with all the adequate facilities. The only thing that made me feel uncomfortable was the rude behavior of an impolite staff at the reception desk. `,
@@ -376,7 +364,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 4,
     comment: `123123121231231212312312123123121231231212312312123123121231231212312312123123121231231212312312123123121231231212312312123123121231231212312312123123121231231212312312123123121231231212312312`,
@@ -388,7 +376,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 2,
     comment: `wqeqweqweqweqwewqeqwewqeqweqweqweqwewqeqwewqeqweqweqweqwewqeqwewqeqweqweqweqwewqeqwewqeqweqweqweqwewqeqwewqeqweqweqweqwewqeqwewqeqweqweqweqwewqeqwewqeqweqweqweqwewqeqwewqeqweqweqweqwewqeqwe`,
@@ -400,7 +388,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 4,
     comment: `textFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextFieldtextField`,
@@ -412,7 +400,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 4,
     comment: `wqewqewqewqewqewqeqweqweqwewqewqeqweqweqweqweqweqweqweqweqweqweqweqweqweqwewqeqweqweqweqwewqeqweqw`,
@@ -424,7 +412,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 5,
     comment: `sdsfsdfdsfsdfdsfsdfdsf`,
@@ -436,7 +424,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 5,
     comment: `qweqweqweqweqweqweqdsdsdsdqwdqwdweqweqweqweqwdwqddwdwq`,
@@ -448,7 +436,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 5,
     comment: `qweqweqweqweqweqweqwewqeqwedweweqewqewqewqewqeqwewqwq`,
@@ -460,7 +448,7 @@ export const reviews = [
       id: 1,
       isPro: false,
       name: `r-sasha`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`
     },
     rating: 5,
     comment: `fsfsfsd`,
@@ -472,7 +460,7 @@ export const reviews = [
       id: 15,
       isPro: false,
       name: `Kendall`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/6.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/6.jpg`
     },
     rating: 3,
     comment: `I stayed here for one night and it was an unpleasant experience.`,
@@ -484,7 +472,7 @@ export const reviews = [
       id: 12,
       isPro: true,
       name: `Isaac`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg`
     },
     rating: 3,
     comment: `The deluxe room was a quite comfortable one with all the adequate facilities. The only thing that made me feel uncomfortable was the rude behavior of an impolite staff at the reception desk.`,
@@ -496,7 +484,7 @@ export const reviews = [
       id: 14,
       isPro: true,
       name: `Corey`,
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/5.jpg`
+      avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/5.jpg`
     },
     rating: 5,
     comment: `The house is very good, very happy, hygienic and simple living conditions around it are also very good. I hope to have the opportunity to come back. Thank you.`,
@@ -508,7 +496,7 @@ export const reviews = [
 export const user = {
   authorizationStatus: `AUTH`,
   data: {
-    avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`,
+    avatar_url: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg`,
     email: `r-sasha@list.ru`,
     id: 1,
     isPro: false,
