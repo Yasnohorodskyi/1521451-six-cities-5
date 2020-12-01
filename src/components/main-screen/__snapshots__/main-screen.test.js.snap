@@ -1,3 +1,330 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mainScreenComponent Should mainScreenComponent is rendered correctly  1`] = `null`;
+exports[`MainScreen 1`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <MainScreen
+    authorizationStatus="AUTH"
+    baseFilter="Popular"
+    cities={
+      Object {
+        "Amsterdam": Object {
+          "location": Object {
+            "latitude": 52.37454,
+            "longitude": 4.897976,
+            "zoom": 13,
+          },
+          "name": "Amsterdam",
+        },
+        "Brussels": Object {
+          "location": Object {
+            "latitude": 50.846558,
+            "longitude": 4.351697,
+            "zoom": 13,
+          },
+          "name": "Brussels",
+        },
+        "Cologne": Object {
+          "location": Object {
+            "latitude": 50.938362,
+            "longitude": 6.959974,
+            "zoom": 13,
+          },
+          "name": "Cologne",
+        },
+        "Dusseldorf": Object {
+          "location": Object {
+            "latitude": 51.225403,
+            "longitude": 6.776314,
+            "zoom": 13,
+          },
+          "name": "Dusseldorf",
+        },
+        "Hamburg": Object {
+          "location": Object {
+            "latitude": 53.550343,
+            "longitude": 10.000654,
+            "zoom": 13,
+          },
+          "name": "Hamburg",
+        },
+        "Paris": Object {
+          "location": Object {
+            "latitude": 48.85661,
+            "longitude": 2.351499,
+            "zoom": 13,
+          },
+          "name": "Paris",
+        },
+      }
+    }
+    currentCity={
+      Object {
+        "location": Object {
+          "latitude": 50.846558,
+          "longitude": 4.351697,
+          "zoom": 13,
+        },
+        "name": "Brussels",
+      }
+    }
+    filterOfferDispatch={[Function]}
+    offers={
+      Array [
+        Object {
+          "bedrooms": 5,
+          "city": Object {
+            "location": Object {
+              "latitude": 53.550343,
+              "longitude": 10.000654,
+              "zoom": 13,
+            },
+            "name": "Hamburg",
+          },
+          "description": "I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!",
+          "goods": Array [
+            "Washer",
+            "Breakfast",
+            "Laptop friendly workspace",
+          ],
+          "host": Object {
+            "avatar_url": "img/avatar-angelina.jpg",
+            "id": 25,
+            "isPro": true,
+            "name": "Angelina",
+          },
+          "id": 11,
+          "images": Array [
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/8.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/4.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/7.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/9.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/11.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+          ],
+          "is_favorite": true,
+          "is_premium": false,
+          "location": Object {
+            "latitude": 53.53434,
+            "longitude": 9.998654,
+            "zoom": 16,
+          },
+          "maxAdults": 6,
+          "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+          "price": 190,
+          "rating": 4.3,
+          "title": "The house among olive ",
+          "type": "house",
+        },
+        Object {
+          "bedrooms": 2,
+          "city": Object {
+            "location": Object {
+              "latitude": 48.85661,
+              "longitude": 2.351499,
+              "zoom": 13,
+            },
+            "name": "Paris",
+          },
+          "description": "Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.",
+          "goods": Array [
+            "Air conditioning",
+            "Baby seat",
+            "Towels",
+            "Washer",
+            "Breakfast",
+            "Fridge",
+            "Laptop friendly workspace",
+          ],
+          "host": Object {
+            "avatar_url": "img/avatar-angelina.jpg",
+            "id": 25,
+            "isPro": true,
+            "name": "Angelina",
+          },
+          "id": 87,
+          "images": Array [
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/8.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/11.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/4.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/17.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/20.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/7.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg",
+          ],
+          "is_favorite": false,
+          "location": Object {
+            "latitude": 48.86561,
+            "longitude": 2.350499,
+            "zoom": 16,
+          },
+          "maxAdults": 5,
+          "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg",
+          "price": 266,
+          "rating": 2.9,
+          "title": "Tile House",
+          "type": "hotel",
+        },
+        Object {
+          "bedrooms": 4,
+          "city": Object {
+            "location": Object {
+              "latitude": 50.846558,
+              "longitude": 4.351697,
+              "zoom": 13,
+            },
+            "name": "Brussels",
+          },
+          "description": "Relax, rejuvenate and unplug in this ultimate rustic getaway experience in the country. In our beautiful screened Pondhouse, you can gaze at the stars and listen to the sounds of nature from your cozy warm bed.",
+          "goods": Array [
+            "Washer",
+            "Laptop friendly workspace",
+            "Breakfast",
+            "Air conditioning",
+            "Baby seat",
+          ],
+          "host": Object {
+            "avatar_url": "img/avatar-angelina.jpg",
+            "id": 25,
+            "isPro": true,
+            "name": "Angelina",
+          },
+          "id": 3,
+          "images": Array [
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/17.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/11.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/4.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/8.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/7.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg",
+          ],
+          "is_favorite": true,
+          "is_premium": false,
+          "location": Object {
+            "latitude": 50.86556,
+            "longitude": 4.371697,
+            "zoom": 16,
+          },
+          "maxAdults": 7,
+          "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg",
+          "price": 218,
+          "rating": 4.6,
+          "title": "The house among olive ",
+          "type": "apartment",
+        },
+        Object {
+          "bedrooms": 2,
+          "city": Object {
+            "location": Object {
+              "latitude": 50.938362,
+              "longitude": 6.959974,
+              "zoom": 13,
+            },
+            "name": "Cologne",
+          },
+          "description": "Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.",
+          "goods": Array [
+            "Breakfast",
+            "Washer",
+            "Baby seat",
+            "Laptop friendly workspace",
+            "Air conditioning",
+          ],
+          "host": Object {
+            "avatar_url": "img/avatar-angelina.jpg",
+            "id": 25,
+            "isPro": true,
+            "name": "Angelina",
+          },
+          "id": 34,
+          "images": Array [
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/9.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/7.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/4.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg",
+            "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg",
+          ],
+          "is_favorite": true,
+          "is_premium": false,
+          "location": Object {
+            "latitude": 50.945362,
+            "longitude": 6.935974,
+            "zoom": 16,
+          },
+          "maxAdults": 6,
+          "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg",
+          "price": 485,
+          "rating": 2.5,
+          "title": "Nice, cozy, warm big bed apartment",
+          "type": "house",
+        },
+      ]
+    }
+    user={
+      Object {
+        "authorizationStatus": "AUTH",
+        "data": Object {
+          "avatar_url": "https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg",
+          "email": "r-sasha@list.ru",
+          "id": 1,
+          "isPro": false,
+          "name": "",
+        },
+        "error": "",
+      }
+    }
+  />
+</Router>
+`;

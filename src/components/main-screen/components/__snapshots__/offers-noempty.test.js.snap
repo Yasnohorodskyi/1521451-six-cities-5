@@ -27,9 +27,9 @@ exports[`OffersNoempty is rendered correctly 1`] = `
         currentCity={
           Object {
             "location": Object {
-              "latitude": 50.839557,
-              "longitude": 4.346697,
-              "zoom": 16,
+              "latitude": 50.846558,
+              "longitude": 4.351697,
+              "zoom": 13,
             },
             "name": "Brussels",
           }
@@ -275,9 +275,9 @@ exports[`OffersNoempty is rendered correctly 1`] = `
           currentCity={
             Object {
               "location": Object {
-                "latitude": 50.839557,
-                "longitude": 4.346697,
-                "zoom": 16,
+                "latitude": 50.846558,
+                "longitude": 4.351697,
+                "zoom": 13,
               },
               "name": "Brussels",
             }

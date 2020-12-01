@@ -233,9 +233,9 @@ export const cities = {
   Brussels: {
     name: `Brussels`,
     location: {
-      latitude: 50.839557,
-      longitude: 4.346697,
-      zoom: 16
+      latitude: 50.846558,
+      longitude: 4.351697,
+      zoom: 13
     }
   },
   Cologne: {
@@ -265,9 +265,9 @@ export const cities = {
  Paris: {
   name: `Paris`,
   location: {
-    latitude: 50.839557,
-    longitude: 4.346697,
-    zoom: 16
+    latitude: 48.85661,
+    longitude: 2.351499,
+    zoom: 13,
   }
 }
 };

@@ -1,5 +1,6 @@
 import {Offers} from "./offers";
-import {extend} from "../../../helpers/extend";
+
+import {fetchOffers} from "../../actions/offers/offers";
 
 
 import {offers, cities} from "../../../mocks-for-tests/mocks";
@@ -21,7 +22,7 @@ const initialState = {
   favorites: null
 };
 
-/*
+
 describe(`Offer reducers`, () => {
 
   it(`Initial state`, () => {
@@ -29,15 +30,42 @@ describe(`Offer reducers`, () => {
   });
 
   it(`GET OFFERS`, () => {
+    expect(Offers(
+      initialState,
+      {
+        type: OffersType.GET_OFFERS,
+        payload: offers
+      }
+      )).toEqual({
+        data: offers,
+        currentCity: cities['Hamburg'],
+        listCities: cities,
+        baseFilter: 'Popular',
+        //favorites: null,
+       // nearby: [],
+        //offer: null,
+       // offers: offers
+    })
+  })
+
+/*
+  it(`GET OFFERS`, () => {
     expect(Offers(initialState, {
       type: OffersType.GET_OFFERS,
       payload: offers,
     })).toEqual({
-      baseFilter: "Popular",
-      currentCity: cities['Hamburg'],
       data: offers,
+      //offers: offers
+     baseFilter: 'Popular',
+      currentCity: cities['Hamburg'],
+      listCities: cities,
+      nearby: [],
+      offer: null,
+      offers: [],
+      favorites: null
     });
   });
+
 
   it(`GET OFFER`, () => {
     expect(Offers(initialState, {
@@ -84,6 +112,7 @@ describe(`Offer reducers`, () => {
         currentCity
     });
   });
+*/
 
 })
 
@@ -108,4 +137,3 @@ describe(`Async operation work correctly`, () => {
       });
     });
 });
-*/

@@ -20,7 +20,6 @@ import {
 
 import {mockStore} from "../../mocks-for-tests/store";
 import FavoritesScreen from "./favorites-screen";
-import ShallowRenderer from "react-test-renderer/shallow";
 import renderer from "react-test-renderer";
 
 

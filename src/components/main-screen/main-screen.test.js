@@ -1,26 +1,23 @@
-
+import ShallowRenderer from "react-test-renderer/shallow";
 import React from "react";
-import MainScreen from "./main-screen";
-import {mockStore} from "../../mocks-for-tests/store";
-import renderer from "react-test-renderer";
-import {Provider} from "react-redux";
+import {MainScreen} from "./main-screen";
+import {offers, baseFilter, cities, user} from "../../mocks-for-tests/mocks";
+import {BrowserRouter} from "react-router-dom";
 
-describe(`mainScreenComponent`, () => {
-
-let mainScreenComponent = null;
-
-  beforeEach(() => {
-
-    mockStore.dispatch = jest.fn();
-    mainScreenComponent = renderer.create(
-          <Provider store={mockStore}>
-            <MainScreen/>
-          </Provider>
-    );
-  });
-
-  it(`Should mainScreenComponent is rendered correctly `, () => {
-    expect(mainScreenComponent.toJSON()).toMatchSnapshot();
-  });
-
+it(`MainScreen`, () => {
+  const renderer = new ShallowRenderer();
+  const tree = renderer.render(
+    <BrowserRouter>
+     <MainScreen
+        offers={offers}
+        filterOfferDispatch={()=>{}}
+        user={user}
+        currentCity={cities['Brussels']}
+        authorizationStatus={user['authorizationStatus']}
+        baseFilter={baseFilter}
+        cities={cities}
+      />
+    </BrowserRouter>
+  );
+  expect(tree).toMatchSnapshot();
 });
