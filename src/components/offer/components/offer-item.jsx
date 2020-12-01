@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import L from 'leaflet';
-import {Link} from "react-router-dom";
 
 import {premiumTemplate} from '../../../helpers/premium-template';
 import {calcRating} from '../../../helpers/calc-rating';
@@ -33,9 +32,9 @@ class OfferItem extends PureComponent {
           (offer.is_premium) ? premiumTemplate(`place-card__mark`) : ``
         }
         <div className="near-places__image-wrapper place-card__image-wrapper">
-          <Link to={`/offer/${offer.id}`}>
+          <a href={`/offer/${offer.id}`}>
             <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image" />
-          </Link>
+          </a>
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">

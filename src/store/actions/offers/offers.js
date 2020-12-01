@@ -17,14 +17,15 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
     })
 );
 
-export const changeCity = (currentCity) => (dispatch) => (
+
+export const changeCity = (currentCity) => (dispatch) => {
   dispatch({
     type: OffersType.CHANGE_CITY,
     payload: {
       currentCity
     }
-  })
-);
+  });
+};
 
 export const getOffer = (idRoom) => (dispatch, _getState, api) => {
   const sendData = {};

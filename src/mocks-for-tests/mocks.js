@@ -79,7 +79,6 @@ export const offers = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg`
     ],
     title: `Tile House`,
-    is_favorite: true,
     is_favorite: false,
     rating: 2.9,
     type: `hotel`,
@@ -262,14 +261,14 @@ export const cities = {
       zoom: 13
     }
   },
- Paris: {
-  name: `Paris`,
-  location: {
-    latitude: 48.85661,
-    longitude: 2.351499,
-    zoom: 13,
+  Paris: {
+    name: `Paris`,
+    location: {
+      latitude: 48.85661,
+      longitude: 2.351499,
+      zoom: 13,
+    }
   }
-}
 };
 
 

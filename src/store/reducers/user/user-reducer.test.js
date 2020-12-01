@@ -2,49 +2,51 @@ import MockAdapter from "axios-mock-adapter";
 import {UserType, APIRoute} from "../../const";
 import {user} from "../../../mocks-for-tests/mocks";
 import {createAPI} from "../../../services/api";
-import {User} from "./user";
+import {userReducer} from "./user-reducer";
 
 const api = createAPI(() => {});
-const initialState = {
-  data: [],
-  authorizationStatus: `NO_AUTH`
-};
-/*
-describe(`Reducer User`, () => {
 
+
+describe(`Reducer User`, () => {
+  /*
   it(`REQUIRED_AUTHORIZATION`, () => {
     expect(User(initialState ,{
       type: UserType.REQUIRED_AUTHORIZATION,
-      payload: user,
+      payload: {
+        user
+      },
     })).toEqual({
-      data: user,
+      user,
       authorizationStatus: `AUTH`
     });
   });
 
 
   it(`AuthorizationStatus`, () => {
-    expect(User(initialState ,{
+    expect(User({user} ,{
       type: UserType.AuthorizationStatus,
-      payload: user,
+      payload: {
+        data: user
+      }
     })).toEqual({
-        data: user,
-        authorizationStatus: `AUTH`
+      data: user,
+      authorizationStatus: user.AuthorizationStatus
     });
   });
+  */
+
 
   it(`REQUIRED_ERROR`, () => {
-    expect(User({error: 'error'} ,{
+    expect(userReducer({error: `error`}, {
       type: UserType.REQUIRED_ERROR,
-      payload: 'error',
+      payload: {
+        error: `404 Not found`
+      },
     })).toEqual({
-      error: undefined
+      error: `404 Not found`
     });
   });
-
-
-})
-
+});
 
 describe(`Async operation work correctly`, () => {
   const fakeUser = {login: `test@test.ru`, password: `123456`};
@@ -64,4 +66,3 @@ describe(`Async operation work correctly`, () => {
       });
   });
 });
-*/

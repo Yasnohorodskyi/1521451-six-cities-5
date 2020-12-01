@@ -12,7 +12,6 @@ exports[`Render OfferItem Render OfferItem 1`] = `
   >
     <a
       href="/offer/11"
-      onClick={[Function]}
     >
       <img
         alt="Place image"

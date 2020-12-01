@@ -1,19 +1,17 @@
 import {combineReducers} from "redux";
 
-import Review from "./reviews/reviews";
-import Offers from "./offers/offers";
-import User from "./user/user";
-/**
- * Сделать как в классной работе
- */
+import ReviewReducer from "./reviews/reviews-reducer";
+import OffersReducer from "./offers-reducer/offers-reducer";
+import UserReducer from "./user/user-reducer";
+
 export const NameSpace = {
-  CHANGE: `CHANGE`,
-  FILTER: `FILTER`,
-  GET: `GET`,
+  REVIEWS: `Review`,
+  OFFERS: `Offers`,
+  USER: `User`,
 };
 
 export default combineReducers({
-  Review,
-  Offers,
-  User
+  [NameSpace.REVIEWS]: ReviewReducer,
+  [NameSpace.OFFERS]: OffersReducer,
+  [NameSpace.USER]: UserReducer
 });

@@ -7,11 +7,12 @@ const stateOffers = {
   offers: [],
   offer: null,
   nearby: [],
-  favorites: null
+  favorites: null,
+  listCities: []
 };
 
 
-export default function Offers(state = stateOffers, action) {
+export default function offersReducer(state = stateOffers, action) {
 
   switch (action.type) {
     case OffersType.GET_OFFER:
@@ -28,9 +29,9 @@ export default function Offers(state = stateOffers, action) {
       const listCity = {};
 
       action.payload.map((offer) => offer.city)
-      .filter((city) => {
-        listCity[city.name] = city;
-      });
+        .filter((city) => {
+          listCity[city.name] = city;
+        });
 
       return extend(state, {
         data: action.payload,
@@ -57,7 +58,6 @@ export default function Offers(state = stateOffers, action) {
 
 
     case OffersType.CHANGE_CITY:
-
       return extend(state, {
         currentCity: action.payload.currentCity
       });
@@ -69,4 +69,4 @@ export default function Offers(state = stateOffers, action) {
   });
 }
 
-export {Offers};
+export {offersReducer};
