@@ -14,6 +14,7 @@ import {currentCityShape} from '../../shapes/current-city';
 import {getOffer, setFavorite} from '../../store/actions/offers/offers';
 import HeaderContainer from '../header/header-container';
 
+
 class RoomScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -23,7 +24,7 @@ class RoomScreen extends PureComponent {
     getOfferDispatch(currentRoom);
   }
   render() {
-    const {offer, nearby, setFavoriteDispatch, authorizationStatus} = this.props;
+    const {offer, nearby, setFavoriteDispatch} = this.props;
 
     if (offer === null) {
       return null;
@@ -32,6 +33,7 @@ class RoomScreen extends PureComponent {
     return (
 
       <div className="page">
+
         <HeaderContainer />
         <main className="page__main page__main--property">
           <section className="property">
@@ -53,17 +55,16 @@ class RoomScreen extends PureComponent {
                   <h1 className="property__name">
                     {offer.title}
                   </h1>
-                  {
-                    (authorizationStatus === `AUTH`)
-                      ?
-                      <button onClick={() => setFavoriteDispatch(offer.id, offer.isFavorite)} className={`property__bookmark-button ${offer.isFavorite ? `active` : ``} button`} type="button">
-                        <svg className={`property__bookmark-icon`} width="31" height="33">
-                          <use xlinkHref="#icon-bookmark"></use>
-                        </svg>
-                        <span className="visually-hidden">To bookmarks</span>
-                      </button>
-                      : ``
-                  }
+                  <button
+                    onClick={() => setFavoriteDispatch(offer.id, offer.isFavorite)}
+                    className={`property__bookmark-button ${offer.isFavorite} ${offer.isFavorite ? `active` : ``} button`}
+                    type="button"
+                  >
+                    <svg className={`property__bookmark-icon`} width="31" height="33">
+                      <use xlinkHref="#icon-bookmark"></use>
+                    </svg>
+                    <span className="visually-hidden">To bookmarks</span>
+                  </button>
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
@@ -80,7 +81,7 @@ class RoomScreen extends PureComponent {
                     {offer.bedrooms}
                   </li>
                   <li className="property__feature property__feature--adults">
-                    {offer.max_adults}
+                    {offer.maxAdults}
                   </li>
                 </ul>
                 <div className="property__price">
@@ -104,7 +105,7 @@ class RoomScreen extends PureComponent {
                     </div>
                     <span className="property__user-name">
                       {offer.host.name}
-                    </span>
+                    </span>{offer.isFavorite}
                   </div>
                   <div className="property__description">
                     <p className="property__text">

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import OfferItem from './offer-item.jsx';
 import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';
+import {offerAdapter} from '../../../helpers/offers-adapter';
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -11,24 +12,12 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, currentCity, max, currentOffer, authorizationStatus} = this.props;
-    let indexGloal = 0;
-
+    const {offers, authorizationStatus} = this.props;
     return (
       <div className="near-places__list places__list">
         {
           offers.map((offer) => {
-            if (max) {
-              if (indexGloal < max) {
-                if (currentCity.name === offer.city.name && currentOffer !== offer.id) {
-                  indexGloal++;
-                  return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offer} />);
-                }
-              }
-            } else {
-              return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offer} />);
-            }
-            return null;
+            return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offerAdapter(offer)} />);
           })
         }
       </div>

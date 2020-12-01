@@ -27,9 +27,11 @@ const Menu = ({cities, activeItem, changeCity, currentCity}) => {
     return itemsMenu;
   };
 
-  return (<ul className="locations__list tabs__list">
-    {createElementMenu()}
-  </ul>);
+  return (
+    <ul className="locations__list tabs__list">
+      {createElementMenu()}
+    </ul>
+  );
 };
 
 

@@ -5,7 +5,7 @@ const stateReviews = {
   reviews: []
 };
 
-export default function Reviews(state = stateReviews, action) {
+export default function reviewsReducer(state = stateReviews, action) {
 
   switch (action.type) {
     case ReviewType.GET_REVIEWS:
@@ -22,3 +22,5 @@ export default function Reviews(state = stateReviews, action) {
     reviews: state.reviews
   });
 }
+
+export {reviewsReducer};

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render SelectedClassOption 1`] = `
+<form
+  action="#"
+  className="places__sorting"
+  method="get"
+  onClick={[Function]}
+>
+  <span
+    className="places__sorting-caption"
+  >
+    Sort by
+  </span>
+  <span
+    className="places__sorting-type"
+    data-action="open"
+    tabIndex="0"
+  >
+    <svg
+      className="places__sorting-arrow"
+      height="4"
+      width="7"
+    >
+      <use
+        xlinkHref="#icon-arrow-select"
+      />
+    </svg>
+  </span>
+  <ul
+    className="places__options places__options--custom places__options"
+  >
+    <li
+      className="places__option "
+      data-action="change"
+      tabIndex="0"
+    >
+      Popular
+    </li>
+    <li
+      className="places__option "
+      data-action="change"
+      tabIndex="0"
+    >
+      Top rated first
+    </li>
+    <li
+      className="places__option "
+      data-action="change"
+      tabIndex="0"
+    >
+      Price: low to high
+    </li>
+    <li
+      className="places__option "
+      data-action="change"
+      tabIndex="0"
+    >
+      Price: high to low
+    </li>
+  </ul>
+  <select
+    className="places__sorting-type"
+    defaultValue="Popular"
+    id="places-sorting"
+  >
+    <option
+      className="places__option"
+      value="popular"
+    >
+      Popular
+    </option>
+    <option
+      className="places__option"
+      value="popular"
+    >
+      Top rated first
+    </option>
+    <option
+      className="places__option"
+      value="popular"
+    >
+      Price: low to high
+    </option>
+    <option
+      className="places__option"
+      value="popular"
+    >
+      Price: high to low
+    </option>
+  </select>
+</form>
+`;

@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  Link
+  Link,
 } from "react-router-dom";
 
-export const notAuthHeader = () => {
+const NotAuthHeader = () => {
   return (
     <div className="header__nav-link header__nav-link--profile">
       <div className="header__avatar-wrapper user__avatar-wrapper">
@@ -14,3 +14,6 @@ export const notAuthHeader = () => {
     </div>
   );
 };
+
+export {NotAuthHeader};
+export default NotAuthHeader;

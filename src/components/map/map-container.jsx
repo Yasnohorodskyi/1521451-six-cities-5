@@ -6,12 +6,11 @@ import {MapCities} from "./components/map-cities";
 import {offerItem} from '../../shapes/offer-item';
 import {currentCityShape} from '../../shapes/current-city';
 
-const MapContainer = ({currentCity, offers, currentOffer}) => {
+const MapContainer = ({currentCity, offers}) => {
   return (
     <MapCities
       currentCity={currentCity}
       offers={offers}
-      currentOffer={currentOffer}
     />
   );
 };
@@ -24,7 +23,6 @@ MapContainer.propTypes = {
       })
   ),
   currentCity: currentCityShape,
-  currentOffer: PropTypes.number,
   cities: PropTypes.arrayOf(
       currentCityShape
   ),
@@ -34,7 +32,6 @@ MapContainer.propTypes = {
 const mapStateToProps = (state, props) => {
   return {
     currentCity: state.Offers.currentCity ? state.Offers.currentCity : props.currentCity,
-    currentOffer: props.currentOffer
   };
 };
 

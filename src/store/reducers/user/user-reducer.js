@@ -7,7 +7,7 @@ const userState = {
   error: ``
 };
 
-export default function User(state = userState, action) {
+export default function userReducer(state = userState, action) {
 
   switch (action.type) {
     case UserType.REQUIRED_AUTHORIZATION:
@@ -28,3 +28,5 @@ export default function User(state = userState, action) {
 
   return state;
 }
+
+export {userReducer};

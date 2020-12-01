@@ -11,7 +11,7 @@ import OffersNoempty from "./components/offers-noempty";
 import {currentCityShape} from '../../shapes/current-city';
 
 import {selectCityOffers} from "../../store/selectors/offers/select-city-offers";
-
+import {selectCityList, selectFirstCity} from "../../store/selectors/offers/select-city-list";
 
 import HeaderContainer from '../header/header-container';
 
@@ -36,7 +36,7 @@ class MainScreen extends PureComponent {
             <MenuContainer cities={cities} currentCity={cityId ? cities[cityId] : currentCity} />
             {
               (offers === undefined || offers === null) ? <OffersEmpty /> : <OffersNoempty
-                currentCity={cityId ? cities[cityId] : currentCity}
+                currentCity={currentCity}
                 offers={offers}
                 baseFilter={baseFilter}
                 filterOffer={filterOfferDispatch}
@@ -74,16 +74,22 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const mapStateToProps = (state, props) => {
+
   const data = {
     state,
-    props
+    props,
+    listCities: selectCityList({state}),
+    currentCity: selectFirstCity({state})
   };
+
   return {
     authorizationStatus: state.User.authorizationStatus,
-    cities: state.Offers.listCities,
-    currentCity: state.Offers.currentCity,
     baseFilter: state.Offers.baseFilter,
-    offers: selectCityOffers(data),
+    cities: selectCityList(data),
+    currentCity: (data.props.cityId) ? selectCityList(data)[data.props.cityId] : selectFirstCity(data),
+    offers: selectCityOffers(
+        data
+    ),
     user: state.User,
   };
 };

@@ -33,7 +33,7 @@ const SelectedClassOption = (props) => {
     return array;
   };
   return (
-    <form onClick={props.click} className="places__sorting" action="#" method="get">
+    <form onClick={props.handleChangeFilter} className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" data-action="open" tabIndex="0">
         {baseFilter}
@@ -73,7 +73,7 @@ SelectedClassOption.propTypes = {
     FILTER_PRICE_LOW_TO_HIGH: PropTypes.string,
     FILTER_TOP_RATED_FIRST: PropTypes.string
   }),
-  click: PropTypes.func,
+  handleChangeFilter: PropTypes.func,
   select: PropTypes.string,
 };
 

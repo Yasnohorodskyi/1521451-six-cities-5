@@ -8,11 +8,11 @@ const formatYearMonthDay = (time) => {
   let options = {
     year: `numeric`,
     month: `numeric`,
-    day: `numeric`,
+    day: `numeric`
   };
 
-  const dateArray = new Intl.DateTimeFormat(`en-EN`, options).format(timestamp).split(`/`);
-  return `${dateArray[2]}-${(dateArray[1].length === 1) ? `0${dateArray[1]}` : `${dateArray[1]}`}-${dateArray[0]}`;
+  const formatter = new Intl.DateTimeFormat(`en-EN`, options).format(timestamp);
+  return formatter.toString().replace(/\//g, `-`);
 
 };
 

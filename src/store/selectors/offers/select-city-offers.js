@@ -5,12 +5,12 @@ const selectAllState = (data) => data;
 
 export const selectCityOffers = createSelector(
     selectAllState,
-    ({state, props}) => {
-      let currentCity = ``;
-      if (state.Offers.listCities && props.cityId) {
-        currentCity = state.Offers.listCities[props.cityId];
+    ({state, props, listCities, currentCity}) => {
+
+      if (listCities && props.cityId) {
+        currentCity = listCities[props.cityId];
       } else {
-        currentCity = props.cityId ? state.Offers.currentCity : state.Offers.currentCity;
+        currentCity = props.cityId ? currentCity : currentCity;
       }
 
       switch (state.Offers.baseFilter) {
@@ -39,11 +39,12 @@ export const selectCityOffers = createSelector(
               }
           );
         default:
-          if (state.Offers.currentCity) {
+          if (currentCity) {
             return state.Offers.data.filter(
                 (offer) => (offer.city.name === currentCity[`name`])
             );
           }
       }
+
       return null;
     });

@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-  Link
+  Link,
 } from "react-router-dom";
+import {appUser} from "../../../shapes/app-user";
 
-export const authHeader = (user) => {
+const AuthHeader = ({user}) => {
   return (
     <div className="header__nav-link header__nav-link--profile">
       <img className="header__avatar-wrapper" src={user.data.avatarUrl} />
@@ -13,3 +14,9 @@ export const authHeader = (user) => {
     </div>
   );
 };
+
+AuthHeader.propTypes = {
+  user: appUser
+};
+
+export default AuthHeader;

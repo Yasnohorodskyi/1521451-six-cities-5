@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should authHeaderRenderer connected to store render correctly 1`] = `
+<div
+  className="header__nav-link header__nav-link--profile"
+>
+  <img
+    className="header__avatar-wrapper"
+    src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/8.jpg"
+  />
+  <span
+    className="header__user-name user__name"
+  >
+    <a
+      href="/favorites"
+      onClick={[Function]}
+    >
+       
+      r-sasha@list.ru
+       
+    </a>
+  </span>
+</div>
+`;
