@@ -8,14 +8,11 @@ import {appUser} from '../../shapes/app-user';
 import {getReviews, addReviews} from '../../store/actions/reviews/reviews';
 import {MAX_REVIEWS} from './const';
 
-class ReviewContainer extends PureComponent {
-  constructor(props) {
-    super(props);
-    const {getReviewsDispatch, currentOffer} = this.props;
+const ReviewContainer = (props) => {
+
+    const {reviews, user, addReviewsDispatch, currentOffer, getReviewsDispatch} = props;
     getReviewsDispatch(currentOffer);
-  }
-  render() {
-    const {reviews, user, addReviewsDispatch, currentOffer} = this.props;
+
     return (
       <React.Fragment>
         <ReviewList
@@ -28,7 +25,7 @@ class ReviewContainer extends PureComponent {
       </React.Fragment>
     );
   }
-}
+
 
 ReviewContainer.propTypes = {
   reviews: PropTypes.arrayOf(

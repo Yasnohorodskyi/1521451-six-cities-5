@@ -68,21 +68,23 @@ export const filterOffer = (filter) => (dispatch) => {
 
 
 export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api) => {
-  api.post(`${APIRoute.FAVORITE}/${idRoom}/${(currentStatus) ? 0 : 1}`).then(() => {
-  }).then(() => {
+  api.post(`${APIRoute.FAVORITE}/${idRoom}/${(currentStatus) ? 0 : 1}`).then((response) => {
+    return response;
+  }).then((response) => {
     dispatch({
       type: OffersType.SET_FAVORITE,
       payload: {
-        id: idRoom,
-        status: !currentStatus
+        id: response.data.id,
+        status: !currentStatus,
+        offer: response.data
       }
     });
-  })
-    .catch(() => {
+    return response;
+  }).catch(() => {
       dispatch(
-          redirectToRoute(
-              AppRoute.LOGIN
-          )
+        redirectToRoute(
+            AppRoute.LOGIN
+        )
       );
     });
 };

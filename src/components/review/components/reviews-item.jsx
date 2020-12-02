@@ -5,12 +5,9 @@ import {calcRating} from '../../../helpers/calc-rating';
 import {formatterData} from '../../../helpers/formatter-data';
 import {reviewsItem} from '../../../shapes/reviews-item';
 
-class ReviewsItem extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    const {review} = this.props;
+const ReviewsItem = (props) => {
+
+    const {review} = props;
     return (
       <li key={review.id} className="reviews__item">
         <div className="reviews__user user">
@@ -38,7 +35,6 @@ class ReviewsItem extends PureComponent {
       </li>
     );
   }
-}
 
 ReviewsItem.propTypes = {
   review: reviewsItem,

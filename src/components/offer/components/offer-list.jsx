@@ -6,24 +6,25 @@ import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';
 import {offerAdapter} from '../../../helpers/offers-adapter';
 
-class OfferList extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const OfferList = (props) => {
 
-  render() {
-    const {offers, authorizationStatus} = this.props;
+    const {offers, authorizationStatus, setFavoriteDispatch} = props;
     return (
       <div className="near-places__list places__list">
         {
           offers.map((offer) => {
-            return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offerAdapter(offer)} />);
+            return (<OfferItem
+                authorizationStatus={authorizationStatus}
+                key={offer.id}
+                offer={offerAdapter(offer)}
+                setFavorite={setFavoriteDispatch}
+              />);
           })
         }
       </div>
     );
-  }
 }
+
 
 OfferList.propTypes = {
   offers: PropTypes.arrayOf(

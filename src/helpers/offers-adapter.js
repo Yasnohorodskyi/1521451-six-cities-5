@@ -10,9 +10,7 @@ export const offersAdapter = (offers) => {
       previewImage: offer.preview_image
     });
     newOfferArray.push(offerObject);
-    delete offerObject[`is_favorite`];
-    delete offerObject[`is_premium`];
-    delete offerObject[`max_adults`];
+
 
   });
 
@@ -28,10 +26,6 @@ export const offerAdapter = (offer) => {
     previewImage: offer.preview_image
   });
 
-  delete offerObject[`is_favorite`];
-  delete offerObject[`is_premium`];
-  delete offerObject[`max_adults`];
-  delete offerObject[`preview_image`];
 
   return offerObject;
 };

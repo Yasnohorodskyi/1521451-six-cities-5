@@ -1,11 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {MAX_COMMENT, MIN_COMMENT} from '../const';
 
-class AddFormComment extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+const AddFormComment = (props) => {
 
     const {
       titleInputs,
@@ -14,10 +11,10 @@ class AddFormComment extends PureComponent {
       inputRating,
       selectedOption,
       textarea
-    } = this.props;
+    } = props;
 
 
-    const isBlockedSubmitButton = (selectedOption && textarea.length >= 50 && textarea.length <= 300);
+    const isBlockedSubmitButton = (selectedOption && textarea.length >= MIN_COMMENT && textarea.length <= MAX_COMMENT);
 
     return (
       <form onSubmit={handleSubmit} className="reviews__form form" action="#" method="post">
@@ -56,7 +53,6 @@ class AddFormComment extends PureComponent {
       </form>
     );
   }
-}
 
 AddFormComment.propTypes = {
   addReviews: PropTypes.func,

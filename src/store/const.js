@@ -1,12 +1,8 @@
-export const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
-
 export const OffersType = {
   CHANGE_CITY: `CHANGE_CITY`,
   GET_OFFERS: `GET_OFFERS`,
   GET_OFFER: `GET_OFFER`,
+  REMOVE_FAVORITE: `REMOVE_FAVORITE`,
   FILTER_OFFER: `FILTER_OFFER`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   GET_REVIEWS: `GET_REVIEWS`,
@@ -39,17 +35,17 @@ export const AppRoute = {
   LOGIN: `/login`
 };
 
-const baseUrl = `https://5.react.pages.academy/six-cities/`;
+const BASE_URL = `https://5.react.pages.academy/six-cities/`;
 
 export const APIRoute = {
-  GET_OFFER: baseUrl + `hotels`,
-  GET_REVIEWS: baseUrl + `comments`,
-  LOGIN: baseUrl + `login`,
+  GET_OFFER: BASE_URL + `hotels`,
+  GET_REVIEWS: BASE_URL + `comments`,
+  LOGIN: BASE_URL + `login`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
-  FAVORITE: baseUrl + `favorite`,
+  FAVORITE: BASE_URL + `favorite`,
 };
 
-export const actionFilter = {
+export const ActionFilter = {
   FILTER_POPULAR: `Popular`,
   FILTER_TOP_RATED_FIRST: `Top rated first`,
   FILTER_PRICE_LOW_TO_HIGH: `Price: low to high`,

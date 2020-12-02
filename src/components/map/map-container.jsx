@@ -6,9 +6,10 @@ import {MapCities} from "./components/map-cities";
 import {offerItem} from '../../shapes/offer-item';
 import {currentCityShape} from '../../shapes/current-city';
 
-const MapContainer = ({currentCity, offers}) => {
+const MapContainer = ({currentCity, offers, currentOffer}) => {
   return (
     <MapCities
+      currentOffer={currentOffer}
       currentCity={currentCity}
       offers={offers}
     />

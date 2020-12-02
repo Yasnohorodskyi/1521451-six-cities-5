@@ -5,9 +5,10 @@ import {connect} from "react-redux";
 import OfferList from "./components/offer-list";
 import {offerItem} from '../../shapes/offer-item';
 import {currentCityShape} from '../../shapes/current-city';
+import {setFavorite} from '../../store/actions/offers/offers';
 
 const OfferContainer = (props) => {
-  const {offers, currentCity, authorizationStatus} = props;
+  const {offers, currentCity, authorizationStatus, setFavoriteDispatch} = props;
 
   return (
     <div className="near-places__list places__list">
@@ -15,6 +16,7 @@ const OfferContainer = (props) => {
         offers={offers}
         currentCity={currentCity}
         authorizationStatus={authorizationStatus}
+        setFavoriteDispatch={setFavoriteDispatch}
       />
     </div>
   );
@@ -34,7 +36,14 @@ OfferContainer.propTypes = {
   currentRoomCity: PropTypes.string,
   authorizationStatus: PropTypes.string,
 };
-
+const mapDispatchToProps = (dispatch) => ({
+  getOfferDispatch(id) {
+    dispatch(getOffer(id));
+  },
+  setFavoriteDispatch(id, currentStatus) {
+    dispatch(setFavorite(id, currentStatus));
+  }
+});
 const mapStateToProps = (state) => {
   return {
     authorizationStatus: state.User.authorizationStatus
@@ -42,4 +51,4 @@ const mapStateToProps = (state) => {
 };
 
 export {OfferContainer};
-export default connect(mapStateToProps)(OfferContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferContainer);

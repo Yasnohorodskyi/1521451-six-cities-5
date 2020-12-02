@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PremiumTemplate tests Render PremiumTemplate 1`] = `
+<div
+  className={Object {}}
+>
+  <span>
+    Premium
+  </span>
+</div>
+`;

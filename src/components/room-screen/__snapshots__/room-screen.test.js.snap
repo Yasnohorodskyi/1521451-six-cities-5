@@ -266,8 +266,10 @@ exports[`RoomScreen 1`] = `
             <div
               className="property__host-user user"
             >
-              <div
+              <img
+                alt="Angelina"
                 className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper"
+                src="/undefined"
               />
               <span
                 className="property__user-name"
@@ -309,8 +311,61 @@ exports[`RoomScreen 1`] = `
               "name": "Hamburg",
             }
           }
-          currentOffer={11}
-          max={3}
+          currentOffer={
+            Object {
+              "bedrooms": 5,
+              "city": Object {
+                "location": Object {
+                  "latitude": 53.550343,
+                  "longitude": 10.000654,
+                  "zoom": 13,
+                },
+                "name": "Hamburg",
+              },
+              "description": "I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!",
+              "goods": Array [
+                "Washer",
+                "Breakfast",
+                "Laptop friendly workspace",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 25,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 11,
+              "images": Array [
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/8.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/4.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/7.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/9.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/11.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+                "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+              ],
+              "isFavorite": true,
+              "isPremium": false,
+              "location": Object {
+                "latitude": 53.53434,
+                "longitude": 9.998654,
+                "zoom": 16,
+              },
+              "maxAdults": 6,
+              "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+              "price": 190,
+              "rating": 4.3,
+              "title": "The house among olive ",
+              "type": "house",
+            }
+          }
         />
       </section>
     </section>

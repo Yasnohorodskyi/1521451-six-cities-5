@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import MenuContainer from '../menu/menu-container.jsx';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
@@ -16,39 +16,33 @@ import {selectCityList, selectFirstCity} from "../../store/selectors/offers/sele
 import HeaderContainer from '../header/header-container';
 
 
-class MainScreen extends PureComponent {
-  constructor(props) {
-    super(props);
+const MainScreen = (props) => {
+
+  const {cityId, filterOfferDispatch, baseFilter, offers, cities, currentCity} = props;
+
+  if (!cities) {
+    return null;
   }
 
-  render() {
-    const {cityId, filterOfferDispatch, baseFilter, offers, cities, currentCity} = this.props;
-
-    if (!cities) {
-      return null;
-    }
-
-    return (
-      <div>
-        <div className="page page--gray page--main">
-          <HeaderContainer />
-          <main className="page__main page__main--index">
-            <MenuContainer cities={cities} currentCity={cityId ? cities[cityId] : currentCity} />
-            {
-              (offers === undefined || offers === null) ? <OffersEmpty /> : <OffersNoempty
-                currentCity={currentCity}
-                offers={offers}
-                baseFilter={baseFilter}
-                filterOffer={filterOfferDispatch}
-              />
-            }
-          </main>
-        </div>
+  return (
+    <div>
+      <div className="page page--gray page--main">
+        <HeaderContainer />
+        <main className="page__main page__main--index">
+          <MenuContainer cities={cities} currentCity={cityId ? cities[cityId] : currentCity} />
+          {
+            (offers === undefined || offers === null) ? <OffersEmpty /> : <OffersNoempty
+              currentCity={currentCity}
+              offers={offers}
+              baseFilter={baseFilter}
+              filterOffer={filterOfferDispatch}
+            />
+          }
+        </main>
       </div>
-    );
-  }
-
-}
+    </div>
+  );
+};
 
 
 MainScreen.propTypes = {

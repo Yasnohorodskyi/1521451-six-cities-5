@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-import {currentCityShape} from '../shapes/current-city';
+import {currentCityShape} from '../../shapes/current-city';
 
 const withActiveItem = (ComponentOutside) => {
   function WithActiveItem(props) {

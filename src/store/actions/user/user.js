@@ -1,4 +1,4 @@
-import {APIRoute, AppRoute, AuthorizationStatus, UserType} from "../../const";
+import {APIRoute, AppRoute, UserType} from "../../const";
 
 const convertUser = (data) => {
   return {
@@ -14,10 +14,10 @@ const convertUser = (data) => {
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then((res) => {
-      dispatch(requireAuthorization(AuthorizationStatus.AUTH, convertUser(res.data)));
+      dispatch(requireAuthorization(UserType.AUTH, convertUser(res.data)));
     })
     .catch(() => {
-      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+      dispatch(requireAuthorization(UserType.NO_AUTH));
     })
 );
 
@@ -27,10 +27,10 @@ export const login = ({email, password}) => (dispatch, _getState, api) => {
   ).then((response) => {
     switch (response.status) {
       case 200:
-        dispatch(requireAuthorization(AuthorizationStatus.AUTH, convertUser(response.data)));
+        dispatch(requireAuthorization(UserType.AUTH, convertUser(response.data)));
         break;
       case 401:
-        dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH, null, response.status));
+        dispatch(requireAuthorization(UserType.NO_AUTH, null, response.status));
         break;
       default:
         dispatch(requireError(response.request.responseText));

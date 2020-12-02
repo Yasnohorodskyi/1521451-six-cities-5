@@ -29,7 +29,7 @@ class RoomScreen extends PureComponent {
     if (offer === null) {
       return null;
     }
-
+    console.log(offer);
     return (
 
       <div className="page">
@@ -101,8 +101,10 @@ class RoomScreen extends PureComponent {
                 <div className="property__host">
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
-                    <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    </div>
+                    <img
+                      className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper"
+                      src={`/`+ offer.host.avatar_url} alt={offer.host.name}
+                    />
                     <span className="property__user-name">
                       {offer.host.name}
                     </span>{offer.isFavorite}
@@ -121,8 +123,7 @@ class RoomScreen extends PureComponent {
             <section className="property__map map">
               <MapContainer
                 currentCity={offer.city}
-                max={MAX_OTHER_REVIEWS}
-                currentOffer={offer.id}
+                currentOffer={offer}
                 offers={nearby}
               />
             </section>

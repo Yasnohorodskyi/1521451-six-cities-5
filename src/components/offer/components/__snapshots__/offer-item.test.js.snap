@@ -45,6 +45,7 @@ exports[`Render OfferItem Render OfferItem 1`] = `
       </div>
       <button
         className="place-card__bookmark-button place-card__bookmark-button--active button"
+        onClick={[Function]}
         type="button"
       >
         <svg
