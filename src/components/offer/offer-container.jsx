@@ -35,11 +35,10 @@ OfferContainer.propTypes = {
   currentOffer: PropTypes.number,
   currentRoomCity: PropTypes.string,
   authorizationStatus: PropTypes.string,
+  setFavoriteDispatch: PropTypes.func,
+  getOffer: PropTypes.func
 };
 const mapDispatchToProps = (dispatch) => ({
-  getOfferDispatch(id) {
-    dispatch(getOffer(id));
-  },
   setFavoriteDispatch(id, currentStatus) {
     dispatch(setFavorite(id, currentStatus));
   }

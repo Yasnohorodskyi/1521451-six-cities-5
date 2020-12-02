@@ -29,7 +29,7 @@ class RoomScreen extends PureComponent {
     if (offer === null) {
       return null;
     }
-    console.log(offer);
+
     return (
 
       <div className="page">
@@ -103,7 +103,7 @@ class RoomScreen extends PureComponent {
                   <div className="property__host-user user">
                     <img
                       className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper"
-                      src={`/`+ offer.host.avatar_url} alt={offer.host.name}
+                      src={`/${offer.host.avatar_url}`} alt={offer.host.name}
                     />
                     <span className="property__user-name">
                       {offer.host.name}

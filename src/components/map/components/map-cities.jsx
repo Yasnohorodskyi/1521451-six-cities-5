@@ -9,7 +9,7 @@ import {ZOOM} from '../const';
 
 const MapCities = ({currentCity, offers, currentOffer}) => {
   let [map, setMap] = useState(null);
-
+  let icon;
   const mapRef = React.createRef();
 
   const mapSettings = (info) => {
@@ -27,7 +27,7 @@ const MapCities = ({currentCity, offers, currentOffer}) => {
       }
     });
 
-    let icon = new LeafIcon({iconUrl: `/img/pin-active.svg`});
+    icon = new LeafIcon({iconUrl: `/img/pin-active.svg`});
 
     let newMap = L.map(`map`, {
       center: [
@@ -52,13 +52,13 @@ const MapCities = ({currentCity, offers, currentOffer}) => {
 
       L.marker(currentOfferCord, {icon}).addTo(newMap);
       info.forEach((offer) => {
-        let icon = new LeafIcon({iconUrl: `/img/pin.svg`});
+        icon = new LeafIcon({iconUrl: `/img/pin.svg`});
         const offerCords = [offer.location.latitude, offer.location.longitude];
         L.marker(offerCords, {icon}).addTo(newMap);
       });
     } else {
       info.forEach((offer) => {
-        let icon = new LeafIcon({iconUrl: `/img/pin.svg`});
+        icon = new LeafIcon({iconUrl: `/img/pin.svg`});
         const offerCords = [offer.location.latitude, offer.location.longitude];
         L.marker(offerCords, {icon}).addTo(newMap)._icon.id = `marker-${offer.id}`;
       });

@@ -20,9 +20,8 @@ const withOpenSelect = (ComponentOutside) => {
       this.handleChangeFilter = this.handleChangeFilter.bind(this);
     }
     handleChangeFilter(event) {
-  
-      switch (event.target.dataset.action) {
 
+      switch (event.target.dataset.action) {
         case `open`:
           this.filterOpen();
           break;

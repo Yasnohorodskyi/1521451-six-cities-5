@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
@@ -10,21 +10,21 @@ import {MAX_REVIEWS} from './const';
 
 const ReviewContainer = (props) => {
 
-    const {reviews, user, addReviewsDispatch, currentOffer, getReviewsDispatch} = props;
-    getReviewsDispatch(currentOffer);
+  const {reviews, user, addReviewsDispatch, currentOffer, getReviewsDispatch} = props;
+  getReviewsDispatch(currentOffer);
 
-    return (
-      <React.Fragment>
-        <ReviewList
-          reviews={reviews.reverse()}
-          user={user}
-          addReviews={addReviewsDispatch}
-          currentOffer={currentOffer}
-          maxReviews={MAX_REVIEWS}
-        />
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <ReviewList
+        reviews={reviews.reverse()}
+        user={user}
+        addReviews={addReviewsDispatch}
+        currentOffer={currentOffer}
+        maxReviews={MAX_REVIEWS}
+      />
+    </React.Fragment>
+  );
+};
 
 
 ReviewContainer.propTypes = {

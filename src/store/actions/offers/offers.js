@@ -81,12 +81,12 @@ export const setFavorite = (idRoom, currentStatus) => (dispatch, _getState, api)
     });
     return response;
   }).catch(() => {
-      dispatch(
+    dispatch(
         redirectToRoute(
             AppRoute.LOGIN
         )
-      );
-    });
+    );
+  });
 };
 
 

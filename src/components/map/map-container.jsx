@@ -27,7 +27,10 @@ MapContainer.propTypes = {
   cities: PropTypes.arrayOf(
       currentCityShape
   ),
-  max: PropTypes.number
+  max: PropTypes.number,
+  currentOffer: PropTypes.shape({
+    offerItem
+  })
 };
 
 const mapStateToProps = (state, props) => {

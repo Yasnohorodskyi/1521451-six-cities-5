@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PremiumTemplate = (className) => {
+const PremiumTemplate = ({className}) => {
   return (
     <div className={className}>
       <span>Premium</span>
