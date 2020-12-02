@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
@@ -8,27 +8,24 @@ import {appUser} from '../../shapes/app-user';
 import {getReviews, addReviews} from '../../store/actions/reviews/reviews';
 import {MAX_REVIEWS} from './const';
 
-class ReviewContainer extends PureComponent {
-  constructor(props) {
-    super(props);
-    const {getReviewsDispatch, currentOffer} = this.props;
-    getReviewsDispatch(currentOffer);
-  }
-  render() {
-    const {reviews, user, addReviewsDispatch, currentOffer} = this.props;
-    return (
-      <React.Fragment>
-        <ReviewList
-          reviews={reviews.reverse()}
-          user={user}
-          addReviews={addReviewsDispatch}
-          currentOffer={currentOffer}
-          maxReviews={MAX_REVIEWS}
-        />
-      </React.Fragment>
-    );
-  }
-}
+const ReviewContainer = (props) => {
+
+  const {reviews, user, addReviewsDispatch, currentOffer, getReviewsDispatch} = props;
+  getReviewsDispatch(currentOffer);
+
+  return (
+    <React.Fragment>
+      <ReviewList
+        reviews={reviews.reverse()}
+        user={user}
+        addReviews={addReviewsDispatch}
+        currentOffer={currentOffer}
+        maxReviews={MAX_REVIEWS}
+      />
+    </React.Fragment>
+  );
+};
+
 
 ReviewContainer.propTypes = {
   reviews: PropTypes.arrayOf(

@@ -7,42 +7,62 @@ import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';
 import {ZOOM} from '../const';
 
-const MapCities = ({currentCity, offers}) => {
+const MapCities = ({currentCity, offers, currentOffer}) => {
   let [map, setMap] = useState(null);
-
+  let icon;
   const mapRef = React.createRef();
 
   const mapSettings = (info) => {
 
-    const icon = L.icon({
-      iconUrl: `/img/pin.svg`,
-      iconSize: [30, 30]
+
+    const LeafIcon = L.Icon.extend({
+      options: {
+        center: [
+          info[0].city[`location`].latitude,
+          info[0].city[`location`].longitude
+        ],
+        ZOOM,
+        zoomControl: false,
+        marker: true
+      }
     });
 
-    const zoom = ZOOM;
+    icon = new LeafIcon({iconUrl: `/img/pin-active.svg`});
 
     let newMap = L.map(`map`, {
       center: [
         info[0].city[`location`].latitude,
         info[0].city[`location`].longitude
       ],
-      zoom,
+      ZOOM,
       zoomControl: false,
       marker: true
     });
 
-    newMap.setView([info[0].city[`location`].latitude, info[0].city[`location`].longitude], zoom);
+
+    newMap.setView([info[0].city[`location`].latitude, info[0].city[`location`].longitude], ZOOM);
 
     L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     })
       .addTo(newMap);
 
+    if (currentOffer) {
+      const currentOfferCord = [currentOffer.location.latitude, currentOffer.location.longitude];
 
-    info.forEach((offer) => {
-      const offerCords = [offer.location.latitude, offer.location.longitude];
-      L.marker(offerCords, {icon}).addTo(newMap)._icon.id = `marker-${offer.id}`;
-    });
+      L.marker(currentOfferCord, {icon}).addTo(newMap);
+      info.forEach((offer) => {
+        icon = new LeafIcon({iconUrl: `/img/pin.svg`});
+        const offerCords = [offer.location.latitude, offer.location.longitude];
+        L.marker(offerCords, {icon}).addTo(newMap);
+      });
+    } else {
+      info.forEach((offer) => {
+        icon = new LeafIcon({iconUrl: `/img/pin.svg`});
+        const offerCords = [offer.location.latitude, offer.location.longitude];
+        L.marker(offerCords, {icon}).addTo(newMap)._icon.id = `marker-${offer.id}`;
+      });
+    }
 
     return newMap;
   };

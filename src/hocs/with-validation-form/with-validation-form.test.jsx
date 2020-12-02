@@ -1,9 +1,9 @@
 import React from "react";
 import ShallowRenderer from 'react-test-renderer/shallow';
-import withActiveItem from "./with-active-item";
+import withValidationForm from "./with-validation-form";
 import PropTypes from "prop-types";
 import {Provider} from "react-redux";
-import {mockStore} from "../mocks-for-tests/store";
+import {mockStore} from "../../mocks-for-tests/store";
 
 
 const MockComponent = (props) => {
@@ -24,9 +24,9 @@ MockComponent.propTypes = {
 };
 
 
-const MockComponentWrapped = withActiveItem(MockComponent);
+const MockComponentWrapped = withValidationForm(MockComponent);
 
-it(`withActiveItem is rendered correctly`, () => {
+it(`withValidationForm is rendered correctly`, () => {
   const renderer = new ShallowRenderer();
   const tree = renderer.render(
       <Provider store={mockStore}>

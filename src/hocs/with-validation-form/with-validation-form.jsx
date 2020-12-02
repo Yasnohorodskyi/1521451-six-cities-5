@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import {currentCityShape} from '../shapes/current-city';
+import {currentCityShape} from '../../shapes/current-city';
 
 const withValidationForm = (ComponentOutside) => {
   class WithValidationForm extends PureComponent {

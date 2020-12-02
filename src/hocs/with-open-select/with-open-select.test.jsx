@@ -3,7 +3,7 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import withOpenSelect from "./with-open-select";
 import PropTypes from "prop-types";
 import {Provider} from "react-redux";
-import {mockStore} from "../mocks-for-tests/store";
+import {mockStore} from "../../mocks-for-tests/store";
 
 
 const MockComponent = (props) => {

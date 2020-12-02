@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 
 import SelectedClassOption from "./selected-class-option";
-import withOpenSelect from '../../../hocs/with-open-select';
+import withOpenSelect from '../../../hocs/with-open-select/with-open-select';
 
 const SelectedClassOptionWithClickOutside = withOpenSelect(SelectedClassOption);
 

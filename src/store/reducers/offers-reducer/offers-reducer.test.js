@@ -65,20 +65,6 @@ describe(`Offer reducers`, () => {
     });
   });
 
-  it(`SET favorite`, () => {
-
-    expect(offersReducer({
-      offer
-    }, {
-      type: OffersType.SET_FAVORITE,
-      payload: {
-        status: true,
-        id: 2
-      }
-    })).toEqual({
-      offer
-    });
-  });
 
   it(`CHANGE_CITY`, () => {
     const currentCity = cities[`Hamburg`];

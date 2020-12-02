@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import HeaderContainer from '../header/header-container';
-import {getFavorite} from '../../store/actions/offers/offers';
+import {getFavorite, setFavorite} from '../../store/actions/offers/offers';
 import {selectFavorites} from "../../store/selectors/offers/filter-favorites";
 import {Footer} from "../share/footer/footer-container";
 import {FavoritesEmpty} from "./favorites-empty";
@@ -22,11 +22,10 @@ class FavoritesScreen extends PureComponent {
   }
   render() {
     const {favorites} = this.props;
-
+    const {setFavoriteDispatch} = this.props;
     if (favorites === null) {
       return null;
     }
-
 
     if (favorites.length !== 0) {
       return (
@@ -63,7 +62,11 @@ class FavoritesScreen extends PureComponent {
                                         <b className="place-card__price-value">&euro;{favorite.price}</b>
                                         <span className="place-card__price-text">&#47;&nbsp;night</span>
                                       </div>
-                                      <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+                                      <button
+                                        className="place-card__bookmark-button place-card__bookmark-button--active button"
+                                        type="button"
+                                        onClick={() => setFavoriteDispatch(favorite.id, true)}
+                                      >
                                         <svg className="place-card__bookmark-icon" width="18" height="19">
                                           <use xlinkHref="#icon-bookmark"></use>
                                         </svg>
@@ -132,6 +135,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   getFavoriteDispatch() {
     dispatch(getFavorite());
+  },
+  setFavoriteDispatch(id, status) {
+    dispatch(setFavorite(id, status));
   },
 });
 

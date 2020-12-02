@@ -2,9 +2,9 @@ import onClickOutside from "react-onclickoutside";
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import {offerItem} from '../shapes/offer-item';
-import {actionFilter} from '../store/const';
-import {currentCityShape} from '../shapes/current-city';
+import {offerItem} from '../../shapes/offer-item';
+import {ActionFilter} from '../../store/const';
+import {currentCityShape} from '../../shapes/current-city';
 
 const withOpenSelect = (ComponentOutside) => {
   class WithOpenSelect extends PureComponent {
@@ -12,7 +12,7 @@ const withOpenSelect = (ComponentOutside) => {
       super(props);
       this.state = {
         select: ``,
-        optionList: actionFilter
+        optionList: ActionFilter
       };
 
       this.filterOpen = this.filterOpen.bind(this);
@@ -20,6 +20,7 @@ const withOpenSelect = (ComponentOutside) => {
       this.handleChangeFilter = this.handleChangeFilter.bind(this);
     }
     handleChangeFilter(event) {
+
       switch (event.target.dataset.action) {
         case `open`:
           this.filterOpen();
@@ -52,6 +53,7 @@ const withOpenSelect = (ComponentOutside) => {
       });
     }
     filterOpen() {
+
       this.setState({
         select: `--opened`
       });
@@ -63,7 +65,7 @@ const withOpenSelect = (ComponentOutside) => {
         <ComponentOutside
           {...this.props}
           select={select}
-          optionList={actionFilter}
+          optionList={ActionFilter}
           handleChangeFilter={handleChangeFilter}
         />
       );

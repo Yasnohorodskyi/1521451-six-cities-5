@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import OfferItem from './offer-item.jsx';
@@ -6,24 +6,25 @@ import {offerItem} from '../../../shapes/offer-item';
 import {currentCityShape} from '../../../shapes/current-city';
 import {offerAdapter} from '../../../helpers/offers-adapter';
 
-class OfferList extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const OfferList = (props) => {
 
-  render() {
-    const {offers, authorizationStatus} = this.props;
-    return (
-      <div className="near-places__list places__list">
-        {
-          offers.map((offer) => {
-            return (<OfferItem authorizationStatus={authorizationStatus} key={offer.id} offer={offerAdapter(offer)} />);
-          })
-        }
-      </div>
-    );
-  }
-}
+  const {offers, authorizationStatus, setFavoriteDispatch} = props;
+  return (
+    <div className="near-places__list places__list">
+      {
+        offers.map((offer) => {
+          return (<OfferItem
+            authorizationStatus={authorizationStatus}
+            key={offer.id}
+            offer={offerAdapter(offer)}
+            setFavorite={setFavoriteDispatch}
+          />);
+        })
+      }
+    </div>
+  );
+};
+
 
 OfferList.propTypes = {
   offers: PropTypes.arrayOf(
@@ -40,6 +41,7 @@ OfferList.propTypes = {
   cityId: PropTypes.string,
   currentOffer: PropTypes.number,
   authorizationStatus: PropTypes.string,
+  setFavoriteDispatch: PropTypes.func
 };
 
 export default OfferList;

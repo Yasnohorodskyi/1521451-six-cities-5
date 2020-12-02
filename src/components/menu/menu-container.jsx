@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Menu from './components/menu';
-import withActiveItem from '../../hocs/with-active-item';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 const MenuWithActiveItem = withActiveItem(Menu);
 
 import {connect} from "react-redux";

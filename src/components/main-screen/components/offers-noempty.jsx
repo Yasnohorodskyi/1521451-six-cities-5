@@ -4,13 +4,14 @@ import MapContainer from '../../map/map-container.jsx';
 import OfferContainer from '../../../components/offer/offer-container.jsx';
 import PropTypes from 'prop-types';
 import {offerItem} from '../../../shapes/offer-item';
-import withOpenSelect from '../../../hocs/with-open-select';
+import withOpenSelect from '../../../hocs/with-open-select/with-open-select';
 import {currentCityShape} from '../../../shapes/current-city';
 
 const SelectedClassOptionWithClickOutside = withOpenSelect(SelectedClassOption);
 
 
 const OffersNoempty = ({currentCity, offers, filterOffer, baseFilter}) => {
+
   return (<div className="cities">
     <div className="cities__places-container container">
       <section className="cities__places places">
